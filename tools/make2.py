@@ -1,6 +1,6 @@
 # v2 builder: captions top, colour per speaker, long lines split, end card only in the tail
 import json,subprocess,os,sys,re
-SP='/tmp/claude-0/-home-claude/988431de-1e8a-5e55-a69c-1b6d3578148a/scratchpad'
+SP=os.environ.get('BTBTP_SP','/tmp/claude-0/-home-claude/988431de-1e8a-5e55-a69c-1b6d3578148a/scratchpad')
 COL={'Wadad':'rgba(168,64,112,.92)','Souad':'rgba(62,112,84,.92)','New kidney':'rgba(176,128,30,.94)','guest':'rgba(61,88,108,.93)','end':'rgba(61,88,108,.95)'}
 def dur(f): return float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','csv=p=0',f]))
 def split(ar,en):
