@@ -1,0 +1,13 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'Readex Pro';src:url(../tpl/node_modules/@fontsource/readex-pro/files/readex-pro-arabic-600-normal.woff2);font-weight:600}
+@font-face{font-family:'Source Sans 3';src:url(../tpl/node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-600-normal.woff2);font-weight:600}
+html,body{margin:0;background:transparent}
+.w{width:1080px;height:1920px;position:relative}
+.c{position:absolute;left:90px;right:90px;top:250px;border-radius:26px;padding:22px 34px;text-align:center;box-shadow:0 6px 24px rgba(0,0,0,.18)}
+.ar{font-family:'Readex Pro';font-weight:600;font-size:46px;line-height:1.4;color:#fff;direction:rtl}
+.en{font-family:'Source Sans 3';font-weight:600;font-size:30px;line-height:1.25;color:#FFF3D6;margin-top:6px;opacity:.95}
+.end{top:250px}
+.end .ar{font-size:54px}.end .en{font-size:34px}
+.h{font-family:'Source Sans 3';font-weight:600;font-size:30px;color:#fff;margin-top:10px;opacity:.9}
+</style></head><body><div class="w"><div class="c" id="c"><div class="ar" id="ar"></div><div class="en" id="en"></div></div></div>
+<script>const d=JSON.parse(decodeURIComponent(location.hash.slice(1)));c.style.background=d.col;ar.textContent=d.ar;en.textContent=d.en;if(d.end){c.className='c end';c.insertAdjacentHTML('beforeend','<div class="h">@omar_organtransplants</div>')}</script></body></html>

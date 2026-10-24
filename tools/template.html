@@ -1,0 +1,70 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'Source Serif 4';src:url(node_modules/@fontsource-variable/source-serif-4/files/source-serif-4-latin-opsz-normal.woff2);font-weight:200 900}
+@font-face{font-family:'Source Serif 4';src:url(node_modules/@fontsource-variable/source-serif-4/files/source-serif-4-latin-opsz-italic.woff2);font-weight:200 900;font-style:italic}
+@font-face{font-family:'Source Sans 3';src:url(node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:'Source Sans 3';src:url(node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:'Readex Pro';src:url(node_modules/@fontsource/readex-pro/files/readex-pro-arabic-400-normal.woff2);font-weight:400}
+@font-face{font-family:'Readex Pro';src:url(node_modules/@fontsource/readex-pro/files/readex-pro-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:'Readex Pro';src:url(node_modules/@fontsource/readex-pro/files/readex-pro-arabic-600-normal.woff2);font-weight:600}
+*{margin:0;box-sizing:border-box}body{margin:0}
+.s{position:relative;overflow:hidden;display:flex;flex-direction:column}
+.pat{position:absolute;inset:0;background-image:url(pattern.png);background-repeat:repeat;background-size:300px auto;pointer-events:none}
+.en{position:relative;font-family:'Source Serif 4',serif}
+.ar{position:relative;font-family:'Readex Pro',sans-serif;direction:rtl;text-align:right}
+.lab{position:relative;font-family:'Source Sans 3',sans-serif;font-weight:600;letter-spacing:.15em;text-transform:uppercase}
+body.af .lab{text-align:right}
+</style></head><body><div id="root"></div><script>
+/* Rebuilt 1:1 from W1P1 redistribution.dc.html (BTBBTP posts chat). */
+const s=JSON.parse(decodeURIComponent(location.hash.slice(1)));
+const W=s.w,H=s.h,sq=W===H,pad=sq?'88px 88px':'120px 96px',k=sq?0.86:1;
+const G={paper:{bg:'#F7F4EF',op:.08,bl:'normal',en:'#2B2622',ar:'#56493F',lab:'#3D586C'},
+ sand:{bg:'#ECE5DA',op:.08,bl:'normal',en:'#2B2622',ar:'#56493F',lab:'#3D586C'},
+ slate:{bg:'#3D586C',op:.10,bl:'screen',en:'#FFFFFF',ar:'#C4D2DD',lab:'#E8C269'},
+ gold:{bg:'#E8C269',op:.10,bl:'multiply',en:'#6E5219',ar:'#6E5219',lab:'#6E5219'},
+ red:{bg:'#B3261E',op:.10,bl:'screen',en:'#FFFFFF',ar:'#FBE3E0',lab:'#FFFFFF'}}[s.ground||'paper'];
+const esc=t=>String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const L=(s.en||'').length;
+const enSize=Math.round(k*(s.size||(s.type==='hook'?132:L<=30?104:L<=55?98:L<=80?82:L<=100?80:74)));
+const enLH=s.type==='hook'?1.02:enSize>=96?1.1:1.14;
+const arSize=Math.round(k*(s.arSize||(s.type==='hook'?52:L<=30?46:L<=55?44:40)));
+const arLH=s.type==='hook'?1.6:L<=30?1.6:1.7;
+const box=`width:${W}px;height:${H}px;padding:${pad};background:${G.bg};`;
+const pat=`<div class="pat" style="opacity:${G.op};mix-blend-mode:${G.bl}"></div>`;
+const AF=new URLSearchParams(location.search).get('t')==='tiktok'&&!s.enFirst;
+let en=`<div class="en" style="font-size:${enSize}px;line-height:${enLH};color:${G.en};${s.type==='hook'?'letter-spacing:-0.02em;':''}${s.italic?'font-style:italic;':''}">${esc(s.en).replace(/\n/g,'<br>')}</div>`;
+let ar=s.ar?`<div class="ar" style="font-size:${arSize}px;line-height:${arLH};color:${G.ar};${s.ground==='gold'?'opacity:.85;':''}">${esc(s.ar)}</div>`:'';
+const AFK=s.type==='hook'?0.74:0.84;
+if(AF&&s.ar){
+ en=`<div class="ar" style="font-size:${Math.round(enSize*AFK)}px;line-height:${s.type==='hook'?1.35:1.45};color:${G.en};font-weight:${s.type==='hook'?600:400}">${esc(s.ar)}</div>`;
+ ar=`<div class="en" style="font-size:${Math.round(arSize*1.05)}px;line-height:1.4;color:${G.ar};direction:ltr;text-align:right;${s.italic?'font-style:italic;':''}${s.ground==='gold'?'opacity:.85;':''}">${esc(s.en).replace(/\n/g,'<br>')}</div>`;
+}
+let h;
+if(s.type==='hook'){
+ h=`<div class="s" style="${box}justify-content:space-between">${pat}
+ <div class="lab" style="font-size:${Math.round(26*k)}px;color:${G.lab}">${esc(s.eyebrow||'')}</div>
+ <div style="position:relative;display:flex;flex-direction:column;gap:34px">${en}${ar}</div>
+ <div style="position:relative;font-family:'Source Sans 3',sans-serif;font-size:${Math.round(24*k)}px;color:${G.ar}">${esc(s.sig||'Omar')}</div></div>`;
+}else if(s.type==='cta'){
+ h=`<div class="s" style="${box}justify-content:space-between">${pat}
+ <div style="position:relative;display:flex;flex-direction:column;gap:30px;margin-top:${Math.round(80*k)}px">${en.replace(/line-height:[\d.]+/,'line-height:1.06')}${ar}</div>
+ <div style="position:relative;display:flex;flex-direction:column;gap:22px;padding-bottom:${Math.round(40*k)}px">
+ <div style="height:2px;background:${G.en};opacity:.35"></div>
+ ${AF?`<div class="ar" style="font-size:${Math.round(42*k)}px;font-weight:600;color:${G.en}">${esc(s.cta[1])}</div><div style="font-family:'Source Sans 3',sans-serif;font-size:${Math.round(36*k)}px;color:${G.en};opacity:.85;text-align:right">${esc(s.cta[0])}</div>`:`<div style="font-family:'Source Sans 3',sans-serif;font-size:${Math.round(48*k)}px;font-weight:600;color:${G.en}">${esc(s.cta[0])}</div>
+ <div class="ar" style="font-size:${Math.round(38*k)}px;color:${G.en};opacity:.85">${esc(s.cta[1])}</div>`}</div></div>`;
+}else if(s.type==='image'){
+ /* Style A: full-bleed Nano Banana image (subject on the right half, left half empty), text on the left 52% */
+ const fb=s.imgFit==='bottom';
+ if(sq&&s.imgSq)s.img=s.imgSq;
+ const C=(sq&&s.imgBgSq)||s.imgBg||'247,244,239', top=(sq?s.imgTopSq:s.imgTop)||(sq?150:360);
+ const bg=!s.img?`background:${G.bg};`:fb?`background:linear-gradient(to bottom, rgb(${C}) 0px, rgb(${C}) ${top}px, rgba(${C},0) ${top+200}px), url(${s.img}) center ${top}px/${W}px auto no-repeat, rgb(${C});`:`background:${G.bg} url(${s.img}) center/cover no-repeat;`;
+ const ph=s.img?'':fb?`<div style="position:absolute;left:${sq?88:96}px;right:${sq?88:96}px;top:${sq?52:50}%;bottom:${sq?60:110}px;border:3px dashed ${G.lab};opacity:.45;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Source Sans 3',sans-serif;font-size:26px;color:${G.lab};padding:24px">NANO BANANA IMAGE<br>${esc(s.imgNote||'')}</div>`:`<div style="position:absolute;right:${sq?48:56}px;top:50%;transform:translateY(-50%);width:38%;height:${sq?'72%':'62%'};border:3px dashed ${G.lab};opacity:.45;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Source Sans 3',sans-serif;font-size:26px;color:${G.lab};padding:24px">NANO BANANA IMAGE<br>${esc(s.imgNote||'')}</div>`;
+ h=`<div class="s" style="${box}${bg}justify-content:${s.valign==='top'?'flex-start':'center'};gap:32px">${ph}
+ <div style="position:relative;width:${s.textW||(fb?'100%':'50%')};display:flex;flex-direction:column;gap:30px">
+ ${s.label?`<div class="lab" style="font-size:${Math.round(26*k)}px;color:${G.lab}">${esc(s.label)}</div>`:''}
+ ${en.replace(/font-size:\d+px/,'font-size:'+Math.round(k*(AF?AFK:1)*(s.size||(L<=40?84:L<=70?72:62)))+'px')}${ar.replace(/font-size:\d+px/,'font-size:'+Math.round(k*(AF?1.05:1)*(s.arSize||36))+'px')}</div></div>`;
+}else{
+ h=`<div class="s" style="${box}justify-content:center;gap:${s.label?36:(L<=30?40:44)}px">${pat}
+ ${s.label?`<div class="lab" style="font-size:${Math.round(30*k)}px;color:${G.lab}">${esc(s.label)}</div>`:''}${en}${ar}</div>`;
+}
+if(AF)document.body.classList.add('af');document.getElementById('root').innerHTML=h;
+</script></body></html>
