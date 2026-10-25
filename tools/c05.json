@@ -1,0 +1,8 @@
+{"post":"C05","swipe":true,"slides":[
+{"type":"hook","ground":"slate","eyebrow":"The Body · Fistula","en":"I have a second pulse in my arm.","ar":"عندي نبض ثانٍ في ذراعي.","sig":"Omar"},
+{"type":"hook","photo":"omar_fistula.jpg","pos":"70%","en":"This is my fistula. And no, it doesn't go away on its own.","ar":"هذا هو الناسور الخاص بي. ولا، لا يختفي من تلقاء نفسه."},
+{"label":"What it is","photo":"machine_master.png","pos":"60%","en":"A surgeon joins an artery to a vein in the arm, so dialysis has a strong access it can use again and again. It takes weeks to be ready.","ar":"يصل الجرّاح شرياناً بوريد في الذراع، ليصبح للغسيل مدخل قوي يُستعمل مراراً. يحتاج أسابيع ليصبح جاهزاً."},
+{"label":"Living with it","ground":"paper","en":"It buzzes under your hand.\nNo blood pressure cuff on that arm. No blood tests. No tight watch.\nYou learn to sleep on the other side.","ar":"تشعر بطنينه تحت يدك.\nلا جهاز ضغط على تلك الذراع. لا سحب دم. لا ساعة ضيّقة.\nوتتعلّم أن تنام على الجهة الأخرى."},
+{"label":"After the transplant","photo":"newkidney_master.png","pos":"60%","en":"Many keep it, in case it's needed again. Some have it closed if it strains the heart or keeps growing. That's a decision for you and your team.","ar":"كثيرون يُبقونه، تحسّباً للحاجة إليه مجدداً. وبعضهم يُغلقه إن أتعب القلب أو استمرّ بالتضخّم. القرار لك ولفريقك الطبي."},
+{"type":"cta","ground":"sand","en":"Mine is still on my arm.\nSources: National Kidney Foundation, hemodialysis access; Mayo Clinic, AV fistula.","ar":"ناسوري ما زال على ذراعي.","cta":["Do you still have yours?","بعدو عندك الناسور؟"]}
+]}
