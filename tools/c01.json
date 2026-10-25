@@ -1,0 +1,45 @@
+{
+ "post": "C01",
+ "swipe": true,
+ "slides": [
+  {
+   "type": "hook",
+   "eyebrow": "For the guys · Movember",
+   "photo": "baydat_xray_tall.jpg",
+   "pos": "85%",
+   "en": "What kidney failure does to a man's body that nobody says out loud.",
+   "ar": "ما يفعله الفشل الكلوي بجسد الرجل… ولا أحد يقوله بصوت عالٍ."
+  },
+  {
+   "photo": "c01b.jpg",
+   "en": "It starts with one hormone.",
+   "ar": "كل شيء يبدأ بهرمون واحد."
+  },
+  {
+   "ground": "paper",
+   "label": "Testosterone",
+   "en": "When the kidneys fail, testosterone often drops: less energy, less desire, sometimes low mood.",
+   "ar": "حين تتعب الكلى، ينخفض التستوستيرون غالباً: طاقة أقل، رغبة أقل، وأحياناً مزاج منخفض."
+  },
+  {
+   "photo": "c01c.jpg",
+   "en": "Fertility can drop too.",
+   "ar": "وقد تنخفض الخصوبة أيضاً."
+  },
+  {
+   "ground": "slate",
+   "en": "After a transplant, things often get better. Every case is different, so ask your team.",
+   "ar": "بعد الزراعة، تتحسّن الأمور غالباً. كل حالة مختلفة، فاسأل فريقك."
+  },
+  {
+   "type": "cta",
+   "ground": "gold",
+   "en": "Guys, ask in the comments or DM me. Nobody will know.",
+   "ar": "شباب، اسألوا بالتعليقات أو بالخاص. ما حدا رح يعرف.",
+   "cta": [
+    "Send it to a friend who needs to hear it.",
+    "ابعتها لصاحبك اللي لازم يسمعها."
+   ]
+  }
+ ]
+}
