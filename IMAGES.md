@@ -58,3 +58,4 @@ Every image, what it shows, and when to use it. Check this before choosing an im
 | ai20_gown.jpg | Hospital gown and boxers on an IV pole |
 | a03_movember.jpg | Aunties with moustaches (Movember) |
 | st02_sugar.jpg | Aunties surrounded by sugar cubes (diabetes) |
+| st05_machine_low.jpg | Machine master shifted down (headroom for story text) |

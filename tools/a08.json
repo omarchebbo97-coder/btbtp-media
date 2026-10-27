@@ -1,0 +1,8 @@
+{"post": "A08", "swipe": true, "slides": [
+{"type": "hook", "ground": "slate", "eyebrow": "International Volunteer Day", "en": "Four hours of dialysis. University students. One deck of cards.", "ar": "أربع ساعات غسيل. طلاب جامعة. وورق لعب واحد.", "sig": "Omar"},
+{"type": "hook", "photo": "../refs/machine_master.png", "pos": "70%", "en": "Some sessions went fast. It wasn't the machine.", "ar": "بعض الجلسات مرّت بسرعة. ولم يكن السبب الآلة."},
+{"label": "The volunteers", "ground": "paper", "en": "Students came to the centre through a volunteering program. Cards. Chess. Uno. Whatever we could get our hands on.", "ar": "كان طلاب يأتون إلى المركز عبر برنامج تطوّع. ورق. شطرنج. أونو. أيّ شيء نجده."},
+{"photo": "../refs/aunties_master.png", "pos": "70%", "en": "Some conversations lasted the whole four hours.", "ar": "بعض الأحاديث استمرّت الساعات الأربع كلّها."},
+{"photo": "../refs/newkidney_master.png", "pos": "70%", "en": "A few of them stayed after dialysis ended. They're friends now.", "ar": "بعضهم بقي بعد أن انتهى الغسيل. صاروا أصدقاء."},
+{"type": "cta", "ground": "sand", "en": "The machine took four hours either way.", "ar": "الآلة كانت تأخذ أربع ساعات في كلّ الأحوال.", "cta": ["Tag a volunteer you remember.", "اعمل تاغ لمتطوّع بتتذكّرو"]}
+]}

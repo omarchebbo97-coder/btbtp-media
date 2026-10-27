@@ -1,0 +1,8 @@
+{"post": "A07", "swipe": true, "slides": [
+{"type": "hook", "ground": "slate", "eyebrow": "Intl Day of Persons with Disabilities", "en": "I looked fine. I was on dialysis.", "ar": "كنتُ أبدو بخير. كنتُ على غسيل الكلى.", "sig": "Omar"},
+{"type": "hook", "photo": "../scenes/e6_chair.png", "pos": "75%", "en": "Nobody at school could see where I went after class.", "ar": "لم يكن أحد في المدرسة يرى إلى أين أذهب بعد الحصص."},
+{"label": "March 2013", "ground": "paper", "en": "Sixteen. Big needles in my arm, every other day.", "ar": "ستة عشر عاماً. إبر كبيرة في ذراعي، يوماً بعد يوم."},
+{"photo": "../refs/bloodcell_master.jpg", "pos": "70%", "en": "Class in the morning. Six hours at the hospital, transport included. Home late. Class early again.", "ar": "حصص في الصباح. ست ساعات في المستشفى مع الطريق. عودة متأخرة إلى البيت. ثم حصص باكراً من جديد."},
+{"photo": "../refs/machine_master.png", "pos": "70%", "en": "In the ward, I was the only teenager. Everyone else was sixty or seventy.", "ar": "في القسم، كنتُ المراهق الوحيد. الباقون في الستين أو السبعين."},
+{"type": "cta", "ground": "sand", "en": "From the outside: a tired student.\nFrom the inside: a machine every other day.", "ar": "من الخارج: طالب متعب.\nمن الداخل: آلة كل يومين.", "cta": ["Did people tell you that you looked fine?", "حدا قلّك «بس شكلك منيح»؟"]}
+]}
