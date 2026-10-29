@@ -20,9 +20,9 @@ const big=hook?(AF?66:72):(L<=40?(AF?54:60):L<=80?(AF?48:52):(AF?42:46));
 const small=hook?(AF?34:36):(AF?30:32);
 const main=AF?`<div class="ar" style="font-size:${big}px;line-height:1.45;font-weight:${hook?600:400}">${esc(s.ar)}</div>`:`<div class="en" style="font-size:${big}px;line-height:1.15;${hook?'font-weight:600;':''}">${esc(s.en)}</div>`;
 const sec=AF?`<div class="en sub" style="font-size:${small}px;line-height:1.35">${esc(s.en)}</div>`:`<div class="ar sub" style="font-size:${small}px;line-height:1.55">${esc(s.ar)}</div>`;
-const TOP=Math.round(H*(AF?0.08:0.06));
+const TOP=AF?300:Math.round(H*0.06);
 document.getElementById('root').innerHTML=`<div class="s" style="width:${W}px;height:${H}px;background-image:url(${s.photo});background-position:center ${s.pos||'70%'}">
 ${s.eyebrow?`<div class="lab" style="left:72px;top:${TOP-50}px">${esc(s.eyebrow)}</div>`:''}
-<div class="panel" style="top:${TOP}px">${main}${sec}</div>
-<div class="lab" style="right:60px;bottom:40px;font-size:22px;letter-spacing:.05em;text-transform:none">@omar_organtransplants</div></div>`;
+<div class="panel" style="top:${TOP}px;${AF?'right:150px;':''}">${main}${sec}</div>
+<div class="lab" style="right:${AF?160:60}px;bottom:${AF?440:40}px;font-size:22px;letter-spacing:.05em;text-transform:none">@omar_organtransplants</div></div>`;
 </script></body></html>

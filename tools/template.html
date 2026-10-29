@@ -16,7 +16,7 @@ body.af .lab{text-align:right}
 </style></head><body><div id="root"></div><script>
 /* Rebuilt 1:1 from W1P1 redistribution.dc.html (BTBBTP posts chat). */
 const s=JSON.parse(decodeURIComponent(location.hash.slice(1)));
-const W=s.w,H=s.h,sq=W===H,pad=sq?'88px 88px':'120px 96px',k=sq?0.86:1;
+const W=s.w,H=s.h,sq=W===H,pad=sq?'88px 88px':(H>=1900?'300px 150px 470px 96px':'120px 96px'),k=sq?0.86:1;
 const G={paper:{bg:'#F7F4EF',op:.08,bl:'normal',en:'#2B2622',ar:'#56493F',lab:'#3D586C'},
  sand:{bg:'#ECE5DA',op:.08,bl:'normal',en:'#2B2622',ar:'#56493F',lab:'#3D586C'},
  slate:{bg:'#3D586C',op:.10,bl:'screen',en:'#FFFFFF',ar:'#C4D2DD',lab:'#E8C269'},

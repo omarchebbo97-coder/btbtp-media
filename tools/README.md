@@ -6,3 +6,4 @@
 - Baydat scene from 25 Oct: refs/baydat_xray.jpg (Omar's X-ray pick, outside the body). Use refs/baydat_xray_tall.jpg (9:16 with headroom) for slides/videos: text goes in the top dark area, character stays clear of the swipe pill.
 - From 25 Oct 2026 Lebanon is on winter time: Buffer dueAt uses +02:00 (until DST returns end of March).
 - Every Instagram image post: tag @omar_chebbo on the first image (userTags x0.5 y0.5). Buffer has no collab-invite.
+- TikTok safe zones (29 Oct): text panels start at y=300, right margin 150, handle and swipe pill sit above y=1450 (TikTok's caption covers the bottom ~470px, the search bar the top ~250px). Swipe pill on TikTok is left-aligned. Use photo_tt in a slide spec for a TikTok-only image (e.g. refs/baydat_xray_tiktok.jpg).
