@@ -1,0 +1,51 @@
+{
+"post": "FAQ8",
+"swipe": true,
+"slides": [
+{
+"type": "hook",
+"ground": "slate",
+"eyebrow": "You Asked · FAQ after transplant",
+"en": "My creatinine: 1, then 1.1, then 0.95, then 0.99. Should I worry?",
+"ar": "الكرياتينين عندي: 1، ثم 1.1، ثم 0.95، ثم 0.99. هل أقلق؟",
+"sig": "Omar"
+},
+{
+"type": "hook",
+"photo": "../scenes/e3_tube.png",
+"pos": "70%",
+"en": "Small ups and downs between tests are common. Your team is looking at something else.",
+"ar": "التقلّبات الصغيرة بين تحليل وآخر شائعة. فريقك ينظر إلى شيء آخر."
+},
+{
+"label": "What moves the number",
+"ground": "paper",
+"en": "How much you drank the day before.\nA big meal, especially cooked meat.\nA hard workout.\nThe time of day, and the lab itself.\nSo 1.1 after a dry day and a plate of mashawi is not news.",
+"ar": "كمية الماء التي شربتها في اليوم السابق.\nوجبة كبيرة، خاصةً اللحم المطبوخ.\nتمرين قوي.\nساعة التحليل، والمختبر نفسه.\nفـ1.1 بعد يوم بلا ماء وصحن مشاوي ليس خبراً."
+},
+{
+"photo": "../refs/bloodcell_master.jpg",
+"pos": "70%",
+"label": "My last results",
+"en": "1, 1.1, 0.95, 0.99. Up, down, back. Same kidney.",
+"ar": "1، 1.1، 0.95، 0.99. صعود، نزول، رجوع. الكلية نفسها."
+},
+{
+"photo": "../scenes/e3_proud.png",
+"pos": "70%",
+"label": "What teams watch",
+"en": "The line, not one dot. A steady rise over several tests, or a sudden jump, gets checked. Sometimes a repeat test, sometimes an ultrasound or more.",
+"ar": "الخطّ، لا نقطة واحدة. الارتفاع المستمر على عدة تحاليل، أو القفزة المفاجئة، يُفحص. أحياناً بتحليل مكرّر، وأحياناً بصورة صوتية أو أكثر."
+},
+{
+"type": "cta",
+"ground": "sand",
+"en": "Ignoring it isn't the plan either. Ask your team which change they want to hear about, and how fast.\nEvery patient is different.\nSources: National Kidney Foundation; MedlinePlus; KDIGO transplant guideline.",
+"ar": "تجاهل النتيجة ليس الحلّ أيضاً. اسأل فريقك أيّ تغيير يريد أن يعرف به، وبأي سرعة.\nكل مريض مختلف.",
+"cta": [
+"Comment تحاليل for the blood test guide 👇",
+"اكتب «تحاليل» بالتعليقات ليصلك دليل التحاليل 👇"
+]
+}
+]
+}
