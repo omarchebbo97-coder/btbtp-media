@@ -1,0 +1,44 @@
+name: drive-pull
+on:
+  push:
+    paths: ['jobs/drive_pull.txt']
+permissions:
+  contents: write
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download from Drive
+        run: |
+          mkdir -p video/tiktok_best
+          while read n id; do
+            [ -z "$n" ] && continue
+            curl -sSL -o "video/tiktok_best/$n.mp4" "https://drive.usercontent.google.com/download?id=$id&export=download&confirm=t"
+            file "video/tiktok_best/$n.mp4"
+          done < jobs/drive_pull.txt
+      - name: Transcribe
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -q faster-whisper
+          python3 - <<'PY'
+          import glob, json, os, subprocess
+          from faster_whisper import WhisperModel
+          m = WhisperModel("small", device="cpu", compute_type="int8")
+          out = {}
+          for f in sorted(glob.glob("video/tiktok_best/*.mp4")):
+              n = os.path.basename(f)[:-4]
+              dur = subprocess.run(["ffprobe","-v","error","-show_entries","format=duration","-of","csv=p=0",f],capture_output=True,text=True).stdout.strip()
+              segs, info = m.transcribe(f, language=None, vad_filter=True)
+              out[n] = {"duration": dur, "lang": info.language, "text": " ".join(s.text.strip() for s in segs)}
+              print(n, out[n])
+          json.dump(out, open("video/tiktok_best/transcripts.json","w"), ensure_ascii=False, indent=1)
+          PY
+      - name: Commit
+        run: |
+          git config user.name "btbtp-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git pull --rebase
+          git add video/tiktok_best
+          git commit -m "Pull top TikTok videos from Drive + transcripts"
+          git push
