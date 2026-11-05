@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BTBTP Website Demos</title>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;600&family=Source+Sans+3:wght@400;600&family=Source+Serif+4:ital,opsz,wght@1,8..60,400&display=swap">
+<style>
+/* Layout: one reading column. Each idea is a labelled section with a live demo "stage"
+   painted in the pink body-tunnel tones of the character renders. */
+:root{
+  --bg:#f4ede3; --surface:#fffaf4; --ink:#1f2a44; --muted:#5a6177; --line:#e2d6c6;
+  --gold:#85631f; --gold-hi:#e8c269; --pulse:#c62828; --pulse-deep:#7f1717; --on-pulse:#ffffff;
+  --tissue-hi:#f7d9cc; --tissue:#ebb6a4; --tissue-lo:#d3917e; --figure:#fff4ec; --figure-edge:#c98877;
+  --on-photo:#ffffff; --on-photo-ink:#1f2a44; --photo-tag:rgba(20,26,42,.72);
+  --focus:#3d586c; --shadow:0 1px 2px rgba(31,42,68,.08),0 10px 28px rgba(31,42,68,.10);
+  --f-display:"Readex Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-quote:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111726; --surface:#1a2337; --ink:#f0e8da; --muted:#a9b1c4; --line:#2b3651;
+    --gold:#e8c269; --gold-hi:#e8c269; --pulse:#d23c3c; --pulse-deep:#7a1c1c; --on-pulse:#ffffff;
+    --tissue-hi:#6a3a37; --tissue:#4a2729; --tissue-lo:#2c171b; --figure:#8e5d55; --figure-edge:#c08478;
+    --focus:#e8c269; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111726; --surface:#1a2337; --ink:#f0e8da; --muted:#a9b1c4; --line:#2b3651;
+  --gold:#e8c269; --gold-hi:#e8c269; --pulse:#d23c3c; --pulse-deep:#7a1c1c; --on-pulse:#ffffff;
+  --tissue-hi:#6a3a37; --tissue:#4a2729; --tissue-lo:#2c171b; --figure:#8e5d55; --figure-edge:#c08478;
+  --focus:#e8c269; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--ink);
+  font:400 17px/1.55 var(--f-body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0 112px;
+  -webkit-font-smoothing:antialiased;
+}
+html[lang="ar"] body{font-family:var(--f-display);font-weight:300;line-height:1.7}
+.wrap{max-width:760px;margin:0 auto}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+.eyebrow,.when,.opens{font:600 .78rem/1.2 var(--f-display);letter-spacing:.09em;text-transform:uppercase;color:var(--gold)}
+html[lang="ar"] .eyebrow,html[lang="ar"] .when,html[lang="ar"] .opens{letter-spacing:0;text-transform:none;font-size:.9rem}
+.lead{color:var(--muted);max-width:60ch}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:16px}
+.handle{display:inline-flex;align-items:center;gap:8px;font:400 .9rem var(--f-display);color:var(--muted);min-width:0}
+.handle .dot{width:10px;height:10px;border-radius:50%;background:var(--gold-hi);flex:none}
+.lang{display:inline-flex;padding:3px;border-radius:999px;background:var(--surface);box-shadow:var(--shadow);flex:none}
+.lang button{border:0;background:none;padding:6px 14px;border-radius:999px;cursor:pointer;font:600 .85rem var(--f-display);color:var(--muted);transition:background .25s,color .25s}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+/* hero */
+.hero{display:grid;gap:14px;padding-block:28px 8px}
+h1{font-weight:600;font-size:clamp(2.3rem,8vw,3.8rem);line-height:1.04;letter-spacing:-.02em}
+html[lang="ar"] h1{letter-spacing:0;line-height:1.25}
+h1 em{font-style:normal;color:var(--pulse)}
+.ecg svg{display:block;width:100%;height:auto}
+.ecg path{fill:none;stroke:var(--pulse);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+.ecg path.draw{animation:draw 1.9s cubic-bezier(.4,0,.2,1) both}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.ecg-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:6px}
+.cap{font-size:.92rem;color:var(--muted);min-width:0}
+.ghost{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;cursor:pointer;font:600 .85rem var(--f-display);flex:none}
+
+/* sections */
+main{display:grid;gap:72px;padding-block:40px 0}
+section{display:grid;gap:12px;min-width:0}
+h2{font-weight:600;font-size:clamp(1.6rem,5vw,2.2rem);line-height:1.15}
+.stage{
+  margin-top:10px;border-radius:22px;padding:20px;position:relative;overflow:hidden;
+  background:radial-gradient(120% 85% at 50% 30%,var(--tissue-hi),var(--tissue) 58%,var(--tissue-lo));
+}
+details.dev{border-top:1px solid var(--line);padding-top:10px;margin-top:6px}
+details.dev summary{cursor:pointer;font:600 .9rem var(--f-display);color:var(--muted)}
+details.dev ul{margin:10px 0 0;padding-inline-start:20px;color:var(--muted);font-size:.95rem;display:grid;gap:6px}
+details.dev ul{direction:ltr;text-align:left}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em}
+
+/* body map */
+.map{display:grid;gap:18px;align-items:center}
+@media (min-width:640px){.map{grid-template-columns:minmax(0,280px) minmax(0,1fr)}}
+.figure{position:relative;width:100%;max-width:280px;margin:0 auto;aspect-ratio:320/520}
+.figure svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.figure .body{fill:var(--figure)}
+.figure .limb{fill:none;stroke:var(--figure);stroke-linecap:round;stroke-linejoin:round}
+.figure .spine{fill:none;stroke:var(--figure-edge);stroke-width:2;stroke-dasharray:3 7;opacity:.6}
+.figure .tube{fill:none;stroke:var(--pulse);stroke-width:3;stroke-linecap:round;stroke-dasharray:5 7;animation:flow 1.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-24}}
+.hint{position:absolute;top:0;left:50%;translate:-50% 0;white-space:nowrap;font:600 .8rem var(--f-display);background:var(--surface);padding:5px 12px;border-radius:999px;box-shadow:var(--shadow);transition:opacity .4s}
+.figure.touched .hint{opacity:0}
+.spot{
+  position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;padding:0;border-radius:50%;
+  border:2px solid var(--figure);background:var(--surface);cursor:pointer;box-shadow:var(--shadow);
+  transition:scale .4s cubic-bezier(.34,1.56,.64,1),border-color .25s;
+  animation:bob 3.2s ease-in-out infinite;animation-delay:calc(var(--i) * -.45s);
+}
+.spot img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover}
+.spot::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid var(--gold-hi);opacity:0;pointer-events:none}
+.spot.on{scale:1.28;border-color:var(--gold-hi);z-index:2}
+.spot.on::after{animation:ring 1.8s ease-out infinite}
+.spot:hover:not(.on){scale:1.1}
+@keyframes bob{50%{translate:0 -3px}}
+@keyframes ring{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.55);opacity:0}}
+.panel{background:var(--surface);border-radius:18px;padding:18px;box-shadow:var(--shadow);display:grid;gap:12px;min-width:0}
+.panel-head{display:flex;gap:14px;align-items:center;min-width:0}
+.panel-head img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none;border:3px solid var(--gold-hi)}
+.panel h3{font-size:1.25rem;line-height:1.2}
+.panel .alt{color:var(--muted);font-size:.95rem}
+.quote{font:italic 400 1.08rem/1.5 var(--f-quote)}
+html[lang="ar"] .quote{font:400 1.05rem/1.7 var(--f-display)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:.9rem;background:var(--bg)}
+.panel.swap > *{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+.panel.swap > *:nth-child(2){animation-delay:.06s}
+.panel.swap > *:nth-child(3){animation-delay:.12s}
+.panel.swap > *:nth-child(4){animation-delay:.18s}
+.panel.swap .panel-head img{animation:pop .55s cubic-bezier(.34,1.56,.64,1) both,wave 1s .5s ease-in-out}
+@keyframes rise{from{opacity:0;translate:0 10px}to{opacity:1;translate:0 0}}
+@keyframes pop{from{scale:.4}to{scale:1}}
+@keyframes wave{0%,100%{rotate:0deg}25%{rotate:-10deg}75%{rotate:10deg}}
+
+/* before / after */
+.seg{display:inline-flex;padding:3px;border-radius:999px;background:var(--surface);box-shadow:var(--shadow);margin:0 auto 14px;position:relative;left:50%;translate:-50% 0}
+html[dir="rtl"] .seg{left:auto;right:50%;translate:50% 0}
+.seg button{border:0;background:none;border-radius:999px;padding:7px 16px;cursor:pointer;font:600 .88rem var(--f-display);color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--pulse);color:var(--on-pulse)}
+.ba{position:relative;max-width:400px;width:100%;margin:0 auto;aspect-ratio:4/5;border-radius:18px;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;--pos:50%;box-shadow:var(--shadow)}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.ba .before{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba.fresh img{animation:fadein .45s ease both}
+@keyframes fadein{from{opacity:.3}to{opacity:1}}
+.ba .bar{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:var(--on-photo);pointer-events:none}
+.knob{position:absolute;top:50%;left:var(--pos);width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:var(--on-photo);color:var(--on-photo-ink);display:grid;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.3);cursor:grab}
+.tag{position:absolute;top:12px;padding:5px 11px;border-radius:999px;background:var(--photo-tag);color:var(--on-photo);font:600 .82rem var(--f-display);transition:opacity .2s;pointer-events:none;max-width:44%}
+.tag.l{left:12px}.tag.r{right:12px}
+.ba-cap{text-align:center;color:var(--ink);margin-top:14px;font-size:.98rem}
+
+/* buttons */
+.tiles{display:grid;gap:14px;margin-top:10px}
+@media (min-width:700px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}.tiles .wide{grid-column:1/-1}}
+.tile{background:var(--surface);border-radius:18px;padding:18px;box-shadow:var(--shadow);display:grid;gap:10px;align-content:start;min-width:0}
+.tile h3{font-size:1.08rem}
+.tile p{color:var(--muted);font-size:.96rem}
+.tile.stage{margin-top:0;justify-items:center;text-align:center;padding-block:34px 22px;box-shadow:none}
+.tile.stage .note{color:var(--ink);opacity:.75;font-size:.9rem}
+.beat-wrap{position:relative;display:inline-block}
+.beat-wrap::before{content:"";position:absolute;inset:0;border-radius:999px;border:2px solid var(--pulse);opacity:0;animation:ripple 3s ease-out infinite;pointer-events:none}
+.beat-wrap.stop::before{animation:none}
+@keyframes ripple{0%{opacity:0;transform:scale(1)}5%{opacity:.8}45%{opacity:0;transform:scale(1.18,1.7)}100%{opacity:0}}
+.beat{
+  position:relative;isolation:isolate;overflow:hidden;border:0;border-radius:999px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:10px;min-height:58px;padding:14px 26px;
+  font:600 1.05rem var(--f-display);color:var(--on-pulse);background:var(--pulse);
+  box-shadow:0 6px 20px color-mix(in srgb,var(--pulse) 35%,transparent);
+  animation:lubdub 3s ease-in-out infinite;
+}
+@keyframes lubdub{0%,14%,30%,100%{scale:1}6%{scale:1.07}21%{scale:1.035}}
+.beat .fill{position:absolute;inset:0;z-index:-1;background:var(--pulse-deep);transform:scaleY(0);transform-origin:50% 100%;transition:transform .9s cubic-bezier(.65,0,.35,1)}
+.beat .fill::before{content:"";position:absolute;left:-10%;right:-10%;top:-6px;height:12px;border-radius:50%;background:var(--pulse-deep)}
+.beat.filling{animation:none}
+.beat.filling .fill{transform:scaleY(1)}
+.beat svg{width:22px;height:22px;flex:none}
+.beat .ico-check,.beat .kid{display:none}
+.beat.done .ico-drop{display:none}
+.beat.done .ico-check{display:block}
+.beat .kid{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--gold-hi);margin-inline-start:-8px}
+.beat.done .kid{display:block;animation:pop .55s cubic-bezier(.34,1.56,.64,1) both,wave .9s .5s ease-in-out 2}
+.outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:2px solid var(--ink);background:none;border-radius:999px;padding:10px 18px;cursor:pointer;font:600 .95rem var(--f-display);transition:background .2s,color .2s,scale .2s}
+.outline:hover{background:var(--ink);color:var(--bg)}
+.outline:active{scale:.96}
+.outline svg{width:18px;height:18px}
+.fallback{display:grid;gap:6px;font-size:.9rem}
+.fallback input{width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:400 .9rem var(--f-body)}
+.corner{width:44px;height:44px;color:var(--gold);justify-self:end}
+html[dir="rtl"] .corner{justify-self:start;transform:scaleX(-1)}
+
+/* timeline */
+.tl-wrap{position:relative;margin-top:10px;--p:0%}
+.tl-track{position:absolute;top:10px;bottom:10px;inset-inline-start:13px;width:4px;border-radius:4px;background:var(--line)}
+.tl-fill{position:absolute;top:0;left:0;right:0;height:var(--p);border-radius:4px;background:linear-gradient(var(--gold-hi),var(--pulse))}
+.tl-fill::after{content:"";position:absolute;left:50%;bottom:-12px;width:12px;height:12px;margin-left:-6px;background:var(--pulse);border-radius:0 50% 50% 50%;rotate:45deg}
+.tl{list-style:none;margin:0;padding:0;padding-inline-start:40px;display:grid;gap:22px}
+.tl li{position:relative}
+.tl li::before{content:"";position:absolute;inset-inline-start:-34px;top:20px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--line);transition:background .3s,border-color .3s,box-shadow .3s}
+.tl li.lit::before{background:var(--gold-hi);border-color:var(--gold-hi);box-shadow:0 0 0 6px color-mix(in srgb,var(--gold-hi) 28%,transparent)}
+.tl-card{display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px;align-items:center;background:var(--surface);border-radius:18px;padding:12px;box-shadow:var(--shadow)}
+.tl-card img{width:92px;height:92px;border-radius:12px;object-fit:cover;display:block}
+.tl-card h3{font-size:1.1rem;line-height:1.25;margin-top:2px}
+.tl-card p{color:var(--muted);font-size:.95rem;margin-top:2px}
+.tl-note{font-size:.88rem;color:var(--muted);margin-top:12px}
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .tl-card{animation:reveal linear both;animation-timeline:view();animation-range:entry 0% entry 90%}
+    @keyframes reveal{from{opacity:.25;translate:0 28px;scale:.96}to{opacity:1;translate:0 0;scale:1}}
+  }
+}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:6px}
+.stat{background:var(--surface);border-radius:18px;padding:16px 10px;text-align:center;box-shadow:var(--shadow);min-width:0}
+.stat b{display:block;font:600 clamp(2.2rem,9vw,3rem)/1 var(--f-display);color:var(--pulse);font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:6px;font-size:.88rem;color:var(--muted);line-height:1.3}
+.sub{display:grid;gap:4px;margin-top:22px}
+.sub h3{font-size:1.15rem}
+
+/* rules */
+.rules{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:12px}
+.rules li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start}
+.rules svg{width:24px;height:24px;color:var(--pulse);margin-top:2px}
+
+footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+
+/* floating ask button + toast */
+.fab{position:fixed;z-index:20;bottom:calc(16px + env(safe-area-inset-bottom,0px));right:calc(16px + env(safe-area-inset-right,0px));display:grid;justify-items:end;gap:10px}
+html[dir="rtl"] .fab{right:auto;left:calc(16px + env(safe-area-inset-left,0px));justify-items:start}
+.fab-btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:12px 18px;cursor:pointer;background:var(--ink);color:var(--bg);font:600 .95rem var(--f-display);box-shadow:var(--shadow);transition:scale .2s}
+.fab-btn:active{scale:.95}
+.fab-btn svg{width:20px;height:20px;transition:rotate .3s}
+.fab-btn[aria-expanded="true"] svg{rotate:-12deg}
+.fab-menu{display:grid;gap:8px;justify-items:end}
+html[dir="rtl"] .fab-menu{justify-items:start}
+.fab-menu p{font:600 .85rem var(--f-display);background:var(--surface);padding:6px 12px;border-radius:999px;box-shadow:var(--shadow)}
+.fab-menu a{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);background:var(--surface);border-radius:16px;padding:10px 14px;box-shadow:var(--shadow);font:600 .95rem var(--f-display)}
+.fab-menu a small{display:block;font:400 .8rem var(--f-body);color:var(--muted)}
+.fab-menu a svg{width:24px;height:24px;color:var(--pulse);flex:none}
+.fab-menu.open > *{animation:rise .35s cubic-bezier(.2,.7,.2,1) both}
+.fab-menu.open > *:nth-child(2){animation-delay:.05s}
+.fab-menu.open > *:nth-child(3){animation-delay:.1s}
+.toast{position:fixed;z-index:30;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));translate:-50% 20px;opacity:0;pointer-events:none;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:14px;font:600 .92rem var(--f-display);box-shadow:var(--shadow);width:max-content;max-width:calc(100vw - 32px);text-align:center;transition:opacity .3s,translate .3s}
+.toast.show{opacity:1;translate:-50% 0}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="handle"><span class="dot" aria-hidden="true"></span><bdi dir="ltr">@omar_organtransplants</bdi></span>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="lang-en" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" id="lang-ar" data-lang="ar" aria-pressed="false" lang="ar">عربي</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <p class="eyebrow"><span data-t="heroEyebrow">Ideas for</span> <bdi dir="ltr">stg.omarchebbo.com</bdi></p>
+    <h1 data-th="heroTitle">A website with a <em>pulse</em></h1>
+    <p class="lead" data-t="heroLead">Tap, drag and scroll. Every block below is a working sample your developer can build into the site. Nothing here is live yet.</p>
+    <div class="ecg">
+      <svg viewBox="0 0 600 76" aria-hidden="true"><path id="ecgPath" class="draw" pathLength="1" d="M0 48H70q8-10 16 0H112l6 8 9-44 10 50 6-14H170q16-18 32 0H270q8-10 16 0H312l6 8 9-44 10 50 6-14H370q16-18 32 0H470q8-10 16 0H512l6 8 9-44 10 50 6-14H600"/></svg>
+      <div class="ecg-row">
+        <span class="cap" data-t="ecgCap">Heartbeat loading line: draws once while a page opens.</span>
+        <button type="button" class="ghost" id="ecgReplay" data-t="replay">Replay</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="body-map" aria-labelledby="h-map">
+      <p class="eyebrow" data-t="mapEyebrow">Navigation</p>
+      <h2 id="h-map" data-t="mapTitle">Body map menu</h2>
+      <p class="lead" data-t="mapLead">Visitors tap an organ to find everything about it. The characters they already know from the videos sit where the organs are.</p>
+      <div class="stage map">
+        <div class="figure" id="figure" dir="ltr">
+          <svg viewBox="0 0 320 520" aria-hidden="true">
+            <path class="limb" stroke-width="26" d="M100 130Q78 190 72 240Q66 290 62 330"/>
+            <path class="limb" stroke-width="26" d="M220 130Q242 190 248 240Q254 290 258 330"/>
+            <path class="limb" stroke-width="40" d="M134 340L128 498"/>
+            <path class="limb" stroke-width="40" d="M186 340L192 498"/>
+            <circle class="body" cx="160" cy="58" r="34"/>
+            <rect class="body" x="146" y="84" width="28" height="32" rx="8"/>
+            <path class="body" d="M104 116Q160 98 216 116Q232 122 230 150L226 250Q228 300 214 350Q160 366 106 350Q92 300 94 250L90 150Q88 122 104 116Z"/>
+            <path class="spine" d="M160 124V340"/>
+            <path class="tube" d="M254 300C298 316 304 372 288 404"/>
+          </svg>
+          <span class="hint" data-t="mapHint">Tap a character</span>
+        </div>
+        <div class="panel" id="panel" aria-live="polite"></div>
+      </div>
+      <details class="dev">
+        <summary data-t="dev">For the developer</summary>
+        <ul>
+          <li>The figure is one inline SVG. The 8 characters are round buttons placed with % positions, so it scales on any screen.</li>
+          <li>Each chip becomes a link to the matching posts, FAQs and guides on the site.</li>
+          <li>Buttons carry labels and <code>aria-pressed</code>, so screen readers can use the map. The red tube is a dashed SVG line with a moving <code>stroke-dashoffset</code>.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="before-after" aria-labelledby="h-ba">
+      <p class="eyebrow" data-t="baEyebrow">Animation</p>
+      <h2 id="h-ba" data-t="baTitle">Before and after slider</h2>
+      <p class="lead" data-t="baLead">Drag across the picture to go from the dialysis years to life after the transplant.</p>
+      <div class="stage">
+        <div class="seg" role="group" aria-label="Pair">
+          <button type="button" id="pair-bladder" data-pair="bladder" aria-pressed="true" data-t="pairBladder">Bladder</button>
+          <button type="button" id="pair-creat" data-pair="creat" aria-pressed="false" data-t="pairCreat">Creatinine</button>
+        </div>
+        <div class="ba" id="ba" dir="ltr">
+          <img class="after" id="baAfter" src="img/s_bladder_after.webp" alt="The bladder full and jumping, the new kidney holding a water bottle">
+          <img class="before" id="baBefore" src="img/s_bladder_before.webp" alt="The bladder sitting empty on a stool">
+          <span class="tag l" id="tagB">On dialysis</span>
+          <span class="tag r" id="tagA">After transplant</span>
+          <span class="bar" aria-hidden="true"></span>
+          <span class="knob" id="baKnob" role="slider" tabindex="0" aria-label="Before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg>
+          </span>
+        </div>
+        <p class="ba-cap" id="baCap">Empty for years on dialysis. Full and jumping after the transplant.</p>
+      </div>
+      <details class="dev">
+        <summary data-t="dev">For the developer</summary>
+        <ul>
+          <li>Two same-size images stacked. The top one is cut with <code>clip-path: inset(0 calc(100% - var(--pos)) 0 0)</code>.</li>
+          <li>Pointer events with <code>touch-action: pan-y</code>: dragging sideways moves the slider, swiping up still scrolls the page. Arrow keys work on the handle.</li>
+          <li>The handle sweeps once when the slider first comes into view, to show it can be dragged.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="buttons" aria-labelledby="h-btn">
+      <p class="eyebrow" data-t="btnEyebrow">Buttons</p>
+      <h2 id="h-btn" data-t="btnTitle">Buttons with a heartbeat</h2>
+      <p class="lead" data-t="btnLead">The main button beats softly every few seconds. Tap it and it fills like a blood tube.</p>
+      <div class="tiles">
+        <div class="tile stage wide">
+          <div class="beat-wrap" id="beatWrap">
+            <button type="button" class="beat" id="beat">
+              <span class="fill" aria-hidden="true"></span>
+              <img class="kid" src="img/c_newkidney.webp" alt="">
+              <svg class="ico-drop" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3c3.2 4.2 6 7.4 6 10.6a6 6 0 0 1-12 0C6 10.4 8.8 7.2 12 3z"/></svg>
+              <svg class="ico-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+              <span id="beatLabel" aria-live="polite">Get the blood test guide</span>
+            </button>
+          </div>
+          <p class="note" data-t="beatNote">Sample only. On the site, this opens the PDF.</p>
+          <button type="button" class="ghost" id="beatReplay" data-t="replay" hidden>Replay</button>
+        </div>
+        <div class="tile">
+          <h3 data-t="shareTitle">Share button</h3>
+          <p data-t="shareText">Copies the link and tells people why sharing matters.</p>
+          <button type="button" class="outline" id="shareBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M7.5 7.5L12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
+            <span data-t="shareBtn">Share this page</span>
+          </button>
+          <div class="fallback" id="shareFallback" hidden>
+            <label for="shareUrl" data-t="shareFail">Copy the link below.</label>
+            <input id="shareUrl" readonly value="https://stg.omarchebbo.com/" dir="ltr">
+          </div>
+        </div>
+        <div class="tile">
+          <h3 data-t="fabTitle">Ask me button</h3>
+          <p data-t="fabText">Stays in the corner of every page and opens your DMs. Try the one at the bottom of your screen.</p>
+          <svg class="corner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 9v9H9"/></svg>
+        </div>
+        <div class="tile">
+          <h3 data-t="langTitle">English and Arabic</h3>
+          <p data-t="langText">One tap switches the language and flips the whole page right to left.</p>
+          <button type="button" class="outline" id="langFlip" data-t="langBtn">عرض بالعربية</button>
+        </div>
+      </div>
+      <details class="dev">
+        <summary data-t="dev">For the developer</summary>
+        <ul>
+          <li>Heartbeat: one CSS keyframe (two quick beats, then rest) on a 3-second loop. It stops after the first tap.</li>
+          <li>Fill: an inner layer scales up from the bottom in 0.9s, then the label, the tick and the kidney swap in.</li>
+          <li>Share: use <code>navigator.share</code> on phones (opens WhatsApp, Instagram and the rest) and copy-link elsewhere.</li>
+          <li>Ask me: <code>position: fixed</code> in the bottom corner with safe-area insets; links to Instagram and TikTok.</li>
+          <li>Arabic: set <code>dir="rtl"</code> on <code>&lt;html&gt;</code> and use logical CSS (<code>margin-inline</code>, <code>inset-inline</code>) so layouts flip without a second stylesheet.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="journey" aria-labelledby="h-tl">
+      <p class="eyebrow" data-t="tlEyebrow">Scrolling</p>
+      <h2 id="h-tl" data-t="tlTitle">Story timeline</h2>
+      <p class="lead" data-t="tlLead">As visitors scroll, a line fills like an IV drip and each moment lights up.</p>
+      <div class="tl-wrap" id="tlWrap">
+        <div class="tl-track" aria-hidden="true"><div class="tl-fill"></div></div>
+        <ol class="tl" id="tl">
+          <li><div class="tl-card"><img src="img/t_liver.webp" alt="Dad's liver handing a lobe to Omar's small liver"><div><p class="when" data-t="tl1When">2006</p><h3 data-t="tl1Title">Dad's liver</h3><p data-t="tl1Text">Dad gives me part of his liver.</p></div></div></li>
+          <li><div class="tl-card"><img src="img/t_aunties.webp" alt="Wadad and Souad, the old kidneys, on their sofa"><div><p class="when" data-t="tl2When">Kidney failure</p><h3 data-t="tl2Title">Wadad and Souad get tired</h3><p data-t="tl2Text">The old kidneys slow down, then stop.</p></div></div></li>
+          <li><div class="tl-card"><img src="img/t_machine.webp" alt="The dialysis machine with tubes for arms"><div><p class="when" data-t="tl3When">Dialysis</p><h3 data-t="tl3Title">Years in the chair</h3><p data-t="tl3Text">Hours on the machine, and a tiny cup of water a day.</p></div></div></li>
+          <li><div class="tl-card"><img src="img/t_wait.webp" alt="The aunties with an hourglass"><div><p class="when" data-t="tl4When">The wait</p><h3 data-t="tl4Title">No number to wait for</h3><p data-t="tl4Text">Nobody publishes waiting times. Everyone asks their neighbour.</p></div></div></li>
+          <li><div class="tl-card"><img src="img/t_arrive.webp" alt="The new kidney arriving at the door with a suitcase"><div><p class="when" data-t="tl5When">13 June 2024</p><h3 data-t="tl5Title">Amine's kidney</h3><p data-t="tl5Text">My brother gives me his kidney.</p></div></div></li>
+          <li><div class="tl-card"><img src="img/t_now.webp" alt="The new kidney waving, with a backpack"><div><p class="when" data-t="tl6When">Now</p><h3 data-t="tl6Title">Life after</h3><p data-t="tl6Text">Blood tests, 3 litres of water a day, and sharing all of it here.</p></div></div></li>
+        </ol>
+      </div>
+      <p class="tl-note" data-t="tlNote">Check the steps and dates before this goes live.</p>
+
+      <div class="sub">
+        <h3 data-t="statsTitle">Numbers that count up</h3>
+        <p class="lead" data-t="statsLead">They count up once when they come into view.</p>
+      </div>
+      <div class="stats" id="stats">
+        <div class="stat"><b data-to="2">2</b><span data-t="stLivers">livers</span></div>
+        <div class="stat"><b data-to="1">1</b><span data-t="stKidney">kidney</span></div>
+        <div class="stat"><b data-to="3">3</b><span data-t="stWater">litres of water a day</span></div>
+      </div>
+      <details class="dev">
+        <summary data-t="dev">For the developer</summary>
+        <ul>
+          <li>The line fill follows scroll position with one small script (<code>requestAnimationFrame</code>).</li>
+          <li>Cards slide in with CSS scroll-driven animations (<code>animation-timeline: view()</code>) where supported, and simply show where not.</li>
+          <li>Counters run once, when the row is 60% visible.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="safe" aria-labelledby="h-safe">
+      <p class="eyebrow" data-t="safeEyebrow">Ground rules</p>
+      <h2 id="h-safe" data-t="safeTitle">Gentle for patients</h2>
+      <ul class="rules">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-t="safe1">Motion switches off when a phone is set to Reduce Motion. This page already does it.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-t="safe2">No flashing or shaking. Many visitors are unwell or tired.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-t="safe3">The medical notice stays visible: information only, my experience, not medical advice.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-t="safe4">Small images and CSS animation, so pages open fast on mobile data.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-t="safe5">Arabic and English get every feature.</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer data-t="foot">Sample page built from the BTBTP characters. Not medical advice.</footer>
+</div>
+
+<div class="fab" id="fab">
+  <div class="fab-menu" id="fabMenu" hidden>
+    <p data-t="fabDm">Send me your question</p>
+    <a href="https://www.instagram.com/omar_organtransplants/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+      <span>Instagram<small dir="ltr">@omar_organtransplants</small></span>
+    </a>
+    <a href="https://www.tiktok.com/@omar_organtransplants" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.8 2.3 4.6 5 4.8"/></svg>
+      <span>TikTok<small dir="ltr">@omar_organtransplants</small></span>
+    </a>
+  </div>
+  <button type="button" class="fab-btn" id="fabBtn" aria-expanded="false" aria-controls="fabMenu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/></svg>
+    <span data-t="fabLabel">Ask me</span>
+  </button>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const T = {
+    en: {
+      heroEyebrow:'Ideas for', heroTitle:'A website with a <em>pulse</em>',
+      heroLead:'Tap, drag and scroll. Every block below is a working sample your developer can build into the site. Nothing here is live yet.',
+      ecgCap:'Heartbeat loading line: draws once while a page opens.', replay:'Replay',
+      mapEyebrow:'Navigation', mapTitle:'Body map menu',
+      mapLead:'Visitors tap an organ to find everything about it. The characters they already know from the videos sit where the organs are.',
+      mapHint:'Tap a character', opens:'On the site, this opens',
+      baEyebrow:'Animation', baTitle:'Before and after slider',
+      baLead:'Drag across the picture to go from the dialysis years to life after the transplant.',
+      pairBladder:'Bladder', pairCreat:'Creatinine',
+      tagDialysis:'On dialysis', tagAfterTx:'After transplant', tagBefore:'Before', tagAfter:'After',
+      capBladder:'Empty for years on dialysis. Full and jumping after the transplant.',
+      capCreat:'Creatinine climbing before the transplant. Back to normal after.',
+      btnEyebrow:'Buttons', btnTitle:'Buttons with a heartbeat',
+      btnLead:'The main button beats softly every few seconds. Tap it and it fills like a blood tube.',
+      beatIdle:'Get the blood test guide', beatLoading:'Opening…', beatDone:"Here's your guide",
+      beatNote:'Sample only. On the site, this opens the PDF.',
+      shareTitle:'Share button', shareText:'Copies the link and tells people why sharing matters.',
+      shareBtn:'Share this page', shareToast:"Link copied. It might help someone who's waiting.", shareFail:'Copy the link below.',
+      fabTitle:'Ask me button', fabText:'Stays in the corner of every page and opens your DMs. Try the one at the bottom of your screen.',
+      langTitle:'English and Arabic', langText:'One tap switches the language and flips the whole page right to left.', langBtn:'عرض بالعربية',
+      fabLabel:'Ask me', fabDm:'Send me your question',
+      tlEyebrow:'Scrolling', tlTitle:'Story timeline',
+      tlLead:'As visitors scroll, a line fills like an IV drip and each moment lights up.',
+      tlNote:'Check the steps and dates before this goes live.',
+      tl1When:'2006', tl1Title:"Dad's liver", tl1Text:'Dad gives me part of his liver.',
+      tl2When:'Kidney failure', tl2Title:'Wadad and Souad get tired', tl2Text:'The old kidneys slow down, then stop.',
+      tl3When:'Dialysis', tl3Title:'Years in the chair', tl3Text:'Hours on the machine, and a tiny cup of water a day.',
+      tl4When:'The wait', tl4Title:'No number to wait for', tl4Text:'Nobody publishes waiting times. Everyone asks their neighbour.',
+      tl5When:'13 June 2024', tl5Title:"Amine's kidney", tl5Text:'My brother gives me his kidney.',
+      tl6When:'Now', tl6Title:'Life after', tl6Text:'Blood tests, 3 litres of water a day, and sharing all of it here.',
+      statsTitle:'Numbers that count up', statsLead:'They count up once when they come into view.',
+      stLivers:'livers', stKidney:'kidney', stWater:'litres of water a day',
+      safeEyebrow:'Ground rules', safeTitle:'Gentle for patients',
+      safe1:'Motion switches off when a phone is set to Reduce Motion. This page already does it.',
+      safe2:'No flashing or shaking. Many visitors are unwell or tired.',
+      safe3:'The medical notice stays visible: information only, my experience, not medical advice.',
+      safe4:'Small images and CSS animation, so pages open fast on mobile data.',
+      safe5:'Arabic and English get every feature.',
+      dev:'For the developer', foot:'Sample page built from the BTBTP characters. Not medical advice.'
+    },
+    ar: {
+      heroEyebrow:'أفكار لموقع', heroTitle:'موقع له <em>نبض</em>',
+      heroLead:'المس واسحب ومرّر. كل جزء هنا نموذج يعمل يستطيع المطوّر إضافته إلى الموقع. لا شيء منه منشور بعد.',
+      ecgCap:'خط نبض عند التحميل: يُرسم مرة واحدة عند فتح الصفحة.', replay:'أعِد',
+      mapEyebrow:'التنقّل', mapTitle:'قائمة خريطة الجسم',
+      mapLead:'يلمس الزائر عضواً فيجد كل ما يخصّه. الشخصيات التي يعرفها من الفيديوهات موجودة في مكان الأعضاء.',
+      mapHint:'المس شخصية', opens:'على الموقع، يفتح هذا',
+      baEyebrow:'حركة', baTitle:'قبل وبعد',
+      baLead:'اسحب على الصورة لتنتقل من سنوات الغسيل إلى الحياة بعد الزراعة.',
+      pairBladder:'المثانة', pairCreat:'الكرياتينين',
+      tagDialysis:'على الغسيل', tagAfterTx:'بعد الزراعة', tagBefore:'قبل', tagAfter:'بعد',
+      capBladder:'فارغة لسنوات على الغسيل. ممتلئة وتقفز فرحاً بعد الزراعة.',
+      capCreat:'الكرياتينين يرتفع قبل الزراعة، ويعود إلى الطبيعي بعدها.',
+      btnEyebrow:'أزرار', btnTitle:'أزرار لها نبض',
+      btnLead:'الزر الرئيسي ينبض بهدوء كل بضع ثوانٍ. المسه فيمتلئ مثل أنبوب التحليل.',
+      beatIdle:'احصل على دليل تحاليل الدم', beatLoading:'جارٍ الفتح…', beatDone:'هذا دليلك',
+      beatNote:'نموذج فقط. على الموقع يفتح ملف PDF.',
+      shareTitle:'زر المشاركة', shareText:'ينسخ الرابط ويذكّر الناس لماذا المشاركة مهمّة.',
+      shareBtn:'شارك الصفحة', shareToast:'تم نسخ الرابط. قد يساعد شخصاً ينتظر.', shareFail:'انسخ الرابط أدناه.',
+      fabTitle:'زر «اسألني»', fabText:'يبقى في زاوية كل صفحة ويفتح رسائلك. جرّب الزر أسفل الشاشة.',
+      langTitle:'العربية والإنجليزية', langText:'لمسة واحدة تبدّل اللغة وتقلب الصفحة من اليمين إلى اليسار.', langBtn:'Show in English',
+      fabLabel:'اسألني', fabDm:'أرسل لي سؤالك',
+      tlEyebrow:'التمرير', tlTitle:'خط القصة',
+      tlLead:'مع التمرير يمتلئ خط مثل كيس المصل، وتضيء كل محطة.',
+      tlNote:'راجع المراحل والتواريخ قبل النشر.',
+      tl1When:'٢٠٠٦', tl1Title:'كبد أبي', tl1Text:'أبي يعطيني جزءاً من كبده.',
+      tl2When:'الفشل الكلوي', tl2Title:'وداد وسعاد تتعبان', tl2Text:'الكليتان القديمتان تتباطآن ثم تتوقّفان.',
+      tl3When:'الغسيل', tl3Title:'سنوات على الكرسي', tl3Text:'ساعات على الآلة، وفنجان ماء صغير في اليوم.',
+      tl4When:'الانتظار', tl4Title:'لا رقم للانتظار', tl4Text:'لا أحد ينشر مدة الانتظار. كلٌّ يسأل جاره.',
+      tl5When:'١٣ حزيران ٢٠٢٤', tl5Title:'كلية أمين', tl5Text:'أخي يعطيني كليته.',
+      tl6When:'الآن', tl6Title:'الحياة بعد الزراعة', tl6Text:'تحاليل، و٣ ليترات ماء يومياً، وأشارككم كل شيء هنا.',
+      statsTitle:'أرقام تعدّ', statsLead:'تعدّ مرة واحدة عند ظهورها.',
+      stLivers:'كبد', stKidney:'كلية', stWater:'ليترات ماء يومياً',
+      safeEyebrow:'قواعد', safeTitle:'لطيف مع المرضى',
+      safe1:'تتوقّف الحركة إذا كان الهاتف مضبوطاً على «تقليل الحركة». هذه الصفحة تفعل ذلك.',
+      safe2:'لا وميض ولا اهتزاز. كثير من الزوار مرضى أو متعبون.',
+      safe3:'التنبيه الطبي يبقى ظاهراً: معلومات فقط، من تجربتي، وليست نصيحة طبية.',
+      safe4:'صور خفيفة وحركة بـCSS، فتفتح الصفحات بسرعة على بيانات الهاتف.',
+      safe5:'العربية والإنجليزية تحصلان على كل الميزات.',
+      dev:'للمطوّر', foot:'صفحة نموذجية من شخصيات BTBTP. ليست نصيحة طبية.'
+    }
+  };
+
+  const ORGANS = [
+    {id:'heart', img:'img/c_heart.webp', x:182, y:158,
+      en:{name:'Heart', line:'When the kidneys fail, blood pressure climbs and the heart works harder.', topics:['Blood pressure','Heart strain']},
+      ar:{name:'القلب', line:'عندما تتعب الكلى يرتفع الضغط ويتعب القلب.', topics:['ضغط الدم','إجهاد القلب']}},
+    {id:'liver', img:'img/c_liver.webp', x:122, y:196,
+      en:{name:'Liver', line:'In 2006, Dad gave me part of his liver.', topics:['Liver failure',"Dad's liver, 2006",'Two livers, one kidney']},
+      ar:{name:'الكبد', line:'في ٢٠٠٦ أعطاني أبي جزءاً من كبده.', topics:['فشل الكبد','كبد أبي، ٢٠٠٦','كبدان وكلية واحدة']}},
+    {id:'blood', img:'img/c_blood.webp', x:72, y:236,
+      en:{name:'Blood', line:'Kidney failure can cause anaemia: tired all the time. Blood tests show it.', topics:['Anaemia and tiredness','Blood test guide']},
+      ar:{name:'الدم', line:'الفشل الكلوي قد يسبّب فقر الدم: تعب دائم. التحاليل تكشفه.', topics:['فقر الدم والتعب','دليل تحاليل الدم']}},
+    {id:'aunties', img:'img/c_aunties.webp', x:192, y:242,
+      en:{name:'Old kidneys: Wadad and Souad', line:'They stopped working, but they usually stay inside. Now they are retired on the sofa.', topics:['Kidney failure','Dialysis years','The wait for a kidney']},
+      ar:{name:'الكليتان القديمتان: وداد وسعاد', line:'توقّفتا عن العمل، لكنهما تبقيان عادةً في الجسم. والآن متقاعدتان على الكنبة.', topics:['الفشل الكلوي','سنوات الغسيل','انتظار الكلية']}},
+    {id:'newkidney', img:'img/c_newkidney.webp', x:122, y:290,
+      en:{name:'New kidney', line:"Amine's kidney, with me since 13 June 2024. It sits low in the belly, at the front, not where the old kidneys were.", topics:['Life after transplant','How much water now?','Blood test guide']},
+      ar:{name:'الكلية الجديدة', line:'كلية أخي أمين، معي منذ ١٣ حزيران ٢٠٢٤. تجلس أسفل البطن من الأمام، لا مكان الكليتين القديمتين.', topics:['الحياة بعد الزراعة','كم أشرب من الماء؟','دليل تحاليل الدم']}},
+    {id:'bladder', img:'img/c_bladder.webp', x:166, y:330,
+      en:{name:'Bladder', line:'Empty for years on dialysis. After the transplant, back to work.', topics:['Water after transplant','Peeing again']},
+      ar:{name:'المثانة', line:'فارغة لسنوات على الغسيل. بعد الزراعة، عادت إلى العمل.', topics:['الماء بعد الزراعة','التبوّل من جديد']}},
+    {id:'bones', img:'img/c_bone.webp', x:194, y:432,
+      en:{name:'Bones', line:'Kidney failure upsets calcium and phosphorus, and a small gland in the neck pulls calcium out of the bones.', topics:['Calcium and phosphorus','Parathyroid']},
+      ar:{name:'العظام', line:'الفشل الكلوي يخلّ بالكالسيوم والفوسفور، وغدّة صغيرة في الرقبة تسحب الكالسيوم من العظام.', topics:['الكالسيوم والفوسفور','الغدة جار الدرقية']}},
+    {id:'machine', img:'img/c_machine.webp', x:286, y:430,
+      en:{name:'Dialysis machine', line:'Outside the body. It cleans the blood through the fistula in the arm.', topics:['Dialysis','The fistula']},
+      ar:{name:'آلة الغسيل', line:'خارج الجسم. تنظّف الدم عبر الناسور في الذراع.', topics:['غسيل الكلى','الناسور']}}
+  ];
+
+  const PAIRS = {
+    bladder:{b:'img/s_bladder_before.webp', a:'img/s_bladder_after.webp', tb:'tagDialysis', ta:'tagAfterTx', cap:'capBladder',
+      bAlt:'The bladder sitting empty on a stool', aAlt:'The bladder full and jumping, the new kidney holding a water bottle'},
+    creat:{b:'img/s_creat_before.webp', a:'img/s_creat_after.webp', tb:'tagBefore', ta:'tagAfter', cap:'capCreat',
+      bAlt:'The old kidneys with a blood tube and a long rising chart', aAlt:'The new kidney, proud, as doctors cheer a falling chart'}
+  };
+  Object.values(PAIRS).forEach(p => { new Image().src = p.b; new Image().src = p.a; });
+
+  let lang = 'en';
+  const t = k => (T[lang][k] ?? T.en[k]);
+  const digits = n => lang === 'ar' ? String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]) : String(n);
+
+  /* toast */
+  const toastEl = $('#toast'); let toastTimer;
+  function toast(msg){
+    toastEl.textContent = msg; toastEl.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('show'), 3200);
+  }
+
+  /* heartbeat line */
+  $('#ecgReplay').addEventListener('click', () => {
+    const p = $('#ecgPath'); p.classList.remove('draw'); void p.getBoundingClientRect(); p.classList.add('draw');
+  });
+
+  /* body map */
+  const fig = $('#figure'), panel = $('#panel');
+  let current = 'newkidney';
+  ORGANS.forEach((o, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'spot'; b.id = 'spot-' + o.id;
+    b.style.left = (o.x / 320 * 100) + '%'; b.style.top = (o.y / 520 * 100) + '%';
+    b.style.setProperty('--i', i);
+    b.innerHTML = '<img src="' + o.img + '" alt="">';
+    b.addEventListener('click', () => select(o.id, true));
+    fig.appendChild(b); o.btn = b;
+  });
+  function select(id, user){
+    current = id;
+    if (user) fig.classList.add('touched');
+    ORGANS.forEach(o => { const on = o.id === id; o.btn.classList.toggle('on', on); o.btn.setAttribute('aria-pressed', on); });
+    renderPanel(user);
+    if (user){
+      const r = panel.getBoundingClientRect();
+      if (r.top > innerHeight - 120) panel.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'nearest'});
+    }
+  }
+  function renderPanel(animate){
+    const o = ORGANS.find(x => x.id === current), L = o[lang], other = lang === 'en' ? 'ar' : 'en';
+    panel.innerHTML =
+      '<div class="panel-head"><img src="' + o.img + '" alt=""><div><h3>' + L.name + '</h3><p class="alt" lang="' + other + '" dir="' + (other === 'ar' ? 'rtl' : 'ltr') + '">' + o[other].name + '</p></div></div>' +
+      '<p class="quote">' + L.line + '</p>' +
+      '<p class="opens">' + t('opens') + '</p>' +
+      '<div class="chips">' + L.topics.map(x => '<span class="chip">' + x + '</span>').join('') + '</div>';
+    if (animate && !reduce){ panel.classList.remove('swap'); void panel.offsetWidth; panel.classList.add('swap'); }
+  }
+
+  /* before / after */
+  const ba = $('#ba'), knob = $('#baKnob'), tagB = $('#tagB'), tagA = $('#tagA');
+  let pair = 'bladder', pos = 50, sweepId = 0;
+  function setPos(p){
+    pos = Math.max(0, Math.min(100, p));
+    ba.style.setProperty('--pos', pos + '%');
+    knob.setAttribute('aria-valuenow', Math.round(pos));
+    tagB.style.opacity = pos < 22 ? 0 : 1; tagA.style.opacity = pos > 78 ? 0 : 1;
+  }
+  function renderPair(swap){
+    const P = PAIRS[pair];
+    if (swap){
+      $('#baBefore').src = P.b; $('#baAfter').src = P.a;
+      $('#baBefore').alt = P.bAlt; $('#baAfter').alt = P.aAlt;
+      if (!reduce){ ba.classList.remove('fresh'); void ba.offsetWidth; ba.classList.add('fresh'); }
+    }
+    tagB.textContent = t(P.tb); tagA.textContent = t(P.ta); $('#baCap').textContent = t(P.cap);
+    document.querySelectorAll('[data-pair]').forEach(b => b.setAttribute('aria-pressed', b.dataset.pair === pair));
+  }
+  document.querySelectorAll('[data-pair]').forEach(b => b.addEventListener('click', () => {
+    if (b.dataset.pair === pair) return; pair = b.dataset.pair; renderPair(true);
+  }));
+  let drag = false, startX = 0, moved = false;
+  const fromEvent = e => { const r = ba.getBoundingClientRect(); setPos((e.clientX - r.left) / r.width * 100); };
+  ba.addEventListener('pointerdown', e => {
+    drag = true; moved = false; startX = e.clientX; cancelAnimationFrame(sweepId);
+    if (e.pointerType === 'mouse'){ fromEvent(e); moved = true; }
+    try { ba.setPointerCapture(e.pointerId); } catch(_) {}
+  });
+  ba.addEventListener('pointermove', e => {
+    if (!drag) return;
+    if (!moved && Math.abs(e.clientX - startX) < 4) return;
+    moved = true; fromEvent(e);
+  });
+  ba.addEventListener('pointerup', e => { if (drag && !moved) fromEvent(e); drag = false; });
+  ba.addEventListener('pointercancel', () => { drag = false; });
+  knob.addEventListener('keydown', e => {
+    const step = e.shiftKey ? 20 : 5;
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') setPos(pos - step);
+    else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') setPos(pos + step);
+    else if (e.key === 'Home') setPos(0);
+    else if (e.key === 'End') setPos(100);
+    else return;
+    e.preventDefault(); cancelAnimationFrame(sweepId);
+  });
+  function sweep(){
+    const keys = [50, 28, 72, 50], dur = 1800, t0 = performance.now();
+    const ease = x => x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+    const step = now => {
+      const k = Math.min(1, (now - t0) / dur), seg = Math.min(2, Math.floor(k * 3)), local = k * 3 - seg;
+      setPos(keys[seg] + (keys[seg + 1] - keys[seg]) * ease(Math.min(1, local)));
+      if (k < 1) sweepId = requestAnimationFrame(step);
+    };
+    sweepId = requestAnimationFrame(step);
+  }
+
+  /* heartbeat button */
+  const beat = $('#beat'), beatWrap = $('#beatWrap'), beatReplay = $('#beatReplay'), beatLabelEl = $('#beatLabel');
+  let beatState = 'idle', beatTimer;
+  const beatLabel = () => { beatLabelEl.textContent = t(beatState === 'idle' ? 'beatIdle' : beatState === 'filling' ? 'beatLoading' : 'beatDone'); };
+  beat.addEventListener('click', () => {
+    if (beatState !== 'idle') return;
+    beatState = 'filling'; beat.classList.add('filling'); beatWrap.classList.add('stop'); beatLabel();
+    beatTimer = setTimeout(() => { beatState = 'done'; beat.classList.add('done'); beatLabel(); beatReplay.hidden = false; }, reduce ? 0 : 950);
+  });
+  beatReplay.addEventListener('click', () => {
+    clearTimeout(beatTimer); beatState = 'idle';
+    beat.classList.remove('filling', 'done'); beatWrap.classList.remove('stop');
+    beatLabel(); beatReplay.hidden = true; beat.focus();
+  });
+
+  /* share */
+  $('#shareBtn').addEventListener('click', () => {
+    const url = 'https://stg.omarchebbo.com/';
+    const fail = () => { $('#shareFallback').hidden = false; const i = $('#shareUrl'); i.focus(); i.select(); toast(t('shareFail')); };
+    try {
+      if (!navigator.clipboard) return fail();
+      navigator.clipboard.writeText(url).then(() => toast(t('shareToast')), fail);
+    } catch(_) { fail(); }
+  });
+
+  /* ask me */
+  const fabBtn = $('#fabBtn'), fabMenu = $('#fabMenu');
+  function setFab(open){
+    fabMenu.hidden = !open; fabMenu.classList.toggle('open', open);
+    fabBtn.setAttribute('aria-expanded', open);
+  }
+  fabBtn.addEventListener('click', e => { e.stopPropagation(); setFab(fabMenu.hidden); });
+  document.addEventListener('click', e => { if (!fabMenu.hidden && !$('#fab').contains(e.target)) setFab(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !fabMenu.hidden){ setFab(false); fabBtn.focus(); } });
+
+  /* timeline */
+  const tlWrap = $('#tlWrap'), items = [...document.querySelectorAll('#tl > li')];
+  let tlQueued = false;
+  function updateTL(){
+    tlQueued = false;
+    const r = tlWrap.getBoundingClientRect(), mark = innerHeight * 0.62;
+    const p = Math.max(0, Math.min(1, (mark - r.top) / r.height));
+    tlWrap.style.setProperty('--p', (p * 100).toFixed(2) + '%');
+    const reach = p * r.height;
+    items.forEach(li => li.classList.toggle('lit', li.offsetTop + 28 <= reach));
+  }
+  const queueTL = () => { if (!tlQueued){ tlQueued = true; requestAnimationFrame(updateTL); } };
+  addEventListener('scroll', queueTL, {passive:true});
+  addEventListener('resize', queueTL);
+
+  /* counters */
+  const statEls = [...document.querySelectorAll('.stat b')];
+  statEls.forEach(s => s.dataset.cur = s.dataset.to);
+  const renderStats = () => statEls.forEach(s => s.textContent = digits(s.dataset.cur));
+  function countUp(){
+    const t0 = performance.now(), dur = 1200;
+    const step = now => {
+      const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      statEls.forEach(s => s.dataset.cur = Math.round(+s.dataset.to * e));
+      renderStats();
+      if (k < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  if ('IntersectionObserver' in window && !reduce){
+    let swept = false, counted = false;
+    new IntersectionObserver((es, ob) => es.forEach(en => {
+      if (en.isIntersecting && !swept){ swept = true; sweep(); ob.disconnect(); }
+    }), {threshold:.55}).observe(ba);
+    new IntersectionObserver((es, ob) => es.forEach(en => {
+      if (en.isIntersecting && !counted){ counted = true; countUp(); ob.disconnect(); }
+    }), {threshold:.6}).observe($('#stats'));
+  }
+
+  /* language */
+  function applyLang(l){
+    lang = l;
+    const root = document.documentElement;
+    root.lang = l; root.dir = l === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-t]').forEach(el => { const v = T[l][el.dataset.t]; if (v != null) el.textContent = v; });
+    document.querySelectorAll('[data-th]').forEach(el => { const v = T[l][el.dataset.th]; if (v != null) el.innerHTML = v; });
+    document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
+    $('#langFlip').setAttribute('lang', l === 'en' ? 'ar' : 'en');
+    ORGANS.forEach(o => o.btn.setAttribute('aria-label', o[l].name));
+    renderPanel(false); renderPair(false); beatLabel(); renderStats(); queueTL();
+    try { localStorage.setItem('btbtp-demo-lang', l); } catch(_) {}
+  }
+  document.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+  $('#langFlip').addEventListener('click', () => applyLang(lang === 'en' ? 'ar' : 'en'));
+
+  let saved = 'en';
+  try { saved = localStorage.getItem('btbtp-demo-lang') || 'en'; } catch(_) {}
+  select('newkidney', false);
+  setPos(50);
+  applyLang(saved === 'ar' ? 'ar' : 'en');
+  updateTL();
+})();
+</script>
+</body>
+
+</html>
