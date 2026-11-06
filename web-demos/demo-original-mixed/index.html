@@ -184,7 +184,9 @@ main section[id]{scroll-margin-top:52px}
 .band{background:var(--band);color:var(--on-band);transition:background-color .4s,color .4s}
 .band .eyebrow{color:var(--on-band-muted)}
 .book .in{display:grid;gap:22px;padding-block:40px 64px}
-@media (min-width:900px){.book .in{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:start}.book .cover-col{position:sticky;top:80px}}
+.book .in{max-width:680px}
+.book-head{display:grid;gap:14px;min-width:0}
+.book .cover{width:62%;max-width:300px;margin:4px auto 20px}
 .book h2{font-size:clamp(1.65rem,4.6vw,2.4rem)}
 .cover{position:relative;width:62%;max-width:300px;margin:4px auto 20px}
 @media (min-width:900px){.cover{width:100%}}
@@ -642,6 +644,11 @@ main section[id]{scroll-margin-top:52px}
   <!-- book -->
   <section class="band book on-band gut" aria-labelledby="h-book" id="book-sec">
     <div class="in">
+      <div class="book-head">
+        <aside class="rv" aria-label="Review note: Book"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Book</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_book.webp" aria-label="See the original Book section"><img src="img/orig_book.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the buy button sits at the bottom of a 1,430px section, the pills look like buttons, “2 introductions sold” sits underneath, and reader reviews show test text.</p><p><b>Now:</b> title first, then the cover, then the text. Heartbeat buy button after the first paragraph, “Read the first page free”, plain labels, donation tracker, “Verified by AUBMC” button, and a hidden slot for real reader quotes. A buy bar slides up once you scroll past.</p></div></div></aside>
+        <p class="eyebrow">Phase one — the introduction</p>
+        <h2 id="h-book">Start with the introduction. It pays for dialysis.</h2>
+      </div>
       <div class="cover-col">
         <div class="cover">
           <img src="img/cover.webp" alt="Beyond the Body, Beyond the Pain: cover shaped like an IV bag">
@@ -649,9 +656,6 @@ main section[id]{scroll-margin-top:52px}
         </div>
       </div>
       <div class="book-txt">
-        <aside class="rv" aria-label="Review note: Book"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Book</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_book.webp" aria-label="See the original Book section"><img src="img/orig_book.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the buy button sits at the bottom of a 1,430px section, the pills look like buttons, “2 introductions sold” sits underneath, and reader reviews show test text.</p><p><b>Now:</b> heartbeat buy button after the first paragraph, “Read the first page free”, plain labels, donation tracker, “Verified by AUBMC” button, and a hidden slot for real reader quotes. A buy bar slides up once you scroll past.</p></div></div></aside>
-        <p class="eyebrow">Phase one — the introduction</p>
-        <h2 id="h-book">Start with the introduction. It pays for dialysis.</h2>
         <p class="intro">Before the full memoir, I’m releasing its introduction: my diagnosis, my first night on dialysis, and the words that stayed with me. All net profits go to dialysis patient care. I’m working to direct them to the AUBMC dialysis unit in Beirut, the place that held my life for years.</p>
         <p class="labels"><span>PDF + EPUB</span><span>Read in one sitting</span><span>Profits donated</span></p>
         <div class="buy-col">
