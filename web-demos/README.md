@@ -18,3 +18,10 @@ shop grid, cart drawer and a sticky buy bar. The toolbar switches between four
 palettes taken from the site and the book cover (CSS variables on :root[data-palette]).
 Photos and texts come from the staging site; first page, donation numbers, payment
 methods and the donor link are placeholders.
+
+## demo-original-mixed/  (latest, start here)
+"Demo + Original Website": the prototype plus the demo parts Omar picked (body map, before/after
+slider, heartbeat buy buttons, story timeline), with a review note on every section. Each note shows
+what was wrong on the live site, what changed, and a screenshot of the original section. Turn the notes
+off with "Review" in the top bar to see the clean site. Jump to a section with #hero, #book-sec, #both,
+#start, #shorts, #blog, #journey, #about, #faq, #donor, #news; #book and #shop open those pages.
