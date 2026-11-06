@@ -166,7 +166,10 @@ main section[id]{scroll-margin-top:52px}
 @media (min-width:900px){.hero .in{grid-template-columns:1.1fr .9fr;align-items:center;padding-block:72px 96px}}
 .hero h1{font-size:clamp(2.3rem,7vw,3.6rem);letter-spacing:-.01em}
 .hero .txt{display:grid;gap:18px;align-content:start}
-.hero .txt>p{font:400 1.18rem/1.6 var(--f-serif);color:var(--muted);max-width:34ch}
+.hero .txt>p:not(.eyebrow){font:400 1.18rem/1.6 var(--f-serif);color:var(--muted);max-width:34ch}
+.hero .eyebrow{text-transform:none;letter-spacing:.01em;font:400 .95rem/1.4 var(--f-sans);color:var(--muted)}
+.hero .eyebrow i{font-family:var(--f-serif);color:var(--ink)}
+.eyebrow.line::before{flex:none}
 .ctas{display:flex;flex-wrap:wrap;gap:10px}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:6px;max-width:460px}
 .stats div{display:grid;gap:2px}
@@ -620,10 +623,10 @@ main section[id]{scroll-margin-top:52px}
   <section id="hero" class="hero gut" aria-labelledby="h-hero">
     <div class="in">
       <div class="txt">
-        <aside class="rv" aria-label="Review note: Hero"><div class="rv-h"><span class="chip fix">Fix first</span><span class="rv-t">Review · Hero</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_hero.webp" aria-label="See the original Hero section"><img src="img/orig_hero.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the photo box shows only the logo, 450px of empty space on a phone. “1 life, rebuilt” says less than it could.</p><p><b>Now:</b> your photo, “11 years on dialysis”, and numbers that count up.</p></div></div></aside>
-        <p class="eyebrow line">Omar Chebbo</p>
+        <aside class="rv" aria-label="Review note: Hero"><div class="rv-h"><span class="chip fix">Fix first</span><span class="rv-t">Review · Hero</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_hero.webp" aria-label="See the original Hero section"><img src="img/orig_hero.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the photo box shows only the logo, 450px of empty space on a phone. “1 life, rebuilt” says less than it could.</p><p><b>Now:</b> your photo, a label naming the book instead of your name twice, “11 years on dialysis”, and numbers that count up.</p></div></div></aside>
+        <p class="eyebrow line"><span>Author of <i>Beyond the Body, Beyond the Pain</i></span></p>
         <h1 id="h-hero">I'm Omar Chebbo.</h1>
-        <p>I'm a writer and a transplant survivor. I write about what all of it taught me, and my memoir is the first thing I'm sharing.</p>
+        <p>I'm a transplant survivor, and I write about what all of it taught me. My memoir is the first thing I'm sharing.</p>
         <div class="ctas">
           <a class="btn gold" href="#book">Read my story</a>
           <button type="button" class="btn ghost" data-scroll="shorts">Watch the videos</button>
