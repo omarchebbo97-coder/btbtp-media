@@ -59,3 +59,4 @@ Every image, what it shows, and when to use it. Check this before choosing an im
 | a03_movember.jpg | Aunties with moustaches (Movember) |
 | st02_sugar.jpg | Aunties surrounded by sugar cubes (diabetes) |
 | st05_machine_low.jpg | Machine master shifted down (headroom for story text) |
+| e3_tube_low.jpg | e3_tube shifted down (headroom for story text): aunties with blood tube and rising chart (silent kidney damage, tests) |
