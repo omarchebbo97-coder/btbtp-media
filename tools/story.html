@@ -22,8 +22,8 @@ const s=JSON.parse(decodeURIComponent(location.hash.slice(1)));const e=t=>String
 document.body.innerHTML=`<div class="bg" style="background-image:url(${s.photo})"></div><div class="img" style="top:${s.dy||0}px;bottom:${-(s.dy||0)}px;background-image:url(${s.photo});background-position:center ${s.pos||'62%'}"></div>
 ${(()=>{const L=s.lang,isA=t=>/[\u0600-\u06FF]/.test(t),parts=String(s.eyebrow||'').split(' · '),eb=L?parts.filter(p=>L=='ar'?isA(p):!isA(p)).join(' · '):s.eyebrow;
 if(L=='en'){const m=String(s.en_h?'':s.en).match(/^(.+?[.?!])\s+(.+)$/);const h=s.en_h||(m?m[1]:s.en),sub=s.en_h?(s.en_sub||''):(m?m[2]:'');
-return `<div class="top"><div class="eb">${e(eb)}</div><div class="lt h">${e(h)}</div>${sub?`<div class="lt sub">${e(sub)}</div>`:''}</div><div class="q"><div class="lt">${e(s.qen)}</div></div>`}
-if(L=='ar')return `<div class="top"><div class="eb">${e(eb)}</div><div class="ar h">${e(s.ar)}</div>${s.ar2?`<div class="ar sub">${e(s.ar2)}</div>`:''}</div><div class="q"><div class="ar">${e(s.qar)}</div></div>`;
+return `<div class="top"><div class="eb">${e(eb)}</div><div class="lt h">${e(h)}</div>${sub?`<div class="lt sub">${e(sub)}</div>`:''}</div>${s.qen?`<div class="q"><div class="lt">${e(s.qen)}</div></div>`:''}`}
+if(L=='ar')return `<div class="top"><div class="eb">${e(eb)}</div><div class="ar h">${e(s.ar)}</div>${s.ar2?`<div class="ar sub">${e(s.ar2)}</div>`:''}</div>${s.qar?`<div class="q"><div class="ar">${e(s.qar)}</div></div>`:''}`;
 return `<div class="top"><div class="eb">${e(s.eyebrow)}</div><div class="ar h">${e(s.ar)}</div>${s.ar2?`<div class="ar sub">${e(s.ar2)}</div>`:''}<div class="en">${e(s.en)}</div></div>
 <div class="q"><div class="ar">${e(s.qar)}</div><div class="e">${e(s.qen)}</div></div>`})()}<div class="h2">@omar_organtransplants</div>`;
 </script></body></html>
