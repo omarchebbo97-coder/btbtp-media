@@ -15,10 +15,15 @@
 .q{position:absolute;left:80px;right:80px;bottom:150px;background:#f2f2f0;border-radius:32px;padding:30px 40px;text-align:center}
 .q .ar{font-weight:600;font-size:42px;color:#2d3e4c;line-height:1.45}
 .q .e{font:600 28px 'Source Sans 3';color:#3d586c;margin-top:6px}
+.lt{font-family:'Source Sans 3';direction:ltr}.h.lt{font-size:64px;line-height:1.3}.sub.lt{font-size:40px;line-height:1.4;margin-top:16px}.q .lt{font-weight:600;font-size:44px;color:#2d3e4c;line-height:1.4}
 .h2{position:absolute;bottom:60px;width:100%;text-align:center;font:600 26px 'Source Sans 3';color:#fff}
 </style></head><body><script>
 const s=JSON.parse(decodeURIComponent(location.hash.slice(1)));const e=t=>String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
 document.body.innerHTML=`<div class="bg" style="background-image:url(${s.photo})"></div><div class="img" style="top:${s.dy||0}px;bottom:${-(s.dy||0)}px;background-image:url(${s.photo});background-position:center ${s.pos||'62%'}"></div>
-<div class="top"><div class="eb">${e(s.eyebrow)}</div><div class="ar h">${e(s.ar)}</div>${s.ar2?`<div class="ar sub">${e(s.ar2)}</div>`:''}<div class="en">${e(s.en)}</div></div>
-<div class="q"><div class="ar">${e(s.qar)}</div><div class="e">${e(s.qen)}</div></div><div class="h2">@omar_organtransplants</div>`;
+${(()=>{const L=s.lang,isA=t=>/[\u0600-\u06FF]/.test(t),parts=String(s.eyebrow||'').split(' · '),eb=L?parts.filter(p=>L=='ar'?isA(p):!isA(p)).join(' · '):s.eyebrow;
+if(L=='en'){const m=String(s.en_h?'':s.en).match(/^(.+?[.?!])\s+(.+)$/);const h=s.en_h||(m?m[1]:s.en),sub=s.en_h?(s.en_sub||''):(m?m[2]:'');
+return `<div class="top"><div class="eb">${e(eb)}</div><div class="lt h">${e(h)}</div>${sub?`<div class="lt sub">${e(sub)}</div>`:''}</div><div class="q"><div class="lt">${e(s.qen)}</div></div>`}
+if(L=='ar')return `<div class="top"><div class="eb">${e(eb)}</div><div class="ar h">${e(s.ar)}</div>${s.ar2?`<div class="ar sub">${e(s.ar2)}</div>`:''}</div><div class="q"><div class="ar">${e(s.qar)}</div></div>`;
+return `<div class="top"><div class="eb">${e(s.eyebrow)}</div><div class="ar h">${e(s.ar)}</div>${s.ar2?`<div class="ar sub">${e(s.ar2)}</div>`:''}<div class="en">${e(s.en)}</div></div>
+<div class="q"><div class="ar">${e(s.qar)}</div><div class="e">${e(s.qen)}</div></div>`})()}<div class="h2">@omar_organtransplants</div>`;
 </script></body></html>
