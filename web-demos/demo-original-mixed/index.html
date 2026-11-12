@@ -414,6 +414,30 @@ main section[id]{scroll-margin-top:52px}
   }
 }
 
+/* checkout steps in the cart drawer */
+.co-back{justify-self:start;border:0;background:none;padding:10px 0;min-height:44px;font-weight:600;color:var(--muted);cursor:pointer}
+.co-steps{list-style:none;margin:0;padding:0;display:flex;gap:6px;font:600 .75rem var(--f-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.co-steps li{flex:1;border-top:3px solid var(--line);padding-top:6px}
+.co-steps li.done{border-color:var(--accent);color:var(--ink)}
+.co-steps li.cur{border-color:var(--ink);color:var(--ink)}
+.co-sum{background:var(--sand);border-radius:14px;padding:12px 14px;display:grid;gap:6px;font-size:.92rem}
+.co-sum p{display:flex;justify-content:space-between;gap:12px}
+.co-sum .tot{border-top:1px solid var(--line);padding-top:8px;font-weight:600}
+.co-sum b{font-family:var(--f-serif);white-space:nowrap}
+.co-form{display:grid;gap:8px}
+.co-form label{font-weight:600;font-size:.92rem}
+.co-form input{min-height:48px;border:1.5px solid var(--line);border-radius:12px;padding:0 14px;font:400 16px var(--f-sans);background:var(--paper);color:var(--ink)}
+.co-note{display:flex;gap:8px;align-items:flex-start;font-size:.85rem;color:var(--muted)}
+.co-note svg{width:16px;height:16px;flex:none;margin-top:2px}
+.co-done{display:grid;gap:12px;justify-items:center;text-align:center;padding-top:16px;animation:rise .4s both}
+.co-ok{width:64px;height:64px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;animation:pop .55s cubic-bezier(.34,1.56,.64,1) both}
+.co-ok svg{width:34px;height:34px}
+.co-done h3{font-size:1.5rem}
+.co-done p{color:var(--muted);max-width:32ch}
+.co-done b{color:var(--ink);word-break:break-all}
+.co-dl{display:grid;gap:8px;width:100%}
+.co-give{font-size:.9rem}
+
 /* shorts */
 .ar-pill{display:inline-flex;gap:6px;align-items:center;font:600 .78rem var(--f-sans);background:var(--tint);color:var(--accent-ink);border-radius:999px;padding:4px 12px;width:max-content}
 .row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,170px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin;overscroll-behavior-x:contain}
@@ -1274,7 +1298,12 @@ main section[id]{scroll-margin-top:52px}
     } else cart.push({ key, id, opt: opt || '', qty:1 });
     save(); return 'added';
   }
-  function renderCart(note){
+  const CK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  const LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+  const setCartTitle = t => { $('#h-cart').textContent = t; };
+  const totals = () => ({ total: Math.round(cart.reduce((s, i) => s + P[i.id].price * i.qty, 0) * 100) / 100, phys: cart.some(i => !P[i.id].digital) });
+  function renderCart(){
+    setCartTitle('Your cart');
     const body = $('#cartBody'), foot = $('#cartFoot');
     if (!cart.length){
       body.innerHTML = '<div class="empty"><p>Your cart is empty.</p><a class="btn gold" href="#book">Get the introduction — $9.99</a></div>';
@@ -1287,18 +1316,52 @@ main section[id]{scroll-margin-top:52px}
       return '<div class="ci"><img src="img/cover.webp" alt=""><div><h3>' + p.title + '</h3>' + (i.opt ? '<p class="s">' + i.opt + '</p>' : '') + qty +
         '<button type="button" class="rm" data-rm="' + i.key + '">Remove</button></div><p class="p">' + money(p.price * i.qty) + '</p></div>';
     }).join('');
-    const total = cart.reduce((s, i) => s + P[i.id].price * i.qty, 0);
-    const hasPhys = cart.some(i => !P[i.id].digital);
-    foot.innerHTML = '<div class="sub"><span>Subtotal</span><span>' + money(Math.round(total * 100) / 100) + '</span></div>' +
-      '<p>' + (hasPhys ? 'Shipping is added at checkout. ' : '') + 'Digital books arrive by download right after payment.</p>' +
-      '<button type="button" class="btn gold" id="checkout">Checkout</button>' + (note ? '<p class="co-msg">' + note + '</p>' : '');
-    $('#checkout').addEventListener('click', () => renderCart('This is where checkout opens on the live site.'));
+    const t = totals();
+    foot.innerHTML = '<div class="sub"><span>Subtotal</span><span>' + money(t.total) + '</span></div>' +
+      '<p>' + (t.phys ? 'Shipping is added at checkout. ' : '') + 'Digital books arrive by download right after payment.</p>' +
+      '<button type="button" class="btn gold" id="checkout">Checkout</button>';
+    $('#checkout').addEventListener('click', renderCheckout);
     $$('[data-q]', body).forEach(b => b.addEventListener('click', () => {
       const it = cart.find(i => i.key === b.dataset.k); it.qty += +b.dataset.q;
       if (it.qty < 1) cart = cart.filter(i => i !== it);
       save(); updateCount(); renderCart();
     }));
     $$('[data-rm]', body).forEach(b => b.addEventListener('click', () => { cart = cart.filter(i => i.key !== b.dataset.rm); save(); updateCount(); renderCart(); }));
+  }
+  function renderCheckout(){
+    setCartTitle('Checkout');
+    const body = $('#cartBody'), foot = $('#cartFoot'), t = totals();
+    body.innerHTML = '<button type="button" class="co-back" id="coBack">← Back to cart</button>' +
+      '<ol class="co-steps" aria-label="Checkout steps"><li class="done">Cart</li><li class="cur" aria-current="step">Details</li><li>Payment</li></ol>' +
+      '<div class="co-sum">' + cart.map(i => '<p><span>' + P[i.id].title + (i.opt ? ' · ' + i.opt : '') + (i.qty > 1 ? ' × ' + i.qty : '') + '</span><b>' + money(P[i.id].price * i.qty) + '</b></p>').join('') +
+      '<p class="tot"><span>Total</span><b>' + money(t.total) + '</b></p></div>' +
+      '<form id="coForm" class="co-form" novalidate><label for="coEmail">Email for your receipt and download link</label>' +
+      '<input id="coEmail" type="email" placeholder="your@email.com" autocomplete="email" required>' +
+      (t.phys ? '<p class="co-note">Your shipping address is entered on the payment page.</p>' : '') +
+      '<p class="co-note">' + LOCK + 'You finish paying on the secure payment page. Card details are never typed on this site.</p></form>';
+    foot.innerHTML = '<button type="submit" form="coForm" class="btn gold">Continue to payment — ' + money(t.total) + '</button><p>Prototype: no payment is taken.</p>';
+    $('#coBack').addEventListener('click', renderCart);
+    $('#coForm').addEventListener('submit', e => {
+      e.preventDefault(); const em = $('#coEmail');
+      if (!em.value || !em.checkValidity()){ toast('Enter an email like name@example.com'); em.focus(); return; }
+      renderDone(em.value);
+    });
+    $('#cartBody').scrollTop = 0;
+  }
+  function renderDone(email){
+    setCartTitle('Order confirmed');
+    const body = $('#cartBody'), foot = $('#cartFoot'), t = totals(), hasIntro = cart.some(i => i.id === 'intro');
+    body.innerHTML = '<div class="co-done"><span class="co-ok">' + CK + '</span><h3>Thank you!</h3>' +
+      '<p>Your receipt and download link are on their way to <b id="coMail"></b>.</p>' +
+      (hasIntro ? '<div class="co-dl"><button type="button" class="btn gold" data-dl>Download the PDF</button><button type="button" class="btn ghost" data-dl>Download the EPUB</button></div>' : '') +
+      (t.phys ? '<p>I’ll email you when your hardcover ships.</p>' : '') +
+      '<p class="co-give">Net profits go to the dialysis unit at AUBMC. <button type="button" class="linkish" id="coDoc">See the signed document</button></p></div>';
+    $('#coMail').textContent = email;
+    foot.innerHTML = '<button type="button" class="btn ghost" id="coClose">Back to the site</button><p>Prototype: no payment was taken.</p>';
+    $$('[data-dl]', body).forEach(b => b.addEventListener('click', () => toast('On the live site, the file downloads here.')));
+    $('#coDoc').addEventListener('click', () => { closeAll(true); openDoc(); });
+    $('#coClose').addEventListener('click', () => closeAll());
+    cart = []; save(); updateCount();
   }
   function fly(fromEl){
     if (reduce) return Promise.resolve();
@@ -1320,13 +1383,15 @@ main section[id]{scroll-margin-top:52px}
     fly(btn).then(() => { updateCount(true); toast('Added: ' + P[id].title + (opt ? ' (' + opt + ')' : '')); });
   }
   function buyNow(btn){
-    if (btn.classList.contains('go')) return;
-    const id = btn.dataset.buy, lbl = $('[data-lbl]', btn), orig = lbl.textContent, wrap = btn.closest('[data-wrap]');
+    const id = btn.dataset.buy;
+    // already adding, or already in the cart: just open the cart
+    if (btn.classList.contains('go') || cart.some(i => i.id === id && P[id].digital)){ renderCart(); openDrawer($('#cart')); return; }
+    const lbl = $('[data-lbl]', btn), orig = lbl.textContent, wrap = btn.closest('[data-wrap]');
     btn.classList.add('go'); if (wrap) wrap.classList.add('stop'); lbl.textContent = 'Adding…';
     setTimeout(() => {
       addItem(id); updateCount(true); renderCart(); openDrawer($('#cart'));
       lbl.textContent = 'In your cart ✓';
-      setTimeout(() => { btn.classList.remove('go'); if (wrap) wrap.classList.remove('stop'); lbl.textContent = orig; }, 1800);
+      setTimeout(() => { btn.classList.remove('go'); if (wrap) wrap.classList.remove('stop'); lbl.textContent = orig; }, 1200);
     }, reduce ? 0 : 850);
   }
   $$('[data-buy]').forEach(b => b.addEventListener('click', () => buyNow(b)));
