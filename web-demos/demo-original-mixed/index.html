@@ -217,7 +217,9 @@ main section[id]{scroll-margin-top:52px}
 .details-link{font-size:.92rem;color:var(--on-band)}
 .page{background:var(--paper);color:var(--ink);border-radius:14px;padding:20px;display:grid;gap:12px;animation:rise .45s cubic-bezier(.2,.7,.2,1)}
 .ph{font:600 .7rem var(--f-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);background:var(--tint);border-radius:999px;padding:2px 10px;justify-self:start}
-.page .txt{font:400 1rem/1.7 var(--f-serif);color:var(--muted);max-height:170px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 50%,transparent);mask-image:linear-gradient(#000 50%,transparent)}
+.page .txt{font:400 1.02rem/1.7 var(--f-serif);color:var(--ink);max-height:640px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 75%,transparent);mask-image:linear-gradient(#000 75%,transparent)}
+.pg-lbl{font:600 .72rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+.pg-title{font-size:1.3rem;margin-top:-4px}
 .page .txt p+p{margin-top:10px}
 .money{background:var(--band-mid);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:18px;display:grid;gap:12px;max-width:520px}
 .money .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
@@ -866,8 +868,7 @@ main section[id]{scroll-margin-top:52px}
           <button type="button" class="btn ghost sample" data-sample="fp1" aria-expanded="false" aria-controls="fp1">Preview the first page
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="page" id="fp1" hidden>
-            <span class="ph">Placeholder: the real first page goes here</span>
-            <div class="txt"><p>The opening page of the introduction goes here, around 250 words, exactly as it appears in the book.</p><p>It should stop in the middle of a moment, right before something the reader needs to know, so the button underneath is the obvious next step.</p></div>
+            <p class="pg-lbl">From the introduction</p><h3 class="pg-title">Introduction</h3><div class="txt"><p>Being different is a quiet kind of loneliness. It’s not just about standing out, it’s about existing in a world that was never designed for you. You think you’re living your life, but in reality, that thing, the illness, is your life. While others move effortlessly, making plans, chasing dreams, taking health for granted, you are tethered to something invisible yet inescapable.</p><p>A chronic illness isn’t a bad day or a temporary setback. It becomes the blueprint of your life. It doesn’t wait for you to be ready. It doesn’t ask for permission. It demands adaptation, whether you’re willing or not.</p><p>For most people, the body is a silent companion, breathing, repairing, digesting without question. For me, the body is a battlefield, covered in scars and stitched together from strangers’ generosity. My liver? Not mine. My kidney? Not mine. My body is a collaboration of surgeries, medications, and borrowed parts. How do you even begin to make peace with something like that?</p><p>When your body fails you early on, life doesn’t unfold like it does for others. You don’t plan careers or adventures. You measure time in blood results, in medication alarms, in hospital corridors. You carry an exhaustion no sleep can fix, and an awareness most people never have to face: the fragility of simply being alive.</p></div>
             <button type="button" class="btn gold" data-buy-proxy="homeBuy">Keep reading — $9.99</button>
           </div>
         </div>
@@ -1030,7 +1031,7 @@ main section[id]{scroll-margin-top:52px}
   <section id="journey" class="sec gut" aria-labelledby="h-tl">
     <div class="in">
       <div class="sec-head">
-        <aside class="rv" aria-label="Review note: Story timeline"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Story timeline</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_photos.webp" aria-label="See the original Story timeline section"><img src="img/orig_photos.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> “The journey, in pictures” shows two photos with no captions and competes with “Both are true”.</p><p><b>Now:</b> the story timeline from the demo: a line fills like an IV drip as you scroll. Please check the dates.</p></div></div></aside>
+        <aside class="rv" aria-label="Review note: Story timeline"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Story timeline</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_photos.webp" aria-label="See the original Story timeline section"><img src="img/orig_photos.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> “The journey, in pictures” shows two photos with no captions and competes with “Both are true”.</p><p><b>Now:</b> the story timeline from the demo: a line fills like an IV drip as you scroll. Dialysis from March 2013 and kidney failure at fourteen come from the introduction; please check the rest.</p></div></div></aside>
         <p class="eyebrow">The journey</p>
         <h2 id="h-tl">26 years, in a few moments</h2>
       </div>
@@ -1039,8 +1040,9 @@ main section[id]{scroll-margin-top:52px}
         <ol class="tl" id="tl">
           <li><div class="tl-card"><p class="w">The beginning</p><h3>The diagnosis</h3><p>Where the introduction starts.</p></div></li>
           <li><div class="tl-card"><p class="w">2006</p><h3>My dad's liver</h3><p>Dad gives me part of his liver.</p></div></li>
-          <li><div class="tl-card has-img"><img src="img/fistula.webp" alt=""><div><p class="w">Age sixteen</p><h3>The fistula</h3><p>A surgeon makes a fistula in my right arm.</p></div></div></li>
-          <li><div class="tl-card has-img"><img src="img/dialysis.webp" alt=""><div><p class="w">Eleven years</p><h3>Dialysis</h3><p>Until the new kidney came in 2024.</p></div></div></li>
+          <li><div class="tl-card"><p class="w">Age fourteen</p><h3>Kidney failure</h3><p>End-stage kidney disease, as a teenager.</p></div></li>
+          <li><div class="tl-card has-img"><img src="img/fistula.webp" alt=""><div><p class="w">March 2013</p><h3>Dialysis begins</h3><p>At sixteen, the only teenager in the ward. Needles every other day.</p></div></div></li>
+          <li><div class="tl-card has-img"><img src="img/dialysis.webp" alt=""><div><p class="w">Eleven years</p><h3>In the chair</h3><p>Until the new kidney came in 2024.</p></div></div></li>
           <li><div class="tl-card has-img"><img src="img/aftertx.webp" alt=""><div><p class="w">June 2024</p><h3>A new kidney</h3><p>The first days with a new kidney.</p></div></div></li>
           <li><div class="tl-card has-img"><img src="img/grad.webp" alt=""><div><p class="w">Along the way</p><h3>The degree</h3><p>Cap, gown and a degree finished alongside everything else.</p></div></div></li>
           <li><div class="tl-card has-img"><img src="img/sky.webp" alt=""><div><p class="w">Now</p><h3>Writing it all down</h3><p>The memoir, the videos, and this site.</p></div></div></li>
@@ -1125,13 +1127,13 @@ main section[id]{scroll-margin-top:52px}
       <div class="main">
         <div class="cover-col"><div class="cover"><img src="img/cover.webp" alt="Beyond the Body, Beyond the Pain: cover shaped like an IV bag"><span class="drop" aria-hidden="true"></span></div></div>
         <div class="pp-txt">
-          <aside class="rv" aria-label="Review note: Book page"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Book page</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_product.webp" aria-label="See the original Book page section"><img src="img/orig_product.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> a quantity picker for a download, only “Add to cart”, no preview, and no proof of the donation.</p><p><b>Now:</b> “Buy now” and “Add to cart”, no quantity picker, a numbered “What’s inside” list (idea from James Clear’s book page), the first page, the donation box and the “Verified by AUBMC” button.</p></div></div></aside>
+          <aside class="rv" aria-label="Review note: Book page"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Book page</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_product.webp" aria-label="See the original Book page section"><img src="img/orig_product.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> a quantity picker for a download, only “Add to cart”, no preview, and no proof of the donation.</p><p><b>Now:</b> “Buy now” and “Add to cart”, no quantity picker, a numbered “What’s inside” list drawn from the introduction (idea from James Clear’s book page), the first page, the donation box and the “Verified by AUBMC” button.</p></div></div></aside>
           <p class="kind">Digital · PDF + EPUB · Read in one sitting</p>
           <h1 id="h-pp">The Introduction</h1>
           <p class="price">$9.99</p>
           <p class="desc">Before the full memoir, this is its introduction: the pages where the story starts.</p>
           <p class="inside-lbl">What’s inside</p>
-          <ol class="inside"><li>The diagnosis</li><li>The first night on the machine</li><li>The sentence I have never been able to shake</li></ol>
+          <ol class="inside"><li>Dialysis at sixteen, the only teenager in a ward of sixty- and seventy-year-olds</li><li>The panic attacks and the silence no one prepares you for</li><li>The post-transplant shock no one talks about</li><li>Making peace with a body of borrowed parts</li></ol>
           <div class="btns">
             <div class="buy-wrap" data-wrap><button type="button" class="btn gold buy" data-buy="intro" id="ppBuy"><span class="fill" aria-hidden="true"></span><span data-lbl>Buy now — $9.99</span></button></div>
             <button type="button" class="btn ghost" data-add="intro">Add to cart</button>
@@ -1140,8 +1142,7 @@ main section[id]{scroll-margin-top:52px}
           <button type="button" class="btn ghost sample" data-sample="fp2" aria-expanded="false" aria-controls="fp2" style="max-width:440px">Preview the first page
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="page" id="fp2" hidden style="max-width:520px">
-            <span class="ph">Placeholder: the real first page goes here</span>
-            <div class="txt"><p>The opening page of the introduction goes here, around 250 words, exactly as it appears in the book.</p><p>It should stop in the middle of a moment, right before something the reader needs to know.</p></div>
+            <p class="pg-lbl">From the introduction</p><h3 class="pg-title">Introduction</h3><div class="txt"><p>Being different is a quiet kind of loneliness. It’s not just about standing out, it’s about existing in a world that was never designed for you. You think you’re living your life, but in reality, that thing, the illness, is your life. While others move effortlessly, making plans, chasing dreams, taking health for granted, you are tethered to something invisible yet inescapable.</p><p>A chronic illness isn’t a bad day or a temporary setback. It becomes the blueprint of your life. It doesn’t wait for you to be ready. It doesn’t ask for permission. It demands adaptation, whether you’re willing or not.</p><p>For most people, the body is a silent companion, breathing, repairing, digesting without question. For me, the body is a battlefield, covered in scars and stitched together from strangers’ generosity. My liver? Not mine. My kidney? Not mine. My body is a collaboration of surgeries, medications, and borrowed parts. How do you even begin to make peace with something like that?</p><p>When your body fails you early on, life doesn’t unfold like it does for others. You don’t plan careers or adventures. You measure time in blood results, in medication alarms, in hospital corridors. You carry an exhaustion no sleep can fix, and an awareness most people never have to face: the fragility of simply being alive.</p></div>
             <button type="button" class="btn gold" data-buy-proxy="ppBuy">Keep reading — $9.99</button>
           </div>
           <div class="money on-band" data-money>
