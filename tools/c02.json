@@ -1,0 +1,53 @@
+{
+"post": "C02",
+"swipe": true,
+"slides": [
+{
+"type": "hook",
+"photo": "../refs/fantoush_master.jpg",
+"pos": "60%",
+"eyebrow": "For the girls",
+"eyebrow_ar": "للبنات",
+"en": "Periods, fertility and pregnancy with kidney failure.",
+"ar": "الدورة والخصوبة والحمل مع الفشل الكلوي."
+},
+{
+"photo": "../scenes/c02_calendar.jpg",
+"pos": "70%",
+"minh_tt": 326,
+"minh_ig": 146,
+"en": "First, the calendar stops making sense.",
+"ar": "أولاً، يتوقّف التقويم عن أن يكون منطقياً."
+},
+{
+"label": "On dialysis",
+"label_ar": "على الغسيل",
+"ground": "paper",
+"en": "Periods often become irregular or stop, and fertility drops.",
+"ar": "تصبح الدورة غير منتظمة أو تتوقّف غالباً، وتنخفض الخصوبة."
+},
+{
+"ground": "slate",
+"en": "Pregnancy on dialysis is possible but high risk, and needs very close follow-up.",
+"ar": "الحمل على غسيل الكلى ممكن لكنه عالي الخطورة، ويحتاج متابعة دقيقة جداً."
+},
+{
+"photo": "../scenes/c02_planning.jpg",
+"pos": "70%",
+"minh_tt": 450,
+"minh_ig": 270,
+"en": "After a transplant, periods and fertility often return. Pregnancy is planned with the team, because some medicines must change first.",
+"ar": "بعد الزراعة، تعود الدورة والخصوبة غالباً. والحمل يُخطَّط مع الفريق الطبي، لأن بعض الأدوية يجب تغييرها قبله."
+},
+{
+"type": "cta",
+"ground": "gold",
+"en": "Girls, ask your questions and share your story.",
+"ar": "بنات، اسألوا أسئلتكن وشاركوا تجربتكن.",
+"cta": [
+"Send it to a friend.",
+"ابعتيها لصاحبتك."
+]
+}
+]
+}

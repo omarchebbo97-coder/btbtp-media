@@ -37,7 +37,7 @@ let en=`<div class="en" style="font-size:${enSize}px;line-height:${enLH};color:$
 let ar=s.ar?`<div class="ar" style="font-size:${arSize}px;line-height:${arLH};color:${G.ar};${s.ground==='gold'?'opacity:.85;':''}">${esc(s.ar)}</div>`:'';
 const AFK=s.type==='hook'?0.74:0.84;
 if(AF&&s.ar){
- en=`<div class="ar" style="font-size:${Math.round(enSize*AFK)}px;line-height:${s.type==='hook'?1.35:1.45};color:${G.en};font-weight:${s.type==='hook'?600:400}">${esc(s.ar)}</div>`;
+ en=`<div class="ar" style="font-size:${Math.round(enSize*AFK)}px;line-height:${s.type==='hook'?1.35:1.45};color:${G.en};font-weight:${s.type==='hook'?600:400}">${esc(s.ar).replace(/\n/g,'<br>')}</div>`;
  ar=`<div class="en" style="font-size:${Math.round(arSize*1.05)}px;line-height:1.4;color:${G.ar};direction:ltr;text-align:right;${s.italic?'font-style:italic;':''}${s.ground==='gold'?'opacity:.85;':''}">${esc(s.en).replace(/\n/g,'<br>')}</div>`;
 }
 ar='';
@@ -49,7 +49,7 @@ if(s.type==='hook'){
  <div style="position:relative;font-family:${AF?"'Readex Pro'":"'Source Sans 3'"},sans-serif;font-size:${Math.round(24*k)}px;color:${G.ar};${AF?'direction:rtl;text-align:right;':''}">${esc(s.sig||'Omar')}</div></div>`;
 }else if(s.type==='cta'){
  h=`<div class="s" style="${box}justify-content:space-between">${pat}
- <div style="position:relative;display:flex;flex-direction:column;gap:30px;margin-top:${Math.round(80*k)}px">${en.replace(/line-height:[\d.]+/,'line-height:1.06')}${ar}</div>
+ <div style="position:relative;display:flex;flex-direction:column;gap:30px;margin-top:${Math.round(80*k)}px">${en.replace(/line-height:[\d.]+/,'line-height:'+(AF?'1.45':'1.06'))}${ar}</div>
  <div style="position:relative;display:flex;flex-direction:column;gap:22px;padding-bottom:${Math.round(40*k)}px">
  <div style="height:2px;background:${G.en};opacity:.35"></div>
  ${AF?`<div class="ar" style="font-size:${Math.round(42*k)}px;font-weight:600;color:${G.en}">${esc(s.cta[1])}</div>`:`<div style="font-family:'Source Sans 3',sans-serif;font-size:${Math.round(48*k)}px;font-weight:600;color:${G.en}">${esc(s.cta[0])}</div>`}</div></div>`;

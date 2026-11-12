@@ -1,0 +1,63 @@
+{
+"post": "C03",
+"slides": [
+{
+"type": "hook",
+"photo": "../scenes/c03_questions.jpg",
+"pos": "70%",
+"minh_tt": 429,
+"minh_ig": 249,
+"eyebrow": "Field Notes",
+"eyebrow_ar": "ملاحظات ميدانية",
+"en": "Questions worth asking your team before a transplant.",
+"ar": "أسئلة تستحق أن تسألها لفريقك الطبي قبل الزراعة."
+},
+{
+"label": "Medicines",
+"label_ar": "الأدوية",
+"ground": "paper",
+"en": "Which medicines will I take, and what can they do to other organs?",
+"ar": "ما الأدوية التي سآخذها، وما تأثيرها على باقي الأعضاء؟"
+},
+{
+"photo": "../scenes/c03_tests.jpg",
+"pos": "70%",
+"minh_tt": 366,
+"minh_ig": 186,
+"en": "How often are the blood tests, and which results should I watch?",
+"ar": "كم مرة سأجري التحاليل، وأيّ النتائج عليّ أن أراقب؟"
+},
+{
+"label": "Food",
+"label_ar": "الأكل",
+"ground": "sand",
+"en": "What can I eat and drink, and what is off the list for me?",
+"ar": "ماذا آكل وأشرب، وما الممنوع عليّ تحديداً؟"
+},
+{
+"label": "Warning signs",
+"label_ar": "علامات الخطر",
+"ground": "slate",
+"en": "What are the signs of rejection or infection, and who do I call?",
+"ar": "ما علامات الرفض أو الالتهاب، وبمن أتصل؟"
+},
+{
+"photo": "../scenes/c03_signpost.jpg",
+"pos": "70%",
+"minh_tt": 326,
+"minh_ig": 146,
+"en": "When can I go back to school, work or the gym?",
+"ar": "متى أعود إلى المدرسة أو العمل أو الرياضة؟"
+},
+{
+"type": "cta",
+"ground": "gold",
+"en": "Save this for your next appointment. What would you add?",
+"ar": "احفظه لموعدك القادم. ماذا تضيف؟",
+"cta": [
+"Every team and every patient is different.",
+"كل فريق طبي وكل مريض مختلف."
+]
+}
+]
+}
