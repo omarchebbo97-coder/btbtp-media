@@ -1,0 +1,10 @@
+{
+  "name": "btbtp-tools",
+  "private": true,
+  "description": "Run `npm i` in tools/ before rendering: story.js, render2.js and make2.py need these fonts or Chromium silently falls back to a default serif.",
+  "dependencies": {
+    "@fontsource/readex-pro": "^5.0.0",
+    "@fontsource/source-sans-3": "^5.0.0",
+    "@fontsource-variable/source-serif-4": "^5.0.0"
+  }
+}
