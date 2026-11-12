@@ -12,7 +12,7 @@
 .en{position:relative;font-family:'Source Serif 4',serif}
 .ar{position:relative;font-family:'Readex Pro',sans-serif;direction:rtl;text-align:right}
 .lab{position:relative;font-family:'Source Sans 3',sans-serif;font-weight:600;letter-spacing:.15em;text-transform:uppercase}
-body.af .lab{text-align:right}
+body.af .lab{text-align:right;font-family:'Readex Pro',sans-serif;letter-spacing:0;direction:rtl}
 </style></head><body><div id="root"></div><script>
 /* Rebuilt 1:1 from W1P1 redistribution.dc.html (BTBBTP posts chat). */
 const s=JSON.parse(decodeURIComponent(location.hash.slice(1)));
@@ -30,7 +30,9 @@ const arSize=Math.round(k*(s.arSize||(s.type==='hook'?52:L<=30?46:L<=55?44:40)))
 const arLH=s.type==='hook'?1.6:L<=30?1.6:1.7;
 const box=`width:${W}px;height:${H}px;padding:${pad};background:${G.bg};`;
 const pat=`<div class="pat" style="opacity:${G.op};mix-blend-mode:${G.bl}"></div>`;
-const AF=new URLSearchParams(location.search).get('t')==='tiktok'&&!s.enFirst;
+const AF=new URLSearchParams(location.search).get('t')==='tiktok';
+/* One language per platform (Omar, 12 Nov): Instagram 100% English, TikTok 100% Arabic. */
+if(AF){s.label=s.label_ar||'';s.eyebrow=s.eyebrow_ar||'';s.sig=s.sig_ar||'عمر';}
 let en=`<div class="en" style="font-size:${enSize}px;line-height:${enLH};color:${G.en};${s.type==='hook'?'letter-spacing:-0.02em;':''}${s.italic?'font-style:italic;':''}">${esc(s.en).replace(/\n/g,'<br>')}</div>`;
 let ar=s.ar?`<div class="ar" style="font-size:${arSize}px;line-height:${arLH};color:${G.ar};${s.ground==='gold'?'opacity:.85;':''}">${esc(s.ar)}</div>`:'';
 const AFK=s.type==='hook'?0.74:0.84;
@@ -38,19 +40,19 @@ if(AF&&s.ar){
  en=`<div class="ar" style="font-size:${Math.round(enSize*AFK)}px;line-height:${s.type==='hook'?1.35:1.45};color:${G.en};font-weight:${s.type==='hook'?600:400}">${esc(s.ar)}</div>`;
  ar=`<div class="en" style="font-size:${Math.round(arSize*1.05)}px;line-height:1.4;color:${G.ar};direction:ltr;text-align:right;${s.italic?'font-style:italic;':''}${s.ground==='gold'?'opacity:.85;':''}">${esc(s.en).replace(/\n/g,'<br>')}</div>`;
 }
+ar='';
 let h;
 if(s.type==='hook'){
  h=`<div class="s" style="${box}justify-content:space-between">${pat}
  <div class="lab" style="font-size:${Math.round(26*k)}px;color:${G.lab}">${esc(s.eyebrow||'')}</div>
  <div style="position:relative;display:flex;flex-direction:column;gap:34px">${en}${ar}</div>
- <div style="position:relative;font-family:'Source Sans 3',sans-serif;font-size:${Math.round(24*k)}px;color:${G.ar}">${esc(s.sig||'Omar')}</div></div>`;
+ <div style="position:relative;font-family:${AF?"'Readex Pro'":"'Source Sans 3'"},sans-serif;font-size:${Math.round(24*k)}px;color:${G.ar};${AF?'direction:rtl;text-align:right;':''}">${esc(s.sig||'Omar')}</div></div>`;
 }else if(s.type==='cta'){
  h=`<div class="s" style="${box}justify-content:space-between">${pat}
  <div style="position:relative;display:flex;flex-direction:column;gap:30px;margin-top:${Math.round(80*k)}px">${en.replace(/line-height:[\d.]+/,'line-height:1.06')}${ar}</div>
  <div style="position:relative;display:flex;flex-direction:column;gap:22px;padding-bottom:${Math.round(40*k)}px">
  <div style="height:2px;background:${G.en};opacity:.35"></div>
- ${AF?`<div class="ar" style="font-size:${Math.round(42*k)}px;font-weight:600;color:${G.en}">${esc(s.cta[1])}</div><div style="font-family:'Source Sans 3',sans-serif;font-size:${Math.round(36*k)}px;color:${G.en};opacity:.85;text-align:right">${esc(s.cta[0])}</div>`:`<div style="font-family:'Source Sans 3',sans-serif;font-size:${Math.round(48*k)}px;font-weight:600;color:${G.en}">${esc(s.cta[0])}</div>
- <div class="ar" style="font-size:${Math.round(38*k)}px;color:${G.en};opacity:.85">${esc(s.cta[1])}</div>`}</div></div>`;
+ ${AF?`<div class="ar" style="font-size:${Math.round(42*k)}px;font-weight:600;color:${G.en}">${esc(s.cta[1])}</div>`:`<div style="font-family:'Source Sans 3',sans-serif;font-size:${Math.round(48*k)}px;font-weight:600;color:${G.en}">${esc(s.cta[0])}</div>`}</div></div>`;
 }else if(s.type==='image'){
  /* Style A: full-bleed Nano Banana image (subject on the right half, left half empty), text on the left 52% */
  const fb=s.imgFit==='bottom';

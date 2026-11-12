@@ -1,6 +1,9 @@
-// node render2.js spec.json outdir  -> ig 1080x1350 (EN first), tiktok 1080x1920 (AR first)
+// node render2.js spec.json outdir  -> ig 1080x1350 (English only), tiktok 1080x1920 (Arabic only). Spec fields: en/ar, label/label_ar, eyebrow/eyebrow_ar, sig/sig_ar, cta:[en,ar]
 const {chromium}=require('playwright');require('./fontcheck')();const fs=require('fs');const path=require('path');
 (async()=>{const spec=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));const out=process.argv[3];fs.mkdirSync(out,{recursive:true});
+// One language per platform (Omar, 12 Nov): IG 100% English, TikTok 100% Arabic. Every visible field needs its Arabic twin.
+{const miss=[];spec.slides.forEach((s,i)=>{const n=i+1;if(s.en&&!s.ar)miss.push(n+': ar');if(s.ar&&!s.en)miss.push(n+': en');if(s.label&&!s.label_ar)miss.push(n+': label_ar');if(s.eyebrow&&!s.eyebrow_ar)miss.push(n+': eyebrow_ar');if(s.cta&&!(s.cta[0]&&s.cta[1]))miss.push(n+': cta [en, ar]');});
+ if(miss.length){console.error('MISSING TRANSLATIONS (IG is English-only, TikTok Arabic-only):\n'+miss.join('\n'));process.exit(1);}}
 const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});
 for(const [tag,w,h] of [['ig',1080,1350],['tiktok',1080,1920]]){const p=await b.newPage({viewport:{width:w,height:h}});
  for(let i=0;i<spec.slides.length;i++){const s={...spec.slides[i],w,h};
