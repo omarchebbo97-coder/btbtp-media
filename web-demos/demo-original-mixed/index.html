@@ -120,8 +120,8 @@ img{display:block;max-width:100%}
 .pp-txt>*,.book-txt>*{min-width:0}
 main section[id]{scroll-margin-top:52px}
 /* review layer */
-.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 10px;font:600 .74rem/1.6 var(--f-sans);white-space:nowrap}
-.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+:is(.chip.fix,.chip.win,.chip.pol,.chip.new){display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 10px;font:600 .74rem/1.6 var(--f-sans);white-space:nowrap}
+:is(.chip.fix,.chip.win,.chip.pol,.chip.new)::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
 .chip.fix{color:#9b3b2b;background:#f6e1da}
 .chip.win{color:#6e5219;background:#f4e7cc}
 .chip.pol{color:#4d6b47;background:#e3eadc}
@@ -438,6 +438,57 @@ main section[id]{scroll-margin-top:52px}
 .co-dl{display:grid;gap:8px;width:100%}
 .co-give{font-size:.9rem}
 
+/* news strip */
+.announce{background:var(--band);color:var(--on-band);transition:background-color .4s}
+.announce .in{display:flex;align-items:center;gap:10px;min-height:40px;font-size:.9rem}
+.announce p{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.an-new{display:inline-block;margin-inline-end:6px;font:600 .68rem/1.6 var(--f-sans);letter-spacing:.1em;text-transform:uppercase;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:0 8px;vertical-align:1px}
+.an-short{display:none}
+@media (max-width:480px){.an-long{display:none}.an-short{display:inline}}
+.an-link{flex:none;color:var(--accent);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;min-height:40px}
+.an-link:hover{text-decoration:underline}
+.an-x{flex:none;width:40px;height:40px;margin-inline-end:-10px;border:0;background:none;color:var(--on-band-muted);display:grid;place-items:center;cursor:pointer}
+.an-x svg{width:18px;height:18px}
+
+/* full-screen phone menu */
+#menu{width:100vw}
+@media (min-width:600px){#menu{width:min(460px,100vw)}}
+#menu .dr-h h2{font:600 .78rem var(--f-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+#menu .dr-b{padding-top:6px}
+#menu .menu-list{gap:0}
+#menu .menu-list a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 4px;border-radius:0;border-bottom:1px solid var(--line);background:none;font:600 clamp(1.7rem,8vw,2.2rem)/1.2 var(--f-serif);color:var(--ink)}
+#menu .menu-list a small{font:600 .8rem var(--f-sans);color:var(--muted)}
+#menu .menu-list a.cur{color:var(--accent-ink);background:none}
+#menu .menu-list a.cur::after{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+#menu.show .menu-list a{animation:rise .45s cubic-bezier(.2,.7,.2,1) both}
+#menu.show .menu-list a:nth-child(2){animation-delay:.04s}
+#menu.show .menu-list a:nth-child(3){animation-delay:.08s}
+#menu.show .menu-list a:nth-child(4){animation-delay:.12s}
+#menu.show .menu-list a:nth-child(5){animation-delay:.16s}
+#menu.show .menu-list a:nth-child(6){animation-delay:.2s}
+#menu .menu-news{display:flex;align-items:center;justify-content:center;min-height:44px;font-weight:600;color:var(--ink)}
+#menu .menu-soc{display:flex;gap:10px;justify-content:center}
+#menu .menu-soc a{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);color:var(--ink)}
+#menu .menu-soc svg{width:20px;height:20px}
+
+/* free guides in the cart */
+.cart-free{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:12px;margin-top:4px}
+.cf-h{font:600 .74rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+.cf{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--sand);border-radius:12px;padding:8px 10px;animation:rise .35s both}
+.cf img{width:44px;height:64px;object-fit:cover;object-position:top;border-radius:4px}
+.cf-t{font:600 .92rem/1.3 var(--f-serif)}
+.cf .s{font-size:.8rem;color:var(--muted)}
+.cf-add{min-height:40px;padding:6px 12px;font-size:.85rem}
+
+/* shop: format buttons, product pictures, good to know */
+.shop-chips{margin:4px 0 16px}
+.pc.out{display:none}
+.know{display:grid;gap:12px;margin-top:22px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:760px){.know{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.know > div{border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:6px;align-content:start;min-width:0}
+.know h3{font-size:1.05rem}
+.know p{color:var(--muted);font-size:.93rem}
+
 /* shorts */
 .ar-pill{display:inline-flex;gap:6px;align-items:center;font:600 .78rem var(--f-sans);background:var(--tint);color:var(--accent-ink);border-radius:999px;padding:4px 12px;width:max-content}
 .row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,170px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin;overscroll-behavior-x:contain}
@@ -559,7 +610,7 @@ main section[id]{scroll-margin-top:52px}
 @media (min-width:860px){.grid-p.three{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .pc{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
 .pc .img{position:relative;background:var(--sand);padding:12px}
-.pc .img img{width:100%;aspect-ratio:320/452;object-fit:cover;border-radius:4px}
+.pc .img img{width:100%;aspect-ratio:4/5;object-fit:contain}
 .stock{position:absolute;top:10px;left:10px;font:600 .64rem var(--f-sans);letter-spacing:.1em;text-transform:uppercase;background:var(--paper);border-radius:999px;padding:3px 8px}
 .pc .b{padding:12px;display:grid;gap:6px;align-content:start}
 .pc .k{font:600 .66rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -596,7 +647,7 @@ main section[id]{scroll-margin-top:52px}
 .dr-b{overflow:auto;padding:12px 18px;display:grid;gap:12px;align-content:start}
 .dr-f{border-top:1px solid var(--line);padding:16px 18px;display:grid;gap:10px}
 .ci{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:center;animation:rise .35s both}
-.ci img{width:52px;height:74px;object-fit:cover;border-radius:4px}
+.ci img{width:52px;height:66px;object-fit:contain;background:var(--sand);border-radius:6px}
 .ci h3{font-size:.98rem;line-height:1.3}
 .ci .s{font-size:.82rem;color:var(--muted)}
 .ci .rm{border:0;background:none;color:var(--muted);font-size:.8rem;text-decoration:underline;cursor:pointer;padding:0}
@@ -645,7 +696,7 @@ main section[id]{scroll-margin-top:52px}
 @media (max-width:760px), (pointer:coarse){
   .logo,.back,.link,.note-btn,.foot nav a{display:inline-flex;align-items:center;min-height:44px}
   .now a,.linkish{padding-block:12px}
-  .verify,.find-tabs button,.phase button,.chip,.path,.opt,.see-all{min-height:44px}
+  .verify,.find-tabs button,.phase button,button.chip,.path,.opt,.see-all{min-height:44px}
   .opt{padding:8px 14px}
   .soc{gap:4px}
   .soc a{display:inline-grid;place-items:center;min-width:44px;min-height:44px}
@@ -653,16 +704,19 @@ main section[id]{scroll-margin-top:52px}
   .foot nav a{padding-inline:6px}
   .pc a.title{min-height:44px}
   .faq .new-q{font-size:12px}
+  .pc a.title{display:block;padding-block:4px}
+  .k,.g-meta,.labels,.ex,.op-lbl,.pin,.g-free,.stock,.inside-lbl,.portrait figcaption small,.res .k,.post .k,.pc .k,.tl-card .w,.rv-t,.an-new,.cf-h{font-size:12px}
+  .spot .cnt{min-width:21px;height:21px;font-size:12px;line-height:21px}
+  .g-row input,.nl input,.co-form input{font-size:16px}
+  .foot .in{padding-bottom:calc(34px + 76px)}
+  .announce .in{min-height:44px}
+  .an-link,.an-x{min-height:44px}
+  .an-x{width:44px}
 }
 @media (max-width:370px){
   .tool .lbl{display:none}
   .tool .in{gap:8px}
   .pals{gap:2px}
-  .pc a.title{display:block;padding-block:4px}
-  .k,.g-meta,.labels,.ex,.op-lbl,.pin,.g-free,.stock,.inside-lbl,.portrait figcaption small,.res .k,.post .k,.pc .k,.tl-card .w,.rv-t{font-size:12px}
-  .spot .cnt{min-width:21px;height:21px;font-size:12px;line-height:21px}
-  .g-row input,.nl input{font-size:16px}
-  .foot .in{padding-bottom:calc(34px + 76px)}
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -683,6 +737,15 @@ main section[id]{scroll-margin-top:52px}
     </div>
     <span class="pal-name" id="palName">Site now</span>
     <label class="sw" for="notesSw"><input type="checkbox" id="notesSw" checked> Review</label>
+  </div>
+</div>
+
+<!-- news strip -->
+<div class="announce gut" id="announce">
+  <div class="in">
+    <p><span class="an-new">New</span><span class="an-long">Free guide: Your blood tests, decoded</span><span class="an-short">Free blood test guide</span></p>
+    <a class="an-link" href="#guides">Get it →</a>
+    <button type="button" class="an-x" id="anX" aria-label="Close the news strip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
 </div>
 
@@ -730,6 +793,7 @@ main section[id]{scroll-margin-top:52px}
           <li><b>Check the “Only 2 left” and “Only 3 left” badges</b> in the shop are real stock limits.</li>
         </ol>
         <p><b style="color:var(--ink)">Ideas from other sites:</b> from James Clear, free bonuses became the <a href="#guides">Free guides</a> section, and the book page got a numbered “What’s inside”. From hadichebbo.com: the “Now” line with a pulsing dot, counts on the blog tabs, a “Leave a note” button for reader quotes, and gentle fade-ups as sections appear. tim.blog blocks automated visits, so it wasn’t checked.</p>
+        <p><b style="color:var(--ink)">From the design galleries:</b> a news strip above the header, a full-screen phone menu with the current page marked, free guides you can add in the cart, and the shop changes.</p>
         <p><b style="color:var(--ink)">Wording:</b> each idea is said once. The buy button says “Get your copy — $9.99” (not “Donate”: people are buying a book, and only net profits go to AUBMC). Other buttons use different verbs: Read my story, Watch the videos, Preview the first page, Keep reading.</p>
         <p><b style="color:var(--ink)">Colors:</b> try the four dots at the top. “Site now” keeps the green book cover standing out best; “Cover sage” makes it blend in.</p>
       </div>
@@ -1087,11 +1151,21 @@ main section[id]{scroll-margin-top:52px}
   <section class="pp gut" aria-labelledby="h-shop">
     <div class="in">
       <div class="sec-head" style="margin:0">
-        <aside class="rv" aria-label="Review note: Shop"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · Shop</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Original site:</b> products open a separate page before they can be added, and long titles are cut off (“Beyond The Pai…”).</p><p><b>Now:</b> add to cart from each card, signed or unsigned on the hardcover card, and titles that wrap.</p></div></div></aside>
+        <aside class="rv" aria-label="Review note: Shop"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · Shop</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Original site:</b> products open a separate page before they can be added, and long titles are cut off (“Beyond The Pai…”).</p><p><b>Now:</b> add to cart from each card, signed or unsigned on the hardcover card, titles that wrap, Digital and Physical buttons instead of search, categories and a price slider, a picture per product, and delivery, refunds and the AUBMC badge under the cards (from pricingpages.design).</p></div></div></aside>
         <h1 id="h-shop" style="font-size:clamp(2rem,6vw,2.7rem)">The shop</h1>
         <p>The introduction, the memoir, and a few ways to hold it.</p>
       </div>
+      <div class="chips shop-chips" role="group" aria-label="Format" id="shopChips">
+        <button type="button" class="chip" data-fmt="all" aria-pressed="true">All formats<span class="n">4</span></button>
+        <button type="button" class="chip" data-fmt="Digital" aria-pressed="false">Digital<span class="n">2</span></button>
+        <button type="button" class="chip" data-fmt="Physical" aria-pressed="false">Physical<span class="n">2</span></button>
+      </div>
       <div class="grid-p" id="shopGrid"></div>
+      <div class="know">
+        <div><h3>Delivery</h3><p>Digital books: a download link right after payment. Hardcover: <span class="todo">shipping time, Omar to confirm</span></p></div>
+        <div><h3>Refunds</h3><p><span class="todo">Refund policy, Omar to confirm</span></p></div>
+        <div><h3>Where the money goes</h3><p>Net profits go to the dialysis unit at AUBMC in Beirut.</p><button type="button" class="verify" data-doc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><span>Verified by AUBMC · <u>See the document</u></span></button></div>
+      </div>
     </div>
   </section>
 </main>
@@ -1132,13 +1206,22 @@ main section[id]{scroll-margin-top:52px}
   <div class="dr-b">
     <nav class="menu-list" aria-label="Mobile">
       <a href="#home" data-nav="home">Home</a>
-      <a href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">Blog</a>
       <a href="#shop" data-nav="shop">Shop</a>
-      <a href="https://stg.omarchebbo.com/gallery" target="_blank" rel="noopener">Gallery</a>
-      <a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Contact</a>
+      <a href="#guides">Free guides</a>
+      <a href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">Blog <small>↗</small></a>
+      <a href="https://stg.omarchebbo.com/gallery" target="_blank" rel="noopener">Gallery <small>↗</small></a>
+      <a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Contact <small>↗</small></a>
     </nav>
   </div>
-  <div class="dr-f"><a class="btn gold" href="#book">Get the book</a></div>
+  <div class="dr-f">
+    <a class="btn gold" href="#book">Get the book</a>
+    <a class="menu-news" href="#news">Get the monthly letter →</a>
+    <div class="menu-soc">
+      <a href="https://instagram.com/omar_organtransplants" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://tiktok.com/@omar_organtransplants" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.8 2.3 4.6 5 4.8"/></svg></a>
+      <a href="https://youtube.com/@omar_organtransplants" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor"/></svg></a>
+    </div>
+  </div>
 </aside>
 
 <div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="Short video">
@@ -1193,11 +1276,14 @@ main section[id]{scroll-margin-top:52px}
 
   /* ---------- data ---------- */
   const P = {
-    intro:{ title:'The Introduction', kind:'Digital', price:9.99, desc:'The opening pages of the memoir. Profits go to dialysis care.', digital:true },
-    ebook:{ title:'Full Memoir — Ebook (Pre-order)', kind:'Digital', price:14.99, desc:'Reserve the complete ebook now, delivered on release.', digital:true },
-    hard:{ title:'Beyond The Body, Beyond The Pain — Hardcover', kind:'Physical', price:24, desc:'The full memoir, hardcover.', opts:['Signed','Unsigned'], stock:'Only 2 left' },
-    bundle:{ title:'The Introduction + Signed Hardcover', kind:'Physical', price:30, was:33.99, desc:'Read it today, then hold the finished book, signed.', stock:'Only 3 left' }
+    intro:{ title:'The Introduction', kind:'Digital', price:9.99, desc:'The opening pages of the memoir. PDF + EPUB, instant download.', digital:true, img:'img/p_intro.webp' },
+    ebook:{ title:'Full Memoir — Ebook (Pre-order)', kind:'Digital', price:14.99, desc:'Reserve the complete ebook now, delivered on release.', digital:true, img:'img/p_ebook.webp' },
+    hard:{ title:'Beyond The Body, Beyond The Pain — Hardcover', kind:'Physical', price:24, desc:'The full memoir, hardcover.', opts:['Signed','Unsigned'], stock:'Only 2 left', img:'img/p_hard.webp' },
+    bundle:{ title:'The Introduction + Signed Hardcover', kind:'Physical', price:30, was:33.99, desc:'Read it today, then hold the finished book, signed.', stock:'Only 3 left', img:'img/p_bundle.webp' },
+    g_blood:{ title:'Your blood tests, decoded', kind:'Free guide', price:0, desc:'PDF · Arabic + English', digital:true, guide:true, img:'img/g_blood.webp' },
+    g_aftertx:{ title:'Your tests after the transplant, without panic', kind:'Free guide', price:0, desc:'PDF · Arabic', digital:true, guide:true, img:'img/g_aftertx.webp' }
   };
+  const price = n => n === 0 ? 'Free' : money(n);
   const SH = [
     ['sUrhS0oa5J0','ليش الموز ممنوع على غسيل الكلى؟','Why are bananas banned on dialysis?'],
     ['khkno5zf6rg','شو يعني غسيل الكلى؟ وصلت الماكينة','What is dialysis? The machine arrives'],
@@ -1249,7 +1335,7 @@ main section[id]{scroll-margin-top:52px}
     let v = (location.hash || '#home').slice(1), target = null;
     if (!VIEWS.includes(v)){ const el = document.getElementById(v); if (el && $('#v-home').contains(el)) target = el; v = 'home'; }
     $$('[data-view]').forEach(m => m.hidden = m.dataset.view !== v);
-    $$('[data-nav]').forEach(a => a.classList.toggle('cur', a.dataset.nav === v));
+    $$('[data-nav]').forEach(a => { const on = a.dataset.nav === v; a.classList.toggle('cur', on); if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
     closeAll();
     if (target) requestAnimationFrame(() => target.scrollIntoView({ behavior:'instant', block:'start' }));
     else scrollTo({ top:0, behavior:'instant' });
@@ -1302,22 +1388,35 @@ main section[id]{scroll-margin-top:52px}
   const LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
   const setCartTitle = t => { $('#h-cart').textContent = t; };
   const totals = () => ({ total: Math.round(cart.reduce((s, i) => s + P[i.id].price * i.qty, 0) * 100) / 100, phys: cart.some(i => !P[i.id].digital) });
+  function guidesBlock(){
+    const left = ['g_blood', 'g_aftertx'].filter(g => !cart.some(i => i.id === g));
+    if (!left.length) return '';
+    return '<div class="cart-free"><p class="cf-h">Free guides · add to your order</p>' + left.map(g =>
+      '<div class="cf"><img src="' + P[g].img + '" alt=""><div><p class="cf-t">' + P[g].title + '</p><p class="s">' + P[g].desc + '</p></div>' +
+      '<button type="button" class="btn ghost cf-add" data-free="' + g + '">Add free</button></div>').join('') + '</div>';
+  }
+  function wireFree(root){
+    $$('[data-free]', root).forEach(b => b.addEventListener('click', () => {
+      addItem(b.dataset.free); updateCount(true); renderCart(); toast('Added: ' + P[b.dataset.free].title);
+    }));
+  }
   function renderCart(){
     setCartTitle('Your cart');
     const body = $('#cartBody'), foot = $('#cartFoot');
     if (!cart.length){
-      body.innerHTML = '<div class="empty"><p>Your cart is empty.</p><a class="btn gold" href="#book">Get the introduction — $9.99</a></div>';
-      foot.innerHTML = ''; return;
+      body.innerHTML = '<div class="empty"><p>Your cart is empty.</p><a class="btn gold" href="#book">Get the introduction — $9.99</a></div>' + guidesBlock();
+      foot.innerHTML = ''; wireFree(body); return;
     }
     body.innerHTML = cart.map(i => {
       const p = P[i.id];
-      const qty = p.digital ? '<p class="s">Digital · instant download</p>' :
+      const qty = p.guide ? '<p class="s">Free guide · PDF</p>' : p.digital ? '<p class="s">Digital · instant download</p>' :
         '<div class="qty"><button type="button" data-q="-1" data-k="' + i.key + '" aria-label="Fewer">−</button><span>' + i.qty + '</span><button type="button" data-q="1" data-k="' + i.key + '" aria-label="More">+</button></div>';
-      return '<div class="ci"><img src="img/cover.webp" alt=""><div><h3>' + p.title + '</h3>' + (i.opt ? '<p class="s">' + i.opt + '</p>' : '') + qty +
-        '<button type="button" class="rm" data-rm="' + i.key + '">Remove</button></div><p class="p">' + money(p.price * i.qty) + '</p></div>';
-    }).join('');
+      return '<div class="ci"><img src="' + p.img + '" alt=""><div><h3>' + p.title + '</h3>' + (i.opt ? '<p class="s">' + i.opt + '</p>' : '') + qty +
+        '<button type="button" class="rm" data-rm="' + i.key + '">Remove</button></div><p class="p">' + price(p.price * i.qty) + '</p></div>';
+    }).join('') + guidesBlock();
+    wireFree(body);
     const t = totals();
-    foot.innerHTML = '<div class="sub"><span>Subtotal</span><span>' + money(t.total) + '</span></div>' +
+    foot.innerHTML = '<div class="sub"><span>Subtotal</span><span>' + price(t.total) + '</span></div>' +
       '<p>' + (t.phys ? 'Shipping is added at checkout. ' : '') + 'Digital books arrive by download right after payment.</p>' +
       '<button type="button" class="btn gold" id="checkout">Checkout</button>';
     $('#checkout').addEventListener('click', renderCheckout);
@@ -1333,13 +1432,13 @@ main section[id]{scroll-margin-top:52px}
     const body = $('#cartBody'), foot = $('#cartFoot'), t = totals();
     body.innerHTML = '<button type="button" class="co-back" id="coBack">← Back to cart</button>' +
       '<ol class="co-steps" aria-label="Checkout steps"><li class="done">Cart</li><li class="cur" aria-current="step">Details</li><li>Payment</li></ol>' +
-      '<div class="co-sum">' + cart.map(i => '<p><span>' + P[i.id].title + (i.opt ? ' · ' + i.opt : '') + (i.qty > 1 ? ' × ' + i.qty : '') + '</span><b>' + money(P[i.id].price * i.qty) + '</b></p>').join('') +
-      '<p class="tot"><span>Total</span><b>' + money(t.total) + '</b></p></div>' +
+      '<div class="co-sum">' + cart.map(i => '<p><span>' + P[i.id].title + (i.opt ? ' · ' + i.opt : '') + (i.qty > 1 ? ' × ' + i.qty : '') + '</span><b>' + price(P[i.id].price * i.qty) + '</b></p>').join('') +
+      '<p class="tot"><span>Total</span><b>' + price(t.total) + '</b></p></div>' +
       '<form id="coForm" class="co-form" novalidate><label for="coEmail">Email for your receipt and download link</label>' +
       '<input id="coEmail" type="email" placeholder="your@email.com" autocomplete="email" required>' +
       (t.phys ? '<p class="co-note">Your shipping address is entered on the payment page.</p>' : '') +
-      '<p class="co-note">' + LOCK + 'You finish paying on the secure payment page. Card details are never typed on this site.</p></form>';
-    foot.innerHTML = '<button type="submit" form="coForm" class="btn gold">Continue to payment — ' + money(t.total) + '</button><p>Prototype: no payment is taken.</p>';
+      (t.total > 0 ? '<p class="co-note">' + LOCK + 'You finish paying on the secure payment page. Card details are never typed on this site.</p>' : '') + '</form>';
+    foot.innerHTML = '<button type="submit" form="coForm" class="btn gold">' + (t.total > 0 ? 'Continue to payment — ' + money(t.total) : 'Send my free guides') + '</button><p>Prototype: no payment is taken.</p>';
     $('#coBack').addEventListener('click', renderCart);
     $('#coForm').addEventListener('submit', e => {
       e.preventDefault(); const em = $('#coEmail');
@@ -1353,7 +1452,12 @@ main section[id]{scroll-margin-top:52px}
     const body = $('#cartBody'), foot = $('#cartFoot'), t = totals(), hasIntro = cart.some(i => i.id === 'intro');
     body.innerHTML = '<div class="co-done"><span class="co-ok">' + CK + '</span><h3>Thank you!</h3>' +
       '<p>Your receipt and download link are on their way to <b id="coMail"></b>.</p>' +
-      (hasIntro ? '<div class="co-dl"><button type="button" class="btn gold" data-dl>Download the PDF</button><button type="button" class="btn ghost" data-dl>Download the EPUB</button></div>' : '') +
+      (() => {
+        const dl = [];
+        if (hasIntro) dl.push('<button type="button" class="btn gold" data-dl>Download the PDF</button>', '<button type="button" class="btn ghost" data-dl>Download the EPUB</button>');
+        cart.filter(i => P[i.id].guide).forEach(i => dl.push('<button type="button" class="btn ghost" data-dl>Free guide: ' + P[i.id].title + '</button>'));
+        return dl.length ? '<div class="co-dl">' + dl.join('') + '</div>' : '';
+      })() + (cart.some(i => i.id === 'ebook') ? '<p>Your ebook arrives by email on release day.</p>' : '') +
       (t.phys ? '<p>I’ll email you when your hardcover ships.</p>' : '') +
       '<p class="co-give">Net profits go to the dialysis unit at AUBMC. <button type="button" class="linkish" id="coDoc">See the signed document</button></p></div>';
     $('#coMail').textContent = email;
@@ -1405,7 +1509,7 @@ main section[id]{scroll-margin-top:52px}
     const opts = p.opts ? '<div class="opts" role="group" aria-label="Version">' + p.opts.map((o, i) => '<button type="button" class="opt" data-opt="' + o + '" aria-pressed="' + (i === 0) + '">' + o + '</button>').join('') + '</div>' : '';
     const href = id === 'intro' ? '#book' : null;
     const title = href ? '<a class="title" href="' + href + '"><h3>' + p.title + '</h3></a>' : '<h3>' + p.title + '</h3>';
-    return '<article class="pc" data-id="' + id + '"><div class="img">' + (p.stock ? '<span class="stock">' + p.stock + '</span>' : '') + '<img src="img/cover.webp" alt=""></div>' +
+    return '<article class="pc" data-id="' + id + '" data-kind="' + p.kind + '"><div class="img">' + (p.stock ? '<span class="stock">' + p.stock + '</span>' : '') + '<img src="' + p.img + '" alt="' + p.title + '"></div>' +
       '<div class="b"><p class="k">' + p.kind + '</p>' + title + '<p class="d">' + p.desc + '</p>' + opts +
       '<p class="pr">' + money(p.price) + (p.was ? ' <s>' + money(p.was) + '</s>' : '') + '</p>' +
       '<button type="button" class="btn ghost add">' + (id === 'ebook' ? 'Pre-order' : 'Add to cart') + '</button></div></article>';
@@ -1418,6 +1522,10 @@ main section[id]{scroll-margin-top:52px}
   }
   $('#related').innerHTML = ['ebook', 'hard', 'bundle'].map(card).join(''); wireCards($('#related'));
   $('#shopGrid').innerHTML = ['intro', 'ebook', 'hard', 'bundle'].map(card).join(''); wireCards($('#shopGrid'));
+  $$('#shopChips .chip').forEach(c => c.addEventListener('click', () => {
+    $$('#shopChips .chip').forEach(x => x.setAttribute('aria-pressed', x === c));
+    $$('#shopGrid .pc').forEach(card => card.classList.toggle('out', c.dataset.fmt !== 'all' && card.dataset.kind !== c.dataset.fmt));
+  }));
 
   /* ---------- first page ---------- */
   $$('[data-sample]').forEach(b => b.addEventListener('click', () => {
@@ -1653,6 +1761,10 @@ main section[id]{scroll-margin-top:52px}
   const closeOrig = () => { if (origDlg.close) origDlg.close(); else origDlg.removeAttribute('open'); };
   $('#origX').addEventListener('click', closeOrig);
   origDlg.addEventListener('click', e => { if (e.target === origDlg) closeOrig(); });
+
+  /* ---------- news strip ---------- */
+  if (store.get('oc-news') === '0') $('#announce').hidden = true;
+  $('#anX').addEventListener('click', () => { $('#announce').hidden = true; store.set('oc-news', '0'); });
 
   /* ---------- misc ---------- */
   $$('[data-scroll]').forEach(b => b.addEventListener('click', () => document.getElementById(b.dataset.scroll).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' })));
