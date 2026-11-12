@@ -166,7 +166,7 @@ main section[id]{scroll-margin-top:52px}
 @media (min-width:900px){.hero .in{grid-template-columns:1.1fr .9fr;align-items:center;padding-block:72px 96px}}
 .hero h1{font-size:clamp(2.3rem,7vw,3.6rem);letter-spacing:-.01em}
 .hero .txt{display:grid;gap:18px;align-content:start}
-.hero .txt>p:not(.eyebrow){font:400 1.18rem/1.6 var(--f-serif);color:var(--muted);max-width:34ch}
+.hero .txt>p:not(.eyebrow):not(.now){font:400 1.18rem/1.6 var(--f-serif);color:var(--muted);max-width:34ch}
 .hero .eyebrow{text-transform:none;letter-spacing:.01em;font:400 .95rem/1.4 var(--f-sans);color:var(--muted)}
 .hero .eyebrow i{font-family:var(--f-serif);color:var(--ink)}
 .eyebrow.line::before{flex:none}
@@ -351,6 +351,68 @@ main section[id]{scroll-margin-top:52px}
 .organ-panel.swap .op-head img{animation:pop .55s cubic-bezier(.34,1.56,.64,1) both,wave 1s .5s ease-in-out}
 @keyframes pop{from{scale:.4}to{scale:1}}
 @keyframes wave{0%,100%{rotate:0deg}25%{rotate:-10deg}75%{rotate:10deg}}
+
+/* body map: counts, pin, see all */
+.spot .cnt{position:absolute;top:-6px;right:-7px;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:var(--fill);color:var(--on-fill);font:600 .66rem/19px var(--f-sans);text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.3);pointer-events:none}
+.pin{display:block;width:fit-content;margin-bottom:3px;font:600 .62rem/1.5 var(--f-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--on-accent);background:var(--accent);border-radius:999px;padding:1px 8px}
+.see-all{justify-self:start;border:1.5px solid var(--ink);background:none;border-radius:999px;padding:8px 16px;font-weight:600;font-size:.9rem;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.see-all svg{width:16px;height:16px;transition:rotate .3s}
+.see-all[aria-expanded="true"] svg{rotate:180deg}
+.organ-panel .more:not([hidden]) .res{animation:rise .4s cubic-bezier(.2,.7,.2,1) both}
+
+/* free guides */
+.phase{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:16px;font-size:.85rem;color:var(--muted)}
+.phase button{border:1.5px solid var(--line);background:none;border-radius:999px;padding:5px 12px;font-weight:600;font-size:.85rem;cursor:pointer}
+.phase button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.guides{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(232px,252px);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;overscroll-behavior-x:contain;scrollbar-width:thin}
+@media (min-width:980px){.guides{grid-auto-flow:row;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible}}
+.guide{scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;grid-template-columns:minmax(0,1fr);min-width:0}
+.guide.flash{animation:flash 1.6s ease-out}
+@keyframes flash{0%,100%{box-shadow:0 0 0 0 transparent}25%{box-shadow:0 0 0 4px var(--accent)}}
+.g-cover{position:relative;background:var(--sand);padding:18px 0 14px;display:grid;place-items:center;min-height:200px}
+.g-cover img{width:58%;border-radius:6px;box-shadow:0 10px 22px rgba(43,38,34,.22);transform:rotate(-2.5deg);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.guide:hover .g-cover img{transform:rotate(0) translateY(-4px)}
+.g-free{position:absolute;top:10px;left:10px;font:600 .66rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:3px 9px}
+.soon .g-cover{border-bottom:1.5px dashed var(--line)}
+.soon-doc{width:58%;aspect-ratio:300/533;border:2px dashed var(--line);border-radius:6px;display:grid;place-items:center;color:var(--muted);font:600 .8rem var(--f-sans);text-align:center;padding:10px;background:var(--paper)}
+.g-b{padding:14px;display:grid;gap:6px;align-content:start;grid-template-columns:minmax(0,1fr);min-width:0}
+.g-meta{font:600 .68rem var(--f-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.guide h3{font-size:1.08rem;line-height:1.3}
+.g-ar{font:600 .95rem/1.4 var(--f-sans);color:var(--muted)}
+.g-d{font-size:.88rem;color:var(--muted);line-height:1.45}
+.g-get{margin-top:6px;min-height:44px;font-size:.95rem}
+.g-form{display:grid;gap:6px;margin-top:6px;animation:rise .35s both}
+.g-form label{font-size:.8rem;font-weight:600}
+.g-row{display:flex;gap:6px}
+.g-row input{flex:1 1 auto;width:0;min-width:0;min-height:44px;border:1.5px solid var(--line);border-radius:999px;padding:0 14px;background:var(--paper);color:var(--ink);font:400 .95rem var(--f-sans)}
+.g-row .btn{min-height:44px;padding:8px 14px;font-size:.9rem}
+.g-fine{font-size:.74rem;color:var(--muted)}
+.g-ok{display:flex;gap:8px;align-items:center;font-weight:600;font-size:.9rem;margin-top:6px;animation:rise .4s both}
+.g-ok svg{width:22px;height:22px;flex:none;color:var(--on-accent);background:var(--accent);border-radius:50%;padding:3px;animation:pop .5s cubic-bezier(.34,1.56,.64,1) both}
+
+/* hero 'Now' line */
+.now{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;font-size:.92rem;color:var(--muted);margin-top:2px}
+.now b{color:var(--ink);font:600 .7rem var(--f-sans);letter-spacing:.14em;text-transform:uppercase}
+.now a{color:var(--accent-ink);font-weight:600;text-underline-offset:3px}
+.ping{position:relative;width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none}
+.ping::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:ping 2.2s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{75%,100%{transform:scale(2.6);opacity:0}}
+
+/* reader note link, blog counts, what's inside */
+.note-btn{justify-self:center;color:var(--accent);font-weight:600;font-size:.9rem;text-underline-offset:3px}
+.chip .n{font-variant-numeric:tabular-nums;opacity:.65;margin-inline-start:4px}
+.inside-lbl{font:600 .72rem var(--f-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.inside{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:n;max-width:520px}
+.inside li{counter-increment:n;display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:center;font:400 1.02rem/1.4 var(--f-serif)}
+.inside li::before{content:counter(n);width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--on-accent);font:600 .8rem/26px var(--f-sans);text-align:center}
+
+/* gentle entrances */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .sec-head,.guide{animation:fadeup linear both;animation-timeline:view();animation-range:entry 0% entry 65%}
+    @keyframes fadeup{from{opacity:.35;translate:0 18px}to{opacity:1;translate:0 0}}
+  }
+}
 
 /* shorts */
 .ar-pill{display:inline-flex;gap:6px;align-items:center;font:600 .78rem var(--f-sans);background:var(--tint);color:var(--accent-ink);border-radius:999px;padding:4px 12px;width:max-content}
@@ -549,6 +611,36 @@ main section[id]{scroll-margin-top:52px}
 .toast{position:fixed;z-index:96;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));translate:-50% 20px;opacity:0;pointer-events:none;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:14px;font-weight:600;font-size:.92rem;box-shadow:var(--shadow);width:max-content;max-width:calc(100vw - 32px);text-align:center;transition:opacity .3s,translate .3s}
 .toast.show{opacity:1;translate:-50% 0}
 
+/* dialogs use the visible screen height on phones */
+.docdlg,.origdlg{max-height:calc(100dvh - 32px)}
+.dd{max-height:calc(100dvh - 32px)}
+.origdlg .ob{max-height:calc(100dvh - 110px)}
+.v-frame{max-height:62dvh}
+
+/* phones: 44px tap targets, readable small labels, no iOS zoom on inputs */
+@media (max-width:760px), (pointer:coarse){
+  .logo,.back,.link,.note-btn,.foot nav a{display:inline-flex;align-items:center;min-height:44px}
+  .now a,.linkish{padding-block:12px}
+  .verify,.find-tabs button,.phase button,.chip,.path,.opt,.see-all{min-height:44px}
+  .opt{padding:8px 14px}
+  .soc{gap:4px}
+  .soc a{display:inline-grid;place-items:center;min-width:44px;min-height:44px}
+  .foot nav{gap:0 8px}
+  .foot nav a{padding-inline:6px}
+  .pc a.title{min-height:44px}
+  .faq .new-q{font-size:12px}
+}
+@media (max-width:370px){
+  .tool .lbl{display:none}
+  .tool .in{gap:8px}
+  .pals{gap:2px}
+  .pc a.title{display:block;padding-block:4px}
+  .k,.g-meta,.labels,.ex,.op-lbl,.pin,.g-free,.stock,.inside-lbl,.portrait figcaption small,.res .k,.post .k,.pc .k,.tl-card .w,.rv-t{font-size:12px}
+  .spot .cnt{min-width:21px;height:21px;font-size:12px;line-height:21px}
+  .g-row input,.nl input{font-size:16px}
+  .foot .in{padding-bottom:calc(34px + 76px)}
+}
+
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -613,6 +705,7 @@ main section[id]{scroll-margin-top:52px}
           <li><b>“2 introductions sold”</b> shows a small number to everyone. It's replaced by the donation tracker and the “Verified by AUBMC” button. <a href="#book-sec">See it</a></li>
           <li><b>Check the “Only 2 left” and “Only 3 left” badges</b> in the shop are real stock limits.</li>
         </ol>
+        <p><b style="color:var(--ink)">Ideas from other sites:</b> from James Clear, free bonuses became the <a href="#guides">Free guides</a> section, and the book page got a numbered “What’s inside”. From hadichebbo.com: the “Now” line with a pulsing dot, counts on the blog tabs, a “Leave a note” button for reader quotes, and gentle fade-ups as sections appear. tim.blog blocks automated visits, so it wasn’t checked.</p>
         <p><b style="color:var(--ink)">Wording:</b> each idea is said once. The buy button says “Get your copy — $9.99” (not “Donate”: people are buying a book, and only net profits go to AUBMC). Other buttons use different verbs: Read my story, Watch the videos, Preview the first page, Keep reading.</p>
         <p><b style="color:var(--ink)">Colors:</b> try the four dots at the top. “Site now” keeps the green book cover standing out best; “Cover sage” makes it blend in.</p>
       </div>
@@ -623,7 +716,7 @@ main section[id]{scroll-margin-top:52px}
   <section id="hero" class="hero gut" aria-labelledby="h-hero">
     <div class="in">
       <div class="txt">
-        <aside class="rv" aria-label="Review note: Hero"><div class="rv-h"><span class="chip fix">Fix first</span><span class="rv-t">Review · Hero</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_hero.webp" aria-label="See the original Hero section"><img src="img/orig_hero.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the photo box shows only the logo, 450px of empty space on a phone. “1 life, rebuilt” says less than it could.</p><p><b>Now:</b> your photo, a label naming the book instead of your name twice, “11 years on dialysis”, and numbers that count up.</p></div></div></aside>
+        <aside class="rv" aria-label="Review note: Hero"><div class="rv-h"><span class="chip fix">Fix first</span><span class="rv-t">Review · Hero</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_hero.webp" aria-label="See the original Hero section"><img src="img/orig_hero.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the photo box shows only the logo, 450px of empty space on a phone. “1 life, rebuilt” says less than it could.</p><p><b>Now:</b> your photo, a label naming the book instead of your name twice, “11 years on dialysis”, numbers that count up, and a “Now” line with a pulsing dot (idea from hadichebbo.com).</p></div></div></aside>
         <p class="eyebrow line"><span>Author of <i>Beyond the Body, Beyond the Pain</i></span></p>
         <h1 id="h-hero">I'm Omar Chebbo.</h1>
         <p>I'm a transplant survivor, and I write about what all of it taught me. My memoir is the first thing I'm sharing.</p>
@@ -636,6 +729,7 @@ main section[id]{scroll-margin-top:52px}
           <div><b data-to="11">11</b><span>years on dialysis</span></div>
           <div><b data-to="26" data-suf="+">26+</b><span>years of the journey</span></div>
         </div>
+        <p class="now"><span class="ping" aria-hidden="true"></span><b>Now</b> The full memoir is on its way. <a href="#shop">Pre-order the ebook</a></p>
       </div>
       <figure class="portrait" style="margin:0">
         <img src="img/grad.webp" alt="Omar in a graduation cap and gown">
@@ -649,7 +743,7 @@ main section[id]{scroll-margin-top:52px}
   <section class="band book on-band gut" aria-labelledby="h-book" id="book-sec">
     <div class="in">
       <div class="book-head">
-        <aside class="rv" aria-label="Review note: Book"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Book</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_book.webp" aria-label="See the original Book section"><img src="img/orig_book.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the buy button sits at the bottom of a 1,430px section, the pills look like buttons, “2 introductions sold” sits underneath, and reader reviews show test text.</p><p><b>Now:</b> title first, then the cover, then the text. Heartbeat “Get your copy — $9.99” button after the first paragraph, “Preview the first page”, plain labels, donation tracker with the “Verified by AUBMC” badge (opens the previous donation’s signed document), and a hidden slot for real reader quotes. A buy bar slides up once you scroll past.</p></div></div></aside>
+        <aside class="rv" aria-label="Review note: Book"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Book</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_book.webp" aria-label="See the original Book section"><img src="img/orig_book.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the buy button sits at the bottom of a 1,430px section, the pills look like buttons, “2 introductions sold” sits underneath, and reader reviews show test text.</p><p><b>Now:</b> title first, then the cover, then the text. Heartbeat “Get your copy — $9.99” button after the first paragraph, “Preview the first page”, plain labels, donation tracker with the “Verified by AUBMC” badge (opens the previous donation’s signed document), and a slot for real reader quotes with a “Leave a note” button (idea from hadichebbo.com). A buy bar slides up once you scroll past.</p></div></div></aside>
         <p class="eyebrow">Phase one of the memoir</p>
         <h2 id="h-book">Start with the introduction. It pays for dialysis.</h2>
       </div>
@@ -683,7 +777,7 @@ main section[id]{scroll-margin-top:52px}
           <button type="button" class="verify" data-doc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><span>Verified by AUBMC · <u>See the document</u></span></button>
         </div>
         <blockquote class="about-book">This isn’t a survival story that asks for your pity. It dares you to laugh in the waiting room. Panic attacks and paragliding, catheters and prayer. It’s honest about the body’s betrayals and never lets illness have the final word.</blockquote>
-        <div class="quotes-slot"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><p>Reader quotes appear here once there are three real ones, with first name and city.</p></div>
+        <div class="quotes-slot"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><p>Reader quotes appear here once there are three real ones, with first name and city.</p><a class="note-btn" href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Read it? Leave a note →</a></div>
       </div>
     </div>
   </section>
@@ -740,7 +834,7 @@ main section[id]{scroll-margin-top:52px}
   <section id="start" class="sec sand gut" aria-labelledby="h-start">
     <div class="in">
       <div class="sec-head">
-        <aside class="rv" aria-label="Review note: Start here"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Start here</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> the body map from the demo, linked to your real posts and shorts, plus a “Your situation” tab. Someone mid-diagnosis finds the right thing in one tap.</p></div></div></aside>
+        <aside class="rv" aria-label="Review note: Start here"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Start here</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> the body map from the demo, linked to your real posts and shorts, plus a “Your situation” tab. Each character shows how many items it has. The panel shows the top 3 (your pick first, marked “Start with this”), and “See all” opens the rest. On the live site, tag each video, post and guide with an organ in Sanity so the map fills itself.</p></div></div></aside>
         <p class="eyebrow">Start here</p>
         <h2 id="h-start">Find what you need</h2>
         <p>Tap a part of the body, or tell me where you are right now. You'll get the posts and one-minute shorts that help most.</p>
@@ -777,6 +871,25 @@ main section[id]{scroll-margin-top:52px}
     </div>
   </section>
 
+  <!-- free guides -->
+  <section id="guides" class="sec gut" aria-labelledby="h-guides">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: Free guides"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Free guides</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> your two PDFs as lead magnets. Today: email to get them. Later: a plain download. Use the switch above the cards to compare. The two guides your blood-test PDF promises as coming next have “Tell me when it’s out” cards. The body map links each organ to its guide. Idea from James Clear’s free bonuses.</p></div></div></aside>
+        <p class="eyebrow">Free guides</p>
+        <h2 id="h-guides">Guides I wish I'd had</h2>
+        <p>Plain PDFs about the lab sheet, written from the patient's chair. Free.</p>
+      </div>
+      <div class="phase" role="group" aria-label="How the guides are offered"><span>Prototype, show the guides as:</span><button type="button" data-phase="email" aria-pressed="true">Free with email</button><button type="button" data-phase="open" aria-pressed="false">Free download</button></div>
+      <div class="guides" id="guideRow">
+        <article class="guide" id="guide-blood"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_blood.webp" alt="Cover of Your blood tests, decoded" loading="lazy"></div><div class="g-b"><p class="g-meta">PDF · 11 pages · Arabic + English</p><h3>Your blood tests, decoded</h3><p class="g-ar" lang="ar" dir="rtl">تحاليلك مشروحة</p><p class="g-d">A plain guide for kidney patients, people on dialysis and life after a transplant.</p><button type="button" class="btn gold g-get">Get it free</button><form class="g-form" hidden novalidate><label for="ge-blood">Where should I send it?</label><div class="g-row"><input id="ge-blood" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Send it</button></div><p class="g-fine">You’ll also get my monthly letter. Unsubscribe any time.</p></form></div></article>
+        <article class="guide" id="guide-aftertx"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_aftertx.webp" alt="Cover of Your tests after the transplant, without panic" loading="lazy"></div><div class="g-b"><p class="g-meta">PDF · 22 pages · Arabic</p><h3>Your tests after the transplant, without panic</h3><p class="g-ar" lang="ar" dir="rtl">تحاليلك بعد الزراعة… بلا هلع</p><p class="g-d">What each line on the lab sheet measures, why your team asks for it, and when to call them today.</p><button type="button" class="btn gold g-get">Get it free</button><form class="g-form" hidden novalidate><label for="ge-aftertx">Where should I send it?</label><div class="g-row"><input id="ge-aftertx" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Send it</button></div><p class="g-fine">You’ll also get my monthly letter. Unsubscribe any time.</p></form></div></article>
+        <article class="guide soon" id="guide-pre"><div class="g-cover"><div class="soon-doc">Coming soon</div></div><div class="g-b"><p class="g-meta">PDF · Arabic</p><h3>Tests before a transplant</h3><p class="g-ar" lang="ar" dir="rtl">دليل تحاليل ما قبل الزراعة</p><button type="button" class="btn ghost g-get">Tell me when it’s out</button><form class="g-form" hidden novalidate><label for="ge-pre">Your email</label><div class="g-row"><input id="ge-pre" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Notify me</button></div></form></div></article>
+        <article class="guide soon" id="guide-dial"><div class="g-cover"><div class="soon-doc">Coming soon</div></div><div class="g-b"><p class="g-meta">PDF · Arabic</p><h3>Tests on dialysis and kidney failure</h3><p class="g-ar" lang="ar" dir="rtl">دليل تحاليل الغسيل والفشل الكلوي</p><button type="button" class="btn ghost g-get">Tell me when it’s out</button><form class="g-form" hidden novalidate><label for="ge-dial">Your email</label><div class="g-row"><input id="ge-dial" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Notify me</button></div></form></div></article>
+      </div>
+    </div>
+  </section>
+
   <!-- shorts -->
   <section class="sec gut" aria-labelledby="h-shorts" id="shorts">
     <div class="in">
@@ -796,14 +909,14 @@ main section[id]{scroll-margin-top:52px}
   <section id="blog" class="sec sand gut" aria-labelledby="h-blog">
     <div class="in">
       <div class="sec-head">
-        <aside class="rv" aria-label="Review note: Blog"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · Blog</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_blog.webp" aria-label="See the original Blog section"><img src="img/orig_blog.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> two posts share the same arm photo, “Mental health” has no posts, there is no “All posts” link, and each card is 420px tall.</p><p><b>Now:</b> compact rows, a photo per post, the empty topic hidden, and “All posts →”.</p></div></div></aside>
+        <aside class="rv" aria-label="Review note: Blog"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · Blog</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_blog.webp" aria-label="See the original Blog section"><img src="img/orig_blog.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> two posts share the same arm photo, “Mental health” has no posts, there is no “All posts” link, and each card is 420px tall.</p><p><b>Now:</b> compact rows, a photo per post, the empty topic hidden, counts on the topic tabs, and “All posts →”.</p></div></div></aside>
         <p class="eyebrow">The blog</p>
         <h2 id="h-blog">Stories by topic</h2>
       </div>
       <div class="chips" role="group" aria-label="Topics" id="chips">
-        <button type="button" class="chip" data-topic="all" aria-pressed="true">All topics</button>
-        <button type="button" class="chip" data-topic="Dialysis" aria-pressed="false">Dialysis</button>
-        <button type="button" class="chip" data-topic="Kidney transplant" aria-pressed="false">Kidney transplant</button>
+        <button type="button" class="chip" data-topic="all" aria-pressed="true">All topics<span class="n">3</span></button>
+        <button type="button" class="chip" data-topic="Dialysis" aria-pressed="false">Dialysis<span class="n">1</span></button>
+        <button type="button" class="chip" data-topic="Kidney transplant" aria-pressed="false">Kidney transplant<span class="n">2</span></button>
       </div>
       <div class="posts" id="posts"></div>
       <div class="row-foot"><span></span><a class="link" href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">All posts →</a></div>
@@ -909,11 +1022,13 @@ main section[id]{scroll-margin-top:52px}
       <div class="main">
         <div class="cover-col"><div class="cover"><img src="img/cover.webp" alt="Beyond the Body, Beyond the Pain: cover shaped like an IV bag"><span class="drop" aria-hidden="true"></span></div></div>
         <div class="pp-txt">
-          <aside class="rv" aria-label="Review note: Book page"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Book page</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_product.webp" aria-label="See the original Book page section"><img src="img/orig_product.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> a quantity picker for a download, only “Add to cart”, no preview, and no proof of the donation.</p><p><b>Now:</b> “Buy now” and “Add to cart”, no quantity picker, the first page, the donation box and the “Verified by AUBMC” button.</p></div></div></aside>
+          <aside class="rv" aria-label="Review note: Book page"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Book page</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_product.webp" aria-label="See the original Book page section"><img src="img/orig_product.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> a quantity picker for a download, only “Add to cart”, no preview, and no proof of the donation.</p><p><b>Now:</b> “Buy now” and “Add to cart”, no quantity picker, a numbered “What’s inside” list (idea from James Clear’s book page), the first page, the donation box and the “Verified by AUBMC” button.</p></div></div></aside>
           <p class="kind">Digital · PDF + EPUB · Read in one sitting</p>
           <h1 id="h-pp">The Introduction</h1>
           <p class="price">$9.99</p>
-          <p class="desc">Before the full memoir, this is its introduction: the pages where the story starts. The diagnosis, the first night on the machine, and the sentence I have never been able to shake. All net profits go to dialysis care at AUBMC in Beirut.</p>
+          <p class="desc">Before the full memoir, this is its introduction: the pages where the story starts.</p>
+          <p class="inside-lbl">What’s inside</p>
+          <ol class="inside"><li>The diagnosis</li><li>The first night on the machine</li><li>The sentence I have never been able to shake</li></ol>
           <div class="btns">
             <div class="buy-wrap" data-wrap><button type="button" class="btn gold buy" data-buy="intro" id="ppBuy"><span class="fill" aria-hidden="true"></span><span data-lbl>Buy now — $9.99</span></button></div>
             <button type="button" class="btn ghost" data-add="intro">Add to cart</button>
@@ -1297,14 +1412,19 @@ main section[id]{scroll-margin-top:52px}
   renderPath('dialysis', false);
 
   /* ---------- body map ---------- */
+  const GUIDES = {
+    blood:{ t:'Your blood tests, decoded', lang:'Arabic + English', pages:11, img:'img/g_blood.webp' },
+    aftertx:{ t:'Your tests after the transplant, without panic', lang:'Arabic', pages:22, img:'img/g_aftertx.webp' }
+  };
+  // order = priority: the first item is Omar's pick ("Start with this"), then newest
   const ORG = [
     { id:'heart', img:'img/c_heart.webp', x:182, y:158, name:'Heart', line:'When the kidneys fail, blood pressure climbs and the heart works harder.', items:[['short','B-j5cWnZqXk']] },
     { id:'liver', img:'img/c_liver.webp', x:122, y:196, name:'Liver', line:'Part of my dad lives here.', items:[['jump','journey','My dad’s liver, 2006','On the story timeline','img/c_liver.webp'],['book']] },
-    { id:'blood', img:'img/c_blood.webp', x:248, y:236, name:'Blood', line:'Kidney failure can cause anaemia: tired all the time. The blood tests show it.', items:[['short','5RakZHTbcyQ'],['short','zb6Vq_n_C5Y']] },
-    { id:'old', img:'img/c_aunties.webp', x:192, y:250, name:'The old kidneys', line:'They stopped working, but they usually stay inside.', items:[['short','PTUwq1ccVtg'],['short','BNJ9uaHtDHc'],['short','W5ovK3p3h3k']] },
-    { id:'new', img:'img/c_newkidney.webp', x:122, y:290, name:'The new kidney', line:'With me since June 2024. It sits low in the belly, at the front.', items:[['post','flu'],['short','v2h9cYjvZ0o'],['short','va0NczrZHpM'],['short','d6wlG8gAL9g']] },
+    { id:'blood', img:'img/c_blood.webp', x:248, y:236, name:'Blood', line:'Kidney failure can cause anaemia: tired all the time. The blood tests show it.', items:[['guide','blood'],['short','5RakZHTbcyQ'],['short','zb6Vq_n_C5Y']] },
+    { id:'old', img:'img/c_aunties.webp', x:192, y:250, name:'The old kidneys', line:'They stopped working, but they usually stay inside.', items:[['short','PTUwq1ccVtg'],['short','BNJ9uaHtDHc'],['short','W5ovK3p3h3k'],['guide','blood']] },
+    { id:'new', img:'img/c_newkidney.webp', x:122, y:290, name:'The new kidney', line:'With me since June 2024. It sits low in the belly, at the front.', items:[['guide','aftertx'],['post','flu'],['short','v2h9cYjvZ0o'],['short','va0NczrZHpM'],['short','d6wlG8gAL9g']] },
     { id:'bladder', img:'img/c_bladder.webp', x:168, y:332, name:'Bladder', line:'Empty for years on dialysis. After the transplant, back to work.', items:[['short','91pSb0SKX84'],['short','v2h9cYjvZ0o']] },
-    { id:'machine', img:'img/c_machine.webp', x:34, y:430, name:'Dialysis and the fistula', line:'Outside the body, connected through the fistula in my right arm. Three sessions a week, four hours each.', items:[['post','what'],['post','rm'],['short','khkno5zf6rg'],['short','sUrhS0oa5J0']] }
+    { id:'machine', img:'img/c_machine.webp', x:34, y:430, name:'Dialysis and the fistula', line:'Outside the body, connected through the fistula in my right arm. Three sessions a week, four hours each.', items:[['post','what'],['short','khkno5zf6rg'],['short','sUrhS0oa5J0'],['post','rm'],['guide','blood']] }
   ];
   const fig = $('#figure'), opanel = $('#organPanel');
   let curOrg = 'new';
@@ -1312,14 +1432,15 @@ main section[id]{scroll-margin-top:52px}
     const d = animate ? ' style="animation-delay:' + (i * .05) + 's"' : ' style="animation:none"';
     if (t === 'post'){ const x = POSTS[id]; return '<a class="res" href="https://stg.omarchebbo.com' + x.url + '" target="_blank" rel="noopener"' + d + '><img src="' + x.img + '" alt=""><span><span class="k">Post · ' + x.k + '</span><span class="h" style="display:block">' + x.t + '</span><span class="s">' + x.d + '</span></span>' + arrow + '</a>'; }
     if (t === 'short'){ const x = shortById(id); return '<button type="button" class="res" data-short="' + id + '"' + d + '><img src="' + x.img + '" alt=""><span><span class="k">Short · 1 min · Arabic</span><span class="h" style="display:block;direction:rtl;text-align:right">' + x.ar + '</span><span class="s">' + x.en + '</span></span>' + arrow + '</button>'; }
+    if (t === 'guide'){ const g = GUIDES[id]; return '<a class="res" href="#guides" data-guide-jump="' + id + '"' + d + '><img src="' + g.img + '" alt="" style="object-position:50% 0"><span><span class="k">Free guide · PDF</span><span class="h" style="display:block">' + g.t + '</span><span class="s">' + g.lang + ' · ' + g.pages + ' pages</span></span>' + arrow + '</a>'; }
     if (t === 'jump') return '<a class="res" href="#' + id + '"' + d + '><img src="' + extra[2] + '" alt=""><span><span class="k">' + extra[1] + '</span><span class="h" style="display:block">' + extra[0] + '</span></span>' + arrow + '</a>';
     return '<a class="res" href="#book"' + d + '><img src="img/cover.webp" alt="" style="object-position:50% 30%"><span><span class="k">Book · $9.99</span><span class="h" style="display:block">The Introduction</span><span class="s">The opening pages of my memoir.</span></span>' + arrow + '</a>';
   }
   ORG.forEach((o, i) => {
     const b = document.createElement('button');
     b.type = 'button'; b.className = 'spot'; b.style.left = (o.x / 320 * 100) + '%'; b.style.top = (o.y / 520 * 100) + '%';
-    b.style.setProperty('--i', i); b.setAttribute('aria-label', o.name);
-    b.innerHTML = '<img src="' + o.img + '" alt="">';
+    b.style.setProperty('--i', i); b.setAttribute('aria-label', o.name + ', ' + o.items.length + (o.items.length === 1 ? ' item' : ' items'));
+    b.innerHTML = '<img src="' + o.img + '" alt=""><span class="cnt" aria-hidden="true">' + o.items.length + '</span>';
     b.addEventListener('click', () => pickOrgan(o.id, true));
     fig.appendChild(b); o.btn = b;
   });
@@ -1327,8 +1448,20 @@ main section[id]{scroll-margin-top:52px}
     curOrg = id; const o = ORG.find(x => x.id === id), anim = user && !reduce;
     if (user) fig.classList.add('touched');
     ORG.forEach(x => { x.btn.classList.toggle('on', x.id === id); x.btn.setAttribute('aria-pressed', x.id === id); });
-    opanel.innerHTML = '<div class="op-head"><img src="' + o.img + '" alt=""><h3>' + o.name + '</h3></div><p class="op-line">' + o.line + '</p><p class="op-lbl">Read and watch</p>' +
-      '<div class="results">' + o.items.map((it, i) => resHTML(it[0], it[1], i, anim, it.slice(2))).join('') + '</div>';
+    const TOP = 3, rows = o.items.map((it, i) => {
+      let h = resHTML(it[0], it[1], i % TOP, anim || i >= TOP, it.slice(2));
+      if (i === 0 && o.items.length > 1) h = h.replace('<span class="k">', '<span class="pin">Start with this</span><span class="k">');
+      return h;
+    });
+    const chev = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+    opanel.innerHTML = '<div class="op-head"><img src="' + o.img + '" alt=""><h3>' + o.name + '</h3></div><p class="op-line">' + o.line + '</p><p class="op-lbl">Read and watch · ' + o.items.length + '</p>' +
+      '<div class="results">' + rows.slice(0, TOP).join('') + '</div>' +
+      (rows.length > TOP ? '<div class="results more" id="orgMore" hidden>' + rows.slice(TOP).join('') + '</div><button type="button" class="see-all" aria-expanded="false" aria-controls="orgMore">See all ' + rows.length + chev + '</button>' : '');
+    const sa = $('.see-all', opanel);
+    if (sa) sa.addEventListener('click', () => {
+      const more = $('#orgMore'), open = more.hidden; more.hidden = !open; sa.setAttribute('aria-expanded', open);
+      sa.firstChild.textContent = open ? 'Show fewer' : 'See all ' + rows.length;
+    });
     $$('[data-short]', opanel).forEach(b => b.addEventListener('click', () => openViewer(SH.findIndex(s => s.id === b.dataset.short))));
     if (anim){ opanel.classList.remove('swap'); void opanel.offsetWidth; opanel.classList.add('swap'); }
     if (user){ const r = opanel.getBoundingClientRect(); if (r.top > innerHeight - 140) opanel.scrollIntoView({ behavior:'smooth', block:'nearest' }); }
@@ -1407,6 +1540,35 @@ main section[id]{scroll-margin-top:52px}
     const first = $('[data-ba]'); if (first.getBoundingClientRect().top > innerHeight) io.observe(first);
     $$('[data-money]').forEach(m => { if (m.getBoundingClientRect().top > innerHeight) io.observe(m); });
   }
+
+  /* ---------- free guides ---------- */
+  const OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  let phase = 'email';
+  const getLabel = b => b.closest('.soon') ? 'Tell me when it’s out' : (phase === 'open' ? 'Download PDF' : 'Get it free');
+  $$('[data-phase]').forEach(b => b.addEventListener('click', () => {
+    phase = b.dataset.phase;
+    $$('[data-phase]').forEach(x => x.setAttribute('aria-pressed', x === b));
+    $$('.guide:not(.soon)').forEach(c => { const f = $('.g-form', c), g = $('.g-get', c); if (f) f.hidden = true; if (g) { g.hidden = false; g.textContent = getLabel(g); } });
+  }));
+  $$('.g-get').forEach(b => b.addEventListener('click', () => {
+    const card = b.closest('.guide');
+    if (phase === 'open' && !card.classList.contains('soon')) { toast('On the live site, the PDF downloads here.'); return; }
+    const f = $('.g-form', card); f.hidden = false; b.hidden = true; $('input', f).focus();
+  }));
+  $$('.g-form').forEach(f => f.addEventListener('submit', e => {
+    e.preventDefault(); const em = $('input', f);
+    if (!em.value || !em.checkValidity()) { toast('Enter an email like name@example.com'); em.focus(); return; }
+    const ok = document.createElement('p'); ok.className = 'g-ok'; ok.innerHTML = OK;
+    ok.append(f.closest('.soon') ? 'Done. I’ll email you when it’s out.' : 'Sent. Check your inbox.');
+    f.replaceWith(ok);
+  }));
+  opanel.addEventListener('click', e => {
+    const a = e.target.closest('[data-guide-jump]'); if (!a) return;
+    e.preventDefault();
+    const card = document.getElementById('guide-' + a.dataset.guideJump);
+    $('#guides').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block:'start' });
+    setTimeout(() => { card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block:'nearest', inline:'center' }); card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash'); }, reduce ? 0 : 450);
+  });
 
   /* ---------- signed donation document ---------- */
   const docDlg = $('#docDlg');
