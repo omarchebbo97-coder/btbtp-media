@@ -506,6 +506,9 @@ main section[id]{scroll-margin-top:52px}
 .spin{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;display:inline-block;margin-inline-end:8px;animation:spin .8s linear infinite;vertical-align:-3px}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* AUBMC document not ready yet: badge and links hidden until it is */
+.doc-pending [data-doc],.doc-pending #coDoc{display:none!important}
+
 /* shorts */
 .ar-pill{display:inline-flex;gap:6px;align-items:center;font:600 .78rem var(--f-sans);background:var(--tint);color:var(--accent-ink);border-radius:999px;padding:4px 12px;width:max-content}
 .row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,170px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin;overscroll-behavior-x:contain}
@@ -807,7 +810,7 @@ main section[id]{scroll-margin-top:52px}
           <li><b>Test content is showing</b>: reader reviews say “test 11” and “test 12”, and the gallery has “Test Gallery Item on Staging”.</li>
           <li><b>The donation wording has three versions</b>: “all net profits after costs” (homepage), “100% of proceeds” (book page), “Every dollar donated” (shop). Pick one.</li>
           <li><b>“2 introductions sold”</b> shows a small number to everyone. It's replaced by the donation tracker and the “Verified by AUBMC” button. <a href="#book-sec">See it</a></li>
-          <li><b>Check the “Only 2 left” and “Only 3 left” badges</b> in the shop are real stock limits.</li>
+          <li><b>Remove the “Only 2 left” and “Only 3 left” badges</b> from the shop (confirmed by Omar).</li>
         </ol>
         <p><b style="color:var(--ink)">Ideas from other sites:</b> from James Clear, free bonuses became the <a href="#guides">Free guides</a> section, and the book page got a numbered “What’s inside”. From hadichebbo.com: the “Now” line with a pulsing dot, counts on the blog tabs, a “Leave a note” button for reader quotes, and gentle fade-ups as sections appear. tim.blog blocks automated visits, so it wasn’t checked.</p>
         <p><b style="color:var(--ink)">From the design galleries:</b> a news strip above the header, a full-screen phone menu with the current page marked, free guides you can add in the cart, and the shop changes.</p>
@@ -877,7 +880,7 @@ main section[id]{scroll-margin-top:52px}
           <p class="amount">$350<small>raised of $1,000</small></p>
           <div class="bar" role="img" aria-label="Example: 35% of the goal raised"><i style="--w:35%"></i></div>
           <p>All net profits go to the dialysis unit at AUBMC in Beirut, the place that held my life for years, after basic creation and processing costs.</p>
-          <p class="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>I’ve already made a first donation, and the hospital signed a document confirming it.</span></p>
+          <p class="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>I’ve already made a first donation. The hospital’s signed confirmation will be shown here soon.</span></p>
           <button type="button" class="verify" data-doc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><span>Verified by AUBMC · <u>See the document</u></span></button>
         </div>
         <blockquote class="about-book">This isn’t a survival story that asks for your pity. It dares you to laugh in the waiting room. Panic attacks and paragliding, catheters and prayer. It’s honest about the body’s betrayals and never lets illness have the final word.</blockquote>
@@ -1083,9 +1086,9 @@ main section[id]{scroll-margin-top:52px}
         <details><summary>Is this book medical advice?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">No. I'm not a doctor or therapist. The book shares my lived experience and practical field notes. Always talk to your own care team before acting on anything you read here.</p></details>
         <details><summary>Who is this book for?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Patients on dialysis or awaiting transplant, recipients rebuilding their lives, the caregivers beside them, and anyone who loves an honest memoir about survival and identity.</p></details>
         <details><summary>Do I need medical knowledge to follow it?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Not at all. The story carries you; medical moments are explained in plain words, as I understood them from the patient's chair.</p></details>
-        <details><summary><span>How do I get the book after paying?<span class="new-q">New</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">The introduction is a download: you get it as a PDF and an EPUB right after payment. There's no shipping.</p></details>
+        <details><summary><span>How do I get the book after paying?<span class="new-q">New</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">By email, right after payment: you get the introduction as a PDF and an EPUB. All sales are final.</p></details>
         <details><summary><span>Which cards work from Lebanon?<span class="new-q">New</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a"><span class="todo">Omar to confirm</span> List the payment methods checkout accepts, and whether Lebanese bank cards work.</p></details>
-        <details><summary><span>How do I know the money reaches AUBMC?<span class="new-q">New</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">I've already made the first donation to the AUBMC dialysis unit, and the people involved at the hospital signed a document confirming it. <button type="button" class="linkish" data-doc>See the signed document</button>. Each new donation will be added the same way.</p></details>
+        <details><summary><span>How do I know the money reaches AUBMC?<span class="new-q">New</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">I've already made the first donation to the AUBMC dialysis unit. The hospital's signed confirmation will be published here, and each new donation will be added the same way. <button type="button" class="linkish" data-doc>See the signed document</button></p></details>
         <details><summary>Can I invite Omar to speak or interview?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Sure! Use the contact page and tell me about your event, podcast or publication. I read everything personally.</p></details>
       </div>
     </div>
@@ -1138,7 +1141,7 @@ main section[id]{scroll-margin-top:52px}
             <div class="buy-wrap" data-wrap><button type="button" class="btn gold buy" data-buy="intro" id="ppBuy"><span class="fill" aria-hidden="true"></span><span data-lbl>Buy now — $9.99</span></button></div>
             <button type="button" class="btn ghost" data-add="intro">Add to cart</button>
           </div>
-          <p class="meta">Delivered as a download right after payment. No shipping.</p>
+          <p class="meta">Sent to your email right after payment, as a PDF and an EPUB.</p>
           <button type="button" class="btn ghost sample" data-sample="fp2" aria-expanded="false" aria-controls="fp2" style="max-width:440px">Preview the first page
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="page" id="fp2" hidden style="max-width:520px">
@@ -1150,7 +1153,7 @@ main section[id]{scroll-margin-top:52px}
             <p class="amount">$350<small>raised of $1,000</small></p>
             <div class="bar" role="img" aria-label="Example: 35% of the goal raised"><i style="--w:35%"></i></div>
             <p>All net profits go to the dialysis unit at AUBMC in Beirut, after basic creation and processing costs.</p>
-            <p class="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>I’ve already made a first donation, and the hospital signed a document confirming it.</span></p>
+            <p class="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>I’ve already made a first donation. The hospital’s signed confirmation will be shown here soon.</span></p>
             <button type="button" class="verify" data-doc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><span>Verified by AUBMC · <u>See the document</u></span></button>
           </div>
           <div class="box"><h3>Good to know</h3><ul><li>Opens on any phone, tablet or computer.</li><li>One payment, yours to keep.</li><li>Not medical advice. Always consult your care team.</li></ul></div>
@@ -1178,8 +1181,8 @@ main section[id]{scroll-margin-top:52px}
       </div>
       <div class="grid-p" id="shopGrid"></div>
       <div class="know">
-        <div><h3>Delivery</h3><p>Digital books: a download link right after payment. Hardcover: <span class="todo">shipping time, Omar to confirm</span></p></div>
-        <div><h3>Refunds</h3><p><span class="todo">Refund policy, Omar to confirm</span></p></div>
+        <div><h3>Delivery</h3><p>Digital books arrive by email right after payment. Hardcover: delivery details by email after you order.</p></div>
+        <div><h3>Refunds</h3><p>All sales are final. Digital books can’t be refunded once they’re sent.</p></div>
         <div><h3>Where the money goes</h3><p>Net profits go to the dialysis unit at AUBMC in Beirut.</p><button type="button" class="verify" data-doc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><span>Verified by AUBMC · <u>See the document</u></span></button></div>
       </div>
     </div>
@@ -1294,8 +1297,8 @@ main section[id]{scroll-margin-top:52px}
   const P = {
     intro:{ title:'The Introduction', kind:'Digital', price:9.99, desc:'The opening pages of the memoir. PDF + EPUB, instant download.', digital:true, img:'img/p_intro.webp' },
     ebook:{ title:'Full Memoir — Ebook (Pre-order)', kind:'Digital', price:14.99, desc:'Reserve the complete ebook now, delivered on release.', digital:true, img:'img/p_ebook.webp' },
-    hard:{ title:'Beyond The Body, Beyond The Pain — Hardcover', kind:'Physical', price:24, desc:'The full memoir, hardcover.', opts:['Signed','Unsigned'], stock:'Only 2 left', img:'img/p_hard.webp' },
-    bundle:{ title:'The Introduction + Signed Hardcover', kind:'Physical', price:30, was:33.99, desc:'Read it today, then hold the finished book, signed.', stock:'Only 3 left', img:'img/p_bundle.webp' },
+    hard:{ title:'Beyond The Body, Beyond The Pain — Hardcover', kind:'Physical', price:24, desc:'The full memoir, hardcover.', opts:['Signed','Unsigned'], img:'img/p_hard.webp' },
+    bundle:{ title:'The Introduction + Signed Hardcover', kind:'Physical', price:30, was:33.99, desc:'Read it today, then hold the finished book, signed.', img:'img/p_bundle.webp' },
     g_blood:{ title:'Your blood tests, decoded', kind:'Free guide', price:0, desc:'PDF · Arabic + English', digital:true, guide:true, img:'img/g_blood.webp' },
     g_aftertx:{ title:'Your tests after the transplant, without panic', kind:'Free guide', price:0, desc:'PDF · Arabic', digital:true, guide:true, img:'img/g_aftertx.webp' }
   };
@@ -1433,7 +1436,7 @@ main section[id]{scroll-margin-top:52px}
     wireFree(body);
     const t = totals();
     foot.innerHTML = '<div class="sub"><span>Subtotal</span><span>' + price(t.total) + '</span></div>' +
-      '<p>' + (t.phys ? 'Shipping is added at checkout. ' : '') + 'Digital books arrive by download right after payment.</p>' +
+      '<p>' + (t.phys ? 'Shipping is added at checkout. ' : '') + 'Digital books arrive by email right after payment.</p>' +
       '<button type="button" class="btn gold" id="checkout">Checkout</button>';
     $('#checkout').addEventListener('click', renderCheckout);
     $$('[data-q]', body).forEach(b => b.addEventListener('click', () => {
@@ -1452,6 +1455,7 @@ main section[id]{scroll-margin-top:52px}
       '<p class="tot"><span>Total</span><b>' + price(t.total) + '</b></p></div>' +
       '<form id="coForm" class="co-form" novalidate><label for="coEmail">Email for your receipt and download link</label>' +
       '<input id="coEmail" type="email" placeholder="your@email.com" autocomplete="email" required>' +
+      (t.total > 0 ? '<p class="co-note">Your books arrive by email right after payment. All sales are final, no refunds.</p>' : '') +
       (t.phys ? '<p class="co-note">Your shipping address is entered on the payment page.</p>' : '') +
       (t.total > 0 ? '<p class="co-note">' + LOCK + 'You finish paying on the secure payment page. Card details are never typed on this site.</p>' : '') + '</form>';
     foot.innerHTML = '<button type="submit" form="coForm" class="btn gold">' + (t.total > 0 ? 'Continue to payment — ' + money(t.total) : 'Send my free guides') + '</button><p>Prototype: no payment is taken.</p>';
@@ -1792,6 +1796,8 @@ main section[id]{scroll-margin-top:52px}
   });
 
   /* ---------- signed donation document ---------- */
+  const DOC_READY = false;   // set to true once the signed AUBMC document is added
+  document.body.classList.toggle('doc-pending', !DOC_READY);
   const docDlg = $('#docDlg');
   const openDoc = () => { if (docDlg.showModal) docDlg.showModal(); else docDlg.setAttribute('open', ''); };
   const closeDoc = () => { if (docDlg.close) docDlg.close(); else docDlg.removeAttribute('open'); };
