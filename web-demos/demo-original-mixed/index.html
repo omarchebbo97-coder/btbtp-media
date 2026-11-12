@@ -489,6 +489,21 @@ main section[id]{scroll-margin-top:52px}
 .know h3{font-size:1.05rem}
 .know p{color:var(--muted);font-size:.93rem}
 
+/* payment step */
+.pay-mail{font-size:.85rem;color:var(--muted)}
+.pay-mail span:last-child{color:var(--ink);font-weight:600;word-break:break-all;text-align:end}
+.pay-lbl{font:600 .74rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pay-methods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.pm{min-height:44px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;font-weight:600;font-size:.88rem;cursor:pointer;padding:6px}
+.pm[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.pay-panel{animation:rise .3s both}
+.fake-form{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ff{display:flex;align-items:center;min-height:48px;padding:0 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);color:var(--muted);font-size:.95rem}
+.ff.wide{grid-column:1/-1}
+.wallet{display:grid;place-items:center;min-height:52px;border-radius:12px;background:#111;color:#fff;font:600 1.05rem var(--f-sans)}
+.spin{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;display:inline-block;margin-inline-end:8px;animation:spin .8s linear infinite;vertical-align:-3px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
 /* shorts */
 .ar-pill{display:inline-flex;gap:6px;align-items:center;font:600 .78rem var(--f-sans);background:var(--tint);color:var(--accent-ink);border-radius:999px;padding:4px 12px;width:max-content}
 .row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,170px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin;overscroll-behavior-x:contain}
@@ -1427,7 +1442,7 @@ main section[id]{scroll-margin-top:52px}
     }));
     $$('[data-rm]', body).forEach(b => b.addEventListener('click', () => { cart = cart.filter(i => i.key !== b.dataset.rm); save(); updateCount(); renderCart(); }));
   }
-  function renderCheckout(){
+  function renderCheckout(prefill){
     setCartTitle('Checkout');
     const body = $('#cartBody'), foot = $('#cartFoot'), t = totals();
     body.innerHTML = '<button type="button" class="co-back" id="coBack">← Back to cart</button>' +
@@ -1439,11 +1454,43 @@ main section[id]{scroll-margin-top:52px}
       (t.phys ? '<p class="co-note">Your shipping address is entered on the payment page.</p>' : '') +
       (t.total > 0 ? '<p class="co-note">' + LOCK + 'You finish paying on the secure payment page. Card details are never typed on this site.</p>' : '') + '</form>';
     foot.innerHTML = '<button type="submit" form="coForm" class="btn gold">' + (t.total > 0 ? 'Continue to payment — ' + money(t.total) : 'Send my free guides') + '</button><p>Prototype: no payment is taken.</p>';
+    if (typeof prefill === 'string') $('#coEmail').value = prefill;
     $('#coBack').addEventListener('click', renderCart);
     $('#coForm').addEventListener('submit', e => {
       e.preventDefault(); const em = $('#coEmail');
       if (!em.value || !em.checkValidity()){ toast('Enter an email like name@example.com'); em.focus(); return; }
-      renderDone(em.value);
+      if (totals().total > 0) renderPayment(em.value); else renderDone(em.value);
+    });
+    $('#cartBody').scrollTop = 0;
+  }
+  function renderPayment(email){
+    setCartTitle('Payment');
+    const body = $('#cartBody'), foot = $('#cartFoot'), t = totals();
+    const METHODS = ['Card', 'Apple Pay', 'Google Pay'];
+    body.innerHTML = '<button type="button" class="co-back" id="payBack">← Back to details</button>' +
+      '<ol class="co-steps" aria-label="Checkout steps"><li class="done">Cart</li><li class="done">Details</li><li class="cur" aria-current="step">Payment</li></ol>' +
+      '<div class="co-sum"><p class="tot" style="border:0;padding:0"><span>Total</span><b>' + money(t.total) + '</b></p><p class="pay-mail"><span>Receipt to</span><span id="payMail"></span></p></div>' +
+      '<p class="pay-lbl">Pay with</p>' +
+      '<div class="pay-methods" role="group" aria-label="Pay with">' + METHODS.map((m, i) => '<button type="button" class="pm" data-pm="' + i + '" aria-pressed="' + (i === 0) + '">' + m + '</button>').join('') + '</div>' +
+      '<div class="pay-panel" id="payPanel"></div>' +
+      '<p class="co-note">' + LOCK + 'On the live site, this is your payment provider’s secure form. This demo doesn’t take card details.</p>';
+    $('#payMail').textContent = email;
+    const panel = $('#payPanel');
+    const showPm = i => {
+      $$('.pm', body).forEach(b => b.setAttribute('aria-pressed', +b.dataset.pm === i));
+      panel.innerHTML = i === 0
+        ? '<div class="fake-form" role="img" aria-label="Preview of the secure card form"><span class="ff wide">Card number</span><span class="ff">MM / YY</span><span class="ff">CVC</span><span class="ff wide">Name on card</span></div>'
+        : '<div class="wallet" role="img" aria-label="Preview of the ' + METHODS[i] + ' button">' + METHODS[i] + '</div>';
+      panel.style.animation = 'none'; void panel.offsetWidth; panel.style.animation = '';
+    };
+    showPm(0);
+    $$('.pm', body).forEach(b => b.addEventListener('click', () => showPm(+b.dataset.pm)));
+    foot.innerHTML = '<button type="button" class="btn gold" id="payBtn">Pay ' + money(t.total) + '</button><p>Prototype: no payment is taken.</p>';
+    $('#payBack').addEventListener('click', () => renderCheckout(email));
+    $('#payBtn').addEventListener('click', e => {
+      const b = e.currentTarget; if (b.disabled) return;
+      b.disabled = true; b.innerHTML = '<span class="spin" aria-hidden="true"></span>Processing…';
+      setTimeout(() => renderDone(email), reduce ? 0 : 1100);
     });
     $('#cartBody').scrollTop = 0;
   }
