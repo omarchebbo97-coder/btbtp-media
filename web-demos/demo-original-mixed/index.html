@@ -257,6 +257,7 @@ main section[id]{scroll-margin-top:calc(var(--stick,0px) + 10px)}
 .verify:hover svg{color:var(--on-accent);rotate:-12deg}
 .money .done{display:flex;gap:8px;align-items:flex-start;color:var(--on-band);font-size:.93rem;line-height:1.5}
 .money .done svg{width:18px;height:18px;flex:none;color:var(--accent);margin-top:2px}
+.money .done a{color:var(--accent);font-weight:600;text-underline-offset:3px;padding-block:10px}
 .linkish{border:0;background:none;padding:0;font:inherit;font-weight:600;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .docdlg{border:0;padding:0;width:min(560px,calc(100vw - 32px));max-height:calc(100vh - 32px);border-radius:20px;background:var(--paper);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35)}
 .docdlg::backdrop{background:rgba(20,18,16,.6)}
@@ -595,6 +596,22 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
 .tl-card{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
 .tl-card.has-img{grid-template-columns:84px minmax(0,1fr);gap:14px;align-items:center}
 .tl-card img{width:84px;height:84px;border-radius:10px;object-fit:cover}
+.tl-img{position:relative;display:block;width:84px;height:84px;padding:0;border:0;border-radius:10px;background:none;cursor:zoom-in}
+.tl-img img{display:block}
+.tl-zoom{position:absolute;right:4px;bottom:4px;width:24px;height:24px;border-radius:50%;background:rgba(20,16,14,.62);color:#fff;display:grid;place-items:center}
+.tl-zoom svg{width:13px;height:13px}
+.tldlg{border:0;padding:0;width:min(520px,calc(100vw - 32px));max-height:calc(100dvh - 32px);border-radius:18px;background:var(--paper);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:auto}
+.tldlg::backdrop{background:rgba(20,18,16,.78)}
+.tldlg[open]{animation:tlIn .25s cubic-bezier(.2,.7,.2,1)}
+@keyframes tlIn{from{opacity:0;scale:.96}}
+.tldlg .ti{display:block;width:100%;height:auto;max-height:68dvh;object-fit:contain;background:#14100e}
+.tldlg .cap{padding:14px 16px 18px;display:grid;gap:4px}
+.tldlg .cap .w{font:600 .74rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+.tldlg .cap h3{font-size:1.15rem}
+.tldlg .cap p:last-child{font-size:.95rem;color:var(--muted)}
+.tldlg .x{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(20,16,14,.62);color:#fff;display:grid;place-items:center;cursor:pointer}
+.tldlg .x svg{width:20px;height:20px}
+@media (prefers-reduced-motion: reduce){.tldlg[open]{animation:none}}
 .tl-card .w{font:600 .74rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
 .tl-card h3{font-size:1.08rem}
 .tl-card p{font-size:.92rem;color:var(--muted)}
@@ -934,7 +951,7 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
           <p class="amount">$350<small>raised of $1,000</small></p>
           <div class="bar" role="img" aria-label="Example: 35% of the goal raised"><i style="--w:35%"></i></div>
           <p>All net profits go to the dialysis unit at AUBMC in Beirut, the place that held my life for years, after basic creation and processing costs.</p>
-          <p class="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>I’ve already made a first donation. The hospital’s signed confirmation will be shown here soon.</span></p>
+          <p class="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>I’ve already made a first donation. <a href="#" data-donation-doc target="_blank" rel="noopener">See the hospital’s signed confirmation <span aria-hidden="true">↗</span><span class="sr-only"> (opens Google Drive in a new tab)</span></a></span></p>
           <button type="button" class="verify" data-doc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><span>Verified by AUBMC · <u>See the document</u></span></button>
         </div>
         <blockquote class="about-book">This isn’t a survival story that asks for your pity. It dares you to laugh in the waiting room. Panic attacks and paragliding, catheters and prayer. It’s honest about the body’s betrayals and never lets illness have the final word.</blockquote>
@@ -1142,7 +1159,7 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
         <details><summary>Do I need medical knowledge to follow it?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Not at all. The story carries you; medical moments are explained in plain words, as I understood them from the patient's chair.</p></details>
         <details><summary><span>How do I get the book after paying?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">The introduction comes by email right after payment, as a PDF. The full memoir comes out in June 2027: the ebook by email, the hardcover delivered free. All sales are final.</p></details>
         <details><summary><span>How do I pay?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">With Whish. At checkout you go to Whish to confirm the payment with your Whish account, then you come straight back here for your receipt.</p></details>
-        <details><summary><span>How do I know the money reaches AUBMC?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">I've already made the first donation to the AUBMC dialysis unit. The hospital's signed confirmation will be published here, and each new donation will be added the same way. <button type="button" class="linkish" data-doc>See the signed document</button></p></details>
+        <details><summary><span>How do I know the money reaches AUBMC?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">I've already made the first donation to the AUBMC dialysis unit. <a href="#" data-donation-doc target="_blank" rel="noopener">See the hospital's signed confirmation <span aria-hidden="true">↗</span><span class="sr-only"> (opens Google Drive in a new tab)</span></a>. Each new donation will be added the same way.</p></details>
         <details><summary>Can I invite Omar to speak or interview?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Sure! Write to me at <a href="mailto:hello@omarchebbo.com">hello@omarchebbo.com</a> or use the <a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">contact page ↗</a>, and tell me about your event, podcast or publication. I read everything personally.</p></details>
       </div>
     </div>
@@ -1208,7 +1225,7 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
             <p class="amount">$350<small>raised of $1,000</small></p>
             <div class="bar" role="img" aria-label="Example: 35% of the goal raised"><i style="--w:35%"></i></div>
             <p>All net profits go to the dialysis unit at AUBMC in Beirut, after basic creation and processing costs.</p>
-            <p class="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>I’ve already made a first donation. The hospital’s signed confirmation will be shown here soon.</span></p>
+            <p class="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>I’ve already made a first donation. <a href="#" data-donation-doc target="_blank" rel="noopener">See the hospital’s signed confirmation <span aria-hidden="true">↗</span><span class="sr-only"> (opens Google Drive in a new tab)</span></a></span></p>
             <button type="button" class="verify" data-doc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><span>Verified by AUBMC · <u>See the document</u></span></button>
           </div>
           <div class="box"><h3>Good to know</h3><ul><li>Opens on any phone, tablet or computer.</li><li>One payment, yours to keep.</li></ul></div>
@@ -1340,6 +1357,11 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
 <dialog class="origdlg" id="origDlg" aria-label="Original section">
   <div class="oh"><p>Original<small>stg.omarchebbo.com today, on a phone</small></p><button type="button" class="x" id="origX" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="ob"><img id="origImg" src="" alt=""></div>
+</dialog>
+<dialog class="tldlg" id="tlDlg" aria-labelledby="tlT">
+  <img class="ti" id="tlImg" src="" alt="">
+  <div class="cap"><p class="w" id="tlW"></p><h3 id="tlT"></h3><p id="tlP"></p></div>
+  <button type="button" class="x" id="tlX" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
 </dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -1933,6 +1955,13 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
 
   /* ---------- signed donation document ---------- */
   const DOC_READY = false;   // set to true once the signed AUBMC document is added
+  /* The hospital's signed confirmation: a one-page document on Omar's Google Drive.
+     Paste the share link here (Drive: Share > General access > Anyone with the link > Viewer). */
+  const DONATION_DOC_URL = '';
+  $$('[data-donation-doc]').forEach(a => {
+    if (DONATION_DOC_URL) a.href = DONATION_DOC_URL;
+    else a.addEventListener('click', e => { e.preventDefault(); toast('Demo: your Google Drive document opens here, in a new tab.'); });
+  });
   const DONATION = null;     // e.g. { raised:350, goal:1000 } once Omar sends real numbers; until then the bar is hidden
   document.body.classList.toggle('money-pending', !DONATION);
   document.body.classList.toggle('doc-pending', !DOC_READY);
@@ -1944,6 +1973,25 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
   docDlg.addEventListener('click', e => { if (e.target === docDlg) closeDoc(); });
 
   /* ---------- original screenshots ---------- */
+  /* ---------- timeline photos: open larger on tap ---------- */
+  const tlDlg = $('#tlDlg');
+  const ZOOM = '<span class="tl-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span>';
+  $$('.tl-card.has-img > img').forEach(img => {
+    const card = img.closest('.tl-card'), title = $('h3', card).textContent;
+    const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'tl-img'; btn.setAttribute('aria-label', 'Open photo: ' + title);
+    img.replaceWith(btn); btn.append(img); btn.insertAdjacentHTML('beforeend', ZOOM);
+    btn.addEventListener('click', () => {
+      const ps = $$('p', card);
+      $('#tlImg').src = img.src; $('#tlImg').alt = title;
+      $('#tlW').textContent = $('.w', card).textContent; $('#tlT').textContent = title; $('#tlP').textContent = ps[ps.length - 1].textContent;
+      if (tlDlg.showModal) tlDlg.showModal(); else tlDlg.setAttribute('open', '');
+      $('#tlX').focus();
+    });
+  });
+  const closeTl = () => { if (tlDlg.close) tlDlg.close(); else tlDlg.removeAttribute('open'); };
+  $('#tlX').addEventListener('click', closeTl);
+  tlDlg.addEventListener('click', e => { if (e.target === tlDlg) closeTl(); });
+
   const origDlg = $('#origDlg');
   $$('[data-orig]').forEach(b => b.addEventListener('click', () => {
     $('#origImg').src = b.dataset.orig; $('#origImg').alt = b.getAttribute('aria-label').replace('See the ', '');
