@@ -1,0 +1,101 @@
+{
+ "_note": "TikTok stories Omar posts by hand (TikTok can't schedule stories). Times Asia/Beirut. The reminder tasks read this file. The daily run adds every new approved story here (Arabic _tt file).",
+ "stories": [
+  {
+   "date": "2026-11-13",
+   "time": "22:35",
+   "id": "D1113b",
+   "file": "stories/daily/D1113b_fantoush_tt.jpg"
+  },
+  {
+   "date": "2026-11-14",
+   "time": "13:00",
+   "id": "ST02",
+   "file": "stories/v1/ST_ST02_diabetes_tt.jpg"
+  },
+  {
+   "date": "2026-11-14",
+   "time": "22:35",
+   "id": "D1114b",
+   "file": "stories/daily/D1114b_diabetes_tt.jpg"
+  },
+  {
+   "date": "2026-11-15",
+   "time": "13:00",
+   "id": "D1115a",
+   "file": "stories/daily/D1115a_replies_tt.jpg"
+  },
+  {
+   "date": "2026-11-15",
+   "time": "21:05",
+   "id": "D1115b",
+   "file": "stories/daily/D1115b_reel_tt.jpg"
+  },
+  {
+   "date": "2026-11-16",
+   "time": "13:00",
+   "id": "D1116a",
+   "file": "stories/daily/D1116a_fact_tt.jpg"
+  },
+  {
+   "date": "2026-11-16",
+   "time": "20:35",
+   "id": "D1116b",
+   "file": "stories/daily/D1116b_ep12_tt.jpg"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "13:00",
+   "id": "D1117a",
+   "file": "stories/daily/D1117a_myth_tt.jpg"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "20:35",
+   "id": "D1117b",
+   "file": "stories/daily/D1117b_answer_tt.jpg"
+  },
+  {
+   "date": "2026-11-18",
+   "time": "13:00",
+   "id": "D1118a",
+   "file": "stories/daily/D1118a_fertility_tt.jpg"
+  },
+  {
+   "date": "2026-11-18",
+   "time": "20:35",
+   "id": "D1118b",
+   "file": "stories/daily/D1118b_post_tt.jpg"
+  },
+  {
+   "date": "2026-11-19",
+   "time": "13:00",
+   "id": "ST03",
+   "file": "stories/v1/ST_ST03_mensday_tt.jpg"
+  },
+  {
+   "date": "2026-11-19",
+   "time": "20:35",
+   "id": "D1119b",
+   "file": "stories/daily/D1119b_reel_tt.jpg"
+  },
+  {
+   "date": "2026-11-20",
+   "time": "13:00",
+   "id": "D1120a",
+   "file": "stories/daily/D1120a_question_tt.jpg"
+  },
+  {
+   "date": "2026-11-20",
+   "time": "19:05",
+   "id": "D1120b",
+   "file": "stories/daily/D1120b_mypost_tt.jpg"
+  },
+  {
+   "date": "2026-11-20",
+   "time": "20:35",
+   "id": "D1120c",
+   "file": "stories/daily/D1120c_reel_tt.jpg"
+  }
+ ]
+}
