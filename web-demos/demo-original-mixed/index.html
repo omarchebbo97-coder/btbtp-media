@@ -205,8 +205,6 @@ main section[id]{scroll-margin-top:52px}
 .cover{position:relative;width:62%;max-width:300px;margin:4px auto 20px}
 @media (min-width:900px){.cover{width:100%}}
 .cover img{width:100%;border-radius:8px;box-shadow:0 16px 34px rgba(10,14,20,.35)}
-.drop{position:absolute;left:51.5%;top:100%;width:9px;height:9px;margin-left:-4.5px;background:var(--fill);border:1px solid rgba(255,255,255,.25);border-radius:0 50% 50% 50%;rotate:45deg;opacity:0;animation:drip 4.5s ease-in 1.4s infinite}
-@keyframes drip{0%{opacity:0;translate:0 -6px}10%{opacity:1;translate:0 -6px}22%{opacity:1;translate:0 -2px}40%{opacity:0;translate:0 22px}100%{opacity:0;translate:0 22px}}
 .book-txt{display:grid;gap:18px;min-width:0}
 .book-txt .intro{font:400 1.1rem/1.6 var(--f-serif)}
 .labels{display:flex;flex-wrap:wrap;gap:4px 8px;font:600 .7rem/1.4 var(--f-sans);letter-spacing:.07em;text-transform:uppercase;color:var(--on-band-muted)}
@@ -895,7 +893,6 @@ main section[id]{scroll-margin-top:52px}
       <div class="cover-col">
         <div class="cover">
           <img src="img/cover.webp" alt="Beyond the Body, Beyond the Pain: cover shaped like an IV bag">
-          <span class="drop" aria-hidden="true"></span>
         </div>
       </div>
       <div class="book-txt">
@@ -1165,7 +1162,7 @@ main section[id]{scroll-margin-top:52px}
     <div class="in">
       <a class="back" href="#shop">← Back to the shop</a>
       <div class="main">
-        <div class="cover-col"><div class="cover"><img src="img/cover.webp" alt="Beyond the Body, Beyond the Pain: cover shaped like an IV bag"><span class="drop" aria-hidden="true"></span></div></div>
+        <div class="cover-col"><div class="cover"><img src="img/cover.webp" alt="Beyond the Body, Beyond the Pain: cover shaped like an IV bag"></div></div>
         <div class="pp-txt">
           <aside class="rv" aria-label="Review note: Book page"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Book page</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_product.webp" aria-label="See the original Book page section"><img src="img/orig_product.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> a quantity picker for a download, only “Add to cart”, no preview, and no proof of the donation.</p><p><b>Now:</b> “Buy now” and “Add to cart”, no quantity picker, a numbered “What’s inside” list drawn from the introduction (idea from James Clear’s book page), the first page, the donation box and the “Verified by AUBMC” button.</p></div></div></aside>
           <p class="kind">Digital · PDF · Read in one sitting</p>
