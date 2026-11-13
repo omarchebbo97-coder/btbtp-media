@@ -472,6 +472,7 @@ main section[id]{scroll-margin-top:52px}
 @media (max-width:480px){.an-long{display:none}.an-short{display:inline}}
 .an-link{flex:none;color:var(--accent);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;min-height:40px}
 .an-link:hover{text-decoration:underline}
+.g-next{display:inline-flex;align-items:center;min-height:44px;color:var(--accent-ink);font-weight:600;font-size:.9rem;text-underline-offset:3px;animation:rise .4s .25s both}
 .an-x{flex:none;width:40px;height:40px;margin-inline-end:-10px;border:0;background:none;color:var(--on-band-muted);display:grid;place-items:center;cursor:pointer}
 .an-x svg{width:18px;height:18px}
 
@@ -789,8 +790,8 @@ main section[id]{scroll-margin-top:52px}
 <!-- news strip -->
 <div class="announce gut" id="announce">
   <div class="in">
-    <p><span class="an-new">New</span><span class="an-long">Free guide: <bdi lang="ar">تحاليلك مشروحة</bdi></span><span class="an-short">Free guide: <bdi lang="ar">تحاليلك مشروحة</bdi></span></p>
-    <a class="an-link" href="#guides">Get it →</a>
+    <p><span class="an-new">New</span><span class="an-long">Short: Why are bananas banned on dialysis?</span><span class="an-short">Short: bananas and dialysis</span></p>
+    <a class="an-link" href="#shorts" data-news-short="sUrhS0oa5J0">Watch →</a>
     <button type="button" class="an-x" id="anX" aria-label="Close the news strip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
 </div>
@@ -840,7 +841,7 @@ main section[id]{scroll-margin-top:52px}
         </ol>
         <p><b style="color:var(--ink)">Ideas from other sites:</b> from James Clear, free bonuses became the <a href="#guides">Free guides</a> section, and the book page got a numbered “What’s inside”. From hadichebbo.com: the “Now” line with a pulsing dot, counts on the blog tabs, a “Leave a note” button for reader quotes, and gentle fade-ups as sections appear. tim.blog blocks automated visits, so it wasn’t checked.</p>
         <p><b style="color:var(--ink)">From the design galleries:</b> a news strip above the header, a full-screen phone menu with the current page marked, free guides you can add in the cart, and the shop changes.</p>
-        <p><b style="color:var(--ink)">Wording:</b> each idea is said once. The buy button says “Get your copy — $9.99” (not “Donate”: people are buying a book, and only net profits go to AUBMC). Other buttons use different verbs: Read my story, Watch the videos, Preview the first page, Keep reading.</p>
+        <p><b style="color:var(--ink)">Wording:</b> each idea is said once. The buy button says “Get your copy — $9.99” (not “Donate”: people are buying a book, and only net profits go to AUBMC). Other buttons use different verbs: Read the first page, Free guides, Preview the first page, Keep reading.</p>
         <p><b style="color:var(--ink)">Colors:</b> try the four dots at the top. “Site now” keeps the green book cover standing out best; “Cover sage” makes it blend in.</p>
       </div>
     </details>
@@ -850,20 +851,20 @@ main section[id]{scroll-margin-top:52px}
   <section id="hero" class="hero gut" aria-labelledby="h-hero">
     <div class="in">
       <div class="txt">
-        <aside class="rv" aria-label="Review note: Hero"><div class="rv-h"><span class="chip fix">Fix first</span><span class="rv-t">Review · Hero</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_hero.webp" aria-label="See the original Hero section"><img src="img/orig_hero.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the photo box shows only the logo, 450px of empty space on a phone. “1 life, rebuilt” says less than it could.</p><p><b>Now:</b> your photo, a label naming the book instead of your name twice, “11 years on dialysis”, numbers that count up, and a “Now” line with a pulsing dot (idea from hadichebbo.com).</p></div></div></aside>
+        <aside class="rv" aria-label="Review note: Hero"><div class="rv-h"><span class="chip fix">Fix first</span><span class="rv-t">Review · Hero</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_hero.webp" aria-label="See the original Hero section"><img src="img/orig_hero.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the photo box shows only the logo, 450px of empty space on a phone. “1 life, rebuilt” says less than it could.</p><p><b>Now:</b> your photo, a label naming the book instead of your name twice, “11 years on dialysis”, numbers that count up, and a “Now” line with a pulsing dot (idea from hadichebbo.com).</p><p><b>Buttons:</b> “Read the first page” opens the free preview of the introduction (it ends in “Keep reading — $9.99”), and “Free guides” is for patients and families. They replace “Read my story”, which led to a price, and “Watch the videos”, which sent people back to YouTube. The pre-order link left the Now line; it stays in the shop.</p></div></div></aside>
         <p class="eyebrow line"><span>Author of <i>Beyond the Body, Beyond the Pain</i></span></p>
         <h1 id="h-hero">I'm Omar Chebbo.</h1>
         <p>I'm a transplant survivor, and I write about what all of it taught me.</p>
         <div class="ctas">
-          <a class="btn gold" href="#book">Read my story</a>
-          <button type="button" class="btn ghost" data-scroll="shorts">Watch the videos</button>
+          <button type="button" class="btn gold" data-first-page>Read the first page</button>
+          <button type="button" class="btn ghost" data-scroll="guides">Free guides</button>
         </div>
         <div class="stats" id="stats">
           <div><b data-to="3">3</b><span>organ transplants</span></div>
           <div><b data-to="11">11</b><span>years on dialysis</span></div>
           <div><b data-to="26" data-suf="+">26+</b><span>years of the journey</span></div>
         </div>
-        <p class="now"><span class="ping" aria-hidden="true"></span><b>Now</b> The full memoir is on its way. <a href="#shop">Pre-order the ebook</a></p>
+        <p class="now"><span class="ping" aria-hidden="true"></span><b>Now</b> The full memoir is on its way.</p>
       </div>
       <figure class="portrait" style="margin:0">
         <img src="img/grad.webp" alt="Omar in a graduation cap and gown">
@@ -1008,7 +1009,7 @@ main section[id]{scroll-margin-top:52px}
   <section id="guides" class="sec gut" aria-labelledby="h-guides">
     <div class="in">
       <div class="sec-head">
-        <aside class="rv" aria-label="Review note: Free guides"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Free guides</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> your two PDFs as lead magnets. Today: email to get them. Later: a plain download. Use the switch above the cards to compare. The two guides your blood-test PDF promises as coming next have “Tell me when it’s out” cards. The body map links each organ to its guide. Idea from James Clear’s free bonuses. The guide cards are in Arabic only (title and description), like the PDFs. Tapping “Get it free” fills a small kidney in the button, it beats once and lets a drop out, then the email form opens; once sent, a kidney with a check confirms it.</p></div></div></aside>
+        <aside class="rv" aria-label="Review note: Free guides"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Free guides</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> your two PDFs as lead magnets. Today: email to get them. Later: a plain download. Use the switch above the cards to compare. The two guides your blood-test PDF promises as coming next have “Tell me when it’s out” cards. The body map links each organ to its guide. Idea from James Clear’s free bonuses. The guide cards are in Arabic only (title and description), like the PDFs. Tapping “Get it free” fills a small kidney in the button, it beats once and lets a drop out, then the email form opens; once sent, a kidney with a check confirms it, with one next step: “read the first page of my memoir”.</p></div></div></aside>
         <p class="eyebrow">Free guides</p>
         <h2 id="h-guides">Guides I wish I'd had</h2>
         <p>Plain PDFs in Arabic about the lab sheet, written from the patient's chair. Free.</p>
@@ -1829,7 +1830,9 @@ main section[id]{scroll-margin-top:52px}
     if (!em.value || !em.checkValidity()) { toast('Enter an email like name@example.com'); em.focus(); return; }
     const ok = document.createElement('p'); ok.className = 'g-ok'; ok.innerHTML = f.closest('.soon') ? OK : KID_OK;
     ok.append(f.closest('.soon') ? 'Done. I’ll email you when it’s out.' : 'Sent. Check your inbox.');
-    f.replaceWith(ok);
+    const next = document.createElement('a'); next.className = 'g-next'; next.href = '#book-sec'; next.setAttribute('data-first-page', '');
+    next.textContent = 'While it’s on its way: read the first page of my memoir →';
+    f.replaceWith(ok, next);
   }));
   opanel.addEventListener('click', e => {
     const a = e.target.closest('[data-guide-jump]'); if (!a) return;
@@ -1865,6 +1868,16 @@ main section[id]{scroll-margin-top:52px}
   $('#anX').addEventListener('click', () => { $('#announce').hidden = true; store.set('oc-news', '0'); });
 
   /* ---------- misc ---------- */
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-first-page]'); if (!a) return;
+    e.preventDefault();
+    if ($('#v-home').hidden) { history.pushState(null, '', '#home'); route(); }
+    const btn = $('[data-sample="fp1"]'), pg = $('#fp1');
+    if (pg.hidden) btn.click();
+    const head = $('.site-head'), top = pg.getBoundingClientRect().top + scrollY - (head ? head.offsetHeight : 0) - 14;
+    scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+  });
+  $$('[data-news-short]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openViewer(SH.findIndex(s => s.id === a.dataset.newsShort)); }));
   $$('[data-scroll]').forEach(b => b.addEventListener('click', () => document.getElementById(b.dataset.scroll).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' })));
   $('#donorBtn').addEventListener('click', () => toast('Link to Lebanon’s official donor registration goes here'));
   $('#nlForm').addEventListener('submit', e => {
