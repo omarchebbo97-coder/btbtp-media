@@ -363,9 +363,6 @@ main section[id]{scroll-margin-top:52px}
 .organ-panel .more:not([hidden]) .res{animation:rise .4s cubic-bezier(.2,.7,.2,1) both}
 
 /* free guides */
-.phase{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:16px;font-size:.85rem;color:var(--muted)}
-.phase button{border:1.5px solid var(--line);background:none;border-radius:999px;padding:5px 12px;font-weight:600;font-size:.85rem;cursor:pointer}
-.phase button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .guides{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(232px,252px);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;overscroll-behavior-x:contain;scrollbar-width:thin}
 @media (min-width:980px){.guides{grid-auto-flow:row;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible}}
 .guide{scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;grid-template-columns:minmax(0,1fr);min-width:0}
@@ -504,7 +501,7 @@ main section[id]{scroll-margin-top:52px}
 .cf img{width:44px;height:64px;object-fit:cover;object-position:top;border-radius:4px}
 .cf-t{font:600 .92rem/1.3 var(--f-serif)}
 .cf .s{font-size:.8rem;color:var(--muted)}
-.cf-add{min-height:40px;padding:6px 12px;font-size:.85rem}
+.cf-add{min-height:44px;padding:6px 14px;font-size:.85rem}
 
 /* shop: format buttons, product pictures, good to know */
 .shop-chips{margin:4px 0 16px}
@@ -744,7 +741,7 @@ main section[id]{scroll-margin-top:52px}
 @media (max-width:760px), (pointer:coarse){
   .logo,.back,.link,.note-btn,.foot nav a{display:inline-flex;align-items:center;min-height:44px}
   .now a,.linkish{padding-block:12px}
-  .verify,.find-tabs button,.phase button,button.chip,.path,.opt,.see-all{min-height:44px}
+  .verify,.find-tabs button,button.chip,.path,.opt,.see-all{min-height:44px}
   .opt{padding:8px 14px}
   .soc{gap:4px}
   .soc a{display:inline-grid;place-items:center;min-width:44px;min-height:44px}
@@ -1010,15 +1007,15 @@ main section[id]{scroll-margin-top:52px}
   <section id="guides" class="sec gut" aria-labelledby="h-guides">
     <div class="in">
       <div class="sec-head">
-        <aside class="rv" aria-label="Review note: Free guides"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Free guides</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> your two PDFs as lead magnets. Today: email to get them. Later: a plain download. Use the switch above the cards to compare. The two guides your blood-test PDF promises as coming next have “Tell me when it’s out” cards. The body map links each organ to its guide. Idea from James Clear’s free bonuses. The guide cards are in Arabic only (title and description), like the PDFs. Tapping “Get it free” fills a small kidney in the button, it beats once and lets a drop out, then the email form opens; once sent, a kidney with a check confirms it, with one next step: “read the first page of my memoir”.</p></div></div></aside>
+        <aside class="rv" aria-label="Review note: Free guides"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Free guides</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> your two PDFs, free and downloaded directly, no email needed. The two guides your blood-test PDF promises as coming next have “Tell me when it’s out” cards. The body map links each organ to its guide. Idea from James Clear’s free bonuses. The guide cards are in Arabic only (title and description), like the PDFs. Tapping “Get it free” fills a small kidney in the button, it beats once and lets a drop out, then the email form opens; once sent, a kidney with a check confirms it, with one next step: “read the first page of my memoir”.</p></div></div></aside>
         <p class="eyebrow">Free guides</p>
         <h2 id="h-guides">Guides I wish I'd had</h2>
         <p>Plain PDFs in Arabic about the lab sheet, written from the patient's chair. Free.</p>
       </div>
-      <div class="phase" role="group" aria-label="How the guides are offered"><span>Prototype, show the guides as:</span><button type="button" data-phase="email" aria-pressed="true">Free with email</button><button type="button" data-phase="open" aria-pressed="false">Free download</button></div>
+      
       <div class="guides" id="guideRow">
-        <article class="guide" id="guide-blood"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_blood.webp" alt="Cover of the blood tests guide" loading="lazy"></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">11 صفحة · PDF</p><h3 lang="ar" dir="rtl">تحاليلك مشروحة</h3><p class="g-d" lang="ar" dir="rtl">دليل مبسّط لمرضى الكلى، ولمن هم على غسيل الكلى، وللحياة بعد الزراعة.</p><button type="button" class="btn gold g-get"><span class="g-lbl">Get it free</span></button><form class="g-form" hidden novalidate><label for="ge-blood">Where should I send it?</label><div class="g-row"><input id="ge-blood" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Send it</button></div><p class="g-fine">You’ll also get my monthly letter. Unsubscribe any time.</p></form></div></article>
-        <article class="guide" id="guide-aftertx"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_aftertx.webp" alt="Cover of the after-transplant tests guide" loading="lazy"></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">22 صفحة · PDF</p><h3 lang="ar" dir="rtl">تحاليلك بعد الزراعة… بلا هلع</h3><p class="g-d" lang="ar" dir="rtl">ماذا يقيس كل سطر في ورقة التحاليل، ولماذا يطلبه فريقك الطبي، ومتى عليك الاتصال بهم في اليوم نفسه.</p><button type="button" class="btn gold g-get"><span class="g-lbl">Get it free</span></button><form class="g-form" hidden novalidate><label for="ge-aftertx">Where should I send it?</label><div class="g-row"><input id="ge-aftertx" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Send it</button></div><p class="g-fine">You’ll also get my monthly letter. Unsubscribe any time.</p></form></div></article>
+        <article class="guide" id="guide-blood"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_blood.webp" alt="Cover of the blood tests guide" loading="lazy"></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">11 صفحة · PDF</p><h3 lang="ar" dir="rtl">تحاليلك مشروحة</h3><p class="g-d" lang="ar" dir="rtl">دليل مبسّط لمرضى الكلى، ولمن هم على غسيل الكلى، وللحياة بعد الزراعة.</p><button type="button" class="btn gold g-get"><span class="g-lbl">Get it free</span></button></div></article>
+        <article class="guide" id="guide-aftertx"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_aftertx.webp" alt="Cover of the after-transplant tests guide" loading="lazy"></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">22 صفحة · PDF</p><h3 lang="ar" dir="rtl">تحاليلك بعد الزراعة… بلا هلع</h3><p class="g-d" lang="ar" dir="rtl">ماذا يقيس كل سطر في ورقة التحاليل، ولماذا يطلبه فريقك الطبي، ومتى عليك الاتصال بهم في اليوم نفسه.</p><button type="button" class="btn gold g-get"><span class="g-lbl">Get it free</span></button></div></article>
         <article class="guide soon" id="guide-pre"><div class="g-cover"><div class="soon-doc">Coming soon</div></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">قريباً · PDF</p><h3 lang="ar" dir="rtl">دليل تحاليل ما قبل الزراعة</h3><button type="button" class="btn ghost g-get"><span class="g-lbl">Tell me when it’s out</span></button><form class="g-form" hidden novalidate><label for="ge-pre">Your email</label><div class="g-row"><input id="ge-pre" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Notify me</button></div></form></div></article>
         <article class="guide soon" id="guide-dial"><div class="g-cover"><div class="soon-doc">Coming soon</div></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">قريباً · PDF</p><h3 lang="ar" dir="rtl">دليل تحاليل الغسيل والفشل الكلوي</h3><button type="button" class="btn ghost g-get"><span class="g-lbl">Tell me when it’s out</span></button><form class="g-form" hidden novalidate><label for="ge-dial">Your email</label><div class="g-row"><input id="ge-dial" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Notify me</button></div></form></div></article>
       </div>
@@ -1414,6 +1411,7 @@ main section[id]{scroll-margin-top:52px}
   /* ---------- cart ---------- */
   let cart = [];
   try { cart = JSON.parse(store.get('oc-cart') || '[]'); if (!Array.isArray(cart)) cart = []; } catch(_) { cart = []; }
+  cart = cart.filter(i => P[i.id] && !P[i.id].guide);   // guides download directly; never in the cart
   const save = () => store.set('oc-cart', JSON.stringify(cart));
   const countItems = () => cart.reduce((s, i) => s + i.qty, 0);
   function updateCount(bump){
@@ -1438,15 +1436,14 @@ main section[id]{scroll-margin-top:52px}
   const ttl = p => p.guide ? '<bdi lang="ar">' + p.title + '</bdi>' : p.title;
   const dsc = p => p.guide ? '<bdi lang="ar" dir="rtl">' + p.desc + '</bdi>' : p.desc;
   function guidesBlock(){
-    const left = ['g_blood', 'g_aftertx'].filter(g => !cart.some(i => i.id === g));
-    if (!left.length) return '';
-    return '<div class="cart-free"><p class="cf-h">Free guides · add to your order</p>' + left.map(g =>
+    const left = ['g_blood', 'g_aftertx'];
+    return '<div class="cart-free"><p class="cf-h">Free guides · download</p>' + left.map(g =>
       '<div class="cf"><img src="' + P[g].img + '" alt=""><div><p class="cf-t" dir="auto">' + ttl(P[g]) + '</p><p class="s">' + dsc(P[g]) + '</p></div>' +
-      '<button type="button" class="btn ghost cf-add" data-free="' + g + '">Add free</button></div>').join('') + '</div>';
+      '<button type="button" class="btn ghost cf-add" data-free="' + g + '">Download</button></div>').join('') + '</div>';
   }
   function wireFree(root){
     $$('[data-free]', root).forEach(b => b.addEventListener('click', () => {
-      addItem(b.dataset.free); updateCount(true); renderCart(); toast('Added: ' + P[b.dataset.free].title);
+      toast('Demo: on the live site, the PDF downloads now.');
     }));
   }
   function renderCart(){
@@ -1798,8 +1795,6 @@ main section[id]{scroll-margin-top:52px}
 
   /* ---------- free guides ---------- */
   const OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-  let phase = 'email';
-  const getLabel = b => b.closest('.soon') ? 'Tell me when it’s out' : (phase === 'open' ? 'Download PDF' : 'Get it free');
   /* kidney: outline, ureter, liquid clipped to the kidney, and a drop */
   const KID = 'M20.5 4.5C14.5 2.6 6 6 5.5 14C5 21.5 9.8 28 16.6 27.4C21.2 27 23.2 23.4 21.5 20.3C20.3 18.2 18.1 17.7 18.1 16C18.1 14.3 20.3 13.8 21.5 11.7C23.1 8.8 23.4 5.5 20.5 4.5Z';
   const WAVE = 'M-32 0Q-30 -2.2 -28 0' + Array.from({ length:23 }, (_, i) => 'T' + (-24 + i * 4) + ' 0').join('') + 'V40H-32Z';   // wide enough to cover the kidney while it slides
@@ -1809,18 +1804,18 @@ main section[id]{scroll-margin-top:52px}
     '<path class="kid-o" d="' + KID + '"/><path class="kid-u" d="M18.7 16.8C22.2 17.8 25 20.6 26.2 28"/><circle class="kid-drop" r="1.7"/></svg>'; };
   const KID_OK = '<svg class="kid-ok" viewBox="0 0 32 32" aria-hidden="true"><path class="ko-k" d="' + KID + '"/><path class="ko-c" d="M8.2 15.6l3.2 3.4 5.6-6.6"/></svg>';
   $$('.guide:not(.soon) .g-get').forEach(b => b.insertAdjacentHTML('afterbegin', kidSVG()));
-  $$('[data-phase]').forEach(b => b.addEventListener('click', () => {
-    phase = b.dataset.phase;
-    $$('[data-phase]').forEach(x => x.setAttribute('aria-pressed', x === b));
-    $$('.guide:not(.soon)').forEach(c => { const f = $('.g-form', c), g = $('.g-get', c); if (f) f.hidden = true; if (g) { g.hidden = false; g.classList.remove('kfill'); $('.g-lbl', g).textContent = getLabel(g); } });
-  }));
+  const nextStep = text => { const a = document.createElement('a'); a.className = 'g-next'; a.href = '#book-sec'; a.setAttribute('data-first-page', ''); a.textContent = text; return a; };
   $$('.g-get').forEach(b => b.addEventListener('click', () => {
     const card = b.closest('.guide'), soon = card.classList.contains('soon');
     if (b.classList.contains('kfill')) return;
     const next = () => {
       b.classList.remove('kfill');
-      if (phase === 'open' && !soon) { toast('On the live site, the PDF downloads here.'); return; }
-      const f = $('.g-form', card); f.hidden = false; b.hidden = true; $('input', f).focus();
+      if (soon) { const f = $('.g-form', card); f.hidden = false; b.hidden = true; $('input', f).focus(); return; }
+      toast('Demo: on the live site, the PDF downloads now.');   // live site: <a href="guide.pdf" download>
+      if (!$('.g-ok', card)) {
+        const ok = document.createElement('p'); ok.className = 'g-ok'; ok.innerHTML = KID_OK; ok.append('Your PDF is downloading.');
+        b.after(ok, nextStep('Next: read the first page of my memoir →'));
+      }
     };
     if (soon || reduce) { next(); return; }
     b.classList.add('kfill');            // kidney fills, beats, lets a drop out
@@ -1829,11 +1824,9 @@ main section[id]{scroll-margin-top:52px}
   $$('.g-form').forEach(f => f.addEventListener('submit', e => {
     e.preventDefault(); const em = $('input', f);
     if (!em.value || !em.checkValidity()) { toast('Enter an email like name@example.com'); em.focus(); return; }
-    const ok = document.createElement('p'); ok.className = 'g-ok'; ok.innerHTML = f.closest('.soon') ? OK : KID_OK;
-    ok.append(f.closest('.soon') ? 'Done. I’ll email you when it’s out.' : 'Sent. Check your inbox.');
-    const next = document.createElement('a'); next.className = 'g-next'; next.href = '#book-sec'; next.setAttribute('data-first-page', '');
-    next.textContent = 'While it’s on its way: read the first page of my memoir →';
-    f.replaceWith(ok, next);
+    const ok = document.createElement('p'); ok.className = 'g-ok'; ok.innerHTML = OK;
+    ok.append('Done. I’ll email you when it’s out.');
+    f.replaceWith(ok, nextStep('Meanwhile: read the first page of my memoir →'));
   }));
   opanel.addEventListener('click', e => {
     const a = e.target.closest('[data-guide-jump]'); if (!a) return;
