@@ -9,7 +9,7 @@
 <body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600&family=Noto+Sans+Arabic:wght@400;600;700&display=swap">
 <style>
 /* Layout: a clickable copy of omarchebbo.com with every suggested change. One light visual world
    on purpose (it shows the real site). Colors come only from the site and the book cover, and the
@@ -389,6 +389,29 @@ main section[id]{scroll-margin-top:52px}
 .g-row input{flex:1 1 auto;width:0;min-width:0;min-height:44px;border:1.5px solid var(--line);border-radius:999px;padding:0 14px;background:var(--paper);color:var(--ink);font:400 .95rem var(--f-sans)}
 .g-row .btn{min-height:44px;padding:8px 14px;font-size:.9rem}
 .g-fine{font-size:.74rem;color:var(--muted)}
+[lang="ar"]{font-family:"Noto Sans Arabic",var(--f-sans);letter-spacing:0;text-transform:none}
+.guide h3[lang="ar"]{font-weight:700;font-size:1.12rem;line-height:1.5}
+.guide .g-d[lang="ar"]{font-size:.95rem;line-height:1.7}
+.guide .g-meta[lang="ar"]{font-size:.78rem;font-weight:600}
+/* kidney on "Get it free" */
+:root{--kidney:#a8433f}
+.kid{width:28px;height:28px;flex:none;overflow:visible;margin-inline-start:-6px}
+.kid .kid-o{fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.kid .kid-u{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;opacity:.55}
+.kid .kid-liq{fill:var(--kidney);transform:translate(0px,30px)}
+.kid .kid-drop{fill:var(--kidney);opacity:0}
+.g-get.kfill{pointer-events:none}
+.g-get.kfill .kid-liq{animation:kidLiq .62s cubic-bezier(.45,0,.3,1) forwards}
+.g-get.kfill .kid{animation:kidBeat .32s .6s ease-out}
+.g-get.kfill .kid-drop{animation:kidDrop .42s .66s cubic-bezier(.4,0,.8,.6) forwards}
+@keyframes kidLiq{from{transform:translate(0px,30px)}to{transform:translate(-16px,3px)}}
+@keyframes kidBeat{40%{scale:1.22}}
+@keyframes kidDrop{0%{opacity:1;transform:translate(19px,16.5px)}55%{opacity:1;transform:translate(24px,20.5px)}100%{opacity:0;transform:translate(26px,29px)}}
+.g-ok .kid-ok{width:30px;height:30px;flex:none;background:none;padding:0;border-radius:0;animation:pop .5s cubic-bezier(.34,1.56,.64,1) both}
+.kid-ok .ko-k{fill:var(--kidney)}
+.kid-ok .ko-c{fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:16;stroke-dashoffset:16;animation:koDraw .35s .3s ease-out forwards}
+@keyframes koDraw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion: reduce){.g-get.kfill .kid-liq{animation:none;transform:translate(-16px,3px)}.g-get.kfill .kid,.g-get.kfill .kid-drop,.kid-ok,.kid-ok .ko-c{animation:none}.kid-ok .ko-c{stroke-dashoffset:0}}
 .g-ok{display:flex;gap:8px;align-items:center;font-weight:600;font-size:.9rem;margin-top:6px;animation:rise .4s both}
 .g-ok svg{width:22px;height:22px;flex:none;color:var(--on-accent);background:var(--accent);border-radius:50%;padding:3px;animation:pop .5s cubic-bezier(.34,1.56,.64,1) both}
 
@@ -763,7 +786,7 @@ main section[id]{scroll-margin-top:52px}
 <!-- news strip -->
 <div class="announce gut" id="announce">
   <div class="in">
-    <p><span class="an-new">New</span><span class="an-long">Free guide: Your blood tests, decoded</span><span class="an-short">Free blood test guide</span></p>
+    <p><span class="an-new">New</span><span class="an-long">Free guide: <bdi lang="ar">تحاليلك مشروحة</bdi></span><span class="an-short">Free guide: <bdi lang="ar">تحاليلك مشروحة</bdi></span></p>
     <a class="an-link" href="#guides">Get it →</a>
     <button type="button" class="an-x" id="anX" aria-label="Close the news strip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
@@ -982,17 +1005,17 @@ main section[id]{scroll-margin-top:52px}
   <section id="guides" class="sec gut" aria-labelledby="h-guides">
     <div class="in">
       <div class="sec-head">
-        <aside class="rv" aria-label="Review note: Free guides"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Free guides</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> your two PDFs as lead magnets. Today: email to get them. Later: a plain download. Use the switch above the cards to compare. The two guides your blood-test PDF promises as coming next have “Tell me when it’s out” cards. The body map links each organ to its guide. Idea from James Clear’s free bonuses.</p></div></div></aside>
+        <aside class="rv" aria-label="Review note: Free guides"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Free guides</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> your two PDFs as lead magnets. Today: email to get them. Later: a plain download. Use the switch above the cards to compare. The two guides your blood-test PDF promises as coming next have “Tell me when it’s out” cards. The body map links each organ to its guide. Idea from James Clear’s free bonuses. The guide cards are in Arabic only (title and description), like the PDFs. Tapping “Get it free” fills a small kidney in the button, it beats once and lets a drop out, then the email form opens; once sent, a kidney with a check confirms it.</p></div></div></aside>
         <p class="eyebrow">Free guides</p>
         <h2 id="h-guides">Guides I wish I'd had</h2>
-        <p>Plain PDFs about the lab sheet, written from the patient's chair. Free.</p>
+        <p>Plain PDFs in Arabic about the lab sheet, written from the patient's chair. Free.</p>
       </div>
       <div class="phase" role="group" aria-label="How the guides are offered"><span>Prototype, show the guides as:</span><button type="button" data-phase="email" aria-pressed="true">Free with email</button><button type="button" data-phase="open" aria-pressed="false">Free download</button></div>
       <div class="guides" id="guideRow">
-        <article class="guide" id="guide-blood"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_blood.webp" alt="Cover of Your blood tests, decoded" loading="lazy"></div><div class="g-b"><p class="g-meta">PDF · 11 pages · Arabic + English</p><h3>Your blood tests, decoded</h3><p class="g-ar" lang="ar" dir="rtl">تحاليلك مشروحة</p><p class="g-d">A plain guide for kidney patients, people on dialysis and life after a transplant.</p><button type="button" class="btn gold g-get">Get it free</button><form class="g-form" hidden novalidate><label for="ge-blood">Where should I send it?</label><div class="g-row"><input id="ge-blood" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Send it</button></div><p class="g-fine">You’ll also get my monthly letter. Unsubscribe any time.</p></form></div></article>
-        <article class="guide" id="guide-aftertx"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_aftertx.webp" alt="Cover of Your tests after the transplant, without panic" loading="lazy"></div><div class="g-b"><p class="g-meta">PDF · 22 pages · Arabic</p><h3>Your tests after the transplant, without panic</h3><p class="g-ar" lang="ar" dir="rtl">تحاليلك بعد الزراعة… بلا هلع</p><p class="g-d">What each line on the lab sheet measures, why your team asks for it, and when to call them today.</p><button type="button" class="btn gold g-get">Get it free</button><form class="g-form" hidden novalidate><label for="ge-aftertx">Where should I send it?</label><div class="g-row"><input id="ge-aftertx" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Send it</button></div><p class="g-fine">You’ll also get my monthly letter. Unsubscribe any time.</p></form></div></article>
-        <article class="guide soon" id="guide-pre"><div class="g-cover"><div class="soon-doc">Coming soon</div></div><div class="g-b"><p class="g-meta">PDF · Arabic</p><h3>Tests before a transplant</h3><p class="g-ar" lang="ar" dir="rtl">دليل تحاليل ما قبل الزراعة</p><button type="button" class="btn ghost g-get">Tell me when it’s out</button><form class="g-form" hidden novalidate><label for="ge-pre">Your email</label><div class="g-row"><input id="ge-pre" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Notify me</button></div></form></div></article>
-        <article class="guide soon" id="guide-dial"><div class="g-cover"><div class="soon-doc">Coming soon</div></div><div class="g-b"><p class="g-meta">PDF · Arabic</p><h3>Tests on dialysis and kidney failure</h3><p class="g-ar" lang="ar" dir="rtl">دليل تحاليل الغسيل والفشل الكلوي</p><button type="button" class="btn ghost g-get">Tell me when it’s out</button><form class="g-form" hidden novalidate><label for="ge-dial">Your email</label><div class="g-row"><input id="ge-dial" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Notify me</button></div></form></div></article>
+        <article class="guide" id="guide-blood"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_blood.webp" alt="Cover of the blood tests guide" loading="lazy"></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">11 صفحة · PDF</p><h3 lang="ar" dir="rtl">تحاليلك مشروحة</h3><p class="g-d" lang="ar" dir="rtl">دليل مبسّط لمرضى الكلى، ولمن هم على غسيل الكلى، وللحياة بعد الزراعة.</p><button type="button" class="btn gold g-get"><span class="g-lbl">Get it free</span></button><form class="g-form" hidden novalidate><label for="ge-blood">Where should I send it?</label><div class="g-row"><input id="ge-blood" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Send it</button></div><p class="g-fine">You’ll also get my monthly letter. Unsubscribe any time.</p></form></div></article>
+        <article class="guide" id="guide-aftertx"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_aftertx.webp" alt="Cover of the after-transplant tests guide" loading="lazy"></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">22 صفحة · PDF</p><h3 lang="ar" dir="rtl">تحاليلك بعد الزراعة… بلا هلع</h3><p class="g-d" lang="ar" dir="rtl">ماذا يقيس كل سطر في ورقة التحاليل، ولماذا يطلبه فريقك الطبي، ومتى عليك الاتصال بهم في اليوم نفسه.</p><button type="button" class="btn gold g-get"><span class="g-lbl">Get it free</span></button><form class="g-form" hidden novalidate><label for="ge-aftertx">Where should I send it?</label><div class="g-row"><input id="ge-aftertx" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Send it</button></div><p class="g-fine">You’ll also get my monthly letter. Unsubscribe any time.</p></form></div></article>
+        <article class="guide soon" id="guide-pre"><div class="g-cover"><div class="soon-doc">Coming soon</div></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">قريباً · PDF</p><h3 lang="ar" dir="rtl">دليل تحاليل ما قبل الزراعة</h3><button type="button" class="btn ghost g-get"><span class="g-lbl">Tell me when it’s out</span></button><form class="g-form" hidden novalidate><label for="ge-pre">Your email</label><div class="g-row"><input id="ge-pre" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Notify me</button></div></form></div></article>
+        <article class="guide soon" id="guide-dial"><div class="g-cover"><div class="soon-doc">Coming soon</div></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">قريباً · PDF</p><h3 lang="ar" dir="rtl">دليل تحاليل الغسيل والفشل الكلوي</h3><button type="button" class="btn ghost g-get"><span class="g-lbl">Tell me when it’s out</span></button><form class="g-form" hidden novalidate><label for="ge-dial">Your email</label><div class="g-row"><input id="ge-dial" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Notify me</button></div></form></div></article>
       </div>
     </div>
   </section>
@@ -1298,8 +1321,8 @@ main section[id]{scroll-margin-top:52px}
     ebook:{ title:'Full Memoir — Ebook (Pre-order)', kind:'Digital', price:14.99, desc:'Reserve the complete ebook now, delivered on release.', digital:true, img:'img/p_ebook.webp' },
     hard:{ title:'Beyond The Body, Beyond The Pain — Hardcover', kind:'Physical', price:24, desc:'The full memoir, hardcover.', opts:['Signed','Unsigned'], img:'img/p_hard.webp' },
     bundle:{ title:'The Introduction + Signed Hardcover', kind:'Physical', price:30, was:33.99, desc:'Read it today, then hold the finished book, signed.', img:'img/p_bundle.webp' },
-    g_blood:{ title:'Your blood tests, decoded', kind:'Free guide', price:0, desc:'PDF · Arabic + English', digital:true, guide:true, img:'img/g_blood.webp' },
-    g_aftertx:{ title:'Your tests after the transplant, without panic', kind:'Free guide', price:0, desc:'PDF · Arabic', digital:true, guide:true, img:'img/g_aftertx.webp' }
+    g_blood:{ title:'تحاليلك مشروحة', kind:'Free guide', price:0, desc:'11 صفحة · PDF', digital:true, guide:true, img:'img/g_blood.webp' },
+    g_aftertx:{ title:'تحاليلك بعد الزراعة… بلا هلع', kind:'Free guide', price:0, desc:'22 صفحة · PDF', digital:true, guide:true, img:'img/g_aftertx.webp' }
   };
   const price = n => n === 0 ? 'Free' : money(n);
   const SH = [
@@ -1406,11 +1429,13 @@ main section[id]{scroll-margin-top:52px}
   const LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
   const setCartTitle = t => { $('#h-cart').textContent = t; };
   const totals = () => ({ total: Math.round(cart.reduce((s, i) => s + P[i.id].price * i.qty, 0) * 100) / 100, phys: cart.some(i => !P[i.id].digital) });
+  const ttl = p => p.guide ? '<bdi lang="ar">' + p.title + '</bdi>' : p.title;
+  const dsc = p => p.guide ? '<bdi lang="ar" dir="rtl">' + p.desc + '</bdi>' : p.desc;
   function guidesBlock(){
     const left = ['g_blood', 'g_aftertx'].filter(g => !cart.some(i => i.id === g));
     if (!left.length) return '';
     return '<div class="cart-free"><p class="cf-h">Free guides · add to your order</p>' + left.map(g =>
-      '<div class="cf"><img src="' + P[g].img + '" alt=""><div><p class="cf-t">' + P[g].title + '</p><p class="s">' + P[g].desc + '</p></div>' +
+      '<div class="cf"><img src="' + P[g].img + '" alt=""><div><p class="cf-t" dir="auto">' + ttl(P[g]) + '</p><p class="s">' + dsc(P[g]) + '</p></div>' +
       '<button type="button" class="btn ghost cf-add" data-free="' + g + '">Add free</button></div>').join('') + '</div>';
   }
   function wireFree(root){
@@ -1429,7 +1454,7 @@ main section[id]{scroll-margin-top:52px}
       const p = P[i.id];
       const qty = p.guide ? '<p class="s">Free guide · PDF</p>' : p.digital ? '<p class="s">Digital · sent by email</p>' :
         '<div class="qty"><button type="button" data-q="-1" data-k="' + i.key + '" aria-label="Fewer">−</button><span>' + i.qty + '</span><button type="button" data-q="1" data-k="' + i.key + '" aria-label="More">+</button></div>';
-      return '<div class="ci"><img src="' + p.img + '" alt=""><div><h3>' + p.title + '</h3>' + (i.opt ? '<p class="s">' + i.opt + '</p>' : '') + qty +
+      return '<div class="ci"><img src="' + p.img + '" alt=""><div><h3 dir="auto">' + ttl(p) + '</h3>' + (i.opt ? '<p class="s">' + i.opt + '</p>' : '') + qty +
         '<button type="button" class="rm" data-rm="' + i.key + '">Remove</button></div><p class="p">' + price(p.price * i.qty) + '</p></div>';
     }).join('') + guidesBlock();
     wireFree(body);
@@ -1450,7 +1475,7 @@ main section[id]{scroll-margin-top:52px}
     const body = $('#cartBody'), foot = $('#cartFoot'), t = totals();
     body.innerHTML = '<button type="button" class="co-back" id="coBack">← Back to cart</button>' +
       '<ol class="co-steps" aria-label="Checkout steps"><li class="done">Cart</li><li class="cur" aria-current="step">Details</li><li>Payment</li></ol>' +
-      '<div class="co-sum">' + cart.map(i => '<p><span>' + P[i.id].title + (i.opt ? ' · ' + i.opt : '') + (i.qty > 1 ? ' × ' + i.qty : '') + '</span><b>' + price(P[i.id].price * i.qty) + '</b></p>').join('') +
+      '<div class="co-sum">' + cart.map(i => '<p><span>' + ttl(P[i.id]) + (i.opt ? ' · ' + i.opt : '') + (i.qty > 1 ? ' × ' + i.qty : '') + '</span><b>' + price(P[i.id].price * i.qty) + '</b></p>').join('') +
       '<p class="tot"><span>Total</span><b>' + price(t.total) + '</b></p></div>' +
       '<form id="coForm" class="co-form" novalidate><label for="coEmail">Email for your receipt and download link</label>' +
       '<input id="coEmail" type="email" placeholder="your@email.com" autocomplete="email" required>' +
@@ -1506,7 +1531,7 @@ main section[id]{scroll-margin-top:52px}
       (() => {
         const dl = [];
         if (hasIntro) dl.push('<button type="button" class="btn gold" data-dl>Download the PDF</button>');
-        cart.filter(i => P[i.id].guide).forEach(i => dl.push('<button type="button" class="btn ghost" data-dl>Free guide: ' + P[i.id].title + '</button>'));
+        cart.filter(i => P[i.id].guide).forEach(i => dl.push('<button type="button" class="btn ghost" data-dl>Free guide: ' + ttl(P[i.id]) + '</button>'));
         return dl.length ? '<div class="co-dl">' + dl.join('') + '</div>' : '';
       })() + (cart.some(i => i.id === 'ebook') ? '<p>Your ebook arrives by email on release day.</p>' : '') +
       (t.phys ? '<p>I’ll email you when your hardcover ships.</p>' : '') +
@@ -1637,8 +1662,8 @@ main section[id]{scroll-margin-top:52px}
 
   /* ---------- body map ---------- */
   const GUIDES = {
-    blood:{ t:'Your blood tests, decoded', lang:'Arabic + English', pages:11, img:'img/g_blood.webp' },
-    aftertx:{ t:'Your tests after the transplant, without panic', lang:'Arabic', pages:22, img:'img/g_aftertx.webp' }
+    blood:{ t:'تحاليلك مشروحة', pages:11, img:'img/g_blood.webp' },
+    aftertx:{ t:'تحاليلك بعد الزراعة… بلا هلع', pages:22, img:'img/g_aftertx.webp' }
   };
   // order = priority: the first item is Omar's pick ("Start with this"), then newest
   const ORG = [
@@ -1656,7 +1681,7 @@ main section[id]{scroll-margin-top:52px}
     const d = animate ? ' style="animation-delay:' + (i * .05) + 's"' : ' style="animation:none"';
     if (t === 'post'){ const x = POSTS[id]; return '<a class="res" href="https://stg.omarchebbo.com' + x.url + '" target="_blank" rel="noopener"' + d + '><img src="' + x.img + '" alt=""><span><span class="k">Post · ' + x.k + '</span><span class="h" style="display:block">' + x.t + '</span><span class="s">' + x.d + '</span></span>' + arrow + '</a>'; }
     if (t === 'short'){ const x = shortById(id); return '<button type="button" class="res" data-short="' + id + '"' + d + '><img src="' + x.img + '" alt=""><span><span class="k">Short · 1 min · Arabic</span><span class="h" style="display:block;direction:rtl;text-align:right">' + x.ar + '</span><span class="s">' + x.en + '</span></span>' + arrow + '</button>'; }
-    if (t === 'guide'){ const g = GUIDES[id]; return '<a class="res" href="#guides" data-guide-jump="' + id + '"' + d + '><img src="' + g.img + '" alt="" style="object-position:50% 0"><span><span class="k">Free guide · PDF</span><span class="h" style="display:block">' + g.t + '</span><span class="s">' + g.lang + ' · ' + g.pages + ' pages</span></span>' + arrow + '</a>'; }
+    if (t === 'guide'){ const g = GUIDES[id]; return '<a class="res" href="#guides" data-guide-jump="' + id + '"' + d + '><img src="' + g.img + '" alt="" style="object-position:50% 0"><span><span class="k">Free guide · PDF</span><span class="h" style="display:block" lang="ar" dir="rtl">' + g.t + '</span><span class="s" lang="ar" dir="rtl">' + g.pages + ' صفحة</span></span>' + arrow + '</a>'; }
     if (t === 'jump') return '<a class="res" href="#' + id + '"' + d + '><img src="' + extra[2] + '" alt=""><span><span class="k">' + extra[1] + '</span><span class="h" style="display:block">' + extra[0] + '</span></span>' + arrow + '</a>';
     return '<a class="res" href="#book"' + d + '><img src="img/cover.webp" alt="" style="object-position:50% 30%"><span><span class="k">Book · $9.99</span><span class="h" style="display:block">The Introduction</span><span class="s">The opening pages of my memoir.</span></span>' + arrow + '</a>';
   }
@@ -1769,20 +1794,36 @@ main section[id]{scroll-margin-top:52px}
   const OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
   let phase = 'email';
   const getLabel = b => b.closest('.soon') ? 'Tell me when it’s out' : (phase === 'open' ? 'Download PDF' : 'Get it free');
+  /* kidney: outline, ureter, liquid clipped to the kidney, and a drop */
+  const KID = 'M20.5 4.5C14.5 2.6 6 6 5.5 14C5 21.5 9.8 28 16.6 27.4C21.2 27 23.2 23.4 21.5 20.3C20.3 18.2 18.1 17.7 18.1 16C18.1 14.3 20.3 13.8 21.5 11.7C23.1 8.8 23.4 5.5 20.5 4.5Z';
+  const WAVE = 'M-32 0Q-30 -2.2 -28 0' + Array.from({ length:23 }, (_, i) => 'T' + (-24 + i * 4) + ' 0').join('') + 'V40H-32Z';   // wide enough to cover the kidney while it slides
+  let kidN = 0;
+  const kidSVG = () => { const id = 'kc' + (++kidN); return '<svg class="kid" viewBox="0 0 32 32" aria-hidden="true"><defs><clipPath id="' + id + '"><path d="' + KID + '"/></clipPath></defs>' +
+    '<g clip-path="url(#' + id + ')"><path class="kid-liq" d="' + WAVE + '"/></g>' +
+    '<path class="kid-o" d="' + KID + '"/><path class="kid-u" d="M18.7 16.8C22.2 17.8 25 20.6 26.2 28"/><circle class="kid-drop" r="1.7"/></svg>'; };
+  const KID_OK = '<svg class="kid-ok" viewBox="0 0 32 32" aria-hidden="true"><path class="ko-k" d="' + KID + '"/><path class="ko-c" d="M8.2 15.6l3.2 3.4 5.6-6.6"/></svg>';
+  $$('.guide:not(.soon) .g-get').forEach(b => b.insertAdjacentHTML('afterbegin', kidSVG()));
   $$('[data-phase]').forEach(b => b.addEventListener('click', () => {
     phase = b.dataset.phase;
     $$('[data-phase]').forEach(x => x.setAttribute('aria-pressed', x === b));
-    $$('.guide:not(.soon)').forEach(c => { const f = $('.g-form', c), g = $('.g-get', c); if (f) f.hidden = true; if (g) { g.hidden = false; g.textContent = getLabel(g); } });
+    $$('.guide:not(.soon)').forEach(c => { const f = $('.g-form', c), g = $('.g-get', c); if (f) f.hidden = true; if (g) { g.hidden = false; g.classList.remove('kfill'); $('.g-lbl', g).textContent = getLabel(g); } });
   }));
   $$('.g-get').forEach(b => b.addEventListener('click', () => {
-    const card = b.closest('.guide');
-    if (phase === 'open' && !card.classList.contains('soon')) { toast('On the live site, the PDF downloads here.'); return; }
-    const f = $('.g-form', card); f.hidden = false; b.hidden = true; $('input', f).focus();
+    const card = b.closest('.guide'), soon = card.classList.contains('soon');
+    if (b.classList.contains('kfill')) return;
+    const next = () => {
+      b.classList.remove('kfill');
+      if (phase === 'open' && !soon) { toast('On the live site, the PDF downloads here.'); return; }
+      const f = $('.g-form', card); f.hidden = false; b.hidden = true; $('input', f).focus();
+    };
+    if (soon || reduce) { next(); return; }
+    b.classList.add('kfill');            // kidney fills, beats, lets a drop out
+    setTimeout(next, 1050);
   }));
   $$('.g-form').forEach(f => f.addEventListener('submit', e => {
     e.preventDefault(); const em = $('input', f);
     if (!em.value || !em.checkValidity()) { toast('Enter an email like name@example.com'); em.focus(); return; }
-    const ok = document.createElement('p'); ok.className = 'g-ok'; ok.innerHTML = OK;
+    const ok = document.createElement('p'); ok.className = 'g-ok'; ok.innerHTML = f.closest('.soon') ? OK : KID_OK;
     ok.append(f.closest('.soon') ? 'Done. I’ll email you when it’s out.' : 'Sent. Check your inbox.');
     f.replaceWith(ok);
   }));
