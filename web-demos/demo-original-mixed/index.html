@@ -178,6 +178,17 @@ main section[id]{scroll-margin-top:52px}
 .portrait{position:relative;max-width:400px;width:100%;margin:0 auto}
 .portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;border-radius:22px;box-shadow:var(--shadow)}
 .portrait figcaption{position:absolute;left:-10px;bottom:-26px;max-width:260px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 16px;box-shadow:var(--shadow);font:italic 400 1.02rem/1.45 var(--f-serif);animation:rise .7s .5s cubic-bezier(.2,.7,.2,1) both}
+.who-play{position:absolute;left:50%;top:65%;translate:-50% -50%;display:grid;justify-items:center;gap:10px;border:0;background:none;color:#fff;cursor:pointer;padding:6px;font:600 .92rem var(--f-sans);-webkit-tap-highlight-color:transparent}
+.who-play .pb{position:relative;width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.94);color:var(--ink);display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.3);transition:scale .2s}
+.who-play .pb svg{width:26px;height:26px;margin-inline-start:4px}
+.who-play .pb::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,255,255,.9);animation:whoRing 2.6s 1s ease-out 3 both}
+.who-play .pl{background:rgba(20,16,14,.64);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.who-play:hover .pb,.who-play:focus-visible .pb{scale:1.07}
+@keyframes whoRing{0%{opacity:.9;scale:1}100%{opacity:0;scale:1.55}}
+.who-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;border:0;background:none;padding:0;color:var(--accent-ink);font:600 1rem var(--f-sans);cursor:pointer;text-decoration:underline;text-underline-offset:3px;justify-self:start}
+.who-link svg{width:16px;height:16px;flex:none}
+.viewer.single #vPrev,.viewer.single #vNext,.viewer.single .v-count{display:none}
+@media (prefers-reduced-motion: reduce){.who-play .pb::after{animation:none;opacity:0}}
 .portrait figcaption small{display:block;margin-top:6px;font:600 .68rem var(--f-sans);letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--muted)}
 @keyframes rise{from{opacity:0;translate:0 12px}to{opacity:1;translate:0 0}}
 .wave{display:block;width:100%;height:46px;margin-bottom:-1px}
@@ -849,7 +860,7 @@ main section[id]{scroll-margin-top:52px}
   <section id="hero" class="hero gut" aria-labelledby="h-hero">
     <div class="in">
       <div class="txt">
-        <aside class="rv" aria-label="Review note: Hero"><div class="rv-h"><span class="chip fix">Fix first</span><span class="rv-t">Review · Hero</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_hero.webp" aria-label="See the original Hero section"><img src="img/orig_hero.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the photo box shows only the logo, 450px of empty space on a phone. “1 life, rebuilt” says less than it could.</p><p><b>Now:</b> your photo, a label naming the book instead of your name twice, “11 years on dialysis”, numbers that count up, and a “Now” line with a pulsing dot (idea from hadichebbo.com).</p><p><b>Buttons:</b> “Read the first page” opens the free preview of the introduction (it ends in “Keep reading — $9.99”), and “Free guides” is for patients and families. They replace “Read my story”, which led to a price, and “Watch the videos”, which sent people back to YouTube. The pre-order link left the Now line; it stays in the shop.</p></div></div></aside>
+        <aside class="rv" aria-label="Review note: Hero"><div class="rv-h"><span class="chip fix">Fix first</span><span class="rv-t">Review · Hero</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_hero.webp" aria-label="See the original Hero section"><img src="img/orig_hero.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the photo box shows only the logo, 450px of empty space on a phone. “1 life, rebuilt” says less than it could.</p><p><b>Now:</b> your photo, a label naming the book instead of your name twice, “11 years on dialysis”, numbers that count up, and a “Now” line with a pulsing dot (idea from hadichebbo.com).</p><p><b>Video:</b> a play button on your photo, “Who I am · 1 min”, also linked from About. The photo stays; the YouTube video loads only when tapped, so the page stays light. For now it opens your short “One year since my kidney transplant” as a stand-in.</p><p><b>Buttons:</b> “Read the first page” opens the free preview of the introduction (it ends in “Keep reading — $9.99”), and “Free guides” is for patients and families. They replace “Read my story”, which led to a price, and “Watch the videos”, which sent people back to YouTube. The pre-order link left the Now line; it stays in the shop.</p></div></div></aside>
         <p class="eyebrow line"><span>Author of <i>Beyond the Body, Beyond the Pain</i></span></p>
         <h1 id="h-hero">I'm Omar Chebbo.</h1>
         <p>I'm a transplant survivor, and I write about what all of it taught me.</p>
@@ -866,6 +877,7 @@ main section[id]{scroll-margin-top:52px}
       </div>
       <figure class="portrait" style="margin:0">
         <img src="img/grad.webp" alt="Omar in a graduation cap and gown">
+        <button type="button" class="who-play" data-who aria-label="Play: who I am, a 1-minute video"><span class="pb"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><span class="pl">Who I am · 1 min</span></button>
         <figcaption>“And yet, I am more myself than I have ever been.”<small>From the introduction</small></figcaption>
       </figure>
     </div>
@@ -1093,6 +1105,7 @@ main section[id]{scroll-margin-top:52px}
         <p>I'm someone who sat in the chair, made the bargains, took the calls at 3 a.m., and came out the other side wanting to write down what nobody had told me.</p>
         <p>Beyond The Body, Beyond The Pain is that book.</p>
         <p>When I'm not writing, I'm usually annoying my cardiologist by paragliding. Thank you for being here.</p>
+        <button type="button" class="who-link" data-who><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Watch my story · 1 min</button>
         <div class="ctas"><a class="btn gold" href="#book">Get your copy</a><a class="btn ghost" href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Invite me to speak</a></div>
       </div>
     </div>
@@ -1735,17 +1748,35 @@ main section[id]{scroll-margin-top:52px}
     $('#vAr').textContent = s.ar; $('#vEn').textContent = s.en; $('#vCount').textContent = (vi + 1) + ' of ' + SH.length;
     $('#vYt').href = 'https://www.youtube.com/shorts/' + s.id;
   }
-  function openViewer(i){ vLast = document.activeElement; showShort(i); viewer.hidden = false; document.body.style.overflow = 'hidden'; $('#vClose').focus(); }
+  let vSingle = false;
+  const vNote = $('.v-frame .note');
+  function openViewer(i){
+    vSingle = false; viewer.classList.remove('single'); viewer.setAttribute('aria-label', 'Short video');
+    vNote.textContent = 'On the live site the video plays here. Swipe for the next one.';
+    vLast = document.activeElement; showShort(i); viewer.hidden = false; document.body.style.overflow = 'hidden'; $('#vClose').focus();
+  }
+  /* "Who I am" video. Live site: a YouTube embed (youtube-nocookie.com) that loads only when this is tapped,
+     so the page stays light. PLACEHOLDER until Omar's 1-minute video is ready: his short "One year since my kidney transplant". */
+  const WHO = { id:'d6wlG8gAL9g', ar:'سنة على زراعة الكلى', en:'Stand-in: your 1-minute “who I am” video goes here', img:'img/short_d6wlG8gAL9g.webp' };
+  function openWho(){
+    vSingle = true; viewer.classList.add('single'); viewer.setAttribute('aria-label', 'Who I am');
+    const img = $('#vImg'); img.src = WHO.img; img.alt = 'Who I am'; img.style.animation = 'none'; void img.offsetWidth; img.style.animation = '';
+    $('#vAr').textContent = WHO.ar; $('#vEn').textContent = WHO.en; $('#vCount').textContent = '';
+    $('#vYt').href = 'https://youtu.be/' + WHO.id;
+    vNote.textContent = 'On the live site your video plays here, with sound, from YouTube.';
+    vLast = document.activeElement; viewer.hidden = false; document.body.style.overflow = 'hidden'; $('#vClose').focus();
+  }
+  $$('[data-who]').forEach(b => b.addEventListener('click', openWho));
   function closeViewer(){ viewer.hidden = true; document.body.style.overflow = ''; if (vLast) try { vLast.focus({ preventScroll:true }); } catch(_) {} }
   $('#vClose').addEventListener('click', closeViewer);
   $('#vPrev').addEventListener('click', () => showShort(vi - 1));
   $('#vNext').addEventListener('click', () => showShort(vi + 1));
   viewer.addEventListener('click', e => { if (e.target === viewer) closeViewer(); });
-  document.addEventListener('keydown', e => { if (viewer.hidden) return; if (e.key === 'ArrowRight' || e.key === 'ArrowDown') showShort(vi + 1); if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') showShort(vi - 1); });
+  document.addEventListener('keydown', e => { if (viewer.hidden || vSingle) return; if (e.key === 'ArrowRight' || e.key === 'ArrowDown') showShort(vi + 1); if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') showShort(vi - 1); });
   let vs = null;
   viewer.addEventListener('pointerdown', e => { vs = { x:e.clientX, y:e.clientY }; });
   viewer.addEventListener('pointerup', e => {
-    if (!vs) return; const dx = e.clientX - vs.x, dy = e.clientY - vs.y; vs = null;
+    if (!vs || vSingle) { vs = null; return; } const dx = e.clientX - vs.x, dy = e.clientY - vs.y; vs = null;
     if (Math.max(Math.abs(dx), Math.abs(dy)) < 40) return;
     if (Math.abs(dy) > Math.abs(dx)) showShort(vi + (dy < 0 ? 1 : -1)); else showShort(vi + (dx < 0 ? 1 : -1));
   });
