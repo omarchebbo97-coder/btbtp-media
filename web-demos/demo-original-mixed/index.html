@@ -630,6 +630,7 @@ main section[id]{scroll-margin-top:52px}
 .foot small{color:var(--on-band-muted);font-size:.84rem}
 .foot-mail{display:inline-flex;align-items:center;gap:8px;justify-self:start;min-height:44px;color:var(--on-band);font-weight:600;text-decoration:none;overflow-wrap:anywhere}
 .foot-mail svg{width:18px;height:18px;flex:none;color:var(--accent)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .foot-mail:hover span,.foot-mail:focus-visible span{text-decoration:underline;text-underline-offset:3px}
 
 /* book page + shop */
@@ -1123,11 +1124,11 @@ main section[id]{scroll-margin-top:52px}
   <!-- donor -->
   <section id="donor" class="sec donor gut" aria-labelledby="h-donor">
     <div class="in">
-      <aside class="rv" aria-label="Review note: Become a donor"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Become a donor</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> ties your story to something every visitor can do today. Add the official Lebanese registration link before launch.</p></div></div></aside>
+      <aside class="rv" aria-label="Review note: Become a donor"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Become a donor</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> ties your story to something every visitor can do today. The button opens nodlb.org, Lebanon’s national organ donation organization, in a new tab.</p></div></div></aside>
       <p class="eyebrow">Become a donor</p>
       <h2 id="h-donor">My dad gave part of his liver. My brother gave a kidney.</h2>
       <p>Not everyone has a donor in the family. Registering takes a few minutes, and telling your family that you did matters just as much.</p>
-      <div class="ctas"><button type="button" class="btn ghost" id="donorBtn">How to register in Lebanon</button></div>
+      <div class="ctas"><a class="btn ghost" id="donorBtn" href="https://www.nodlb.org/" target="_blank" rel="noopener">How to register in Lebanon <small aria-hidden="true">↗</small><span class="sr-only"> (opens nodlb.org in a new tab)</span></a></div>
     </div>
   </section>
 
@@ -1879,7 +1880,6 @@ main section[id]{scroll-margin-top:52px}
   });
   $$('[data-news-short]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openViewer(SH.findIndex(s => s.id === a.dataset.newsShort)); }));
   $$('[data-scroll]').forEach(b => b.addEventListener('click', () => document.getElementById(b.dataset.scroll).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' })));
-  $('#donorBtn').addEventListener('click', () => toast('Link to Lebanon’s official donor registration goes here'));
   $('#nlForm').addEventListener('submit', e => {
     e.preventDefault(); const em = $('#nlEmail');
     if (!em.value || !em.checkValidity()){ toast('Enter an email like name@example.com'); em.focus(); return; }
