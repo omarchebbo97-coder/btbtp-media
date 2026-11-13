@@ -57,7 +57,7 @@ p{margin:0}
 a{color:inherit}
 button{font:inherit;color:inherit}
 img{display:block;max-width:100%}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 6px var(--accent)}
 .eyebrow{display:flex;align-items:center;gap:10px;font:600 .76rem/1.3 var(--f-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--band)}
 .eyebrow.line::before{content:"";width:28px;height:1px;background:currentColor}
 .mark{width:28px;height:16px;flex:none}
@@ -100,7 +100,9 @@ img{display:block;max-width:100%}
 .notes .tag{display:inline-flex}
 
 /* header */
-.site-head{background:var(--paper);border-bottom:1px solid var(--line);transition:background-color .4s}
+.site-head{position:sticky;top:var(--tool-h,0px);z-index:45;background:var(--paper);border-bottom:1px solid var(--line);transition:background-color .4s}
+[id]{scroll-margin-top:calc(var(--stick,0px) + 10px)}
+.faq .a a{padding-block:10px}
 .site-head .in{display:flex;align-items:center;gap:16px;min-height:64px}
 .logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:600 1.15rem var(--f-serif)}
 .nav{display:none;gap:4px;margin-inline:auto}
@@ -118,7 +120,7 @@ img{display:block;max-width:100%}
 
 .in,.hero .in,.book .in,.about .in,.pp .in,.pp .main,.donor .in,.news .in,.foot .in{grid-template-columns:minmax(0,1fr)}
 .pp-txt>*,.book-txt>*{min-width:0}
-main section[id]{scroll-margin-top:52px}
+main section[id]{scroll-margin-top:calc(var(--stick,0px) + 10px)}
 /* review layer */
 :is(.chip.fix,.chip.win,.chip.pol,.chip.new){display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 10px;font:600 .74rem/1.6 var(--f-sans);white-space:nowrap}
 :is(.chip.fix,.chip.win,.chip.pol,.chip.new)::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
@@ -166,7 +168,7 @@ main section[id]{scroll-margin-top:52px}
 @media (min-width:900px){.hero .in{grid-template-columns:1.1fr .9fr;align-items:center;padding-block:72px 96px}}
 .hero h1{font-size:clamp(2.3rem,7vw,3.6rem);letter-spacing:-.01em}
 .hero .txt{display:grid;gap:18px;align-content:start}
-.hero .txt>p:not(.eyebrow):not(.now){font:400 1.18rem/1.6 var(--f-serif);color:var(--muted);max-width:34ch}
+.hero .txt>p:not(.eyebrow):not(.now):not(.hero-give){font:400 1.18rem/1.6 var(--f-serif);color:var(--muted);max-width:34ch}
 .hero .eyebrow{text-transform:none;letter-spacing:.01em;font:400 .95rem/1.4 var(--f-sans);color:var(--muted)}
 .hero .eyebrow i{font-family:var(--f-serif);color:var(--ink)}
 .eyebrow.line::before{flex:none}
@@ -339,11 +341,12 @@ main section[id]{scroll-margin-top:52px}
 @keyframes flow{to{stroke-dashoffset:-24}}
 .hint{position:absolute;top:0;left:50%;translate:-50% 0;white-space:nowrap;font:600 .8rem var(--f-sans);background:var(--ink);color:var(--paper);padding:5px 12px;border-radius:999px;transition:opacity .4s;pointer-events:none}
 .figure.touched .hint{opacity:0}
-.spot{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;padding:0;border-radius:50%;border:2px solid var(--paper);background:var(--paper);cursor:pointer;box-shadow:var(--shadow);transition:scale .4s cubic-bezier(.34,1.56,.64,1),border-color .25s;animation:bob 3.2s ease-in-out infinite;animation-delay:calc(var(--i) * -.45s)}
+.spot{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;padding:0;border-radius:50%;border:2px solid var(--paper);background:var(--paper);cursor:pointer;box-shadow:var(--shadow);transition:scale .4s cubic-bezier(.34,1.56,.64,1),border-color .25s;animation:none}
+.figure.live .spot{animation:bob 3.2s ease-in-out 3;animation-delay:calc(var(--i) * .18s)}
 .spot img{width:100%;height:100%;border-radius:50%;object-fit:cover}
 .spot::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid var(--accent);opacity:0;pointer-events:none}
 .spot.on{scale:1.28;border-color:var(--accent);z-index:2}
-.spot.on::after{animation:ring 1.8s ease-out infinite}
+.spot.on::after{animation:ring 1.8s ease-out 3}
 .spot:hover:not(.on){scale:1.1}
 @keyframes bob{50%{translate:0 -3px}}
 @keyframes ring{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.55);opacity:0}}
@@ -395,6 +398,21 @@ main section[id]{scroll-margin-top:52px}
 .g-row input{flex:1 1 auto;width:0;min-width:0;min-height:44px;border:1.5px solid var(--line);border-radius:999px;padding:0 14px;background:var(--paper);color:var(--ink);font:400 .95rem var(--f-sans)}
 .g-row .btn{min-height:44px;padding:8px 14px;font-size:.9rem}
 .g-fine{font-size:.74rem;color:var(--muted)}
+.hero-give{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:.95rem;color:var(--muted)}
+.hero-give svg{width:18px;height:18px;flex:none;color:var(--accent-ink)}
+.f-err{color:#a1271c;font-size:.88rem;font-weight:600;margin:2px 0 0;flex-basis:100%}
+.news .f-err{color:#ffc4b8}
+input[aria-invalid="true"]{border-color:#a1271c!important}
+.news input[aria-invalid="true"]{border-color:#ffc4b8!important}
+.co-addr{border:0;padding:0;margin:6px 0 0;display:grid;gap:8px;min-width:0}
+.co-addr legend{font-weight:700;font-size:.95rem;padding:0;margin-bottom:6px}
+.whish{border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:6px;background:var(--paper)}
+.whish p:not(.pay-lbl){font-size:.92rem;color:var(--muted);line-height:1.5}
+.co-done .co-dl{margin-top:4px}
+.money-pending .money :is(.ex,.amount,.bar){display:none}
+.quotes-slot.empty{border:0;padding:0;justify-items:start;text-align:start}
+@media (max-width:899px){.pp .cover-col .cover{width:40%;max-width:160px;margin-bottom:6px}.pp .in{gap:12px;padding-top:12px}.pp .main{gap:14px}}
+@media (prefers-reduced-motion: reduce){.figure.live .spot{animation:none}}
 [lang="ar"]{font-family:"Noto Sans Arabic",var(--f-sans);letter-spacing:0;text-transform:none}
 .guide h3[lang="ar"]{font-weight:700;font-size:1.12rem;line-height:1.5}
 .guide .g-d[lang="ar"]{font-size:.95rem;line-height:1.7}
@@ -812,10 +830,11 @@ main section[id]{scroll-margin-top:52px}
     </a>
     <nav class="nav" aria-label="Main">
       <a href="#home" data-nav="home">Home</a>
-      <a href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">Blog</a>
+      <a href="#guides">Free guides</a>
+      <a href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">Blog <small aria-hidden="true">↗</small></a>
       <a href="#shop" data-nav="shop">Shop</a>
-      <a href="https://stg.omarchebbo.com/gallery" target="_blank" rel="noopener">Gallery</a>
-      <a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Contact</a>
+      <a href="https://stg.omarchebbo.com/gallery" target="_blank" rel="noopener">Gallery <small aria-hidden="true">↗</small></a>
+      <a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Contact <small aria-hidden="true">↗</small></a>
     </nav>
     <div class="head-r">
       <a class="btn gold head-cta" href="#book">Get your copy</a>
@@ -866,12 +885,13 @@ main section[id]{scroll-margin-top:52px}
           <button type="button" class="btn gold" data-first-page>Read the first page</button>
           <button type="button" class="btn ghost" data-scroll="guides">Free guides</button>
         </div>
+        <p class="hero-give"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.4-7.5-10.1A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.8c0 5.7-7.5 10.1-7.5 10.1z"/></svg>Net profits from the introduction go to dialysis care at AUBMC.</p>
         <div class="stats" id="stats">
           <div><b data-to="3">3</b><span>organ transplants</span></div>
           <div><b data-to="11">11</b><span>years on dialysis</span></div>
           <div><b data-to="26" data-suf="+">26+</b><span>years of the journey</span></div>
         </div>
-        <p class="now"><span class="ping" aria-hidden="true"></span><b>Now</b> The full memoir is on its way.</p>
+        <p class="now"><span class="ping" aria-hidden="true"></span><b>Now</b> The full memoir comes out in June 2027.</p>
       </div>
       <figure class="portrait" style="margin:0">
         <img src="img/grad.webp" alt="Omar in a graduation cap and gown">
@@ -918,7 +938,7 @@ main section[id]{scroll-margin-top:52px}
           <button type="button" class="verify" data-doc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><span>Verified by AUBMC · <u>See the document</u></span></button>
         </div>
         <blockquote class="about-book">This isn’t a survival story that asks for your pity. It dares you to laugh in the waiting room. Panic attacks and paragliding, catheters and prayer. It’s honest about the body’s betrayals and never lets illness have the final word.</blockquote>
-        <div class="quotes-slot"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><p>Reader quotes appear here once there are three real ones, with first name and city.</p><a class="note-btn" href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Read it? Leave a note →</a></div>
+        <div class="quotes-slot empty"><a class="note-btn" href="mailto:hello@omarchebbo.com?subject=About%20the%20introduction">Read it? Email me what you thought →</a></div>
       </div>
     </div>
   </section>
@@ -1112,7 +1132,7 @@ main section[id]{scroll-margin-top:52px}
   <section id="faq" class="sec sand gut" aria-labelledby="h-faq">
     <div class="in">
       <div class="sec-head">
-        <aside class="rv" aria-label="Review note: FAQ"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · FAQ</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_faq.webp" aria-label="See the original FAQ section"><img src="img/orig_faq.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> four questions, none about buying.</p><p><b>Now:</b> buyer questions added: getting the file, cards from Lebanon, and proof the money reaches AUBMC.</p></div></div></aside>
+        <aside class="rv" aria-label="Review note: FAQ"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · FAQ</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_faq.webp" aria-label="See the original FAQ section"><img src="img/orig_faq.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> four questions, none about buying.</p><p><b>Now:</b> buyer questions added: getting the file, paying with Whish, and proof the money reaches AUBMC.</p></div></div></aside>
         <p class="eyebrow">Questions</p>
         <h2 id="h-faq">Before you ask</h2>
       </div>
@@ -1120,10 +1140,10 @@ main section[id]{scroll-margin-top:52px}
         <details><summary>Is this book medical advice?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">No. I'm not a doctor or therapist. The book shares my lived experience and practical field notes. Always talk to your own care team before acting on anything you read here.</p></details>
         <details><summary>Who is this book for?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Patients on dialysis or awaiting transplant, recipients rebuilding their lives, the caregivers beside them, and anyone who loves an honest memoir about survival and identity.</p></details>
         <details><summary>Do I need medical knowledge to follow it?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Not at all. The story carries you; medical moments are explained in plain words, as I understood them from the patient's chair.</p></details>
-        <details><summary><span>How do I get the book after paying?<span class="new-q">New</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">By email, right after payment: you get the introduction as a PDF. All sales are final.</p></details>
-        <details><summary><span>Which cards work from Lebanon?<span class="new-q">New</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a"><span class="todo">Omar to confirm</span> List the payment methods checkout accepts, and whether Lebanese bank cards work.</p></details>
-        <details><summary><span>How do I know the money reaches AUBMC?<span class="new-q">New</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">I've already made the first donation to the AUBMC dialysis unit. The hospital's signed confirmation will be published here, and each new donation will be added the same way. <button type="button" class="linkish" data-doc>See the signed document</button></p></details>
-        <details><summary>Can I invite Omar to speak or interview?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Sure! Use the contact page and tell me about your event, podcast or publication. I read everything personally.</p></details>
+        <details><summary><span>How do I get the book after paying?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">The introduction comes by email right after payment, as a PDF. The full memoir comes out in June 2027: the ebook by email, the hardcover delivered free. All sales are final.</p></details>
+        <details><summary><span>How do I pay?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">With Whish. At checkout you go to Whish to confirm the payment with your Whish account, then you come straight back here for your receipt.</p></details>
+        <details><summary><span>How do I know the money reaches AUBMC?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">I've already made the first donation to the AUBMC dialysis unit. The hospital's signed confirmation will be published here, and each new donation will be added the same way. <button type="button" class="linkish" data-doc>See the signed document</button></p></details>
+        <details><summary>Can I invite Omar to speak or interview?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Sure! Write to me at <a href="mailto:hello@omarchebbo.com">hello@omarchebbo.com</a> or use the <a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">contact page ↗</a>, and tell me about your event, podcast or publication. I read everything personally.</p></details>
       </div>
     </div>
   </section>
@@ -1160,7 +1180,7 @@ main section[id]{scroll-margin-top:52px}
 <main data-view="book" id="v-book" hidden>
   <section class="pp gut" aria-labelledby="h-pp">
     <div class="in">
-      <a class="back" href="#shop">← Back to the shop</a>
+      <a class="back" href="#home" id="ppBack">← Home</a>
       <div class="main">
         <div class="cover-col"><div class="cover"><img src="img/cover.webp" alt="Beyond the Body, Beyond the Pain: cover shaped like an IV bag"></div></div>
         <div class="pp-txt">
@@ -1169,13 +1189,14 @@ main section[id]{scroll-margin-top:52px}
           <h1 id="h-pp">The Introduction</h1>
           <p class="price">$9.99</p>
           <p class="desc">The pages where the story starts.</p>
-          <p class="inside-lbl">What’s inside</p>
-          <ol class="inside"><li>Dialysis at fifteen, the only teenager in a ward of sixty- and seventy-year-olds</li><li>The panic attacks and the silence no one prepares you for</li><li>The post-transplant shock no one talks about</li><li>Making peace with a body of borrowed parts</li></ol>
           <div class="btns">
             <div class="buy-wrap" data-wrap><button type="button" class="btn gold buy" data-buy="intro" id="ppBuy"><span class="fill" aria-hidden="true"></span><span data-lbl>Buy now — $9.99</span></button></div>
             <button type="button" class="btn ghost" data-add="intro">Add to cart</button>
           </div>
           <p class="meta">Sent to your email right after payment.</p>
+          <p class="inside-lbl">What’s inside</p>
+          <ol class="inside"><li>Dialysis at fifteen, the only teenager in a ward of sixty- and seventy-year-olds</li><li>The panic attacks and the silence no one prepares you for</li><li>The post-transplant shock no one talks about</li><li>Making peace with a body of borrowed parts</li></ol>
+
           <button type="button" class="btn ghost sample" data-sample="fp2" aria-expanded="false" aria-controls="fp2" style="max-width:440px">Preview the first page
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="page" id="fp2" hidden style="max-width:520px">
@@ -1215,7 +1236,7 @@ main section[id]{scroll-margin-top:52px}
       </div>
       <div class="grid-p" id="shopGrid"></div>
       <div class="know">
-        <div><h3>Delivery</h3><p>Digital books arrive by email right after payment. Hardcover: delivery details by email after you order.</p></div>
+        <div><h3>Delivery</h3><p>The introduction arrives by email right after payment. The full memoir comes out in June 2027: the ebook by email, the hardcover with free delivery.</p></div>
         <div><h3>Refunds</h3><p>All sales are final. Digital books can’t be refunded once they’re sent.</p></div>
         <div><h3>Where the money goes</h3><p>Net profits go to the dialysis unit at AUBMC in Beirut.</p><button type="button" class="verify" data-doc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><span>Verified by AUBMC · <u>See the document</u></span></button></div>
       </div>
@@ -1227,7 +1248,7 @@ main section[id]{scroll-margin-top:52px}
   <div class="in">
     <div class="r1">
       <a class="logo" href="#home" style="color:var(--on-band)"><svg class="mark" viewBox="0 4 64 40" aria-hidden="true"><path d="M18 38 A14 14 0 0 1 46 38" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/><line x1="6" y1="38" x2="58" y2="38" stroke="var(--on-band)" stroke-width="5" stroke-linecap="round"/></svg>Omar Chebbo</a>
-      <nav aria-label="Footer"><a href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">Blog</a><a href="#shop">Shop</a><a href="https://stg.omarchebbo.com/gallery" target="_blank" rel="noopener">Gallery</a><a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Contact</a></nav>
+      <nav aria-label="Footer"><a href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">Blog <small aria-hidden="true">↗</small></a><a href="#shop">Shop</a><a href="https://stg.omarchebbo.com/gallery" target="_blank" rel="noopener">Gallery <small aria-hidden="true">↗</small></a><a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Contact <small aria-hidden="true">↗</small></a></nav>
       <div class="soc">
         <a href="https://instagram.com/omar_organtransplants" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
         <a href="https://tiktok.com/@omar_organtransplants" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.8 2.3 4.6 5 4.8"/></svg></a>
@@ -1330,10 +1351,10 @@ main section[id]{scroll-margin-top:52px}
 
   /* ---------- data ---------- */
   const P = {
-    intro:{ title:'The Introduction', kind:'Digital', price:9.99, desc:'Where the memoir starts. A PDF, sent by email.', digital:true, img:'img/p_intro.webp' },
-    ebook:{ title:'Full Memoir — Ebook (Pre-order)', kind:'Digital', price:14.99, desc:'Reserve the complete ebook now, delivered on release.', digital:true, img:'img/p_ebook.webp' },
-    hard:{ title:'Beyond The Body, Beyond The Pain — Hardcover', kind:'Physical', price:24, desc:'The full memoir, hardcover.', opts:['Signed','Unsigned'], img:'img/p_hard.webp' },
-    bundle:{ title:'The Introduction + Signed Hardcover', kind:'Physical', price:30, was:33.99, desc:'Read it today, then hold the finished book, signed.', img:'img/p_bundle.webp' },
+    intro:{ title:'The Introduction', kind:'Digital', price:9.99, desc:'Where the memoir starts. A PDF, sent by email.', ship:'Digital · sent by email', digital:true, img:'img/p_intro.webp' },
+    ebook:{ title:'Full Memoir — Ebook (Pre-order)', kind:'Digital', price:14.99, desc:'The complete ebook, sent by email in June 2027.', ship:'Pre-order · by email in June 2027', pre:true, digital:true, img:'img/p_ebook.webp' },
+    hard:{ title:'Beyond The Body, Beyond The Pain — Hardcover', kind:'Physical', price:35, desc:'The full memoir, hardcover. Ships in June 2027, free delivery.', ship:'Pre-order · ships June 2027 · free delivery', pre:true, opts:['Signed','Unsigned'], img:'img/p_hard.webp' },
+    bundle:{ title:'The Introduction + Signed Hardcover', kind:'Physical', price:41, was:44.99, desc:'Read the introduction today. The signed hardcover ships in June 2027, free delivery.', ship:'Introduction by email now · hardcover ships June 2027 · free delivery', pre:true, img:'img/p_bundle.webp' },
     g_blood:{ title:'تحاليلك مشروحة', kind:'Free guide', price:0, desc:'11 صفحة · PDF', digital:true, guide:true, img:'img/g_blood.webp' },
     g_aftertx:{ title:'تحاليلك بعد الزراعة… بلا هلع', kind:'Free guide', price:0, desc:'22 صفحة · PDF', digital:true, guide:true, img:'img/g_aftertx.webp' }
   };
@@ -1383,19 +1404,39 @@ main section[id]{scroll-margin-top:52px}
   const setNotes = on => { document.body.classList.toggle('notes', on); notesSw.checked = on; store.set('oc-notes', on ? '1' : '0'); };
   notesSw.addEventListener('change', () => setNotes(notesSw.checked));
 
+  /* ---------- sticky header offsets ---------- */
+  const setStick = () => {
+    const tool = $('.tool'), th = tool ? tool.offsetHeight : 0;   // .tool is the demo-only top bar
+    document.documentElement.style.setProperty('--tool-h', th + 'px');
+    document.documentElement.style.setProperty('--stick', (th + $('.site-head').offsetHeight) + 'px');
+  };
+  setStick(); addEventListener('resize', setStick);
+  if ('ResizeObserver' in window){ const ro = new ResizeObserver(setStick); ro.observe($('.site-head')); if ($('.tool')) ro.observe($('.tool')); }
+
   /* ---------- router ---------- */
+  let homeY = 0, fromPop = false, curView = 'home', bookFrom = null, booted = false;
+  addEventListener('popstate', () => { fromPop = true; });
   const VIEWS = ['home', 'book', 'shop'];
   function route(){
     let v = (location.hash || '#home').slice(1), target = null;
     if (!VIEWS.includes(v)){ const el = document.getElementById(v); if (el && $('#v-home').contains(el)) target = el; v = 'home'; }
+    const prev = curView;
+    if (prev === 'home' && v !== 'home') homeY = scrollY;   // remember the homepage position before hiding it
     $$('[data-view]').forEach(m => m.hidden = m.dataset.view !== v);
     $$('[data-nav]').forEach(a => { const on = a.dataset.nav === v; a.classList.toggle('cur', on); if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
     closeAll();
-    if (target) requestAnimationFrame(() => target.scrollIntoView({ behavior:'instant', block:'start' }));
+    if (v === 'home' && prev !== 'home' && fromPop) scrollTo({ top:homeY, behavior:'instant' });   // Back keeps your place
+    else if (target) requestAnimationFrame(() => target.scrollIntoView({ behavior:'instant', block:'start' }));
     else scrollTo({ top:0, behavior:'instant' });
+    if (v === 'book' && prev !== 'book'){
+      bookFrom = booted ? prev : null;
+      $('#ppBack').textContent = bookFrom === 'shop' ? '← Back to the shop' : bookFrom ? '← Back' : '← Home';
+    }
+    curView = v; fromPop = false; booted = true;
     checkBar(); updateTL();
   }
   addEventListener('hashchange', route);
+  $('#ppBack').addEventListener('click', e => { if (bookFrom){ e.preventDefault(); history.back(); } });
 
   /* ---------- drawers ---------- */
   const scrim = $('#scrim');
@@ -1403,11 +1444,11 @@ main section[id]{scroll-margin-top:52px}
   function openDrawer(el){
     lastFocus = document.activeElement;
     closeAll(true);
-    el.classList.add('show'); el.setAttribute('aria-hidden', 'false'); scrim.classList.add('show');
+    el.inert = false; el.classList.add('show'); el.setAttribute('aria-hidden', 'false'); scrim.classList.add('show');
     setTimeout(() => { const f = $('button, a', el); if (f) f.focus(); }, 50);
   }
   function closeAll(silent){
-    $$('.drawer').forEach(d => { d.classList.remove('show'); d.setAttribute('aria-hidden', 'true'); });
+    $$('.drawer').forEach(d => { d.classList.remove('show'); d.setAttribute('aria-hidden', 'true'); d.inert = true; });
     scrim.classList.remove('show'); $('#menuBtn').setAttribute('aria-expanded', 'false');
     if (!silent && lastFocus && document.contains(lastFocus)) { try { lastFocus.focus({ preventScroll:true }); } catch(_) {} lastFocus = null; }
   }
@@ -1439,9 +1480,28 @@ main section[id]{scroll-margin-top:52px}
     } else cart.push({ key, id, opt: opt || '', qty:1 });
     save(); return 'added';
   }
+  function fieldErr(input, msg){
+    const id = input.id + 'Err'; let el = document.getElementById(id);
+    const anchor = input.closest('.g-row') || input.closest('.nl') || input;
+    if (!el){ el = document.createElement('p'); el.className = 'f-err'; el.id = id; el.setAttribute('role', 'alert'); anchor.after(el); }
+    el.textContent = msg; input.setAttribute('aria-invalid', 'true'); input.setAttribute('aria-describedby', id);
+    const clear = () => { el.remove(); input.removeAttribute('aria-invalid'); input.removeAttribute('aria-describedby'); input.removeEventListener('input', clear); };
+    input.addEventListener('input', clear);
+  }
+  const badEmail = em => !em.value.trim() || !em.checkValidity();
   const CK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
   const LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
   const setCartTitle = t => { $('#h-cart').textContent = t; };
+  const RELEASE = 'June 2027';
+  const has = id => cart.some(i => i.id === id);
+  const hasDl = () => has('intro') || has('bundle');
+  function deliveryLines(){
+    const out = [];
+    if (hasDl()) out.push('The introduction arrives by email right after payment.');
+    if (has('ebook')) out.push('The ebook arrives by email in ' + RELEASE + '.');
+    if (has('hard') || has('bundle')) out.push('The hardcover ships in ' + RELEASE + ', with free delivery.');
+    return out;
+  }
   const totals = () => ({ total: Math.round(cart.reduce((s, i) => s + P[i.id].price * i.qty, 0) * 100) / 100, phys: cart.some(i => !P[i.id].digital) });
   const ttl = p => p.guide ? '<bdi lang="ar">' + p.title + '</bdi>' : p.title;
   const dsc = p => p.guide ? '<bdi lang="ar" dir="rtl">' + p.desc + '</bdi>' : p.desc;
@@ -1465,15 +1525,15 @@ main section[id]{scroll-margin-top:52px}
     }
     body.innerHTML = cart.map(i => {
       const p = P[i.id];
-      const qty = p.guide ? '<p class="s">Free guide · PDF</p>' : p.digital ? '<p class="s">Digital · sent by email</p>' :
-        '<div class="qty"><button type="button" data-q="-1" data-k="' + i.key + '" aria-label="Fewer">−</button><span>' + i.qty + '</span><button type="button" data-q="1" data-k="' + i.key + '" aria-label="More">+</button></div>';
+      const qty = '<p class="s">' + p.ship + '</p>' + (p.digital ? '' :
+        '<div class="qty"><button type="button" data-q="-1" data-k="' + i.key + '" aria-label="Fewer">−</button><span>' + i.qty + '</span><button type="button" data-q="1" data-k="' + i.key + '" aria-label="More">+</button></div>');
       return '<div class="ci"><img src="' + p.img + '" alt=""><div><h3 dir="auto">' + ttl(p) + '</h3>' + (i.opt ? '<p class="s">' + i.opt + '</p>' : '') + qty +
         '<button type="button" class="rm" data-rm="' + i.key + '">Remove</button></div><p class="p">' + price(p.price * i.qty) + '</p></div>';
     }).join('') + guidesBlock();
     wireFree(body);
     const t = totals();
     foot.innerHTML = '<div class="sub"><span>Subtotal</span><span>' + price(t.total) + '</span></div>' +
-      '<p>' + (t.phys ? 'Shipping is added at checkout. ' : '') + 'Digital books arrive by email right after payment.</p>' +
+      '<p>' + deliveryLines().join(' ') + '</p>' +
       '<button type="button" class="btn gold" id="checkout">Checkout</button>';
     $('#checkout').addEventListener('click', renderCheckout);
     $$('[data-q]', body).forEach(b => b.addEventListener('click', () => {
@@ -1483,74 +1543,75 @@ main section[id]{scroll-margin-top:52px}
     }));
     $$('[data-rm]', body).forEach(b => b.addEventListener('click', () => { cart = cart.filter(i => i.key !== b.dataset.rm); save(); updateCount(); renderCart(); }));
   }
+  const ADDR = [['coName', 'Full name', 'name', 'text', 'Add the name for the delivery'], ['coPhone', 'Phone', 'tel', 'tel', 'Add a phone number for the delivery'],
+    ['coCity', 'City or area', 'address-level2', 'text', 'Add your city or area'], ['coStreet', 'Street, building, floor', 'street-address', 'text', 'Add your street and building']];
   function renderCheckout(prefill){
     setCartTitle('Checkout');
-    const body = $('#cartBody'), foot = $('#cartFoot'), t = totals();
+    const body = $('#cartBody'), foot = $('#cartFoot'), t = totals(), st = (prefill && typeof prefill === 'object') ? prefill : {};
     body.innerHTML = '<button type="button" class="co-back" id="coBack">← Back to cart</button>' +
       '<ol class="co-steps" aria-label="Checkout steps"><li class="done">Cart</li><li class="cur" aria-current="step">Details</li><li>Payment</li></ol>' +
       '<div class="co-sum">' + cart.map(i => '<p><span>' + ttl(P[i.id]) + (i.opt ? ' · ' + i.opt : '') + (i.qty > 1 ? ' × ' + i.qty : '') + '</span><b>' + price(P[i.id].price * i.qty) + '</b></p>').join('') +
       '<p class="tot"><span>Total</span><b>' + price(t.total) + '</b></p></div>' +
-      '<form id="coForm" class="co-form" novalidate><label for="coEmail">Email for your receipt and download link</label>' +
+      '<form id="coForm" class="co-form" novalidate><label for="coEmail">' + (hasDl() ? 'Email for your receipt and download link' : 'Email for your receipt') + '</label>' +
       '<input id="coEmail" type="email" placeholder="your@email.com" autocomplete="email" required>' +
-      (t.total > 0 ? '<p class="co-note">Your books arrive by email right after payment. All sales are final, no refunds.</p>' : '') +
-      (t.phys ? '<p class="co-note">Your shipping address is entered on the payment page.</p>' : '') +
-      (t.total > 0 ? '<p class="co-note">' + LOCK + 'You finish paying on the secure payment page. Card details are never typed on this site.</p>' : '') + '</form>';
+      (t.phys ? '<fieldset class="co-addr"><legend>Delivery address</legend>' + ADDR.map(([id, l, ac, ty]) => '<label for="' + id + '">' + l + '</label><input id="' + id + '" type="' + ty + '" autocomplete="' + ac + '" required>').join('') + '</fieldset>' : '') +
+      '<p class="co-note">' + deliveryLines().join(' ') + ' All sales are final, no refunds.</p>' +
+      '<p class="co-note">' + LOCK + 'You pay on Whish’s secure page. Your Whish details are never typed on this site.</p></form>';
     foot.innerHTML = '<button type="submit" form="coForm" class="btn gold">' + (t.total > 0 ? 'Continue to payment — ' + money(t.total) : 'Send my free guides') + '</button><p>Prototype: no payment is taken.</p>';
-    if (typeof prefill === 'string') $('#coEmail').value = prefill;
+    if (st.email) $('#coEmail').value = st.email;
+    if (t.phys) ADDR.forEach(([id]) => { if (st[id]) $('#' + id).value = st[id]; });
     $('#coBack').addEventListener('click', renderCart);
     $('#coForm').addEventListener('submit', e => {
-      e.preventDefault(); const em = $('#coEmail');
-      if (!em.value || !em.checkValidity()){ toast('Enter an email like name@example.com'); em.focus(); return; }
-      if (totals().total > 0) renderPayment(em.value); else renderDone(em.value);
+      e.preventDefault(); const em = $('#coEmail'); let first = null;
+      if (badEmail(em)){ fieldErr(em, 'Enter an email like name@example.com'); first = em; }
+      const data = { email: em.value.trim() };
+      if (totals().phys) ADDR.forEach(([id, , , , msg]) => { const f = $('#' + id); data[id] = f.value.trim(); if (!data[id]){ fieldErr(f, msg); first = first || f; } });
+      if (first){ first.focus(); return; }
+      if (totals().total > 0) renderPayment(data); else renderDone(data);
     });
     $('#cartBody').scrollTop = 0;
   }
-  function renderPayment(email){
+  function renderPayment(st){
     setCartTitle('Payment');
     const body = $('#cartBody'), foot = $('#cartFoot'), t = totals();
-    const METHODS = ['Card', 'Apple Pay', 'Google Pay'];
     body.innerHTML = '<button type="button" class="co-back" id="payBack">← Back to details</button>' +
       '<ol class="co-steps" aria-label="Checkout steps"><li class="done">Cart</li><li class="done">Details</li><li class="cur" aria-current="step">Payment</li></ol>' +
-      '<div class="co-sum"><p class="tot" style="border:0;padding:0"><span>Total</span><b>' + money(t.total) + '</b></p><p class="pay-mail"><span>Receipt to</span><span id="payMail"></span></p></div>' +
-      '<p class="pay-lbl">Pay with</p>' +
-      '<div class="pay-methods" role="group" aria-label="Pay with">' + METHODS.map((m, i) => '<button type="button" class="pm" data-pm="' + i + '" aria-pressed="' + (i === 0) + '">' + m + '</button>').join('') + '</div>' +
-      '<div class="pay-panel" id="payPanel"></div>' +
-      '<p class="co-note">' + LOCK + 'On the live site, this is your payment provider’s secure form. This demo doesn’t take card details.</p>';
-    $('#payMail').textContent = email;
-    const panel = $('#payPanel');
-    const showPm = i => {
-      $$('.pm', body).forEach(b => b.setAttribute('aria-pressed', +b.dataset.pm === i));
-      panel.innerHTML = i === 0
-        ? '<div class="fake-form" role="img" aria-label="Preview of the secure card form"><span class="ff wide">Card number</span><span class="ff">MM / YY</span><span class="ff">CVC</span><span class="ff wide">Name on card</span></div>'
-        : '<div class="wallet" role="img" aria-label="Preview of the ' + METHODS[i] + ' button">' + METHODS[i] + '</div>';
-      panel.style.animation = 'none'; void panel.offsetWidth; panel.style.animation = '';
-    };
-    showPm(0);
-    $$('.pm', body).forEach(b => b.addEventListener('click', () => showPm(+b.dataset.pm)));
-    foot.innerHTML = '<button type="button" class="btn gold" id="payBtn">Pay ' + money(t.total) + '</button><p>Prototype: no payment is taken.</p>';
-    $('#payBack').addEventListener('click', () => renderCheckout(email));
+      '<div class="co-sum"><p class="tot" style="border:0;padding:0"><span>Total</span><b>' + money(t.total) + '</b></p><p class="pay-mail"><span>Receipt to</span><span id="payMail"></span></p>' +
+      (t.phys ? '<p class="pay-mail"><span>Deliver to</span><span id="payTo"></span></p><p class="pay-mail"><span>Delivery</span><span>Free</span></p>' : '') + '</div>' +
+      '<div class="whish"><p class="pay-lbl">Pay with Whish</p><p>You’ll go to Whish to confirm the payment with your Whish account, then come straight back here for your receipt.</p></div>' +
+      '<p class="co-note">' + LOCK + 'Payments are handled by Whish. This demo doesn’t take payments.</p>';
+    $('#payMail').textContent = st.email;
+    if (t.phys) $('#payTo').textContent = st.coCity;
+    foot.innerHTML = '<button type="button" class="btn gold" id="payBtn">Pay ' + money(t.total) + ' with Whish</button><p>Prototype: no payment is taken.</p>';
+    $('#payBack').addEventListener('click', () => renderCheckout(st));
     $('#payBtn').addEventListener('click', e => {
       const b = e.currentTarget; if (b.disabled) return;
-      b.disabled = true; b.innerHTML = '<span class="spin" aria-hidden="true"></span>Processing…';
-      setTimeout(() => renderDone(email), reduce ? 0 : 1100);
+      b.disabled = true; b.innerHTML = '<span class="spin" aria-hidden="true"></span>Opening Whish…';
+      setTimeout(() => renderDone(st), reduce ? 0 : 1100);
     });
     $('#cartBody').scrollTop = 0;
   }
-  function renderDone(email){
+  function renderDone(st){
     setCartTitle('Order confirmed');
-    const body = $('#cartBody'), foot = $('#cartFoot'), t = totals(), hasIntro = cart.some(i => i.id === 'intro');
+    const body = $('#cartBody'), foot = $('#cartFoot'), t = totals(), hasIntro = hasDl();
     body.innerHTML = '<div class="co-done"><span class="co-ok">' + CK + '</span><h3>Thank you!</h3>' +
-      '<p>Your receipt and download link are on their way to <b id="coMail"></b>.</p>' +
+      '<p>' + (hasIntro ? 'Your receipt and download link are on their way to <b id="coMail"></b>.' : 'Your receipt is on its way to <b id="coMail"></b>.') + '</p>' +
       (() => {
         const dl = [];
         if (hasIntro) dl.push('<button type="button" class="btn gold" data-dl>Download the PDF</button>');
         cart.filter(i => P[i.id].guide).forEach(i => dl.push('<button type="button" class="btn ghost" data-dl>Free guide: ' + ttl(P[i.id]) + '</button>'));
         return dl.length ? '<div class="co-dl">' + dl.join('') + '</div>' : '';
-      })() + (cart.some(i => i.id === 'ebook') ? '<p>Your ebook arrives by email on release day.</p>' : '') +
-      (t.phys ? '<p>I’ll email you when your hardcover ships.</p>' : '') +
+      })() + (has('ebook') ? '<p>Your ebook arrives by email in ' + RELEASE + '.</p>' : '') +
+      (t.phys ? '<p>Your hardcover ships in ' + RELEASE + ' to <span id="coCity"></span>, with free delivery. I’ll email you when it’s on its way.</p>' : '') +
       '<p class="co-give">Net profits go to the dialysis unit at AUBMC. <button type="button" class="linkish" id="coDoc">See the signed document</button></p></div>';
-    $('#coMail').textContent = email;
-    foot.innerHTML = '<button type="button" class="btn ghost" id="coClose">Back to the site</button><p>Prototype: no payment was taken.</p>';
+    $('#coMail').textContent = st.email;
+    if (t.phys) $('#coCity').textContent = st.coCity;
+    foot.innerHTML = '<button type="button" class="btn gold" id="coNews">Get my monthly letter</button><button type="button" class="btn ghost" id="coClose">Back to the site</button><p>Prototype: no payment was taken.</p>';
+    $('#coNews').addEventListener('click', () => {
+      closeAll(true);
+      if (location.hash === '#news') route(); else location.hash = '#news';
+      setTimeout(() => { const n = $('#nlEmail'); if (n) n.focus({ preventScroll:true }); }, 400);
+    });
     $$('[data-dl]', body).forEach(b => b.addEventListener('click', () => toast('On the live site, the file downloads here.')));
     $('#coDoc').addEventListener('click', () => { closeAll(true); openDoc(); });
     $('#coClose').addEventListener('click', () => closeAll());
@@ -1601,7 +1662,7 @@ main section[id]{scroll-margin-top:52px}
     return '<article class="pc" data-id="' + id + '" data-kind="' + p.kind + '"><div class="img">' + (p.stock ? '<span class="stock">' + p.stock + '</span>' : '') + '<img src="' + p.img + '" alt="' + p.title + '"></div>' +
       '<div class="b"><p class="k">' + p.kind + '</p>' + title + '<p class="d">' + p.desc + '</p>' + opts +
       '<p class="pr">' + money(p.price) + (p.was ? ' <s>' + money(p.was) + '</s>' : '') + '</p>' +
-      '<button type="button" class="btn ghost add">' + (id === 'ebook' ? 'Pre-order' : 'Add to cart') + '</button></div></article>';
+      '<button type="button" class="btn ghost add">' + (p.pre ? 'Pre-order' : 'Add to cart') + '</button></div></article>';
   }
   function wireCards(root){
     $$('.pc', root).forEach(c => {
@@ -1736,7 +1797,7 @@ main section[id]{scroll-margin-top:52px}
 
   /* ---------- shorts row + viewer ---------- */
   const play = '<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span>';
-  $('#shortRow').innerHTML = SH.slice(0, 8).map((s, i) => '<button type="button" class="short" data-i="' + i + '" aria-label="Play: ' + s.en + '"><span class="th"><img src="' + s.img + '" alt="" loading="lazy">' + play + '</span><span class="ar">' + s.ar + '</span><span class="en">' + s.en + '</span></button>').join('');
+  $('#shortRow').innerHTML = SH.map((s, i) => '<button type="button" class="short" data-i="' + i + '" aria-label="Play: ' + s.en + '"><span class="th"><img src="' + s.img + '" alt="" loading="lazy">' + play + '</span><span class="ar">' + s.ar + '</span><span class="en">' + s.en + '</span></button>').join('');
   $$('#shortRow .short').forEach(b => b.addEventListener('click', () => openViewer(+b.dataset.i)));
   const viewer = $('#viewer'); let vi = 0, vLast = null;
   function showShort(i){
@@ -1809,6 +1870,12 @@ main section[id]{scroll-margin-top:52px}
   addEventListener('scroll', () => { requestAnimationFrame(checkBar); if (!tlq){ tlq = true; requestAnimationFrame(updateTL); } }, { passive:true });
   addEventListener('resize', () => { checkBar(); updateTL(); });
 
+  /* body map characters bob a few times when the map comes into view, then rest */
+  if ('IntersectionObserver' in window){
+    const fio = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting){ en.target.classList.add('live'); fio.disconnect(); } }), { threshold:.4 });
+    fio.observe($('#figure'));
+  }
+
   /* ---------- reveal-once things ---------- */
   if ('IntersectionObserver' in window && !reduce){
     const io = new IntersectionObserver(es => es.forEach(en => {
@@ -1851,7 +1918,7 @@ main section[id]{scroll-margin-top:52px}
   }));
   $$('.g-form').forEach(f => f.addEventListener('submit', e => {
     e.preventDefault(); const em = $('input', f);
-    if (!em.value || !em.checkValidity()) { toast('Enter an email like name@example.com'); em.focus(); return; }
+    if (badEmail(em)) { fieldErr(em, 'Enter an email like name@example.com'); em.focus(); return; }
     const ok = document.createElement('p'); ok.className = 'g-ok'; ok.innerHTML = OK;
     ok.append('Done. I’ll email you when it’s out.');
     f.replaceWith(ok, nextStep('Meanwhile: read the first page of my memoir →'));
@@ -1866,6 +1933,8 @@ main section[id]{scroll-margin-top:52px}
 
   /* ---------- signed donation document ---------- */
   const DOC_READY = false;   // set to true once the signed AUBMC document is added
+  const DONATION = null;     // e.g. { raised:350, goal:1000 } once Omar sends real numbers; until then the bar is hidden
+  document.body.classList.toggle('money-pending', !DONATION);
   document.body.classList.toggle('doc-pending', !DOC_READY);
   const docDlg = $('#docDlg');
   const openDoc = () => { if (docDlg.showModal) docDlg.showModal(); else docDlg.setAttribute('open', ''); };
@@ -1896,14 +1965,13 @@ main section[id]{scroll-margin-top:52px}
     if ($('#v-home').hidden) { history.pushState(null, '', '#home'); route(); }
     const btn = $('[data-sample="fp1"]'), pg = $('#fp1');
     if (pg.hidden) btn.click();
-    const head = $('.site-head'), top = pg.getBoundingClientRect().top + scrollY - (head ? head.offsetHeight : 0) - 14;
-    scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+    pg.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block:'start' });
   });
   $$('[data-news-short]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openViewer(SH.findIndex(s => s.id === a.dataset.newsShort)); }));
   $$('[data-scroll]').forEach(b => b.addEventListener('click', () => document.getElementById(b.dataset.scroll).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' })));
   $('#nlForm').addEventListener('submit', e => {
     e.preventDefault(); const em = $('#nlEmail');
-    if (!em.value || !em.checkValidity()){ toast('Enter an email like name@example.com'); em.focus(); return; }
+    if (badEmail(em)){ fieldErr(em, 'Enter an email like name@example.com'); em.focus(); return; }
     const f = e.currentTarget, ok = document.createElement('p'); ok.className = 'nl-ok';
     ok.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
     ok.append('Thanks. The next letter goes to ' + em.value + '.'); f.replaceWith(ok);
