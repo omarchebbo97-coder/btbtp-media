@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:R;src:url(../../tools/node_modules/@fontsource/readex-pro/files/readex-pro-arabic-400-normal.woff2);font-weight:400}
+@font-face{font-family:R;src:url(../../tools/node_modules/@fontsource/readex-pro/files/readex-pro-arabic-600-normal.woff2);font-weight:600}
+@font-face{font-family:R;src:url(../../tools/node_modules/@fontsource/readex-pro/files/readex-pro-latin-400-normal.woff2);font-weight:400;unicode-range:U+0000-00FF,U+2000-206F,U+00B5}
+@font-face{font-family:R;src:url(../../tools/node_modules/@fontsource/readex-pro/files/readex-pro-latin-600-normal.woff2);font-weight:600;unicode-range:U+0000-00FF,U+2000-206F,U+00B5}
+@page{size:5.625in 10in;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:R,sans-serif;color:#2b2a33;background:#f6f1ea}
+.page{width:5.625in;height:10in;position:relative;overflow:hidden;page-break-after:always;padding:0 22px 40px;background:#f6f1ea}
+.banner{height:2.9in;margin:0 -22px 0;background-size:cover;background-position:center 45%;border-radius:0 0 26px 26px}
+.num{font-size:11px;color:#b08a3c;font-weight:600;margin-top:12px;letter-spacing:.5px}
+h1{font-size:25px;font-weight:600;line-height:1.35;color:#1f2a44;margin:2px 0 8px}
+h2{font-size:17px;font-weight:600;color:#1f2a44;margin:0 0 6px}
+p{font-size:13.6px;line-height:1.8}
+.lead{font-size:14px;color:#4a4858;margin-bottom:8px}
+.card{background:#fff;border-radius:14px;padding:11px 13px;margin:8px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card b{color:#1f2a44}
+.q{font-weight:600;color:#b08a3c}
+.range{display:flex;justify-content:space-between;align-items:center;background:#fbf3df;border:1px solid #ecd9a8;border-radius:9px;padding:7px 10px;margin-top:8px;font-size:13px}
+.range span.v{font-weight:600;direction:ltr;unicode-bidi:isolate}
+.range span.l{color:#8a7440;font-size:11.5px}
+.omar{background:#3d4f66;color:#fff;border-radius:14px;padding:11px 14px;margin:9px 0}
+.omar p{font-size:14px}
+.omar .who{font-size:10.5px;color:#e8c269;margin-top:3px}
+.warn{background:#fdecec;border:1px solid #f3c4c4;border-radius:12px;padding:9px 12px;margin:8px 0}
+.warn p{font-size:12.2px}
+ul{padding-right:18px;margin:4px 0}
+li{font-size:13.4px;line-height:1.85}
+.foot{position:absolute;bottom:14px;left:22px;right:22px;display:flex;justify-content:space-between;font-size:9.5px;color:#8b8796}
+.foot .h{direction:ltr}
+table{width:100%;border-collapse:collapse;font-size:12px;background:#fff;border-radius:12px;overflow:hidden}
+th,td{border-bottom:1px solid #eee5d6;padding:5px 7px;text-align:right;vertical-align:top}
+th{background:#1f2a44;color:#fff;font-weight:600}
+td.lat{direction:ltr;text-align:left;color:#3d4f66}
+.tr td{height:27px}
+.tr td:first-child{width:30%;font-weight:600;color:#1f2a44}
+.box{display:inline-block;width:13px;height:13px;border:1.5px solid #b08a3c;border-radius:3px;margin-left:7px;vertical-align:-2px}
+.cover{padding:0;background:#1f2a44}
+.cover .img{height:6.1in;background-size:cover;background-position:center 40%}
+.cover .txt{padding:20px 26px;color:#fff}
+.cover .k{color:#e8c269;font-size:12px;font-weight:600}
+.cover h1{color:#fff;font-size:31px;margin:6px 0 8px}
+.cover p{color:#dfe3ea;font-size:13.5px}
+.cover .by{margin-top:14px;font-size:12px;color:#e8c269}
+.src li{font-size:10.6px;line-height:1.6;direction:rtl}
+.small{font-size:11px;color:#6b6878}
+
+.ok,.no{list-style:none;padding:0;margin:2px 0 0}
+.ok li,.no li{position:relative;padding-right:22px;font-size:13.4px;line-height:1.75;margin:3px 0}
+.ok li:before{content:"✓";position:absolute;right:0;top:0;color:#b08a3c;font-weight:600}
+.no li:before{content:"✗";position:absolute;right:0;top:0;color:#c62828;font-weight:600}
+.tag{display:inline-block;font-size:12px;font-weight:600;color:#fff;border-radius:7px;padding:2px 9px;margin-bottom:4px}
+.tag.y{background:#1f2a44}.tag.n{background:#c62828}
+.lat{direction:ltr;unicode-bidi:isolate}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.grid .card{margin:0;text-align:center;padding:14px 8px}
+.grid svg{width:58px;height:58px;display:block;margin:0 auto 6px}
+.grid p{font-size:14px;font-weight:600;color:#1f2a44;line-height:1.5}
+.hand{background:#fffbf0;border:1.5px dashed #b08a3c}
+.hand p{font-size:15px}
+.pills{display:flex;gap:8px}
+.pills .range{flex:1}
+.mine td{height:44px}
+.mine td:first-child{width:42%;font-weight:600;color:#1f2a44}
+</style></head><body>
+<section class="page cover">
+ <div class="img" style="background-image:url(img/food_ai03_jug.jpg);background-position:center 55%"></div>
+ <div class="txt">
+  <div class="k">دليل مجاني · بعد الزراعة</div>
+  <h1>ماذا آكل بعد الزراعة؟</h1>
+  <p>الطعام النظيف والمناعة: ما المسموح، ما الممنوع، وكيف تحفظ طعامك. الإرشادات التي أعطاني إياها قسم التغذية في المستشفى بعد الزراعة.</p>
+  <div class="by" style="color:#9aa3b5;font-size:11px;margin-bottom:-8px">آخر تحديث: تشرين الثاني ٢٠٢٦</div>
+  <div class="by">من عمر · زُرعت لي كلية أخي أمين في ١٣ حزيران ٢٠٢٤<br><bdi dir="ltr">@omar_organtransplants</bdi></div>
+ </div>
+</section>
+<section class="page">
+ <div class="num" style="margin-top:26px">المحتوى</div>
+ <h1>في هذا الدليل</h1>
+ <div class="card"><p style="display:flex;gap:10px;border-bottom:1px solid #f0e8da;padding:5px 0"><span class="q" style="min-width:22px">٠١</span><span>قبل أن تبدأ</span></p><p style="display:flex;gap:10px;border-bottom:1px solid #f0e8da;padding:5px 0"><span class="q" style="min-width:22px">٠٢</span><span>الطعام النظيف (المعقم) والمناعة</span></p><p style="display:flex;gap:10px;border-bottom:1px solid #f0e8da;padding:5px 0"><span class="q" style="min-width:22px">٠٣</span><span>بعد الزرع مباشرةً: بلا نيّ</span></p><p style="display:flex;gap:10px;border-bottom:1px solid #f0e8da;padding:5px 0"><span class="q" style="min-width:22px">٠٤</span><span>وسائل حفظ الطعام بطريقة سليمة</span></p><p style="display:flex;gap:10px;border-bottom:1px solid #f0e8da;padding:5px 0"><span class="q" style="min-width:22px">٠٥</span><span>بقايا الطعام والحليب</span></p><p style="display:flex;gap:10px;border-bottom:1px solid #f0e8da;padding:5px 0"><span class="q" style="min-width:22px">٠٦</span><span>الخبز والنشويات</span></p><p style="display:flex;gap:10px;border-bottom:1px solid #f0e8da;padding:5px 0"><span class="q" style="min-width:22px">٠٧</span><span>اللحوم والبيض</span></p><p style="display:flex;gap:10px;border-bottom:1px solid #f0e8da;padding:5px 0"><span class="q" style="min-width:22px">٠٨</span><span>الحليب ومشتقاته</span></p><p style="display:flex;gap:10px;border-bottom:1px solid #f0e8da;padding:5px 0"><span class="q" style="min-width:22px">٠٩</span><span>الفاكهة والعصير</span></p><p style="display:flex;gap:10px;border-bottom:1px solid #f0e8da;padding:5px 0"><span class="q" style="min-width:22px">١٠</span><span>الخضار، الدهون والمكسرات</span></p><p style="display:flex;gap:10px;border-bottom:1px solid #f0e8da;padding:5px 0"><span class="q" style="min-width:22px">١١</span><span>الصلصات والتوابل، والحلويات</span></p><p style="display:flex;gap:10px;border-bottom:1px solid #f0e8da;padding:5px 0"><span class="q" style="min-width:22px">١٢</span><span>السوائل والمشروب</span></p><p style="display:flex;gap:10px;border-bottom:1px solid #f0e8da;padding:5px 0"><span class="q" style="min-width:22px">١٣</span><span>أسئلة لفريقك الطبي</span></p><p style="display:flex;gap:10px;border-bottom:1px solid #f0e8da;padding:5px 0"><span class="q" style="min-width:22px">١٤</span><span>لائحتي أنا</span></p></div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 34px">
+ <div style="width:150px;height:150px;border-radius:50%;background:#c62828;color:#fff;font-size:120px;font-weight:600;line-height:150px;margin-bottom:34px">!</div>
+ <p style="font-size:24px;line-height:1.75;font-weight:600;color:#1f2a44">كل مريض مختلف.<br>كل جسم مختلف.<br>كل فريق طبي مختلف.</p>
+ <p style="font-size:19px;line-height:1.8;color:#2b2a33;margin-top:18px">تأكّد دائماً مع فريقك الطبي مما هو مناسب لك.</p>
+ <p style="font-size:15px;line-height:1.8;color:#6b6878;margin-top:22px">هذا الدليل للمعلومات فقط، ومبنيّ على تجربتي كمريض. ليس نصيحة طبية.</p>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page">
+ <div class="banner" style="background-image:url(img/food_newkidney_master.jpg);background-position:center 50%"></div>
+ <div class="num">٠١</div>
+ <h1>قبل أن تبدأ</h1>
+<p class="lead">هذه الإرشادات أعطاني إياها قسم التغذية في مستشفى أوتيل ديو دو فرانس بعد الزراعة. أنقلها هنا كما هي. <span style="background:#c62828;color:#fff;font-weight:600;padding:1px 5px;border-radius:5px;box-decoration-break:clone;-webkit-box-decoration-break:clone">ليست بديلاً عن فريقك الطبي.</span></p>
+<div class="omar"><p>«بعد الزراعة: لا أكل نيّ أو مش مستوي منيح، لا جريب فروت، لا رمّان. وملح وسكر أقل، وبلا أكل مصنّع.»</p><div class="who">عمر</div></div>
+ <div class="card"><p><b>١. «النظيف» يعني المعقّم.</b> عنوان الورقة نفسها: «الطعام النظيف (المعقم) والمناعة».</p></div>
+ <div class="card"><p><b>٢. لماذا؟</b> أدوية منع الرفض تُخفّض عمل جهاز المناعة، وهذا قد يزيد خطر الالتهابات الخطيرة. لذلك يهمّ أن يكون الطعام نظيفاً.</p></div>
+ <div class="card"><p><b>٣. هذه لائحة مستشفاي.</b> لائحة فريقك الطبي قد تختلف، وقد تتغيّر مع الوقت بعد الزراعة.</p></div>
+ <div class="card" style="background:#c62828"><p style="color:#fff"><b style="color:#fff">٤. غير متأكّد من طعام معيّن؟</b> اسأل فريقك الطبي قبل أن تأكله.</p></div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page">
+ <div class="banner" style="background-image:url(img/food_intestines_master.jpg);background-position:center 60%"></div>
+ <div class="num">٠٢</div>
+ <h1>الطعام النظيف (المعقم) والمناعة</h1>
+<p class="lead">أربع قواعد على رأس الورقة. كل ما يأتي في هذا الدليل يعود إليها.</p>
+<div class="grid"><div class="card"><svg viewBox="0 0 64 64"><path d="M10 22h36m0 0-9-9m9 9-9 9M54 42H18m0 0 9-9m-9 9 9 9" fill="none" stroke="#1f2a44" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><p>فصل المأكولات</p></div><div class="card"><svg viewBox="0 0 64 64"><path d="M12 20h22a8 8 0 0 1 8 8v6" fill="none" stroke="#1f2a44" stroke-width="5" stroke-linecap="round"/><path d="M22 12v8M16 12h12" stroke="#1f2a44" stroke-width="5" stroke-linecap="round"/><path d="M42 42c-3 5-5 7-5 10a5 5 0 0 0 10 0c0-3-2-5-5-10z" fill="#b08a3c"/></svg><p>الغسل والتعقيم</p></div><div class="card"><svg viewBox="0 0 64 64"><path d="M12 32h40v12a10 10 0 0 1-10 10H22a10 10 0 0 1-10-10z" fill="#1f2a44"/><path d="M8 34h4M52 34h4M22 28h20" stroke="#1f2a44" stroke-width="4" stroke-linecap="round"/><path d="M24 22c-3-4 3-6 0-10M32 22c-3-4 3-6 0-10M40 22c-3-4 3-6 0-10" fill="none" stroke="#b08a3c" stroke-width="3.5" stroke-linecap="round"/></svg><p>الحفاظ على حرارة المأكولات المطبوخة</p></div><div class="card"><svg viewBox="0 0 64 64"><g stroke="#1f2a44" stroke-width="4.5" stroke-linecap="round" fill="none"><path d="M32 8v48M11 20l42 24M11 44l42-24"/><path d="M26 12l6 6 6-6M26 52l6-6 6 6M12 28l8-2-2-8M52 36l-8 2 2 8M12 36l8 2-2 8M52 28l-8-2 2-8"/></g></svg><p>الحفاظ على برودة المأكولات المثلّجة</p></div></div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page">
+ <div class="banner" style="background-image:url(img/food_ai20_bed.jpg);background-position:center 62%"></div>
+ <div class="num">٠٣</div>
+ <h1>بعد الزرع مباشرةً: بلا نيّ</h1>
+<div class="card"><p>بعد الزرع مباشرةً ينصح بتناول غذاء دون ني <bdi dir="ltr">"sans crudités"</bdi> ← أي يجب تفادي الخضار والفواكه النيّة وتناولها دائماً مسلوقة طازجة (خضار مطبوخة ساخنة جيّداً أو كومبوت فاكهة محفوظة في غلافات فرديّة)</p></div>
+ <div class="card hand"><p class="small" style="font-size:11.5px;color:#8a7440">ملاحظة مكتوبة بخط اليد على ورقتي:</p><p>← لمدة ٦ أسابيع، من ثمّ يمكن تعقيم الخضار والفاكهة دون سلق</p></div>
+ <div class="range"><span class="l">المدة على ورقتي</span><span class="v">٦ أسابيع</span></div>
+ <div class="warn"><p>المدة قد تختلف عندك. اسأل فريقك الطبي متى تعود إلى الخضار والفاكهة النيّة.</p></div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page">
+ <div class="banner" style="background-image:url(img/food_e8_cup.jpg);background-position:center 58%;height:2.5in"></div>
+ <div class="num">٠٤</div>
+ <h1>وسائل حفظ الطعام بطريقة سليمة قبل تناولها</h1>
+<div class="card"><ul class="ok"><li>اغسل الخضار والفواكه الطازجة.</li><li>عقم الخضار والفاكهة بالدواء المطهر <u>نصف</u> ساعة قبل تقديمه أو طبخه.</li><li>اشتري عدد البيض اللازم لمدة أسبوع أو أسبوعين فقط. لا تترك البيض النيء خارج البراد لأكثر من ساعتين. لا تغسل البيض قبل حفظه في البراد واحفظه في علبة خاصة مغلقة.</li><li>احفظ الطعام في البراد أو الثلاجة مباشرةً بعد عملية التسوق فحرارة الطعام ترتفع بسرعة مما يساعد على تكاثر البكتيريا المؤذية.</li><li>راقب حرارة البراد بواسطة ميزان حرارة خاص، من وقت إلى آخر. يجب أن تكون حرارته بين <bdi dir="ltr">4°C</bdi> و <bdi dir="ltr">5°C</bdi> وحرارة الثلاجة <bdi dir="ltr">18°C</bdi> تحت الصفر.</li></ul></div>
+ <div class="pills"><div class="range"><span class="l">البراد</span><span class="v">4 – 5°C</span></div><div class="range"><span class="l">الثلاجة</span><span class="v">−18°C</span></div></div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page">
+ <div class="banner" style="background-image:url(img/food_h_end1.jpg);background-position:center 58%"></div>
+ <div class="num">٠٥</div>
+ <h1>بقايا الطعام والحليب</h1>
+<p class="lead">تكملة اللائحة نفسها.</p><div class="card"><ul class="ok"><li>سخن بقايا الطعام على درجة <bdi dir="ltr">74 °C</bdi> في الفرن 5 دقائق قبل تقديمهم.</li><li>( ملاحظة يمكن استعمال بقايا الطعام إذا تم حفظهم في البراد أو الثلاجة بغضون ساعة بعد تحضيرهم).</li><li>لا تترك الطعام على الطاولة دون تغطيته.</li><li>احفظ بواقي المأكولات في البراد أو في الثلاجة اذا اردت حفظها لمدة اطول</li><li>اشتر الحليب المبستر أو المعقم وليس الحليب الطازج.</li></ul></div>
+ <div class="pills"><div class="range"><span class="l">تسخين البقايا</span><span class="v">74°C · 5 min</span></div><div class="range"><span class="l">إلى البراد خلال</span><span class="v">ساعة</span></div></div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page">
+ <div class="banner" style="background-image:url(img/food_e9_build.jpg);background-position:center 62%"></div>
+ <div class="num">٠٦</div>
+ <h1>الخبز والنشويات</h1>
+<div class="card"><span class="tag y">المأكولات المسموحة</span><ul class="ok"><li>الخبز الطازج والمغلّف والذي لا يحتوي على فاكهة مجففة</li><li>كورنفليكس دون فاكهة مجففة</li><li>نشويات كالرز والبطاطا والمعكرونة والحبوب المطهوة جيداً والطازجة</li><li>مناقيش طازجة وساخنة (بكميات قليلة).</li><li>كروسان مغلّف مباشرةً بعد الخَبز (بكميات قليلة)</li></ul></div><div class="card"><span class="tag n">المأكولات الغير مسموحة</span><ul class="no"><li>المأكولات التي تحتوي على فاكهة مجففة أو مكسرات</li><li>الخميرة الغير مطبوخة</li></ul></div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page">
+ <div class="banner" style="background-image:url(img/food_h_in2.jpg);background-position:center 58%;height:2.1in"></div>
+ <div class="num">٠٧</div>
+ <h1>اللحوم والبيض</h1>
+<h2>اللحوم</h2><div class="card"><span class="tag y">المأكولات المسموحة</span><ul class="ok"><li>جميع أنواع اللحوم مطبوخة جيداً</li><li>طون سردين معلب</li></ul></div><div class="card"><span class="tag n">المأكولات الغير مسموحة</span><ul class="no"><li>اللحوم النيّة أو الغير مطبوخة جيداً</li><li>مرتديلا، جانبون وغيرها من اللحوم المعلّبة</li><li>اللحوم المدخّنة، السوشي</li></ul></div><h2 style="margin-top:8px">البيض</h2><div class="card"><span class="tag y">المأكولات المسموحة</span><ul class="ok"><li>المطبوخ جيداً</li></ul></div><div class="card"><span class="tag n">المأكولات الغير مسموحة</span><ul class="no"><li>البيض الني أو الغير المطبوخ أو البيض برشت</li><li>المايونيز</li></ul></div><div class="omar"><p>«السوشي شطبتو من صحني بعد الزراعة.»</p><div class="who">عمر</div></div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page">
+ <div class="banner" style="background-image:url(img/food_e4_relief.jpg);background-position:center 58%;height:2.5in"></div>
+ <div class="num">٠٨</div>
+ <h1>الحليب ومشتقاته</h1>
+<div class="card"><span class="tag y">المأكولات المسموحة</span><ul class="ok"><li>حليب بودرة أو مبستر</li><li>الأجبان البيضاء (القليلة الملح) المغلّفة و المبسترة. يجب الحرص على عدم تناول الجبنة أكثر من مرّة بعد فتح الغلاف.</li><li>لبن ولبنة مبسترة</li><li>البوظة المعلبة المصنوعة مع حليب مبستر</li></ul></div><div class="card"><span class="tag n">المأكولات الغير مسموحة</span><ul class="no"><li>الحليب الطازج الغير معقم، الأجبان الغير معقمة والأجبان التي تحتوي على أعشاب أو بهارات.</li><li>الأجبان المخمّرة: <bdi dir="ltr">Camembert / Blue / Gorgonzola / Roquefort / Brie / cheese</bdi></li><li>البوظة غير المغلفة.</li></ul></div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page">
+ <div class="banner" style="background-image:url(img/food_e7_hug.jpg);background-position:center 58%;height:2.1in"></div>
+ <div class="num">٠٩</div>
+ <h1>الفاكهة والعصير</h1>
+<div class="card"><span class="tag y">المأكولات المسموحة</span><ul class="ok"><li>الفاكهة المعلّبة والمطبوخة (الكومبوت)</li><li>الفاكهة المعقمة (يجب التعقيم حتّى الفاكهة ذات قشرة سميكة كالليمون...)</li><li>العصير الطازج المصنوع من الفاكهة المعقمة</li></ul></div><div class="card"><span class="tag n">المأكولات الغير مسموحة</span><ul class="no"><li>العصير المعلّب، رغم أنّه نظيف ومعقم، لكنّه يحتوي على كميات كبيرة من السكر</li><li>العصير في علب كبيرة والذي يتم السكب منه أكثر من مرة</li><li>الفاكهة المجففة.</li></ul></div><div class="warn"><p><b>ليس على ورقة المستشفى، لكنّه مهمّ:</b> تجنّب الجريب فروت وعصيره مع التاكروليموس (البروغراف).</p></div><div class="omar"><p>«العصير الوحيد الممنوع عليّ بعد الزراعة: الجريب فروت. وبتجنّب الرمّان كمان.»</p><div class="who">عمر</div></div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page">
+ <div class="banner" style="background-image:url(img/food_aunties_master.jpg);background-position:center 60%"></div>
+ <div class="num">١٠</div>
+ <h1>الخضار، الدهون والمكسرات</h1>
+<h2>الخضار</h2><div class="card"><span class="tag y">المأكولات المسموحة</span><ul class="ok"><li>جميع الخضار المطبوخة والمعقّمة</li></ul></div><div class="card"><span class="tag n">المأكولات الغير مسموحة</span><ul class="no"><li>الخضار الغير معقمة</li><li>الكبيس</li></ul></div><h2 style="margin-top:8px">الدهون والمكسرات</h2><div class="card"><span class="tag y">المأكولات المسموحة</span><ul class="ok"><li>زيت، زبدة ، كريم القهوة، المرغرين، في غلاف فردي.</li></ul></div><div class="card"><span class="tag n">المأكولات الغير مسموحة</span><ul class="no"><li>زيتون، كريما مخفوقة</li><li>المكسرات</li></ul></div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page">
+ <div class="banner" style="background-image:url(img/food_st02_sugar.jpg);background-position:center 62%;height:2.3in"></div>
+ <div class="num">١١</div>
+ <h1>الصلصات والتوابل، والحلويات</h1>
+<h2>الصلصات التوابل البهارات</h2><div class="card"><span class="tag y">المأكولات المسموحة</span><ul class="ok"><li>التوابل والبهارات في غلاف فردي</li><li>كاتشب وخردل في غلاف فردي (بكميات قليلة لإحتوائها على الكثير من الملح)</li></ul></div><div class="card"><span class="tag n">المأكولات الغير مسموحة</span><ul class="no"><li>الزعتر</li></ul></div><h2 style="margin-top:8px">الحلويات (بكميات قليلة)</h2><div class="card"><span class="tag y">المأكولات المسموحة</span><ul class="ok"><li>كيك ناشف مغلف مباشرة بعد الطهي، شوكولا</li><li>بسكويت غلاف فردي، مربى وعسل مبستر</li></ul></div><div class="card"><span class="tag n">المأكولات الغير مسموحة</span><ul class="no"><li>الحلويات العربية، الحلويات التي تحتوي على الكريما: <bdi dir="ltr">Mille feuille, éclair, choux à la crème, mousse, tarte, crème chantilly…</bdi></li></ul></div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page">
+ <div class="banner" style="background-image:url(img/food_e8_happy.jpg);background-position:center 55%;height:2.3in"></div>
+ <div class="num">١٢</div>
+ <h1>السوائل والمشروب</h1>
+<div class="card"><span class="tag y">المأكولات المسموحة</span><ul class="ok"><li>المياه المعدنية أو النظيفة المكررة والمعقمة.</li><li>مكعبات الثلج المصنوعة من المياه المغلية.</li><li>حليب مبستر أو بودرة.</li><li>شاي (ظرف) مصنوع من مياه نظيفة مغليّة، قهوة ويانسون وكاكاو</li><li>مشروبات غازية (عبوة فرديّة)</li><li>شوربا طازجة</li></ul></div><div class="card"><span class="tag n">المأكولات الغير مسموحة</span><ul class="no"><li>الشاي البارد وجميع الشراب المحضر مسبقاً</li><li>مشروبات روحية</li></ul></div><div class="omar"><p>«المي عندي: ٥ ليتر باليوم بالأول، بعدين ٤، وهلّق ٣. الكمية بيحدّدها فريقك الطبي.»</p><div class="who">عمر</div></div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page">
+ <div class="banner" style="background-image:url(img/food_e12_arrive.jpg);background-position:center 60%;height:2.3in"></div>
+ <div class="num">١٣</div>
+ <h1>أسئلة لفريقك الطبي</h1>
+<div class="card"><p><span class="box"></span>متى أستطيع أن آكل الخضار والفاكهة النيّة من جديد؟</p><p><span class="box"></span>أي مطهّر أستعمل للخضار والفاكهة، وكيف؟</p><p><span class="box"></span>ما الأطعمة والمشروبات الممنوعة مع أدويتي؟</p><p><span class="box"></span>كم ملح وسكر مسموح لي في اليوم؟</p><p><span class="box"></span>متى أستطيع أن آكل في المطعم أو عند الأصدقاء؟</p><p><span class="box"></span>كم ماء أشرب في اليوم؟</p></div><div class="omar" style="margin-top:6px;background:#c62828"><p style="font-weight:600">هذه تجربتي ولائحة مستشفاي، وليست نصيحة طبية. كل مريض مختلف. اسأل فريقك الطبي.</p></div><div class="card src"><p style="font-weight:600;font-size:11.5px">المصادر (تم التحقّق في ١٤ تشرين الثاني ٢٠٢٦)</p><ul>
+  <li>قسم التغذية، مستشفى أوتيل ديو دو فرانس: «الطعام النظيف (المعقم) والمناعة» و«إرشادات لتغذية صحيّة ونظيفة بعد الزرع» (الورقة التي أُعطيت لي بعد الزراعة)</li>
+  <li>MedlinePlus (المكتبة الوطنية الأميركية للطب): التاكروليموس (المناعة والالتهابات، الجريب فروت)</li>
+ </ul></div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page">
+ 
+ <div class="num" style="margin-top:22px">١٤</div>
+ <h1>لائحتي أنا</h1>
+<p class="lead">اكتب ما قاله لك فريقك الطبي، وارجع إليه حين تشكّ.</p>
+ <table class="mine">
+  <tr><th>عن ماذا</th><th>ما قاله فريقي الطبي</th></tr>
+  <tr><td>تاريخ الزراعة</td><td></td></tr>
+  <tr><td>متى أعود إلى الخضار والفاكهة النيّة</td><td></td></tr>
+  <tr><td>المطهّر الذي أستعمله</td><td></td></tr>
+  <tr><td>ممنوع عليّ مع أدويتي</td><td></td></tr>
+  <tr><td>الملح والسكر</td><td></td></tr>
+  <tr><td>الماء في اليوم</td><td></td></tr>
+  <tr><td>أطعمة أريد أن أسأل عنها</td><td></td></tr>
+ </table>
+ <div class="card" style="margin-top:10px;background:#c62828"><p style="color:#fff;font-weight:600;font-size:15px">بتعرف حدا زرع كلية أو كبد؟ ابعتلو هالدليل.</p></div>
+ <div class="omar" style="margin-top:8px">
+  <p>وإذا بدك دليل تحاليلك بعد الزراعة، اكتب «تحاليل» بالتعليقات.</p>
+  <p style="margin-top:8px;display:flex;align-items:center;gap:8px;justify-content:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" style="vertical-align:-6px"><rect x="2" y="2" width="20" height="20" rx="6" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="#fff"/></svg><svg width="22" height="22" viewBox="0 0 24 24" style="vertical-align:-6px"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><path d="M14 3c.4 2.8 2.3 4.6 5 4.8" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg><bdi dir="ltr" style="font-weight:600;color:#e8c269">@omar_organtransplants</bdi></p>
+ </div>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+<section class="page" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 34px">
+ <div style="width:150px;height:150px;border-radius:50%;background:#c62828;color:#fff;font-size:120px;font-weight:600;line-height:150px;margin-bottom:34px">!</div>
+ <p style="font-size:24px;line-height:1.75;font-weight:600;color:#1f2a44">كل مريض مختلف.<br>كل جسم مختلف.<br>كل فريق طبي مختلف.</p>
+ <p style="font-size:19px;line-height:1.8;color:#2b2a33;margin-top:18px">تأكّد دائماً مع فريقك الطبي مما هو مناسب لك.</p>
+ <p style="font-size:15px;line-height:1.8;color:#6b6878;margin-top:22px">هذا الدليل للمعلومات فقط، ومبنيّ على تجربتي كمريض. ليس نصيحة طبية.</p>
+ <div class="foot"><span>هذه لائحة مستشفاي. اسأل فريقك الطبي.</span><span class="h">@omar_organtransplants</span></div>
+</section>
+</body></html>
