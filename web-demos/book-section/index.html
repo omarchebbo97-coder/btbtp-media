@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Book Section Redesign</title>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* Layout: a phone-width mock of the homepage book section, drawn in omarchebbo.com's own
+   palette and fonts (single light theme on purpose: it shows the live site), with numbered
+   change notes and a Proposed / Now switch. */
+:root{
+  --paper:#f7f4ef; --sand:#ece5da; --linen:#f3efe8; --ink:#2b2622; --muted:#6a6158; --line:#ddd4c8;
+  --slate:#3d586c; --slate-mid:#33495a; --slate-deep:#2b4152; --slate-pale:#c4d2dd; --on-slate:#f7f4ef;
+  --gold:#e8c269; --gold-hover:#d9ae4a; --gold-ink:#6e5219; --gold-tint:#f4e7cc;
+  --plum:#301a22; --sage:#5e8567;
+  --f-serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-sans:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--paper); color:var(--ink); font:400 17px/1.6 var(--f-sans); -webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0 120px;
+}
+.wrap{max-width:720px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-serif);font-weight:600;margin:0;text-wrap:balance;line-height:1.2}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.eyebrow{font:600 .76rem/1.3 var(--f-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+.top{display:grid;gap:12px;padding-block:32px 18px}
+.top h1{font-size:clamp(1.9rem,6vw,2.6rem)}
+.top p.lead{color:var(--muted);max-width:60ch}
+.controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.seg{display:inline-flex;padding:3px;border-radius:999px;background:var(--sand)}
+.seg button{border:0;background:none;border-radius:999px;padding:7px 18px;cursor:pointer;font-weight:600;font-size:.92rem;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.toggle{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;color:var(--muted);cursor:pointer}
+.toggle input{width:18px;height:18px;accent-color:var(--slate)}
+
+/* the mock */
+.stage{max-width:430px;margin:0 auto}
+.now img{display:block;width:100%;border-radius:18px;border:1px solid var(--line)}
+.now p{font-size:.9rem;color:var(--muted);margin-top:10px;text-align:center}
+.book{background:var(--slate);color:var(--on-slate);border-radius:22px;padding:34px 20px 30px;display:grid;gap:20px;position:relative}
+.book .eyebrow{color:var(--slate-pale)}
+.book h2{font-size:1.65rem;line-height:1.22}
+.cover{position:relative;width:62%;max-width:240px;margin:6px auto 18px}
+.cover img{display:block;width:100%;border-radius:8px;box-shadow:0 14px 30px rgba(20,28,36,.35)}
+.drop{position:absolute;left:51.5%;top:100%;width:9px;height:9px;margin-left:-4.5px;background:var(--plum);border-radius:0 50% 50% 50%;rotate:45deg;opacity:0;animation:drip 4.5s ease-in 1.2s infinite}
+@keyframes drip{0%{opacity:0;translate:0 -6px}10%{opacity:1;translate:0 -6px}22%{opacity:1;translate:0 -2px}40%{opacity:0;translate:0 22px}100%{opacity:0;translate:0 22px}}
+.intro{font:400 1.08rem/1.6 var(--f-serif);color:var(--on-slate)}
+.labels{display:flex;flex-wrap:wrap;gap:4px 8px;font:600 .7rem/1.4 var(--f-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--slate-pale)}
+.labels span+span::before{content:"·";margin-inline-end:8px;color:var(--gold)}
+.ctas{display:grid;gap:10px;justify-items:stretch}
+.buy-wrap{position:relative;display:grid}
+.buy-wrap::before{content:"";position:absolute;inset:0;border-radius:999px;border:2px solid var(--gold);opacity:0;animation:ripple 3.2s ease-out 1s infinite;pointer-events:none}
+.buy-wrap.stop::before{animation:none}
+@keyframes ripple{0%{opacity:0;transform:scale(1)}5%{opacity:.75}45%{opacity:0;transform:scale(1.06,1.45)}100%{opacity:0}}
+.buy{position:relative;isolation:isolate;overflow:hidden;border:0;border-radius:999px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:12px 22px;background:var(--gold);color:var(--ink);font:600 1.02rem var(--f-sans);animation:lubdub 3.2s ease-in-out 1s infinite;transition:color .3s .35s}
+.buy:hover{background:var(--gold-hover)}
+@keyframes lubdub{0%,14%,30%,100%{scale:1}6%{scale:1.045}21%{scale:1.025}}
+.buy .fill{position:absolute;inset:0;z-index:-1;background:var(--plum);transform:scaleY(0);transform-origin:50% 100%;transition:transform .85s cubic-bezier(.65,0,.35,1)}
+.buy.go{animation:none;color:var(--on-slate)}
+.buy.go .fill{transform:scaleY(1)}
+.buy svg{width:20px;height:20px;flex:none}
+.buy .tick{display:none}
+.buy.done .tick{display:block}
+.sample{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border-radius:999px;border:1.5px solid var(--slate-pale);background:none;color:var(--on-slate);cursor:pointer;font-weight:600;font-size:.98rem;transition:background .2s}
+.sample:hover{background:var(--slate-mid)}
+.sample svg{width:18px;height:18px;transition:rotate .3s}
+.sample[aria-expanded="true"] svg{rotate:180deg}
+.fund{font-size:.9rem;color:var(--slate-pale);text-align:center}
+.page{background:var(--paper);color:var(--ink);border-radius:14px;padding:22px 20px 18px;position:relative;overflow:hidden;display:grid;gap:12px;animation:open .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes open{from{opacity:0;translate:0 -8px}to{opacity:1;translate:0 0}}
+.page .ph{font:600 .72rem var(--f-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--gold-ink);background:var(--gold-tint);border-radius:999px;padding:2px 10px;justify-self:start}
+.page .txt{font:400 1rem/1.7 var(--f-serif);color:var(--muted);max-height:190px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
+.page .txt p+p{margin-top:10px}
+.page .more{border:0;border-radius:999px;background:var(--gold);color:var(--ink);font-weight:600;min-height:46px;cursor:pointer}
+.money{background:var(--slate-mid);border:1px solid rgba(196,210,221,.25);border-radius:18px;padding:18px;display:grid;gap:12px}
+.money .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.money .eyebrow{color:var(--gold)}
+.ex{font:600 .68rem var(--f-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--gold-tint);border-radius:999px;padding:2px 9px}
+.amount{font:600 2rem/1 var(--f-serif);font-variant-numeric:tabular-nums}
+.amount small{font:400 .95rem var(--f-sans);color:var(--slate-pale);margin-inline-start:6px}
+.bar{height:12px;border-radius:999px;background:var(--slate-deep);overflow:hidden}
+.bar i{display:block;height:100%;width:var(--w,35%);border-radius:999px;background:linear-gradient(90deg,var(--gold-hover),var(--gold));transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.money p{font-size:.93rem;color:var(--slate-pale);line-height:1.55}
+.money .doc{display:flex;gap:8px;align-items:center;font-size:.9rem;color:var(--on-slate)}
+.money .doc svg{width:18px;height:18px;color:var(--gold);flex:none}
+.about{border-inline-start:2px solid var(--gold);padding-inline-start:14px;font:italic 400 1.02rem/1.6 var(--f-serif);color:var(--on-slate)}
+.quotes{border:1.5px dashed rgba(196,210,221,.5);border-radius:16px;padding:16px;display:grid;gap:8px;text-align:center}
+.quotes p{font-size:.9rem;color:var(--slate-pale)}
+.dots{display:flex;gap:6px;justify-content:center}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--slate-pale);opacity:.5}
+.dots i:first-child{opacity:1;background:var(--gold)}
+
+/* change badges */
+.n{position:relative}
+.badge{position:absolute;top:-10px;right:-8px;z-index:3;width:24px;height:24px;border-radius:50%;background:var(--gold);color:var(--ink);font:600 .8rem/24px var(--f-sans);text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.hide-notes .badge{display:none}
+
+/* sticky buy bar */
+.barbuy{position:fixed;z-index:20;left:0;right:0;bottom:0;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--paper);border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(43,38,34,.1);translate:0 110%;transition:translate .35s cubic-bezier(.2,.7,.2,1)}
+.barbuy.show{translate:0 0}
+.barbuy .in{max-width:430px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.barbuy img{width:34px;height:48px;object-fit:cover;border-radius:4px;flex:none}
+.barbuy .t{flex:1;min-width:0;line-height:1.25}
+.barbuy .t b{display:block;font:600 1rem var(--f-serif)}
+.barbuy .t span{font-size:.85rem;color:var(--muted)}
+.barbuy a{flex:none;background:var(--gold);color:var(--ink);text-decoration:none;border-radius:999px;padding:10px 18px;font-weight:600}
+.barbuy .badge{top:-12px;right:auto;left:max(16px,env(safe-area-inset-left,0px))}
+
+/* notes */
+.notes{margin-top:34px;display:grid;gap:12px}
+.notes h2{font-size:1.5rem}
+.notes ol{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:c}
+.notes li{counter-increment:c;display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;background:var(--linen);border-radius:14px;padding:12px 14px}
+.notes li::before{content:counter(c);width:24px;height:24px;border-radius:50%;background:var(--gold);font:600 .8rem/24px var(--f-sans);text-align:center}
+.notes li b{font-weight:600}
+.notes li span{color:var(--muted)}
+.colors{margin-top:30px;display:grid;gap:12px}
+.colors h2{font-size:1.5rem}
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.sw div{border-radius:12px;border:1px solid var(--line);overflow:hidden;background:var(--linen);font-size:.85rem}
+.sw div i{display:block;height:44px}
+.sw div p{padding:6px 10px;line-height:1.3}
+.sw div p small{color:var(--muted)}
+footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">Homepage section 3 · stg.omarchebbo.com</p>
+    <h1>The book section, redone</h1>
+    <p class="lead">Same words, same colors, same cover. The buy button moves up, the first page can be read right here, and the money becomes visible. Tap the gold button and “Read the first page free” to try them.</p>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Version">
+        <button type="button" id="v-new" aria-pressed="true">Proposed</button>
+        <button type="button" id="v-now" aria-pressed="false">Now</button>
+      </div>
+      <label class="toggle" for="notesToggle"><input type="checkbox" id="notesToggle" checked> Show change numbers</label>
+    </div>
+  </header>
+
+  <div class="stage">
+    <section class="book" id="proposed" aria-label="Proposed book section">
+      <p class="eyebrow">Phase one — the introduction</p>
+      <h2>Start with the introduction. It pays for dialysis.</h2>
+
+      <div class="cover n">
+        <img src="img/cover.webp" alt="Beyond the Body, Beyond the Pain: cover shaped like an IV bag">
+        <span class="drop" aria-hidden="true"></span>
+        <span class="badge" aria-hidden="true">1</span>
+      </div>
+
+      <p class="intro">Before the full memoir, I’m releasing its introduction: my diagnosis, my first night on dialysis, and the words that stayed with me. All net profits go to dialysis patient care. I’m working to direct them to the AUBMC dialysis unit in Beirut, the place that held my life for years.</p>
+
+      <p class="labels n"><span>PDF + EPUB</span><span>Read in one sitting</span><span>Profits donated</span><span class="badge" aria-hidden="true">2</span></p>
+
+      <div class="ctas">
+        <div class="buy-wrap n" id="buyWrap">
+          <button type="button" class="buy" id="buy">
+            <span class="fill" aria-hidden="true"></span>
+            <svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+            <span id="buyLabel" aria-live="polite">Get the introduction — $9.99</span>
+          </button>
+          <span class="badge" aria-hidden="true">3</span>
+        </div>
+        <button type="button" class="sample n" id="sampleBtn" aria-expanded="false" aria-controls="firstPage">
+          Read the first page free
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          <span class="badge" aria-hidden="true">4</span>
+        </button>
+        <div class="page" id="firstPage" hidden>
+          <span class="ph">Placeholder: the real first page goes here</span>
+          <div class="txt">
+            <p>Omar pastes the opening page of the introduction here, around 250 words, exactly as it appears in the book.</p>
+            <p>It should stop in the middle of a moment, right before something the reader needs to know, so the button underneath is the obvious next step.</p>
+            <p>The text fades out at the bottom like a page that keeps going.</p>
+          </div>
+          <button type="button" class="more" id="moreBtn">Keep reading — $9.99</button>
+        </div>
+        <p class="fund">Your copy helps fund someone’s next session</p>
+      </div>
+
+      <div class="money n" id="money">
+        <div class="row"><p class="eyebrow">Where the money goes</p><span class="ex">Example numbers</span></div>
+        <p class="amount" id="amount">$350<small>raised of $1,000</small></p>
+        <div class="bar" role="img" aria-label="Example: 35% of the goal raised"><i id="barFill" style="--w:35%"></i></div>
+        <p>All net profits from the introduction go to dialysis care at AUBMC in Beirut, after basic creation and processing costs.</p>
+        <p class="doc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>Signed document from the AUBMC unit: published when the total is handed over</p>
+        <span class="badge" aria-hidden="true">5</span>
+      </div>
+
+      <blockquote class="about n" style="margin:0">This isn’t a survival story that asks for your pity. It dares you to laugh in the waiting room. Eleven years on dialysis. Three transplants. Panic attacks and paragliding, catheters and prayer. It’s honest about the body’s betrayals and never lets illness have the final word.<span class="badge" aria-hidden="true">6</span></blockquote>
+
+      <div class="quotes n">
+        <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+        <p>Reader quotes appear here, swipeable, once there are three real ones. First name and city under each.</p>
+        <span class="badge" aria-hidden="true">7</span>
+      </div>
+    </section>
+
+    <div class="now" id="now" hidden>
+      <img src="img/now.webp" alt="The current book section on a phone, with the buy button at the bottom">
+      <p>Now: about 1,500px on a phone. The buy button is near the bottom, under the quote and the money box.</p>
+    </div>
+  </div>
+
+  <section class="notes" aria-labelledby="h-notes">
+    <h2 id="h-notes">What changed</h2>
+    <ol>
+      <li><span><b>A slow drip from the IV bag.</b> One drop every few seconds from the cover's tube. It turns off for people who have Reduce Motion set.</span></li>
+      <li><span><b>Pills become plain labels.</b> They looked like buttons but did nothing. “PDF + EPUB” is new, because it's the first thing buyers of a download ask.</span></li>
+      <li><span><b>Buy button right after the first paragraph.</b> Before, it sat about 1,400px down. It beats softly in gold every few seconds. Tapped, it fills with the cover's plum and opens checkout.</span></li>
+      <li><span><b>Read the first page free.</b> Opens the first page right here, fading out into “Keep reading — $9.99”.</span></li>
+      <li><span><b>Donation tracker.</b> Replaces “2 introductions sold” and the old money box. It shows money raised toward a goal and fills when it scrolls into view. The numbers here are examples.</span></li>
+      <li><span><b>The italic description moves down</b>, under the buttons. It's good writing, but it was standing between people and the button.</span></li>
+      <li><span><b>Reader quotes slot.</b> Hidden until there are three real quotes, then shown here, next to the button.</span></li>
+      <li><span><b>Buy bar at the bottom of the screen.</b> Slides up once the gold button is scrolled past, so buying is one tap from anywhere on the page. Scroll down to see it.</span></li>
+    </ol>
+  </section>
+
+  <section class="colors" aria-labelledby="h-colors">
+    <h2 id="h-colors">Only colors already on the site or the cover</h2>
+    <div class="sw">
+      <div><i style="background:var(--slate)"></i><p>Slate<br><small>site background</small></p></div>
+      <div><i style="background:var(--gold)"></i><p>Gold<br><small>site buttons, cover title</small></p></div>
+      <div><i style="background:var(--plum)"></i><p>Plum<br><small>cover, bottom of the bag</small></p></div>
+      <div><i style="background:var(--paper)"></i><p>Paper<br><small>site page color</small></p></div>
+      <div><i style="background:var(--slate-pale)"></i><p>Pale slate<br><small>site secondary text</small></p></div>
+      <div><i style="background:var(--sage)"></i><p>Sage<br><small>cover background</small></p></div>
+    </div>
+  </section>
+
+  <footer>Mock-up for the developer. Text is copied from the live section; the first page and the donation numbers are placeholders.</footer>
+</div>
+
+<div class="barbuy" id="barbuy" aria-hidden="true">
+  <div class="in n">
+    <img src="img/cover.webp" alt="">
+    <p class="t"><b>The Introduction</b><span>$9.99 · pays for dialysis</span></p>
+    <a href="#proposed" tabindex="-1">Get it</a>
+    <span class="badge">8</span>
+  </div>
+</div>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* proposed / now */
+  const vNew = $('#v-new'), vNow = $('#v-now');
+  function view(isNew){
+    $('#proposed').hidden = !isNew; $('#now').hidden = isNew;
+    vNew.setAttribute('aria-pressed', isNew); vNow.setAttribute('aria-pressed', !isNew);
+    checkBar();
+  }
+  vNew.addEventListener('click', () => view(true));
+  vNow.addEventListener('click', () => view(false));
+  $('#notesToggle').addEventListener('change', e => document.body.classList.toggle('hide-notes', !e.target.checked));
+
+  /* buy button */
+  const buy = $('#buy'), label = $('#buyLabel'), wrap = $('#buyWrap');
+  let t1, t2;
+  buy.addEventListener('click', () => {
+    if (buy.classList.contains('go')) return;
+    buy.classList.add('go'); wrap.classList.add('stop'); label.textContent = 'Opening checkout…';
+    t1 = setTimeout(() => { buy.classList.add('done'); label.textContent = 'Checkout opens here'; }, reduce ? 0 : 900);
+    t2 = setTimeout(() => { buy.classList.remove('go', 'done'); wrap.classList.remove('stop'); label.textContent = 'Get the introduction — $9.99'; }, 3400);
+  });
+
+  /* first page */
+  const sb = $('#sampleBtn'), page = $('#firstPage');
+  sb.addEventListener('click', () => {
+    const open = page.hidden; page.hidden = !open; sb.setAttribute('aria-expanded', open);
+  });
+  $('#moreBtn').addEventListener('click', () => { buy.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'}); setTimeout(() => buy.click(), reduce ? 0 : 500); });
+
+  /* donation bar fills when seen */
+  const fill = $('#barFill');
+  if ('IntersectionObserver' in window && !reduce){
+    let seen = false;
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting && !seen){
+        seen = true; fill.style.setProperty('--w', '0%');
+        requestAnimationFrame(() => requestAnimationFrame(() => fill.style.setProperty('--w', '35%')));
+        io.disconnect();
+      }
+    }), {threshold:.6});
+    // only animate if it starts off-screen, so the resting page always shows the filled bar
+    if ($('#money').getBoundingClientRect().top > innerHeight) io.observe($('#money'));
+  }
+
+  /* sticky buy bar: shows after the gold button scrolls above the screen */
+  const bar = $('#barbuy');
+  function checkBar(){
+    const visible = !$('#proposed').hidden;
+    const r = buy.getBoundingClientRect();
+    bar.classList.toggle('show', visible && r.bottom < 0);
+  }
+  addEventListener('scroll', () => requestAnimationFrame(checkBar), {passive:true});
+  addEventListener('resize', checkBar);
+  checkBar();
+})();
+</script>
+
+</body>
+</html>

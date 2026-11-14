@@ -1,0 +1,2037 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Demo + Original Website</title>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600&family=Noto+Sans+Arabic:wght@400;600;700&display=swap">
+<style>
+/* Layout: a clickable copy of omarchebbo.com with every suggested change. One light visual world
+   on purpose (it shows the real site). Colors come only from the site and the book cover, and the
+   toolbar swaps between four palettes by redefining the tokens below. */
+:root{
+  --paper:#f7f4ef; --sand:#ece5da; --ink:#2b2622; --muted:#6a6158; --line:#ddd4c8;
+  --band:#3d586c; --band-mid:#33495a; --band-deep:#2b4152; --on-band:#f7f4ef; --on-band-muted:#c4d2dd;
+  --accent:#e8c269; --accent-hover:#d9ae4a; --on-accent:#2b2622; --accent-ink:#6e5219; --tint:#f4e7cc;
+  --fill:#301a22; --on-fill:#f7f4ef; --tag:#6e5219; --tag-bg:#f4e7cc;
+  --chrome:#1f1b19; --on-chrome:#f7f4ef;
+  --shadow:0 1px 2px rgba(43,38,34,.06),0 10px 28px rgba(43,38,34,.10);
+  --f-serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-sans:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+:root[data-palette="sage"]{
+  --paper:#f6f4ee; --sand:#e7ece2; --ink:#271d21; --muted:#5d6560; --line:#d5dccc;
+  --band:#50765a; --band-mid:#476b51; --band-deep:#3c5c45; --on-band:#fbf8f2; --on-band-muted:#e1ead9;
+  --accent:#e0c068; --accent-hover:#d1ad4f; --on-accent:#271d21; --accent-ink:#6e5219; --tint:#f2e6c6;
+  --fill:#301a22; --on-fill:#fbf8f2;
+}
+:root[data-palette="plum"]{
+  --paper:#f8f3f2; --sand:#efe4e3; --ink:#2a1a20; --muted:#6b5a60; --line:#e2d3d2;
+  --band:#301a22; --band-mid:#3e2530; --band-deep:#24131a; --on-band:#f8efea; --on-band-muted:#d9c6c6;
+  --accent:#e0c068; --accent-hover:#d1ad4f; --on-accent:#2a1a20; --accent-ink:#7a5a1c; --tint:#f2e6c6;
+  --fill:#2b3e52; --on-fill:#f8efea;
+}
+:root[data-palette="navy"]{
+  --paper:#f7f2ef; --sand:#efe3e1; --ink:#1f2a38; --muted:#5c6470; --line:#e0d3d0;
+  --band:#2b3e52; --band-mid:#34495f; --band-deep:#22323f; --on-band:#f7f2ef; --on-band-muted:#d8c6c6;
+  --accent:#e0c068; --accent-hover:#d1ad4f; --on-accent:#1f2a38; --accent-ink:#6e5219; --tint:#f2e6c6;
+  --fill:#301a22; --on-fill:#f7f2ef;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper); color:var(--ink); font:400 17px/1.6 var(--f-sans); -webkit-font-smoothing:antialiased;
+  transition:background-color .4s,color .4s;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--chrome)}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1080px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-serif);font-weight:600;margin:0;text-wrap:balance;line-height:1.18}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 6px var(--accent)}
+.eyebrow{display:flex;align-items:center;gap:10px;font:600 .76rem/1.3 var(--f-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--band)}
+.eyebrow.line::before{content:"";width:28px;height:1px;background:currentColor}
+.mark{width:28px;height:16px;flex:none}
+.sec{padding-block:64px}
+.sec-head{display:grid;gap:10px;margin-bottom:26px;max-width:640px}
+.sec-head h2{font-size:clamp(1.6rem,4.6vw,2.3rem)}
+.sec-head p{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 22px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;font:600 1rem var(--f-sans);transition:background .2s,scale .15s,color .2s}
+.btn:active{scale:.97}
+.btn.gold{background:var(--accent);color:var(--on-accent)}
+.btn.gold:hover{background:var(--accent-hover)}
+.btn.ghost{background:none;border:1.5px solid var(--ink);color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.on-band .btn.ghost{border-color:var(--on-band-muted);color:var(--on-band)}
+.on-band .btn.ghost:hover{background:var(--band-mid);color:var(--on-band)}
+.link{font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px}
+
+/* prototype toolbar */
+.tool{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--chrome);color:var(--on-chrome)}
+.tool .in{display:flex;align-items:center;gap:10px 14px;min-height:44px;flex-wrap:wrap;padding-block:6px}
+.tool .lbl{font:600 .72rem var(--f-sans);letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.pals{display:flex;gap:6px;align-items:center}
+.pal{display:inline-flex;align-items:center;gap:6px;border:1.5px solid transparent;background:none;color:var(--on-chrome);border-radius:999px;padding:3px 9px 3px 3px;cursor:pointer;font-size:.82rem}
+.pal i{width:22px;height:22px;border-radius:50%;flex:none;border:1.5px solid rgba(255,255,255,.35)}
+.pal[aria-pressed="true"]{border-color:var(--accent)}
+.pal span{white-space:nowrap}
+@media (max-width:560px){.pal span{display:none}.pal{padding:3px}}
+.pal-name{font-size:.85rem;font-weight:600;color:var(--accent)}
+@media (min-width:561px){.pal-name{display:none}}
+.tool .sw{margin-inline-start:auto;display:inline-flex;align-items:center;gap:6px;font-size:.82rem;cursor:pointer}
+.tool .sw input{accent-color:var(--accent);width:16px;height:16px}
+
+.intro-card{background:var(--tint);color:var(--ink);border-radius:16px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-top:14px}
+.intro-card p{flex:1;font-size:.95rem;min-width:0}
+.intro-card button{border:0;background:none;cursor:pointer;font-weight:600;font-size:.9rem;color:var(--accent-ink);padding:2px 4px}
+
+/* change tags */
+.tag{display:none;width:fit-content;max-width:100%;flex-wrap:wrap;align-items:center;gap:2px 6px;font:600 .74rem/1.3 var(--f-sans);color:var(--tag);background:var(--tag-bg);border-radius:999px;padding:4px 11px;border:1px dashed var(--accent-ink)}
+.tag b{letter-spacing:.08em;text-transform:uppercase}
+.notes .tag{display:inline-flex}
+
+/* header */
+.site-head{position:sticky;top:var(--tool-h,0px);z-index:45;background:var(--paper);border-bottom:1px solid var(--line);transition:background-color .4s}
+[id]{scroll-margin-top:calc(var(--stick,0px) + 10px)}
+.faq .a a{padding-block:10px}
+.site-head .in{display:flex;align-items:center;gap:16px;min-height:64px}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:600 1.15rem var(--f-serif)}
+.nav{display:none;gap:4px;margin-inline:auto}
+.nav a,.nav button{border:0;background:none;text-decoration:none;padding:6px 12px;border-radius:999px;font-size:.95rem;cursor:pointer}
+.nav .cur{background:var(--tint)}
+.head-r{display:flex;gap:10px;align-items:center;margin-inline-start:auto}
+@media (min-width:900px){.nav{display:flex}.head-r{margin-inline-start:0}.menu-btn{display:none!important}}
+.head-cta{display:none}
+@media (min-width:900px){.head-cta{display:inline-flex}}
+.icon-btn{position:relative;width:42px;height:42px;border-radius:50%;border:1.5px solid var(--ink);background:none;display:grid;place-items:center;cursor:pointer}
+.icon-btn svg{width:19px;height:19px}
+.count{position:absolute;top:-5px;right:-5px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:var(--fill);color:var(--on-fill);font:600 .72rem/20px var(--f-sans);text-align:center}
+.count.bump{animation:bump .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes bump{0%{scale:.6}60%{scale:1.3}100%{scale:1}}
+
+.in,.hero .in,.book .in,.about .in,.pp .in,.pp .main,.donor .in,.news .in,.foot .in{grid-template-columns:minmax(0,1fr)}
+.pp-txt>*,.book-txt>*{min-width:0}
+main section[id]{scroll-margin-top:calc(var(--stick,0px) + 10px)}
+/* review layer */
+:is(.chip.fix,.chip.win,.chip.pol,.chip.new){display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 10px;font:600 .74rem/1.6 var(--f-sans);white-space:nowrap}
+:is(.chip.fix,.chip.win,.chip.pol,.chip.new)::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.chip.fix{color:#9b3b2b;background:#f6e1da}
+.chip.win{color:#6e5219;background:#f4e7cc}
+.chip.pol{color:#4d6b47;background:#e3eadc}
+.chip.new{color:#2b4152;background:#dce3e8}
+.rv{display:none;max-width:600px;background:var(--paper);color:var(--ink);border:1.5px dashed var(--accent-ink);border-radius:16px;padding:12px;gap:10px;box-shadow:var(--shadow);text-align:start}
+.notes .rv{display:grid}
+.rv-h{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.rv-t{font:600 .74rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.rv-b{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:start}
+.rv-orig{position:relative;width:72px;height:96px;border-radius:10px;overflow:hidden;border:1px solid var(--line);padding:0;background:var(--sand);cursor:zoom-in}
+.rv-orig img{width:100%;height:100%;object-fit:cover;object-position:top}
+.rv-orig span{position:absolute;left:0;right:0;bottom:0;background:rgba(20,18,16,.72);color:#fff;font:600 .66rem var(--f-sans);padding:3px 0;text-align:center}
+.rv-orig.none{display:grid;place-items:center;font:600 .74rem var(--f-sans);color:#2b4152;background:#dce3e8;cursor:default;border:0}
+.rv-l{display:grid;gap:6px;font-size:.9rem;line-height:1.5;min-width:0}
+.rv-l b{font-weight:600}
+.rv-top{display:none;margin-top:14px;background:var(--paper);border:1.5px dashed var(--accent-ink);border-radius:18px;box-shadow:var(--shadow)}
+.notes .rv-top{display:block}
+.rv-top summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px}
+.rv-top summary::-webkit-details-marker{display:none}
+.rv-top summary h2{font-size:1.15rem}
+.rv-top summary svg{width:18px;height:18px;flex:none;transition:rotate .3s}
+.rv-top[open] summary svg{rotate:180deg}
+.rv-in{display:grid;gap:14px;padding:0 16px 16px}
+.rv-in p{font-size:.95rem;color:var(--muted)}
+.rv-in ol{margin:0;padding-inline-start:20px;display:grid;gap:8px;font-size:.95rem}
+.rv-in ol a{color:var(--accent-ink);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:6px}
+.origdlg{border:0;padding:0;width:min(440px,calc(100vw - 32px));max-height:calc(100vh - 32px);border-radius:18px;background:var(--paper);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.origdlg::backdrop{background:rgba(20,18,16,.65)}
+.origdlg .oh{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;background:var(--paper);border-bottom:1px solid var(--line);z-index:1}
+.origdlg .oh p{font:600 .9rem var(--f-sans)}
+.origdlg .oh small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+.origdlg .ob{max-height:calc(100vh - 110px);overflow:auto}
+.origdlg img{width:100%;height:auto}
+.tl-fill::after{content:"";position:absolute;left:50%;bottom:-12px;width:12px;height:12px;margin-left:-6px;background:var(--fill);border-radius:0 50% 50% 50%;rotate:45deg}
+/* views */
+[data-view]{display:block}
+[data-view][hidden]{display:none!important}
+
+/* hero */
+.hero .in{display:grid;gap:34px;padding-block:44px 70px}
+@media (min-width:900px){.hero .in{grid-template-columns:1.1fr .9fr;align-items:center;padding-block:72px 96px}}
+.hero h1{font-size:clamp(2.3rem,7vw,3.6rem);letter-spacing:-.01em}
+.hero .txt{display:grid;gap:18px;align-content:start}
+.hero .txt>p:not(.eyebrow):not(.now):not(.hero-give){font:400 1.18rem/1.6 var(--f-serif);color:var(--muted);max-width:34ch}
+.hero .eyebrow{text-transform:none;letter-spacing:.01em;font:400 .95rem/1.4 var(--f-sans);color:var(--muted)}
+.hero .eyebrow i{font-family:var(--f-serif);color:var(--ink)}
+.eyebrow.line::before{flex:none}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:6px;max-width:460px}
+.stats div{display:grid;gap:2px}
+.stats b{font:600 clamp(2rem,7vw,2.6rem)/1 var(--f-serif);font-variant-numeric:tabular-nums}
+.stats span{font-size:.88rem;color:var(--muted);line-height:1.3}
+.portrait{position:relative;max-width:400px;width:100%;margin:0 auto}
+.portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;border-radius:22px;box-shadow:var(--shadow)}
+.portrait figcaption{position:absolute;left:-10px;bottom:-26px;max-width:260px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 16px;box-shadow:var(--shadow);font:italic 400 1.02rem/1.45 var(--f-serif);animation:rise .7s .5s cubic-bezier(.2,.7,.2,1) both}
+.who-play{position:absolute;left:50%;top:65%;translate:-50% -50%;display:grid;justify-items:center;gap:10px;border:0;background:none;color:#fff;cursor:pointer;padding:6px;font:600 .92rem var(--f-sans);-webkit-tap-highlight-color:transparent}
+.who-play .pb{position:relative;width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.94);color:var(--ink);display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.3);transition:scale .2s}
+.who-play .pb svg{width:26px;height:26px;margin-inline-start:4px}
+.who-play .pb::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,255,255,.9);animation:whoRing 2.6s 1s ease-out 3 both}
+.who-play .pl{background:rgba(20,16,14,.64);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.who-play:hover .pb,.who-play:focus-visible .pb{scale:1.07}
+@keyframes whoRing{0%{opacity:.9;scale:1}100%{opacity:0;scale:1.55}}
+.who-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;border:0;background:none;padding:0;color:var(--accent-ink);font:600 1rem var(--f-sans);cursor:pointer;text-decoration:underline;text-underline-offset:3px;justify-self:start}
+.who-link svg{width:16px;height:16px;flex:none}
+.viewer.single #vPrev,.viewer.single #vNext,.viewer.single .v-count{display:none}
+@media (prefers-reduced-motion: reduce){.who-play .pb::after{animation:none;opacity:0}}
+.portrait figcaption small{display:block;margin-top:6px;font:600 .68rem var(--f-sans);letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--muted)}
+@keyframes rise{from{opacity:0;translate:0 12px}to{opacity:1;translate:0 0}}
+.wave{display:block;width:100%;height:46px;margin-bottom:-1px}
+.wave path{fill:var(--band);transition:fill .4s}
+
+/* book band */
+.band{background:var(--band);color:var(--on-band);transition:background-color .4s,color .4s}
+.band .eyebrow{color:var(--on-band-muted)}
+.book .in{display:grid;gap:22px;padding-block:40px 64px}
+.book .in{max-width:680px}
+.book-head{display:grid;gap:14px;min-width:0}
+.book .cover{width:62%;max-width:300px;margin:4px auto 20px}
+.book h2{font-size:clamp(1.65rem,4.6vw,2.4rem)}
+.cover{position:relative;width:62%;max-width:300px;margin:4px auto 20px}
+@media (min-width:900px){.cover{width:100%}}
+.cover img{width:100%;border-radius:8px;box-shadow:0 16px 34px rgba(10,14,20,.35)}
+.book-txt{display:grid;gap:18px;min-width:0}
+.book-txt .intro{font:400 1.1rem/1.6 var(--f-serif)}
+.labels{display:flex;flex-wrap:wrap;gap:4px 8px;font:600 .7rem/1.4 var(--f-sans);letter-spacing:.07em;text-transform:uppercase;color:var(--on-band-muted)}
+.labels span+span::before{content:"·";margin-inline-end:8px;color:var(--accent)}
+.buy-col{display:grid;gap:10px;max-width:440px}
+.buy-wrap{position:relative;display:grid}
+.buy-wrap::before{content:"";position:absolute;inset:0;border-radius:999px;border:2px solid var(--accent);opacity:0;animation:ripple 3.2s ease-out 1s infinite;pointer-events:none}
+.buy-wrap.stop::before{animation:none}
+@keyframes ripple{0%{opacity:0;transform:scale(1)}5%{opacity:.75}45%{opacity:0;transform:scale(1.06,1.45)}100%{opacity:0}}
+.buy{position:relative;isolation:isolate;overflow:hidden;min-height:54px;font-size:1.02rem;animation:lubdub 3.2s ease-in-out 1s infinite}
+@keyframes lubdub{0%,14%,30%,100%{scale:1}6%{scale:1.045}21%{scale:1.025}}
+.buy .fill{position:absolute;inset:0;z-index:-1;background:var(--fill);transform:scaleY(0);transform-origin:50% 100%;transition:transform .8s cubic-bezier(.65,0,.35,1)}
+.buy.go{animation:none;color:var(--on-fill)}
+.buy.go .fill{transform:scaleY(1)}
+.sample{min-height:50px}
+.sample svg{width:18px;height:18px;transition:rotate .3s}
+.sample[aria-expanded="true"] svg{rotate:180deg}
+.small-note{font-size:.88rem;color:var(--on-band-muted)}
+.details-link{font-size:.92rem;color:var(--on-band)}
+.page{background:var(--paper);color:var(--ink);border-radius:14px;padding:20px;display:grid;gap:12px;animation:rise .45s cubic-bezier(.2,.7,.2,1)}
+.ph{font:600 .7rem var(--f-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);background:var(--tint);border-radius:999px;padding:2px 10px;justify-self:start}
+.page .txt{font:400 1.02rem/1.7 var(--f-serif);color:var(--ink);max-height:640px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 75%,transparent);mask-image:linear-gradient(#000 75%,transparent)}
+.pg-lbl{font:600 .72rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+.pg-title{font-size:1.3rem;margin-top:-4px}
+.page .txt p+p{margin-top:10px}
+.money{background:var(--band-mid);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:18px;display:grid;gap:12px;max-width:520px}
+.money .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.money .eyebrow{color:var(--accent)}
+.ex{font:600 .66rem var(--f-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--on-accent);background:var(--tint);border-radius:999px;padding:2px 9px}
+.amount{font:600 2rem/1 var(--f-serif);font-variant-numeric:tabular-nums}
+.amount small{font:400 .95rem var(--f-sans);color:var(--on-band-muted);margin-inline-start:6px}
+.bar{height:12px;border-radius:999px;background:var(--band-deep);overflow:hidden}
+.bar i{display:block;height:100%;width:var(--w,35%);border-radius:999px;background:var(--accent);transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.money p{font-size:.93rem;color:var(--on-band-muted);line-height:1.55}
+.money .doc{display:flex;gap:8px;align-items:center;color:var(--on-band)}
+.money .doc svg{width:18px;height:18px;color:var(--accent);flex:none}
+.about-book{border-inline-start:2px solid var(--accent);padding-inline-start:14px;font:italic 400 1.04rem/1.6 var(--f-serif);margin:0;max-width:560px}
+.quotes-slot{border:1.5px dashed rgba(255,255,255,.35);border-radius:16px;padding:16px;display:grid;gap:8px;text-align:center;max-width:520px}
+.quotes-slot p{font-size:.9rem;color:var(--on-band-muted)}
+.dots{display:flex;gap:6px;justify-content:center}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--on-band-muted);opacity:.5}
+.dots i:first-child{opacity:1;background:var(--accent)}
+
+.verify{display:inline-flex;align-items:center;gap:7px;width:fit-content;max-width:100%;border:1.5px solid var(--accent);background:none;color:inherit;border-radius:999px;padding:5px 13px 5px 8px;font:600 .82rem/1.35 var(--f-sans);cursor:pointer;text-align:start;transition:background .2s,color .2s}
+.verify u{text-underline-offset:3px}
+.verify:hover{background:var(--accent);color:var(--on-accent)}
+.verify svg{width:19px;height:19px;flex:none;color:var(--accent);transition:rotate .4s,color .2s}
+.verify:hover svg{color:var(--on-accent);rotate:-12deg}
+.money .done{display:flex;gap:8px;align-items:flex-start;color:var(--on-band);font-size:.93rem;line-height:1.5}
+.money .done svg{width:18px;height:18px;flex:none;color:var(--accent);margin-top:2px}
+.money .done a{color:var(--accent);font-weight:600;text-underline-offset:3px;padding-block:10px}
+.linkish{border:0;background:none;padding:0;font:inherit;font-weight:600;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.docdlg{border:0;padding:0;width:min(560px,calc(100vw - 32px));max-height:calc(100vh - 32px);border-radius:20px;background:var(--paper);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.docdlg::backdrop{background:rgba(20,18,16,.6)}
+.docdlg[open]{animation:dlgin .35s cubic-bezier(.2,.7,.2,1)}
+@keyframes dlgin{from{opacity:0;translate:0 14px;scale:.98}to{opacity:1;translate:0 0;scale:1}}
+.dd{display:grid;gap:16px;padding:22px;max-height:calc(100vh - 32px);overflow:auto}
+.dd-h{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.dd-h h2{font-size:1.35rem;margin-top:4px}
+.dd .eyebrow{color:var(--accent-ink)}
+.paper{position:relative;margin:8px 4px 0;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:22px 20px 24px;box-shadow:0 6px 18px rgba(43,38,34,.12);display:grid;gap:9px;rotate:-.5deg}
+.paper i{display:block;height:8px;border-radius:4px;background:var(--sand)}
+.paper i.s{width:55%}.paper i.m{width:80%}
+.paper .ph-note{font:600 .88rem/1.4 var(--f-sans);color:var(--muted);text-align:center;padding:16px 8px;border:1.5px dashed var(--line);border-radius:10px;margin:6px 0}
+.sigs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
+.sigs span{border-top:1.5px solid var(--muted);padding-top:4px;font-size:.72rem;color:var(--muted)}
+.seal{position:absolute;top:-12px;right:-6px;display:inline-flex;align-items:center;gap:5px;background:var(--band);color:var(--on-band);border-radius:999px;padding:5px 12px 5px 8px;font:600 .78rem var(--f-sans);box-shadow:0 4px 12px rgba(0,0,0,.2);rotate:4deg}
+.seal svg{width:16px;height:16px;color:var(--accent)}
+.docdlg[open] .seal{animation:stamp .5s .3s cubic-bezier(.3,1.6,.6,1) both}
+@keyframes stamp{from{opacity:0;scale:1.7}to{opacity:1;scale:1}}
+.dd dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:7px 14px;margin:0;font-size:.93rem}
+.dd dt{color:var(--muted)}
+.dd dd{margin:0;font-weight:600}
+.todo{display:inline-block;background:var(--tint);color:var(--accent-ink);border-radius:8px;padding:1px 8px;font-weight:600}
+.dd-f{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:14px}
+.dd-f p{font-size:.88rem;color:var(--muted)}
+
+/* quote band */
+.qband{background:var(--sand);text-align:center;transition:background-color .4s}
+.qband .in{max-width:640px;padding-block:56px;display:grid;gap:18px;justify-items:center}
+.qband hr{width:100%;max-width:360px;border:0;height:1.5px;background:var(--band);margin:0;transform-origin:center}
+.qband blockquote{margin:0;font:italic 400 clamp(1.25rem,4vw,1.6rem)/1.5 var(--f-serif)}
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .qband hr{animation:grow linear both;animation-timeline:view();animation-range:entry 10% cover 40%}
+    @keyframes grow{from{transform:scaleX(.1)}to{transform:scaleX(1)}}
+  }
+}
+
+/* pairs */
+.pairs{display:grid;gap:22px}
+@media (min-width:760px){.pairs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.pair{display:grid;gap:10px;min-width:0}
+.ba{position:relative;width:100%;aspect-ratio:4/5;border-radius:18px;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;--pos:50%;box-shadow:var(--shadow);background:var(--sand)}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.ba .b{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba .bar-l{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:#fff;pointer-events:none}
+.ba .knob{position:absolute;top:50%;left:var(--pos);width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:#fff;color:#2b2622;display:grid;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.3);cursor:grab}
+.ba .knob svg{width:24px;height:24px}
+.ba .t{position:absolute;top:10px;padding:4px 10px;border-radius:999px;background:rgba(20,22,26,.7);color:#fff;font:600 .78rem var(--f-sans);pointer-events:none;transition:opacity .2s}
+.ba .t.l{left:10px}.ba .t.r{right:10px}
+.pair p{font-size:.92rem;color:var(--muted);display:flex;justify-content:space-between;gap:10px}
+.pair p span:last-child{text-align:end}
+
+/* start here */
+.paths{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.path{border:1.5px solid var(--ink);background:none;border-radius:999px;padding:9px 16px;cursor:pointer;font-weight:600;font-size:.95rem;transition:background .2s,color .2s}
+.path[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.results{display:grid;gap:10px}
+@media (min-width:760px){.results{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.res{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px 12px;text-decoration:none;text-align:start;cursor:pointer;width:100%;animation:rise .4s cubic-bezier(.2,.7,.2,1) both}
+.res:hover{border-color:var(--ink)}
+.res img{width:56px;height:56px;border-radius:10px;object-fit:cover}
+.res .k{font:600 .68rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+.res .h{font:600 1rem/1.3 var(--f-serif)}
+.res .s{font-size:.82rem;color:var(--muted)}
+.res svg{width:18px;height:18px;color:var(--muted)}
+.sand{background:var(--sand);transition:background-color .4s}
+
+/* body map */
+.find-tabs{display:inline-flex;padding:3px;border-radius:999px;background:var(--paper);border:1px solid var(--line);margin-bottom:18px;max-width:100%}
+.find-tabs button{border:0;background:none;border-radius:999px;padding:8px 16px;font-weight:600;font-size:.92rem;cursor:pointer;color:var(--muted)}
+.find-tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.bmap{display:grid;gap:18px;align-items:start;grid-template-columns:minmax(0,1fr)}
+@media (min-width:760px){.bmap{grid-template-columns:minmax(0,300px) minmax(0,1fr);align-items:center}}
+.figure{position:relative;width:100%;max-width:280px;margin:0 auto;aspect-ratio:320/520}
+.figure svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.figure .fig{filter:drop-shadow(0 8px 16px rgba(43,38,34,.12))}
+.figure .body{fill:var(--paper);transition:fill .4s}
+.figure .limb{fill:none;stroke:var(--paper);stroke-linecap:round;stroke-linejoin:round;transition:stroke .4s}
+.figure .spine{fill:none;stroke:var(--line);stroke-width:2;stroke-dasharray:3 7}
+.figure .tube{fill:none;stroke:var(--fill);stroke-width:3;stroke-linecap:round;stroke-dasharray:5 7;animation:flow 1.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-24}}
+.hint{position:absolute;top:0;left:50%;translate:-50% 0;white-space:nowrap;font:600 .8rem var(--f-sans);background:var(--ink);color:var(--paper);padding:5px 12px;border-radius:999px;transition:opacity .4s;pointer-events:none}
+.figure.touched .hint{opacity:0}
+.spot{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;padding:0;border-radius:50%;border:2px solid var(--paper);background:var(--paper);cursor:pointer;box-shadow:var(--shadow);transition:scale .4s cubic-bezier(.34,1.56,.64,1),border-color .25s;animation:none}
+.figure.live .spot{animation:bob 3.2s ease-in-out 3;animation-delay:calc(var(--i) * .18s)}
+.spot img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.spot::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid var(--accent);opacity:0;pointer-events:none}
+.spot.on{scale:1.28;border-color:var(--accent);z-index:2}
+.spot.on::after{animation:ring 1.8s ease-out 3}
+.spot:hover:not(.on){scale:1.1}
+@keyframes bob{50%{translate:0 -3px}}
+@keyframes ring{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.55);opacity:0}}
+.organ-panel{background:var(--paper);border-radius:18px;padding:18px;box-shadow:var(--shadow);display:grid;gap:12px;min-width:0}
+.op-head{display:flex;gap:14px;align-items:center;min-width:0}
+.op-head img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:none;border:3px solid var(--accent)}
+.op-head h3{font-size:1.25rem}
+.op-line{font:italic 400 1.05rem/1.5 var(--f-serif)}
+.op-lbl{font:600 .7rem var(--f-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink)}
+.organ-panel .results{grid-template-columns:minmax(0,1fr)}
+.organ-panel .res{background:var(--sand);border-color:transparent}
+.organ-panel.swap > *{animation:rise .45s cubic-bezier(.2,.7,.2,1) both}
+.organ-panel.swap > *:nth-child(2){animation-delay:.05s}
+.organ-panel.swap > *:nth-child(3){animation-delay:.1s}
+.organ-panel.swap > *:nth-child(4){animation-delay:.15s}
+.organ-panel.swap .op-head img{animation:pop .55s cubic-bezier(.34,1.56,.64,1) both,wave 1s .5s ease-in-out}
+@keyframes pop{from{scale:.4}to{scale:1}}
+@keyframes wave{0%,100%{rotate:0deg}25%{rotate:-10deg}75%{rotate:10deg}}
+
+/* body map: counts, pin, see all */
+.spot .cnt{position:absolute;top:-6px;right:-7px;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:var(--fill);color:var(--on-fill);font:600 .66rem/19px var(--f-sans);text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.3);pointer-events:none}
+.pin{display:block;width:fit-content;margin-bottom:3px;font:600 .62rem/1.5 var(--f-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--on-accent);background:var(--accent);border-radius:999px;padding:1px 8px}
+.see-all{justify-self:start;border:1.5px solid var(--ink);background:none;border-radius:999px;padding:8px 16px;font-weight:600;font-size:.9rem;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.see-all svg{width:16px;height:16px;transition:rotate .3s}
+.see-all[aria-expanded="true"] svg{rotate:180deg}
+.organ-panel .more:not([hidden]) .res{animation:rise .4s cubic-bezier(.2,.7,.2,1) both}
+
+/* free guides */
+.guides{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(232px,252px);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;overscroll-behavior-x:contain;scrollbar-width:thin}
+@media (min-width:980px){.guides{grid-auto-flow:row;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible}}
+.guide{scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;grid-template-columns:minmax(0,1fr);min-width:0}
+.guide.flash{animation:flash 1.6s ease-out}
+@keyframes flash{0%,100%{box-shadow:0 0 0 0 transparent}25%{box-shadow:0 0 0 4px var(--accent)}}
+.g-cover{position:relative;background:var(--sand);padding:18px 0 14px;display:grid;place-items:center;min-height:200px}
+.g-cover img{width:58%;border-radius:6px;box-shadow:0 10px 22px rgba(43,38,34,.22);transform:rotate(-2.5deg);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.guide:hover .g-cover img{transform:rotate(0) translateY(-4px)}
+.g-free{position:absolute;top:10px;left:10px;font:600 .66rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:3px 9px}
+.soon .g-cover{border-bottom:1.5px dashed var(--line)}
+.soon-doc{width:58%;aspect-ratio:300/533;border:2px dashed var(--line);border-radius:6px;display:grid;place-items:center;color:var(--muted);font:600 .8rem var(--f-sans);text-align:center;padding:10px;background:var(--paper)}
+.g-b{padding:14px;display:grid;gap:6px;align-content:start;grid-template-columns:minmax(0,1fr);min-width:0}
+.g-meta{font:600 .68rem var(--f-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.guide h3{font-size:1.08rem;line-height:1.3}
+.g-ar{font:600 .95rem/1.4 var(--f-sans);color:var(--muted)}
+.g-d{font-size:.88rem;color:var(--muted);line-height:1.45}
+.g-get{margin-top:6px;min-height:44px;font-size:.95rem}
+.g-form{display:grid;gap:6px;margin-top:6px;animation:rise .35s both}
+.g-form label{font-size:.8rem;font-weight:600}
+.g-row{display:flex;gap:6px}
+.g-row input{flex:1 1 auto;width:0;min-width:0;min-height:44px;border:1.5px solid var(--line);border-radius:999px;padding:0 14px;background:var(--paper);color:var(--ink);font:400 .95rem var(--f-sans)}
+.g-row .btn{min-height:44px;padding:8px 14px;font-size:.9rem}
+.g-fine{font-size:.74rem;color:var(--muted)}
+.hero-give{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:.95rem;color:var(--muted)}
+.hero-give svg{width:18px;height:18px;flex:none;color:var(--accent-ink)}
+.f-err{color:#a1271c;font-size:.88rem;font-weight:600;margin:2px 0 0;flex-basis:100%}
+.news .f-err{color:#ffc4b8}
+input[aria-invalid="true"]{border-color:#a1271c!important}
+.news input[aria-invalid="true"]{border-color:#ffc4b8!important}
+.co-addr{border:0;padding:0;margin:6px 0 0;display:grid;gap:8px;min-width:0}
+.co-addr legend{font-weight:700;font-size:.95rem;padding:0;margin-bottom:6px}
+.whish{border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:6px;background:var(--paper)}
+.whish p:not(.pay-lbl){font-size:.92rem;color:var(--muted);line-height:1.5}
+.co-done .co-dl{margin-top:4px}
+.money-pending .money :is(.ex,.amount,.bar){display:none}
+.quotes-slot.empty{border:0;padding:0;justify-items:start;text-align:start}
+@media (max-width:899px){.pp .cover-col .cover{width:40%;max-width:160px;margin-bottom:6px}.pp .in{gap:12px;padding-top:12px}.pp .main{gap:14px}}
+@media (prefers-reduced-motion: reduce){.figure.live .spot{animation:none}}
+[lang="ar"]{font-family:"Noto Sans Arabic",var(--f-sans);letter-spacing:0;text-transform:none}
+.guide h3[lang="ar"]{font-weight:700;font-size:1.12rem;line-height:1.5}
+.guide .g-d[lang="ar"]{font-size:.95rem;line-height:1.7}
+.guide .g-meta[lang="ar"]{font-size:.78rem;font-weight:600}
+/* kidney on "Get it free" */
+:root{--kidney:#a8433f}
+.kid{width:28px;height:28px;flex:none;overflow:visible;margin-inline-start:-6px}
+.kid .kid-o{fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.kid .kid-u{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;opacity:.55}
+.kid .kid-liq{fill:var(--kidney);transform:translate(0px,30px)}
+.kid .kid-drop{fill:var(--kidney);opacity:0}
+.g-get.kfill{pointer-events:none}
+.g-get.kfill .kid-liq{animation:kidLiq .62s cubic-bezier(.45,0,.3,1) forwards}
+.g-get.kfill .kid{animation:kidBeat .32s .6s ease-out}
+.g-get.kfill .kid-drop{animation:kidDrop .42s .66s cubic-bezier(.4,0,.8,.6) forwards}
+@keyframes kidLiq{from{transform:translate(0px,30px)}to{transform:translate(-16px,3px)}}
+@keyframes kidBeat{40%{scale:1.22}}
+@keyframes kidDrop{0%{opacity:1;transform:translate(19px,16.5px)}55%{opacity:1;transform:translate(24px,20.5px)}100%{opacity:0;transform:translate(26px,29px)}}
+.g-ok .kid-ok{width:30px;height:30px;flex:none;background:none;padding:0;border-radius:0;animation:pop .5s cubic-bezier(.34,1.56,.64,1) both}
+.kid-ok .ko-k{fill:var(--kidney)}
+.kid-ok .ko-c{fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:16;stroke-dashoffset:16;animation:koDraw .35s .3s ease-out forwards}
+@keyframes koDraw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion: reduce){.g-get.kfill .kid-liq{animation:none;transform:translate(-16px,3px)}.g-get.kfill .kid,.g-get.kfill .kid-drop,.kid-ok,.kid-ok .ko-c{animation:none}.kid-ok .ko-c{stroke-dashoffset:0}}
+.g-ok{display:flex;gap:8px;align-items:center;font-weight:600;font-size:.9rem;margin-top:6px;animation:rise .4s both}
+.g-ok svg{width:22px;height:22px;flex:none;color:var(--on-accent);background:var(--accent);border-radius:50%;padding:3px;animation:pop .5s cubic-bezier(.34,1.56,.64,1) both}
+
+/* hero 'Now' line */
+.now{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;font-size:.92rem;color:var(--muted);margin-top:2px}
+.now b{color:var(--ink);font:600 .7rem var(--f-sans);letter-spacing:.14em;text-transform:uppercase}
+.now a{color:var(--accent-ink);font-weight:600;text-underline-offset:3px}
+.ping{position:relative;width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none}
+.ping::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:ping 2.2s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{75%,100%{transform:scale(2.6);opacity:0}}
+
+/* reader note link, blog counts, what's inside */
+.note-btn{justify-self:center;color:var(--accent);font-weight:600;font-size:.9rem;text-underline-offset:3px}
+.chip .n{font-variant-numeric:tabular-nums;opacity:.65;margin-inline-start:4px}
+.inside-lbl{font:600 .72rem var(--f-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.inside{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:n;max-width:520px}
+.inside li{counter-increment:n;display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:center;font:400 1.02rem/1.4 var(--f-serif)}
+.inside li::before{content:counter(n);width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--on-accent);font:600 .8rem/26px var(--f-sans);text-align:center}
+
+/* gentle entrances */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .sec-head,.guide{animation:fadeup linear both;animation-timeline:view();animation-range:entry 0% entry 65%}
+    @keyframes fadeup{from{opacity:.35;translate:0 18px}to{opacity:1;translate:0 0}}
+  }
+}
+
+/* checkout steps in the cart drawer */
+.co-back{justify-self:start;border:0;background:none;padding:10px 0;min-height:44px;font-weight:600;color:var(--muted);cursor:pointer}
+.co-steps{list-style:none;margin:0;padding:0;display:flex;gap:6px;font:600 .75rem var(--f-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.co-steps li{flex:1;border-top:3px solid var(--line);padding-top:6px}
+.co-steps li.done{border-color:var(--accent);color:var(--ink)}
+.co-steps li.cur{border-color:var(--ink);color:var(--ink)}
+.co-sum{background:var(--sand);border-radius:14px;padding:12px 14px;display:grid;gap:6px;font-size:.92rem}
+.co-sum p{display:flex;justify-content:space-between;gap:12px}
+.co-sum .tot{border-top:1px solid var(--line);padding-top:8px;font-weight:600}
+.co-sum b{font-family:var(--f-serif);white-space:nowrap}
+.co-form{display:grid;gap:8px}
+.co-form label{font-weight:600;font-size:.92rem}
+.co-form input{min-height:48px;border:1.5px solid var(--line);border-radius:12px;padding:0 14px;font:400 16px var(--f-sans);background:var(--paper);color:var(--ink)}
+.co-note{display:flex;gap:8px;align-items:flex-start;font-size:.85rem;color:var(--muted)}
+.co-note svg{width:16px;height:16px;flex:none;margin-top:2px}
+.co-done{display:grid;gap:12px;justify-items:center;text-align:center;padding-top:16px;animation:rise .4s both}
+.co-ok{width:64px;height:64px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;animation:pop .55s cubic-bezier(.34,1.56,.64,1) both}
+.co-ok svg{width:34px;height:34px}
+.co-done h3{font-size:1.5rem}
+.co-done p{color:var(--muted);max-width:32ch}
+.co-done b{color:var(--ink);word-break:break-all}
+.co-dl{display:grid;gap:8px;width:100%}
+.co-give{font-size:.9rem}
+
+/* news strip */
+.announce{background:var(--band);color:var(--on-band);transition:background-color .4s}
+.announce .in{display:flex;align-items:center;gap:10px;min-height:40px;font-size:.9rem}
+.announce p{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.an-new{display:inline-block;margin-inline-end:6px;font:600 .68rem/1.6 var(--f-sans);letter-spacing:.1em;text-transform:uppercase;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:0 8px;vertical-align:1px}
+.an-short{display:none}
+@media (max-width:480px){.an-long{display:none}.an-short{display:inline}}
+.an-link{flex:none;color:var(--accent);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;min-height:40px}
+.an-link:hover{text-decoration:underline}
+.g-next{display:inline-flex;align-items:center;min-height:44px;color:var(--accent-ink);font-weight:600;font-size:.9rem;text-underline-offset:3px;animation:rise .4s .25s both}
+.an-x{flex:none;width:40px;height:40px;margin-inline-end:-10px;border:0;background:none;color:var(--on-band-muted);display:grid;place-items:center;cursor:pointer}
+.an-x svg{width:18px;height:18px}
+
+/* full-screen phone menu */
+#menu{width:100vw}
+@media (min-width:600px){#menu{width:min(460px,100vw)}}
+#menu .dr-h h2{font:600 .78rem var(--f-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+#menu .dr-b{padding-top:6px}
+#menu .menu-list{gap:0}
+#menu .menu-list a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 4px;border-radius:0;border-bottom:1px solid var(--line);background:none;font:600 clamp(1.7rem,8vw,2.2rem)/1.2 var(--f-serif);color:var(--ink)}
+#menu .menu-list a small{font:600 .8rem var(--f-sans);color:var(--muted)}
+#menu .menu-list a.cur{color:var(--accent-ink);background:none}
+#menu .menu-list a.cur::after{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+#menu.show .menu-list a{animation:rise .45s cubic-bezier(.2,.7,.2,1) both}
+#menu.show .menu-list a:nth-child(2){animation-delay:.04s}
+#menu.show .menu-list a:nth-child(3){animation-delay:.08s}
+#menu.show .menu-list a:nth-child(4){animation-delay:.12s}
+#menu.show .menu-list a:nth-child(5){animation-delay:.16s}
+#menu.show .menu-list a:nth-child(6){animation-delay:.2s}
+#menu .menu-news{display:flex;align-items:center;justify-content:center;min-height:44px;font-weight:600;color:var(--ink)}
+#menu .menu-soc{display:flex;gap:10px;justify-content:center}
+#menu .menu-soc a{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);color:var(--ink)}
+#menu .menu-soc svg{width:20px;height:20px}
+
+/* free guides in the cart */
+.cart-free{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:12px;margin-top:4px}
+.cf-h{font:600 .74rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+.cf{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--sand);border-radius:12px;padding:8px 10px;animation:rise .35s both}
+.cf img{width:44px;height:64px;object-fit:cover;object-position:top;border-radius:4px}
+.cf-t{font:600 .92rem/1.3 var(--f-serif)}
+.cf .s{font-size:.8rem;color:var(--muted)}
+.cf-add{min-height:44px;padding:6px 14px;font-size:.85rem}
+
+/* shop: format buttons, product pictures, good to know */
+.shop-chips{margin:4px 0 16px}
+.pc.out{display:none}
+.know{display:grid;gap:12px;margin-top:22px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:760px){.know{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.know > div{border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:6px;align-content:start;min-width:0}
+.know h3{font-size:1.05rem}
+.know p{color:var(--muted);font-size:.93rem}
+
+/* payment step */
+.pay-mail{font-size:.85rem;color:var(--muted)}
+.pay-mail span:last-child{color:var(--ink);font-weight:600;word-break:break-all;text-align:end}
+.pay-lbl{font:600 .74rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pay-methods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.pm{min-height:44px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;font-weight:600;font-size:.88rem;cursor:pointer;padding:6px}
+.pm[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.pay-panel{animation:rise .3s both}
+.fake-form{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ff{display:flex;align-items:center;min-height:48px;padding:0 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);color:var(--muted);font-size:.95rem}
+.ff.wide{grid-column:1/-1}
+.wallet{display:grid;place-items:center;min-height:52px;border-radius:12px;background:#111;color:#fff;font:600 1.05rem var(--f-sans)}
+.spin{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;display:inline-block;margin-inline-end:8px;animation:spin .8s linear infinite;vertical-align:-3px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* AUBMC document not ready yet: badge and links hidden until it is */
+.doc-pending [data-doc],.doc-pending #coDoc{display:none!important}
+
+/* shorts */
+.ar-pill{display:inline-flex;gap:6px;align-items:center;font:600 .78rem var(--f-sans);background:var(--tint);color:var(--accent-ink);border-radius:999px;padding:4px 12px;width:max-content}
+.row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,170px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin;overscroll-behavior-x:contain}
+.short{scroll-snap-align:start;border:0;background:none;padding:0;text-align:start;cursor:pointer;display:grid;gap:8px}
+.short .th{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:9/16;box-shadow:var(--shadow);transition:translate .25s,box-shadow .25s}
+.short:hover .th{translate:0 -4px}
+.short .th img{width:100%;height:100%;object-fit:cover}
+.play{position:absolute;inset:auto 10px 10px auto;width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
+.play svg{width:16px;height:16px;margin-left:2px}
+.short .ar{font:600 .92rem/1.35 var(--f-sans);direction:rtl;text-align:right}
+.short .en{font-size:.8rem;color:var(--muted);line-height:1.3}
+.row-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:8px;flex-wrap:wrap}
+
+/* blog */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{border:1.5px solid var(--line);background:none;border-radius:999px;padding:6px 14px;cursor:pointer;font-weight:600;font-size:.9rem}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.posts{display:grid;gap:12px}
+@media (min-width:860px){.posts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.post{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;align-items:start;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px;transition:border-color .2s,translate .25s,opacity .3s}
+.post:hover{border-color:var(--ink);translate:0 -2px}
+.post img{width:96px;height:96px;border-radius:10px;object-fit:cover}
+.post .k{font:600 .68rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+.post h3{font-size:1.05rem;line-height:1.3;margin-top:2px}
+.post .m{font-size:.8rem;color:var(--muted);margin-top:4px}
+.post.out{display:none}
+
+/* timeline */
+.tl-wrap{position:relative;--p:0%;max-width:720px}
+.tl-track{position:absolute;top:10px;bottom:10px;inset-inline-start:13px;width:4px;border-radius:4px;background:var(--line)}
+.tl-fill{position:absolute;top:0;left:0;right:0;height:var(--p);border-radius:4px;background:linear-gradient(var(--accent),var(--band))}
+.tl{list-style:none;margin:0;padding:0;padding-inline-start:42px;display:grid;gap:18px}
+.tl li{position:relative}
+.tl li::before{content:"";position:absolute;inset-inline-start:-35px;top:18px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--line);transition:background .3s,border-color .3s,box-shadow .3s}
+.tl li.lit::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 6px var(--tint)}
+.tl-card{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.tl-card.has-img{grid-template-columns:84px minmax(0,1fr);gap:14px;align-items:center}
+.tl-card img{width:84px;height:84px;border-radius:10px;object-fit:cover}
+.tl-img{position:relative;display:block;width:84px;height:84px;padding:0;border:0;border-radius:10px;background:none;cursor:zoom-in}
+.tl-img img{display:block}
+.tl-zoom{position:absolute;right:4px;bottom:4px;width:24px;height:24px;border-radius:50%;background:rgba(20,16,14,.62);color:#fff;display:grid;place-items:center}
+.tl-zoom svg{width:13px;height:13px}
+.tldlg{border:0;padding:0;width:min(520px,calc(100vw - 32px));max-height:calc(100dvh - 32px);border-radius:18px;background:var(--paper);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:auto}
+.tldlg::backdrop{background:rgba(20,18,16,.78)}
+.tldlg[open]{animation:tlIn .25s cubic-bezier(.2,.7,.2,1)}
+@keyframes tlIn{from{opacity:0;scale:.96}}
+.tldlg .ti{display:block;width:100%;height:auto;max-height:68dvh;object-fit:contain;background:#14100e}
+.tldlg .cap{padding:14px 16px 18px;display:grid;gap:4px}
+.tldlg .cap .w{font:600 .74rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+.tldlg .cap h3{font-size:1.15rem}
+.tldlg .cap p:last-child{font-size:.95rem;color:var(--muted)}
+.tldlg .x{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(20,16,14,.62);color:#fff;display:grid;place-items:center;cursor:pointer}
+.tldlg .x svg{width:20px;height:20px}
+@media (prefers-reduced-motion: reduce){.tldlg[open]{animation:none}}
+.tl-card .w{font:600 .74rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+.tl-card h3{font-size:1.08rem}
+.tl-card p{font-size:.92rem;color:var(--muted)}
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .tl-card{animation:reveal linear both;animation-timeline:view();animation-range:entry 0% entry 85%}
+    @keyframes reveal{from{opacity:.3;translate:0 24px}to{opacity:1;translate:0 0}}
+  }
+}
+
+/* about */
+.about .in{display:grid;gap:28px}
+@media (min-width:860px){.about .in{grid-template-columns:.8fr 1.2fr;align-items:center;gap:48px}}
+.about img{width:100%;max-width:380px;aspect-ratio:4/5;object-fit:cover;border-radius:20px;box-shadow:var(--shadow);margin:0 auto}
+.about .txt{display:grid;gap:14px}
+.about .txt p{color:var(--ink);max-width:60ch}
+
+/* faq */
+.faq{max-width:760px;display:grid}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:16px 2px;font:600 1.06rem/1.35 var(--f-serif)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary svg{width:18px;height:18px;flex:none;transition:rotate .3s}
+.faq details[open] summary svg{rotate:180deg}
+.faq .a{padding:0 2px 16px;color:var(--muted);max-width:62ch}
+.faq .new-q{font:600 .66rem var(--f-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);background:var(--tint);border-radius:999px;padding:2px 8px;margin-inline-start:8px;vertical-align:middle}
+.faq .todo{display:inline-block;background:var(--tint);color:var(--accent-ink);border-radius:8px;padding:1px 8px;font-weight:600}
+@supports (interpolate-size: allow-keywords){
+  .faq{interpolate-size:allow-keywords}
+  .faq details::details-content{height:0;overflow:clip;transition:height .35s ease,content-visibility .35s allow-discrete}
+  .faq details[open]::details-content{height:auto}
+}
+
+/* donor */
+.donor .in{display:grid;gap:14px;max-width:760px}
+.donor h2{font-size:clamp(1.5rem,4.4vw,2.1rem)}
+.donor p{color:var(--muted);max-width:60ch}
+
+/* newsletter + footer */
+.news .in{padding-block:56px;display:grid;gap:14px;max-width:620px}
+.news h2{font-size:clamp(1.5rem,4.4vw,2rem)}
+.news p{color:var(--on-band-muted)}
+.nl{display:flex;gap:10px;flex-wrap:wrap}
+.nl input{flex:1 1 220px;min-height:48px;border-radius:999px;border:1.5px solid rgba(255,255,255,.3);background:var(--band-mid);color:var(--on-band);padding:0 18px;font:400 1rem var(--f-sans)}
+.nl input::placeholder{color:var(--on-band-muted)}
+.nl-ok{display:flex;gap:10px;align-items:center;font-weight:600;animation:rise .4s both}
+.nl-ok svg{width:22px;height:22px;color:var(--accent)}
+.foot{background:var(--band-deep);color:var(--on-band);transition:background-color .4s}
+.foot .in{padding-block:28px 34px;display:grid;gap:16px}
+.foot .r1{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;justify-content:space-between}
+.foot nav{display:flex;flex-wrap:wrap;gap:6px 18px}
+.foot nav a{text-decoration:none;color:var(--on-band-muted)}
+.foot nav a:hover{color:var(--on-band)}
+.soc{display:flex;gap:14px}
+.soc a{color:var(--on-band)}
+.soc svg{width:22px;height:22px}
+.foot small{color:var(--on-band-muted);font-size:.84rem}
+.foot-mail{display:inline-flex;align-items:center;gap:8px;justify-self:start;min-height:44px;color:var(--on-band);font-weight:600;text-decoration:none;overflow-wrap:anywhere}
+.foot-mail svg{width:18px;height:18px;flex:none;color:var(--accent)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.foot-mail:hover span,.foot-mail:focus-visible span{text-decoration:underline;text-underline-offset:3px}
+
+/* book page + shop */
+.pp .in{padding-block:24px 64px;display:grid;gap:26px}
+@media (min-width:900px){.pp .main{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:start}}
+.pp .main{display:grid;gap:24px}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:.92rem;color:var(--muted);text-decoration:none}
+.pp .cover{width:70%;max-width:320px}
+@media (min-width:900px){.pp .cover{width:100%}}
+.pp-txt{display:grid;gap:16px;min-width:0}
+.kind{display:flex;gap:8px;align-items:center;font:600 .76rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pp h1{font-size:clamp(2rem,6vw,2.7rem)}
+.price{font:600 1.5rem var(--f-serif)}
+.pp .desc{color:var(--ink);max-width:58ch}
+.pp .btns{display:grid;gap:10px;max-width:440px}
+.pp .meta{font-size:.9rem;color:var(--muted)}
+.pp .page{background:var(--sand)}
+.pp .money{background:var(--band);color:var(--on-band)}
+.box{border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:8px;max-width:520px}
+.box h3{font-size:1.05rem}
+.box ul{margin:0;padding-inline-start:18px;color:var(--muted);display:grid;gap:4px}
+.grid-p{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:860px){.grid-p{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.grid-p.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:860px){.grid-p.three{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.pc{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
+.pc .img{position:relative;background:var(--sand);padding:12px}
+.pc .img img{width:100%;aspect-ratio:4/5;object-fit:contain}
+.stock{position:absolute;top:10px;left:10px;font:600 .64rem var(--f-sans);letter-spacing:.1em;text-transform:uppercase;background:var(--paper);border-radius:999px;padding:3px 8px}
+.pc .b{padding:12px;display:grid;gap:6px;align-content:start}
+.pc .k{font:600 .66rem var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pc h3{font-size:1rem;line-height:1.3}
+.pc .d{font-size:.84rem;color:var(--muted);line-height:1.4}
+.pc .pr{display:flex;gap:8px;align-items:baseline;font:600 1.05rem var(--f-serif);margin-top:4px}
+.pc .pr s{font:400 .85rem var(--f-sans);color:var(--muted)}
+.opts{display:flex;gap:6px;flex-wrap:wrap}
+.opt{border:1.5px solid var(--line);background:none;border-radius:999px;padding:3px 10px;font-size:.8rem;font-weight:600;cursor:pointer}
+.opt[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.pc .add{min-height:40px;font-size:.9rem;padding:6px 14px;margin-top:6px}
+.pc a.title{text-decoration:none}
+
+/* sticky buy bar */
+.barbuy{position:fixed;z-index:40;left:0;right:0;bottom:0;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--paper);border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(43,38,34,.1);translate:0 110%;visibility:hidden;transition:translate .35s cubic-bezier(.2,.7,.2,1),background-color .4s,visibility 0s .35s}
+.barbuy.show{translate:0 0;visibility:visible;transition:translate .35s cubic-bezier(.2,.7,.2,1),background-color .4s,visibility 0s}
+.barbuy .inr{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.barbuy img{width:34px;height:48px;object-fit:cover;border-radius:4px;flex:none}
+.barbuy .t{flex:1;min-width:0;line-height:1.25}
+.barbuy .t b{display:block;font:600 1rem var(--f-serif)}
+.barbuy .t span{font-size:.85rem;color:var(--muted)}
+.barbuy .btn{min-height:44px;padding:8px 16px}
+
+/* drawers */
+.scrim{position:fixed;inset:0;z-index:70;background:rgba(20,18,16,.45);opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.show{opacity:1;pointer-events:auto}
+.drawer{position:fixed;z-index:80;top:0;bottom:0;right:0;width:min(420px,100vw);background:var(--paper);color:var(--ink);box-shadow:-10px 0 30px rgba(0,0,0,.15);translate:105% 0;transition:translate .35s cubic-bezier(.2,.7,.2,1);display:grid;grid-template-rows:auto 1fr auto;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.drawer.left{right:auto;left:0;translate:-105% 0}
+.drawer.show{translate:0 0}
+.dr-h{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+.dr-h h2{font-size:1.25rem}
+.x{width:38px;height:38px;border-radius:50%;border:0;background:var(--sand);cursor:pointer;display:grid;place-items:center}
+.x svg{width:18px;height:18px}
+.dr-b{overflow:auto;padding:12px 18px;display:grid;gap:12px;align-content:start}
+.dr-f{border-top:1px solid var(--line);padding:16px 18px;display:grid;gap:10px}
+.ci{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:center;animation:rise .35s both}
+.ci img{width:52px;height:66px;object-fit:contain;background:var(--sand);border-radius:6px}
+.ci h3{font-size:.98rem;line-height:1.3}
+.ci .s{font-size:.82rem;color:var(--muted)}
+.ci .rm{border:0;background:none;color:var(--muted);font-size:.8rem;text-decoration:underline;cursor:pointer;padding:0}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;margin-top:4px}
+.qty button{border:0;background:none;width:30px;height:28px;cursor:pointer;font-size:1rem}
+.qty span{min-width:18px;text-align:center;font-size:.9rem}
+.ci .p{font:600 1rem var(--f-serif);text-align:end}
+.sub{display:flex;justify-content:space-between;font:600 1.1rem var(--f-serif)}
+.dr-f p{font-size:.85rem;color:var(--muted)}
+.empty{text-align:center;color:var(--muted);padding:30px 0;display:grid;gap:12px;justify-items:center}
+.co-msg{background:var(--tint);border-radius:12px;padding:10px 12px;font-size:.9rem;animation:rise .3s both}
+.menu-list{display:grid;gap:4px}
+.menu-list a,.menu-list button{display:block;text-align:start;border:0;background:none;padding:10px 14px;border-radius:12px;text-decoration:none;font-size:1.05rem;cursor:pointer;width:100%}
+.menu-list .cur{background:var(--sand)}
+
+/* shorts viewer */
+.viewer{position:fixed;inset:0;z-index:90;background:rgba(10,10,12,.94);color:#fff;display:grid;place-items:center;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));touch-action:none}
+.viewer[hidden]{display:none}
+.v-card{width:min(360px,100%);display:grid;gap:12px;justify-items:center}
+.v-frame{position:relative;width:100%;max-height:68vh;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:#000}
+.v-frame img{width:100%;height:100%;object-fit:cover;animation:vin .35s cubic-bezier(.2,.7,.2,1)}
+@keyframes vin{from{opacity:.2;scale:.97}to{opacity:1;scale:1}}
+.v-frame .note{position:absolute;inset:auto 10px 10px 10px;background:rgba(0,0,0,.6);border-radius:10px;padding:8px 10px;font-size:.8rem;text-align:center}
+.v-t{text-align:center;display:grid;gap:2px}
+.v-t .ar{font:600 1.05rem var(--f-sans);direction:rtl}
+.v-t .en{font-size:.88rem;opacity:.75}
+.v-nav{display:flex;gap:10px;align-items:center}
+.v-nav button{border:0;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;display:grid;place-items:center}
+.v-nav svg{width:20px;height:20px}
+.v-nav a{background:var(--accent);color:var(--on-accent);border-radius:999px;padding:10px 18px;text-decoration:none;font-weight:600}
+.v-close{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;border:0;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;display:grid;place-items:center}
+.v-count{font-size:.8rem;opacity:.6}
+
+/* fly-to-cart + toast */
+.fly{position:fixed;z-index:95;width:38px;height:54px;border-radius:4px;object-fit:cover;pointer-events:none;box-shadow:0 6px 16px rgba(0,0,0,.3);transition:transform .7s cubic-bezier(.5,-.2,.3,1),opacity .7s}
+.toast{position:fixed;z-index:96;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));translate:-50% 20px;opacity:0;pointer-events:none;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:14px;font-weight:600;font-size:.92rem;box-shadow:var(--shadow);width:max-content;max-width:calc(100vw - 32px);text-align:center;transition:opacity .3s,translate .3s}
+.toast.show{opacity:1;translate:-50% 0}
+
+/* dialogs use the visible screen height on phones */
+.docdlg,.origdlg{max-height:calc(100dvh - 32px)}
+.dd{max-height:calc(100dvh - 32px)}
+.origdlg .ob{max-height:calc(100dvh - 110px)}
+.v-frame{max-height:62dvh}
+
+/* phones: 44px tap targets, readable small labels, no iOS zoom on inputs */
+@media (max-width:760px), (pointer:coarse){
+  .logo,.back,.link,.note-btn,.foot nav a{display:inline-flex;align-items:center;min-height:44px}
+  .now a,.linkish{padding-block:12px}
+  .verify,.find-tabs button,button.chip,.path,.opt,.see-all{min-height:44px}
+  .opt{padding:8px 14px}
+  .soc{gap:4px}
+  .soc a{display:inline-grid;place-items:center;min-width:44px;min-height:44px}
+  .foot nav{gap:0 8px}
+  .foot nav a{padding-inline:6px}
+  .pc a.title{min-height:44px}
+  .faq .new-q{font-size:12px}
+  .pc a.title{display:block;padding-block:4px}
+  .k,.g-meta,.labels,.ex,.op-lbl,.pin,.g-free,.stock,.inside-lbl,.portrait figcaption small,.res .k,.post .k,.pc .k,.tl-card .w,.rv-t,.an-new,.cf-h{font-size:12px}
+  .spot .cnt{min-width:21px;height:21px;font-size:12px;line-height:21px}
+  .g-row input,.nl input,.co-form input{font-size:16px}
+  .foot .in{padding-bottom:calc(34px + 76px)}
+  .announce .in{min-height:44px}
+  .an-link,.an-x{min-height:44px}
+  .an-x{width:44px}
+}
+@media (max-width:370px){
+  .tool .lbl{display:none}
+  .tool .in{gap:8px}
+  .pals{gap:2px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+
+<!-- prototype toolbar -->
+<div class="tool gut">
+  <div class="in">
+    <span class="lbl">Colors</span>
+    <div class="pals" role="group" aria-label="Color palette">
+      <button type="button" class="pal" data-pal="site" aria-pressed="true"><i style="background:linear-gradient(90deg,#3d586c 50%,#e8c269 50%)"></i><span>Site now</span></button>
+      <button type="button" class="pal" data-pal="sage" aria-pressed="false"><i style="background:linear-gradient(90deg,#50765a 50%,#e0c068 50%)"></i><span>Cover sage</span></button>
+      <button type="button" class="pal" data-pal="plum" aria-pressed="false"><i style="background:linear-gradient(90deg,#301a22 50%,#e0c068 50%)"></i><span>Cover plum</span></button>
+      <button type="button" class="pal" data-pal="navy" aria-pressed="false"><i style="background:linear-gradient(90deg,#2b3e52 50%,#d8c6c6 50%)"></i><span>Navy &amp; pink</span></button>
+    </div>
+    <span class="pal-name" id="palName">Site now</span>
+    <label class="sw" for="notesSw"><input type="checkbox" id="notesSw" checked> Review</label>
+  </div>
+</div>
+
+<!-- news strip -->
+<div class="announce gut" id="announce">
+  <div class="in">
+    <p><span class="an-new">New</span><span class="an-long">Short: Why are bananas banned on dialysis?</span><span class="an-short">Short: bananas and dialysis</span></p>
+    <a class="an-link" href="#shorts" data-news-short="sUrhS0oa5J0">Watch →</a>
+    <button type="button" class="an-x" id="anX" aria-label="Close the news strip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+</div>
+
+<!-- site header -->
+<header class="site-head gut">
+  <div class="in">
+    <a class="logo" href="#home" aria-label="Omar Chebbo, home">
+      <svg class="mark" viewBox="0 4 64 40" aria-hidden="true"><path d="M18 38 A14 14 0 0 1 46 38" fill="none" stroke="var(--band)" stroke-width="5" stroke-linecap="round"/><line x1="6" y1="38" x2="58" y2="38" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/></svg>
+      Omar Chebbo
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#guides">Free guides</a>
+      <a href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">Blog <small aria-hidden="true">↗</small></a>
+      <a href="#shop" data-nav="shop">Shop</a>
+      <a href="https://stg.omarchebbo.com/gallery" target="_blank" rel="noopener">Gallery <small aria-hidden="true">↗</small></a>
+      <a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Contact <small aria-hidden="true">↗</small></a>
+    </nav>
+    <div class="head-r">
+      <a class="btn gold head-cta" href="#book">Get your copy</a>
+      <button type="button" class="icon-btn" id="cartBtn" aria-label="Cart, 0 items">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="count" id="cartCount" hidden>0</span>
+      </button>
+      <button type="button" class="icon-btn menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HOME ============ -->
+<main data-view="home" id="v-home">
+  <div class="gut"><div class="in">
+    <details class="rv-top" open>
+      <summary><h2>Demo + original website: the review</h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="rv-in">
+        <p>This is stg.omarchebbo.com rebuilt with every change from the review, plus the parts of the demo you liked: the body map, the before/after photos, the heartbeat buy buttons and the story timeline. Each section has a note: tap <b>Original</b> to see how it looks on the site today. Turn the notes off with <b>Review</b> at the top to see the clean site.</p>
+        <div class="legend"><span class="chip fix">Fix first</span><span class="chip win">Big win</span><span class="chip pol">Polish</span><span class="chip new">New section</span></div>
+        <p style="color:var(--ink);font-weight:600">Five things to fix before launch</p>
+        <ol>
+          <li><b>The hero photo is missing</b> on the live site: the box shows only the logo. <a href="#hero">See the fix</a></li>
+          <li><b>Test content is showing</b>: reader reviews say “test 11” and “test 12”, and the gallery has “Test Gallery Item on Staging”.</li>
+          <li><b>The donation wording has three versions</b>: “all net profits after costs” (homepage), “100% of proceeds” (book page), “Every dollar donated” (shop). Pick one.</li>
+          <li><b>“2 introductions sold”</b> shows a small number to everyone. It's replaced by the donation tracker and the “Verified by AUBMC” button. <a href="#book-sec">See it</a></li>
+          <li><b>Remove the “Only 2 left” and “Only 3 left” badges</b> from the shop (confirmed by Omar).</li>
+        </ol>
+        <p><b style="color:var(--ink)">Ideas from other sites:</b> from James Clear, free bonuses became the <a href="#guides">Free guides</a> section, and the book page got a numbered “What’s inside”. From hadichebbo.com: the “Now” line with a pulsing dot, counts on the blog tabs, a “Leave a note” button for reader quotes, and gentle fade-ups as sections appear. tim.blog blocks automated visits, so it wasn’t checked.</p>
+        <p><b style="color:var(--ink)">From the design galleries:</b> a news strip above the header, a full-screen phone menu with the current page marked, free guides you can add in the cart, and the shop changes.</p>
+        <p><b style="color:var(--ink)">Wording:</b> each idea is said once. The buy button says “Get your copy — $9.99” (not “Donate”: people are buying a book, and only net profits go to AUBMC). Other buttons use different verbs: Read the first page, Free guides, Preview the first page, Keep reading.</p>
+        <p><b style="color:var(--ink)">Colors:</b> try the four dots at the top. “Site now” keeps the green book cover standing out best; “Cover sage” makes it blend in.</p>
+      </div>
+    </details>
+  </div></div>
+
+  <!-- hero -->
+  <section id="hero" class="hero gut" aria-labelledby="h-hero">
+    <div class="in">
+      <div class="txt">
+        <aside class="rv" aria-label="Review note: Hero"><div class="rv-h"><span class="chip fix">Fix first</span><span class="rv-t">Review · Hero</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_hero.webp" aria-label="See the original Hero section"><img src="img/orig_hero.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the photo box shows only the logo, 450px of empty space on a phone. “1 life, rebuilt” says less than it could.</p><p><b>Now:</b> your photo, a label naming the book instead of your name twice, “11 years on dialysis”, numbers that count up, and a “Now” line with a pulsing dot (idea from hadichebbo.com).</p><p><b>Video:</b> a play button on your photo, “Who I am · 1 min”, also linked from About. The photo stays; the YouTube video loads only when tapped, so the page stays light. For now it opens your short “One year since my kidney transplant” as a stand-in.</p><p><b>Buttons:</b> “Read the first page” opens the free preview of the introduction (it ends in “Keep reading — $9.99”), and “Free guides” is for patients and families. They replace “Read my story”, which led to a price, and “Watch the videos”, which sent people back to YouTube. The pre-order link left the Now line; it stays in the shop.</p></div></div></aside>
+        <p class="eyebrow line"><span>Author of <i>Beyond the Body, Beyond the Pain</i></span></p>
+        <h1 id="h-hero">I'm Omar Chebbo.</h1>
+        <p>I'm a transplant survivor, and I write about what all of it taught me.</p>
+        <div class="ctas">
+          <button type="button" class="btn gold" data-first-page>Read the first page</button>
+          <button type="button" class="btn ghost" data-scroll="guides">Free guides</button>
+        </div>
+        <p class="hero-give"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.4-7.5-10.1A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.8c0 5.7-7.5 10.1-7.5 10.1z"/></svg>Net profits from the introduction go to dialysis care at AUBMC.</p>
+        <div class="stats" id="stats">
+          <div><b data-to="3">3</b><span>organ transplants</span></div>
+          <div><b data-to="11">11</b><span>years on dialysis</span></div>
+          <div><b data-to="26" data-suf="+">26+</b><span>years of the journey</span></div>
+        </div>
+        <p class="now"><span class="ping" aria-hidden="true"></span><b>Now</b> The full memoir comes out in June 2027.</p>
+      </div>
+      <figure class="portrait" style="margin:0">
+        <img src="img/grad.webp" alt="Omar in a graduation cap and gown">
+        <button type="button" class="who-play" data-who aria-label="Play: who I am, a 1-minute video"><span class="pb"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><span class="pl">Who I am · 1 min</span></button>
+        <figcaption>“And yet, I am more myself than I have ever been.”<small>From the introduction</small></figcaption>
+      </figure>
+    </div>
+  </section>
+  <svg class="wave" viewBox="0 0 1440 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24C240 2 480 2 720 18S1200 44 1440 16V46H0Z"/></svg>
+
+  <!-- book -->
+  <section class="band book on-band gut" aria-labelledby="h-book" id="book-sec">
+    <div class="in">
+      <div class="book-head">
+        <aside class="rv" aria-label="Review note: Book"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Book</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_book.webp" aria-label="See the original Book section"><img src="img/orig_book.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the buy button sits at the bottom of a 1,430px section, the pills look like buttons, “2 introductions sold” sits underneath, and reader reviews show test text.</p><p><b>Now:</b> title first, then the cover, then the text. Heartbeat “Get your copy — $9.99” button after the first paragraph, “Preview the first page”, plain labels, donation tracker with the “Verified by AUBMC” badge (opens the previous donation’s signed document), and a slot for real reader quotes with a “Leave a note” button (idea from hadichebbo.com). A buy bar slides up once you scroll past.</p></div></div></aside>
+        <p class="eyebrow">Phase one of the memoir</p>
+        <h2 id="h-book">Start with the introduction. It pays for dialysis.</h2>
+      </div>
+      <div class="cover-col">
+        <div class="cover">
+          <img src="img/cover.webp" alt="Beyond the Body, Beyond the Pain: cover shaped like an IV bag">
+        </div>
+      </div>
+      <div class="book-txt">
+        <p class="intro">Before the full memoir, I’m releasing its opening pages: growing up sick, dialysis at fifteen, and learning to live in a body of borrowed parts.</p>
+        <p class="labels"><span>PDF</span><span>Sent by email</span><span>Read in one sitting</span></p>
+        <div class="buy-col">
+          <div class="buy-wrap" data-wrap>
+            <button type="button" class="btn gold buy" data-buy="intro" id="homeBuy"><span class="fill" aria-hidden="true"></span><span data-lbl>Get your copy — $9.99</span></button>
+          </div>
+          <button type="button" class="btn ghost sample" data-sample="fp1" aria-expanded="false" aria-controls="fp1">Preview the first page
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="page" id="fp1" hidden>
+            <p class="pg-lbl">From the introduction</p><h3 class="pg-title">Introduction</h3><div class="txt"><p>Being different is a quiet kind of loneliness. It’s not just about standing out, it’s about existing in a world that was never designed for you. You think you’re living your life, but in reality, that thing, the illness, is your life. While others move effortlessly, making plans, chasing dreams, taking health for granted, you are tethered to something invisible yet inescapable.</p><p>A chronic illness isn’t a bad day or a temporary setback. It becomes the blueprint of your life. It doesn’t wait for you to be ready. It doesn’t ask for permission. It demands adaptation, whether you’re willing or not.</p><p>For most people, the body is a silent companion, breathing, repairing, digesting without question. For me, the body is a battlefield, covered in scars and stitched together from strangers’ generosity. My liver? Not mine. My kidney? Not mine. My body is a collaboration of surgeries, medications, and borrowed parts. How do you even begin to make peace with something like that?</p><p>When your body fails you early on, life doesn’t unfold like it does for others. You don’t plan careers or adventures. You measure time in blood results, in medication alarms, in hospital corridors. You carry an exhaustion no sleep can fix, and an awareness most people never have to face: the fragility of simply being alive.</p></div>
+            <button type="button" class="btn gold" data-buy-proxy="homeBuy">Keep reading — $9.99</button>
+          </div>
+        </div>
+        <div class="money" data-money>
+          <div class="row"><p class="eyebrow">Where the money goes</p><span class="ex">Example numbers</span></div>
+          <p class="amount">$350<small>raised of $1,000</small></p>
+          <div class="bar" role="img" aria-label="Example: 35% of the goal raised"><i style="--w:35%"></i></div>
+          <p>All net profits go to the dialysis unit at AUBMC in Beirut, the place that held my life for years, after basic creation and processing costs.</p>
+          <p class="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>I’ve already made a first donation. <a href="#" data-donation-doc target="_blank" rel="noopener">See the hospital’s signed confirmation <span aria-hidden="true">↗</span><span class="sr-only"> (opens Google Drive in a new tab)</span></a></span></p>
+          <button type="button" class="verify" data-doc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><span>Verified by AUBMC · <u>See the document</u></span></button>
+        </div>
+        <blockquote class="about-book">This isn’t a survival story that asks for your pity. It dares you to laugh in the waiting room. Panic attacks and paragliding, catheters and prayer. It’s honest about the body’s betrayals and never lets illness have the final word.</blockquote>
+        <div class="quotes-slot empty"><a class="note-btn" href="mailto:hello@omarchebbo.com?subject=About%20the%20introduction">Read it? Email me what you thought →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="qband gut" aria-label="Quote">
+    <div class="in"><hr><blockquote>“Dialysis doesn’t restore life. It postpones death — and in that borrowed time, I learned to live.”</blockquote></div>
+  </section>
+
+  <!-- both are true -->
+  <section id="both" class="sec gut" aria-labelledby="h-both">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: Both are true"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Both are true</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_both.webp" aria-label="See the original Both are true section"><img src="img/orig_both.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> six photos stacked in one 2,200px column, so nobody sees the hospital and the adventure together.</p><p><b>Now:</b> three pairs with the before/after slider from the demo. Drag from the hospital to the sky.</p></div></div></aside>
+        <p class="eyebrow">Both are true</p>
+        <h2 id="h-both">The same body, the same life</h2>
+        <p>Illness and living never took turns. All of this happened to me, sometimes in the same year. Drag each photo.</p>
+      </div>
+      <div class="pairs">
+        <div class="pair">
+          <div class="ba" data-ba dir="ltr">
+            <img class="a" src="img/sky.webp" alt="Paragliding over the sea" style="object-position:68% 60%">
+            <img class="b" src="img/dialysis.webp" alt="On dialysis in a hospital bed" style="object-position:50% 25%">
+            <span class="t l">Illness</span><span class="t r">Living</span>
+            <span class="bar-l" aria-hidden="true"></span>
+            <span class="knob" role="slider" tabindex="0" aria-label="Dialysis and paragliding" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></span>
+          </div>
+          <p><span>Three sessions a week, four hours each, for eleven years</span><span>Choosing the sky anyway!</span></p>
+        </div>
+        <div class="pair">
+          <div class="ba" data-ba dir="ltr">
+            <img class="a" src="img/diving.webp" alt="Scuba diving underwater" style="object-position:45% 50%">
+            <img class="b" src="img/fistula.webp" alt="Dialysis needles in the fistula arm" style="object-position:50% 40%">
+            <span class="t l">Illness</span><span class="t r">Living</span>
+            <span class="bar-l" aria-hidden="true"></span>
+            <span class="knob" role="slider" tabindex="0" aria-label="Fistula and diving" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></span>
+          </div>
+          <p><span>Fistula, blood and needles</span><span>Sea, diving and experience!</span></p>
+        </div>
+        <div class="pair">
+          <div class="ba" data-ba dir="ltr">
+            <img class="a" src="img/shooting.webp" alt="At the shooting range" style="object-position:50% 35%">
+            <img class="b" src="img/catheter.webp" alt="X-ray showing a catheter" style="object-position:50% 50%">
+            <span class="t l">Illness</span><span class="t r">Living</span>
+            <span class="bar-l" aria-hidden="true"></span>
+            <span class="knob" role="slider" tabindex="0" aria-label="Catheter and shooting range" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></span>
+          </div>
+          <p><span>A catheter, pain and bleeding</span><span>Steady hands at the shooting range!</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- start here -->
+  <section id="start" class="sec sand gut" aria-labelledby="h-start">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: Start here"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Start here</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> the body map from the demo, linked to your real posts and shorts, plus a “Your situation” tab. Each character shows how many items it has. The panel shows the top 3 (your pick first, marked “Start with this”), and “See all” opens the rest. On the live site, tag each video, post and guide with an organ in Sanity so the map fills itself.</p></div></div></aside>
+        <p class="eyebrow">Start here</p>
+        <h2 id="h-start">Find what you need</h2>
+        <p>Tap a part of the body, or tell me where you are right now. You'll get the posts and one-minute shorts that help most.</p>
+      </div>
+      <div class="find-tabs" role="tablist" aria-label="How to browse">
+        <button type="button" role="tab" id="tab-body" aria-selected="true" aria-controls="pane-body">Tap the body</button>
+        <button type="button" role="tab" id="tab-sit" aria-selected="false" aria-controls="pane-sit">Your situation</button>
+      </div>
+      <div id="pane-body" role="tabpanel" aria-labelledby="tab-body">
+        <div class="bmap">
+          <div class="figure" id="figure" dir="ltr">
+            <svg viewBox="0 0 320 520" aria-hidden="true">
+              <g class="fig">
+                <path class="limb" stroke-width="26" d="M100 130Q78 190 72 240Q66 290 62 330"/>
+                <path class="limb" stroke-width="26" d="M220 130Q242 190 248 240Q254 290 258 330"/>
+                <path class="limb" stroke-width="40" d="M134 340L128 498"/>
+                <path class="limb" stroke-width="40" d="M186 340L192 498"/>
+                <circle class="body" cx="160" cy="58" r="34"/>
+                <rect class="body" x="146" y="84" width="28" height="32" rx="8"/>
+                <path class="body" d="M104 116Q160 98 216 116Q232 122 230 150L226 250Q228 300 214 350Q160 366 106 350Q92 300 94 250L90 150Q88 122 104 116Z"/>
+              </g>
+              <path class="spine" d="M160 124V340"/>
+              <path class="tube" d="M66 300C22 318 16 372 32 404"/>
+            </svg>
+            <span class="hint">Tap a character</span>
+          </div>
+          <div class="organ-panel" id="organPanel" aria-live="polite"></div>
+        </div>
+      </div>
+      <div id="pane-sit" role="tabpanel" aria-labelledby="tab-sit" hidden>
+        <div class="paths" role="group" aria-label="Your situation" id="paths"></div>
+        <div class="results" id="results" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- free guides -->
+  <section id="guides" class="sec gut" aria-labelledby="h-guides">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: Free guides"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Free guides</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> your two PDFs, free and downloaded directly, no email needed. The two guides your blood-test PDF promises as coming next have “Tell me when it’s out” cards. The body map links each organ to its guide. Idea from James Clear’s free bonuses. The guide cards are in Arabic only (title and description), like the PDFs. Tapping “Get it free” fills a small kidney in the button, it beats once and lets a drop out, then the email form opens; once sent, a kidney with a check confirms it, with one next step: “read the first page of my memoir”.</p></div></div></aside>
+        <p class="eyebrow">Free guides</p>
+        <h2 id="h-guides">Guides I wish I'd had</h2>
+        <p>Plain PDFs in Arabic about the lab sheet, written from the patient's chair. Free.</p>
+      </div>
+      
+      <div class="guides" id="guideRow">
+        <article class="guide" id="guide-blood"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_blood.webp" alt="Cover of the blood tests guide" loading="lazy"></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">11 صفحة · PDF</p><h3 lang="ar" dir="rtl">تحاليلك مشروحة</h3><p class="g-d" lang="ar" dir="rtl">دليل مبسّط لمرضى الكلى، ولمن هم على غسيل الكلى، وللحياة بعد الزراعة.</p><button type="button" class="btn gold g-get"><span class="g-lbl">Get it free</span></button></div></article>
+        <article class="guide" id="guide-aftertx"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_aftertx.webp" alt="Cover of the after-transplant tests guide" loading="lazy"></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">22 صفحة · PDF</p><h3 lang="ar" dir="rtl">تحاليلك بعد الزراعة… بلا هلع</h3><p class="g-d" lang="ar" dir="rtl">ماذا يقيس كل سطر في ورقة التحاليل، ولماذا يطلبه فريقك الطبي، ومتى عليك الاتصال بهم في اليوم نفسه.</p><button type="button" class="btn gold g-get"><span class="g-lbl">Get it free</span></button></div></article>
+        <article class="guide soon" id="guide-pre"><div class="g-cover"><div class="soon-doc">Coming soon</div></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">قريباً · PDF</p><h3 lang="ar" dir="rtl">دليل تحاليل ما قبل الزراعة</h3><button type="button" class="btn ghost g-get"><span class="g-lbl">Tell me when it’s out</span></button><form class="g-form" hidden novalidate><label for="ge-pre">Your email</label><div class="g-row"><input id="ge-pre" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Notify me</button></div></form></div></article>
+        <article class="guide soon" id="guide-dial"><div class="g-cover"><div class="soon-doc">Coming soon</div></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">قريباً · PDF</p><h3 lang="ar" dir="rtl">دليل تحاليل الغسيل والفشل الكلوي</h3><button type="button" class="btn ghost g-get"><span class="g-lbl">Tell me when it’s out</span></button><form class="g-form" hidden novalidate><label for="ge-dial">Your email</label><div class="g-row"><input id="ge-dial" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Notify me</button></div></form></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- shorts -->
+  <section class="sec gut" aria-labelledby="h-shorts" id="shorts">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: Shorts"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Shorts</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_shorts.webp" aria-label="See the original Shorts section"><img src="img/orig_shorts.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> Arabic titles with no label on an English page, in a 1,900px grid with page numbers.</p><p><b>Now:</b> one swipe row, “Arabic · English subtitles”, an English line under each title, and a full-screen player.</p></div></div></aside>
+        <p class="eyebrow">Shorts</p>
+        <h2 id="h-shorts">A minute at a time.</h2>
+        <p>One-minute answers to the questions I get asked most, short enough to send to someone mid-diagnosis.</p>
+        <span class="ar-pill">Arabic · English subtitles</span>
+      </div>
+      <div class="row" id="shortRow"></div>
+      <div class="row-foot"><span class="s" style="font-size:.88rem;color:var(--muted)">Swipe for more</span><a class="link" href="https://stg.omarchebbo.com/gallery?kind=short" target="_blank" rel="noopener">All shorts →</a></div>
+    </div>
+  </section>
+
+  <!-- blog -->
+  <section id="blog" class="sec sand gut" aria-labelledby="h-blog">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: Blog"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · Blog</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_blog.webp" aria-label="See the original Blog section"><img src="img/orig_blog.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> two posts share the same arm photo, “Mental health” has no posts, there is no “All posts” link, and each card is 420px tall.</p><p><b>Now:</b> compact rows, a photo per post, the empty topic hidden, counts on the topic tabs, and “All posts →”.</p></div></div></aside>
+        <p class="eyebrow">The blog</p>
+        <h2 id="h-blog">Stories by topic</h2>
+      </div>
+      <div class="chips" role="group" aria-label="Topics" id="chips">
+        <button type="button" class="chip" data-topic="all" aria-pressed="true">All topics<span class="n">3</span></button>
+        <button type="button" class="chip" data-topic="Dialysis" aria-pressed="false">Dialysis<span class="n">1</span></button>
+        <button type="button" class="chip" data-topic="Kidney transplant" aria-pressed="false">Kidney transplant<span class="n">2</span></button>
+      </div>
+      <div class="posts" id="posts"></div>
+      <div class="row-foot"><span></span><a class="link" href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">All posts →</a></div>
+    </div>
+  </section>
+
+  <!-- timeline -->
+  <section id="journey" class="sec gut" aria-labelledby="h-tl">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: Story timeline"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Story timeline</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_photos.webp" aria-label="See the original Story timeline section"><img src="img/orig_photos.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> “The journey, in pictures” shows two photos with no captions and competes with “Both are true”.</p><p><b>Now:</b> the story timeline from the demo: a line fills like an IV drip as you scroll. Kidney failure and dialysis at fifteen (March 2013) are confirmed. Characters from the shorts stand in where there is no real photo yet.</p></div></div></aside>
+        <p class="eyebrow">The journey</p>
+        <h2 id="h-tl">26 years, in a few moments</h2>
+      </div>
+      <div class="tl-wrap" id="tlWrap">
+        <div class="tl-track" aria-hidden="true"><div class="tl-fill"></div></div>
+        <ol class="tl" id="tl">
+          <li><div class="tl-card has-img"><img src="img/t_cast.webp" alt=""><div><p class="w">The beginning</p><h3>The diagnosis</h3><p>Where the introduction starts.</p></div></div></li>
+          <li><div class="tl-card has-img"><img src="img/t_dadliver.webp" alt=""><div><p class="w">2006</p><h3>My dad's liver</h3><p>He gives me part of his.</p></div></div></li>
+          <li><div class="tl-card has-img"><img src="img/t_kidneyfail.webp" alt=""><div><p class="w">Age fifteen</p><h3>Kidney failure</h3><p>End-stage kidney disease.</p></div></div></li>
+          <li><div class="tl-card has-img"><img src="img/dialysis.webp" alt=""><div><p class="w">2013 to 2024</p><h3>Dialysis</h3><p>From age fifteen. Needles every other day.</p></div></div></li>
+          <li><div class="tl-card has-img"><img src="img/aftertx.webp" alt=""><div><p class="w">13 June 2024</p><h3>A new kidney</h3><p>From my brother, Amine.</p></div></div></li>
+          <li><div class="tl-card has-img"><img src="img/grad.webp" alt=""><div><p class="w">Along the way</p><h3>The degree</h3><p>Cap, gown and a degree finished alongside everything else.</p></div></div></li>
+          <li><div class="tl-card has-img"><img src="img/sky.webp" alt=""><div><p class="w">Now</p><h3>Writing it all down</h3><p>The memoir, the videos, and this site.</p></div></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="qband gut" aria-label="Quote">
+    <div class="in"><hr><blockquote>“When you feel limited or stuck, always choose the sky.”</blockquote></div>
+  </section>
+
+  <!-- about -->
+  <section id="about" class="sec about gut" aria-labelledby="h-about">
+    <div class="in">
+      <img src="img/aftertx.webp" alt="Omar giving a thumbs up in a hospital bed after the kidney transplant">
+      <div class="txt">
+        <aside class="rv" aria-label="Review note: About"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · About</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_about.webp" aria-label="See the original About section"><img src="img/orig_about.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> no photo, and the first lines repeat the hero.</p><p><b>Now:</b> a photo, no repeat, and an “Invite me to speak” button.</p></div></div></aside>
+        <p class="eyebrow">About the author</p>
+        <h2 id="h-about">Hi, I'm Omar.</h2>
+        <p>I'm someone who sat in the chair, made the bargains, took the calls at 3 a.m., and came out the other side wanting to write down what nobody had told me.</p>
+        <p>Beyond The Body, Beyond The Pain is that book.</p>
+        <p>When I'm not writing, I'm usually annoying my cardiologist by paragliding. Thank you for being here.</p>
+        <button type="button" class="who-link" data-who><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Watch my story · 1 min</button>
+        <div class="ctas"><a class="btn gold" href="#book">Get your copy</a><a class="btn ghost" href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Invite me to speak</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- faq -->
+  <section id="faq" class="sec sand gut" aria-labelledby="h-faq">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: FAQ"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · FAQ</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_faq.webp" aria-label="See the original FAQ section"><img src="img/orig_faq.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> four questions, none about buying.</p><p><b>Now:</b> buyer questions added: getting the file, paying with Whish, and proof the money reaches AUBMC.</p></div></div></aside>
+        <p class="eyebrow">Questions</p>
+        <h2 id="h-faq">Before you ask</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Is this book medical advice?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">No. I'm not a doctor or therapist. The book shares my lived experience and practical field notes. Always talk to your own care team before acting on anything you read here.</p></details>
+        <details><summary>Who is this book for?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Patients on dialysis or awaiting transplant, recipients rebuilding their lives, the caregivers beside them, and anyone who loves an honest memoir about survival and identity.</p></details>
+        <details><summary>Do I need medical knowledge to follow it?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Not at all. The story carries you; medical moments are explained in plain words, as I understood them from the patient's chair.</p></details>
+        <details><summary><span>How do I get the book after paying?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">The introduction comes by email right after payment, as a PDF. The full memoir comes out in June 2027: the ebook by email, the hardcover delivered free. All sales are final.</p></details>
+        <details><summary><span>How do I pay?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">With Whish. At checkout you go to Whish to confirm the payment with your Whish account, then you come straight back here for your receipt.</p></details>
+        <details><summary><span>How do I know the money reaches AUBMC?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">I've already made the first donation to the AUBMC dialysis unit. <a href="#" data-donation-doc target="_blank" rel="noopener">See the hospital's signed confirmation <span aria-hidden="true">↗</span><span class="sr-only"> (opens Google Drive in a new tab)</span></a>. Each new donation will be added the same way.</p></details>
+        <details><summary>Can I invite Omar to speak or interview?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Sure! Write to me at <a href="mailto:hello@omarchebbo.com">hello@omarchebbo.com</a> or use the <a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">contact page ↗</a>, and tell me about your event, podcast or publication. I read everything personally.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- donor -->
+  <section id="donor" class="sec donor gut" aria-labelledby="h-donor">
+    <div class="in">
+      <aside class="rv" aria-label="Review note: Become a donor"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Become a donor</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> ties your story to something every visitor can do today. The button opens nodlb.org, Lebanon’s national organ donation organization, in a new tab.</p></div></div></aside>
+      <p class="eyebrow">Become a donor</p>
+      <h2 id="h-donor">My dad gave part of his liver. My brother gave a kidney.</h2>
+      <p>Not everyone has a donor in the family. Registering takes a few minutes, and telling your family that you did matters just as much.</p>
+      <div class="ctas"><a class="btn ghost" id="donorBtn" href="https://www.nodlb.org/" target="_blank" rel="noopener">How to register in Lebanon <small aria-hidden="true">↗</small><span class="sr-only"> (opens nodlb.org in a new tab)</span></a></div>
+    </div>
+  </section>
+
+  <!-- newsletter -->
+  <section id="news" class="band news on-band gut" aria-labelledby="h-news">
+    <div class="in">
+      <aside class="rv" aria-label="Review note: Newsletter and footer"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · Newsletter and footer</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_news.webp" aria-label="See the original Newsletter and footer section"><img src="img/orig_news.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> two email sign-ups in a row, and an 870px footer with one link under each heading.</p><p><b>Now:</b> one sign-up form, and the footer on a single row.</p></div></div></aside>
+      <p class="eyebrow">The newsletter</p>
+      <h2 id="h-news">One honest letter, once a month.</h2>
+      <p>New chapters, new videos, and what I'm learning about living in a rebuilt body.</p>
+      <form class="nl" id="nlForm" novalidate>
+        <label for="nlEmail" class="sr" style="position:absolute;left:-9999px">Email</label>
+        <input id="nlEmail" type="email" placeholder="your@email.com" required autocomplete="email">
+        <button class="btn gold" type="submit">Subscribe</button>
+      </form>
+      <p style="font-size:.85rem">No spam. Unsubscribe any time.</p>
+    </div>
+  </section>
+</main>
+
+<!-- ============ BOOK PAGE ============ -->
+<main data-view="book" id="v-book" hidden>
+  <section class="pp gut" aria-labelledby="h-pp">
+    <div class="in">
+      <a class="back" href="#home" id="ppBack">← Home</a>
+      <div class="main">
+        <div class="cover-col"><div class="cover"><img src="img/cover.webp" alt="Beyond the Body, Beyond the Pain: cover shaped like an IV bag"></div></div>
+        <div class="pp-txt">
+          <aside class="rv" aria-label="Review note: Book page"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Book page</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_product.webp" aria-label="See the original Book page section"><img src="img/orig_product.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> a quantity picker for a download, only “Add to cart”, no preview, and no proof of the donation.</p><p><b>Now:</b> “Buy now” and “Add to cart”, no quantity picker, a numbered “What’s inside” list drawn from the introduction (idea from James Clear’s book page), the first page, the donation box and the “Verified by AUBMC” button.</p></div></div></aside>
+          <p class="kind">Digital · PDF · Read in one sitting</p>
+          <h1 id="h-pp">The Introduction</h1>
+          <p class="price">$9.99</p>
+          <p class="desc">The pages where the story starts.</p>
+          <div class="btns">
+            <div class="buy-wrap" data-wrap><button type="button" class="btn gold buy" data-buy="intro" id="ppBuy"><span class="fill" aria-hidden="true"></span><span data-lbl>Buy now — $9.99</span></button></div>
+            <button type="button" class="btn ghost" data-add="intro">Add to cart</button>
+          </div>
+          <p class="meta">Sent to your email right after payment.</p>
+          <p class="inside-lbl">What’s inside</p>
+          <ol class="inside"><li>Dialysis at fifteen, the only teenager in a ward of sixty- and seventy-year-olds</li><li>The panic attacks and the silence no one prepares you for</li><li>The post-transplant shock no one talks about</li><li>Making peace with a body of borrowed parts</li></ol>
+
+          <button type="button" class="btn ghost sample" data-sample="fp2" aria-expanded="false" aria-controls="fp2" style="max-width:440px">Preview the first page
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="page" id="fp2" hidden style="max-width:520px">
+            <p class="pg-lbl">From the introduction</p><h3 class="pg-title">Introduction</h3><div class="txt"><p>Being different is a quiet kind of loneliness. It’s not just about standing out, it’s about existing in a world that was never designed for you. You think you’re living your life, but in reality, that thing, the illness, is your life. While others move effortlessly, making plans, chasing dreams, taking health for granted, you are tethered to something invisible yet inescapable.</p><p>A chronic illness isn’t a bad day or a temporary setback. It becomes the blueprint of your life. It doesn’t wait for you to be ready. It doesn’t ask for permission. It demands adaptation, whether you’re willing or not.</p><p>For most people, the body is a silent companion, breathing, repairing, digesting without question. For me, the body is a battlefield, covered in scars and stitched together from strangers’ generosity. My liver? Not mine. My kidney? Not mine. My body is a collaboration of surgeries, medications, and borrowed parts. How do you even begin to make peace with something like that?</p><p>When your body fails you early on, life doesn’t unfold like it does for others. You don’t plan careers or adventures. You measure time in blood results, in medication alarms, in hospital corridors. You carry an exhaustion no sleep can fix, and an awareness most people never have to face: the fragility of simply being alive.</p></div>
+            <button type="button" class="btn gold" data-buy-proxy="ppBuy">Keep reading — $9.99</button>
+          </div>
+          <div class="money on-band" data-money>
+            <div class="row"><p class="eyebrow">Where the money goes</p><span class="ex">Example numbers</span></div>
+            <p class="amount">$350<small>raised of $1,000</small></p>
+            <div class="bar" role="img" aria-label="Example: 35% of the goal raised"><i style="--w:35%"></i></div>
+            <p>All net profits go to the dialysis unit at AUBMC in Beirut, after basic creation and processing costs.</p>
+            <p class="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>I’ve already made a first donation. <a href="#" data-donation-doc target="_blank" rel="noopener">See the hospital’s signed confirmation <span aria-hidden="true">↗</span><span class="sr-only"> (opens Google Drive in a new tab)</span></a></span></p>
+            <button type="button" class="verify" data-doc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><span>Verified by AUBMC · <u>See the document</u></span></button>
+          </div>
+          <div class="box"><h3>Good to know</h3><ul><li>Opens on any phone, tablet or computer.</li><li>One payment, yours to keep.</li></ul></div>
+        </div>
+      </div>
+      <div class="sec-head" style="margin:20px 0 0"><h2 style="font-size:1.5rem">You might also like</h2></div>
+      <div class="grid-p three" id="related"></div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ SHOP ============ -->
+<main data-view="shop" id="v-shop" hidden>
+  <section class="pp gut" aria-labelledby="h-shop">
+    <div class="in">
+      <div class="sec-head" style="margin:0">
+        <aside class="rv" aria-label="Review note: Shop"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · Shop</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Original site:</b> products open a separate page before they can be added, and long titles are cut off (“Beyond The Pai…”).</p><p><b>Now:</b> add to cart from each card, signed or unsigned on the hardcover card, titles that wrap, Digital and Physical buttons instead of search, categories and a price slider, a picture per product, and delivery, refunds and the AUBMC badge under the cards (from pricingpages.design).</p></div></div></aside>
+        <h1 id="h-shop" style="font-size:clamp(2rem,6vw,2.7rem)">The shop</h1>
+        <p>The introduction, the memoir, and a few ways to hold it.</p>
+      </div>
+      <div class="chips shop-chips" role="group" aria-label="Format" id="shopChips">
+        <button type="button" class="chip" data-fmt="all" aria-pressed="true">All formats<span class="n">4</span></button>
+        <button type="button" class="chip" data-fmt="Digital" aria-pressed="false">Digital<span class="n">2</span></button>
+        <button type="button" class="chip" data-fmt="Physical" aria-pressed="false">Physical<span class="n">2</span></button>
+      </div>
+      <div class="grid-p" id="shopGrid"></div>
+      <div class="know">
+        <div><h3>Delivery</h3><p>The introduction arrives by email right after payment. The full memoir comes out in June 2027: the ebook by email, the hardcover with free delivery.</p></div>
+        <div><h3>Refunds</h3><p>All sales are final. Digital books can’t be refunded once they’re sent.</p></div>
+        <div><h3>Where the money goes</h3><p>Net profits go to the dialysis unit at AUBMC in Beirut.</p><button type="button" class="verify" data-doc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><span>Verified by AUBMC · <u>See the document</u></span></button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot gut">
+  <div class="in">
+    <div class="r1">
+      <a class="logo" href="#home" style="color:var(--on-band)"><svg class="mark" viewBox="0 4 64 40" aria-hidden="true"><path d="M18 38 A14 14 0 0 1 46 38" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/><line x1="6" y1="38" x2="58" y2="38" stroke="var(--on-band)" stroke-width="5" stroke-linecap="round"/></svg>Omar Chebbo</a>
+      <nav aria-label="Footer"><a href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">Blog <small aria-hidden="true">↗</small></a><a href="#shop">Shop</a><a href="https://stg.omarchebbo.com/gallery" target="_blank" rel="noopener">Gallery <small aria-hidden="true">↗</small></a><a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Contact <small aria-hidden="true">↗</small></a></nav>
+      <div class="soc">
+        <a href="https://instagram.com/omar_organtransplants" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://tiktok.com/@omar_organtransplants" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.8 2.3 4.6 5 4.8"/></svg></a>
+        <a href="https://youtube.com/@omar_organtransplants" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+    <a class="foot-mail" href="mailto:hello@omarchebbo.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg><span>hello@omarchebbo.com</span></a>
+    <small>Not medical advice. Always consult your care team. · © 2026 Omar Chebbo · Powered by candledigitals.com</small>
+  </div>
+</footer>
+
+<!-- sticky buy bar -->
+<div class="barbuy" id="barbuy">
+  <div class="inr">
+    <img src="img/cover.webp" alt="">
+    <p class="t"><b>The Introduction</b><span>$9.99 · PDF</span></p>
+    <button type="button" class="btn gold" id="barBuy">Get your copy</button>
+  </div>
+</div>
+
+<!-- drawers -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="cart" role="dialog" aria-modal="true" aria-labelledby="h-cart" aria-hidden="true">
+  <div class="dr-h"><h2 id="h-cart">Your cart</h2><button type="button" class="x" data-close aria-label="Close cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="dr-b" id="cartBody"></div>
+  <div class="dr-f" id="cartFoot"></div>
+</aside>
+<aside class="drawer left" id="menu" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+  <div class="dr-h"><h2>Menu</h2><button type="button" class="x" data-close aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="dr-b">
+    <nav class="menu-list" aria-label="Mobile">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#shop" data-nav="shop">Shop</a>
+      <a href="#guides">Free guides</a>
+      <a href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">Blog <small>↗</small></a>
+      <a href="https://stg.omarchebbo.com/gallery" target="_blank" rel="noopener">Gallery <small>↗</small></a>
+      <a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Contact <small>↗</small></a>
+    </nav>
+  </div>
+  <div class="dr-f">
+    <a class="btn gold" href="#book">Get your copy</a>
+    <a class="menu-news" href="#news">Get the monthly letter →</a>
+    <div class="menu-soc">
+      <a href="https://instagram.com/omar_organtransplants" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://tiktok.com/@omar_organtransplants" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.8 2.3 4.6 5 4.8"/></svg></a>
+      <a href="https://youtube.com/@omar_organtransplants" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor"/></svg></a>
+    </div>
+  </div>
+</aside>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="Short video">
+  <button type="button" class="v-close" id="vClose" aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div class="v-card">
+    <div class="v-frame"><img id="vImg" src="" alt=""><p class="note">On the live site the video plays here. Swipe for the next one.</p></div>
+    <div class="v-t"><p class="ar" id="vAr"></p><p class="en" id="vEn"></p><p class="v-count" id="vCount"></p></div>
+    <div class="v-nav">
+      <button type="button" id="vPrev" aria-label="Previous short"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <a id="vYt" href="#" target="_blank" rel="noopener">Watch on YouTube</a>
+      <button type="button" id="vNext" aria-label="Next short"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<dialog class="docdlg" id="docDlg" aria-labelledby="h-doc">
+  <div class="dd">
+    <div class="dd-h">
+      <div><p class="eyebrow">Previous donation · verified</p><h2 id="h-doc">Signed at the AUBMC dialysis unit</h2></div>
+      <button type="button" class="x" data-doc-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <figure class="paper" id="docPaper">
+      <span class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg>Verified</span>
+      <i class="m"></i><i class="s"></i>
+      <p class="ph-note">Photo or scan of the signed document goes here. Tapping it opens it full size.</p>
+      <i></i><i class="m"></i><i class="s"></i>
+      <div class="sigs" aria-hidden="true"><span>Signature</span><span>Signature</span></div>
+    </figure>
+    <dl>
+      <dt>Given to</dt><dd>Dialysis unit, AUBMC, Beirut</dd>
+      <dt>Date</dt><dd><span class="todo">Omar to add</span></dd>
+      <dt>Signed by</dt><dd><span class="todo">Names and roles, Omar to add</span></dd>
+      <dt>Amount</dt><dd><span class="todo">Optional</span></dd>
+    </dl>
+    <div class="dd-f">
+      <p>Questions about the donation? <a class="link" href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Ask me</a></p>
+      <button type="button" class="btn gold" data-doc-close>Close</button>
+    </div>
+  </div>
+</dialog>
+<dialog class="origdlg" id="origDlg" aria-label="Original section">
+  <div class="oh"><p>Original<small>stg.omarchebbo.com today, on a phone</small></p><button type="button" class="x" id="origX" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="ob"><img id="origImg" src="" alt=""></div>
+</dialog>
+<dialog class="tldlg" id="tlDlg" aria-labelledby="tlT">
+  <img class="ti" id="tlImg" src="" alt="">
+  <div class="cap"><p class="w" id="tlW"></p><h3 id="tlT"></h3><p id="tlP"></p></div>
+  <button type="button" class="x" id="tlX" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const store = { get(k){ try { return localStorage.getItem(k); } catch(_) { return null; } }, set(k, v){ try { localStorage.setItem(k, v); } catch(_) {} } };
+
+  /* ---------- data ---------- */
+  const P = {
+    intro:{ title:'The Introduction', kind:'Digital', price:9.99, desc:'Where the memoir starts. A PDF, sent by email.', ship:'Digital · sent by email', digital:true, img:'img/p_intro.webp' },
+    ebook:{ title:'Full Memoir — Ebook (Pre-order)', kind:'Digital', price:14.99, desc:'The complete ebook, sent by email in June 2027.', ship:'Pre-order · by email in June 2027', pre:true, digital:true, img:'img/p_ebook.webp' },
+    hard:{ title:'Beyond The Body, Beyond The Pain — Hardcover', kind:'Physical', price:35, desc:'The full memoir, hardcover. Ships in June 2027, free delivery.', ship:'Pre-order · ships June 2027 · free delivery', pre:true, opts:['Signed','Unsigned'], img:'img/p_hard.webp' },
+    bundle:{ title:'The Introduction + Signed Hardcover', kind:'Physical', price:41, was:44.99, desc:'Read the introduction today. The signed hardcover ships in June 2027, free delivery.', ship:'Introduction by email now · hardcover ships June 2027 · free delivery', pre:true, img:'img/p_bundle.webp' },
+    g_blood:{ title:'تحاليلك مشروحة', kind:'Free guide', price:0, desc:'11 صفحة · PDF', digital:true, guide:true, img:'img/g_blood.webp' },
+    g_aftertx:{ title:'تحاليلك بعد الزراعة… بلا هلع', kind:'Free guide', price:0, desc:'22 صفحة · PDF', digital:true, guide:true, img:'img/g_aftertx.webp' }
+  };
+  const price = n => n === 0 ? 'Free' : money(n);
+  const SH = [
+    ['sUrhS0oa5J0','ليش الموز ممنوع على غسيل الكلى؟','Why are bananas banned on dialysis?'],
+    ['khkno5zf6rg','شو يعني غسيل الكلى؟ وصلت الماكينة','What is dialysis? The machine arrives'],
+    ['W5ovK3p3h3k','قدّيش بتستنّى كلوة هون؟ ما حدا بينشر الرقم','How long is the wait for a kidney here? Nobody publishes it'],
+    ['5RakZHTbcyQ','ليش مريض الكلى تعبان عطول؟ فقر الدم والكلى','Why are kidney patients always tired? Anaemia'],
+    ['B-j5cWnZqXk','ليش الضغط بيطلع مع مرض الكلى؟','Why does blood pressure rise with kidney disease?'],
+    ['zb6Vq_n_C5Y','شو يعني الكرياتينين؟ أهم رقم بتحاليل الكلى','What is creatinine? The key number in kidney tests'],
+    ['va0NczrZHpM','هل يُتعب دواء ضد الرفض مثل البروغراف الكلى؟','Do anti-rejection drugs like Prograf tire the kidney?'],
+    ['PTUwq1ccVtg','ماذا يحدث للجسم عندما تتوقف الكلى؟','What happens to the body when the kidneys stop?'],
+    ['v2h9cYjvZ0o','قدّيش لازم تشرب مي بعد زراعة الكلى؟','How much water after a kidney transplant?'],
+    ['91pSb0SKX84','لماذا لم أحتج إلى توسيع المثانة بعد زراعة الكلى؟','Why I didn’t need a bladder enlargement'],
+    ['BNJ9uaHtDHc','هل تُزال الكلى القديمة بعد زراعة الكلى؟','Are the old kidneys removed after a transplant?'],
+    ['d6wlG8gAL9g','سنة على زراعة الكلى','One year since my kidney transplant']
+  ].map(([id, ar, en]) => ({ id, ar, en, img:'img/short_' + id + '.webp' }));
+  const POSTS = {
+    flu:{ url:'/blog/flu-shot-after-kidney-transplant', t:'The flu shot after a kidney transplant', k:'Kidney transplant', d:'Oct 28, 2026 · 3 min read', img:'img/flu.webp' },
+    rm:{ url:'/blog/should-you-remove-your-fistula-after-a-kidney-transplant', t:'Should you remove your fistula after a kidney transplant?', k:'Kidney transplant', d:'Oct 21, 2026 · 5 min read', img:'img/armpost.webp' },
+    what:{ url:'/blog/what-a-fistula-actually-is', t:'What a fistula actually is?', k:'Dialysis', d:'Oct 21, 2026 · 4 min read', img:'img/fistula.webp' }
+  };
+  const PATHS = [
+    { id:'dialysis', label:"I'm on dialysis", items:[['post','what'],['short','sUrhS0oa5J0'],['short','khkno5zf6rg'],['short','5RakZHTbcyQ'],['book']] },
+    { id:'waiting', label:"I'm waiting for a transplant", items:[['short','W5ovK3p3h3k'],['short','PTUwq1ccVtg'],['short','zb6Vq_n_C5Y'],['book']] },
+    { id:'after', label:'I just had a transplant', items:[['post','flu'],['post','rm'],['short','v2h9cYjvZ0o'],['short','va0NczrZHpM'],['short','d6wlG8gAL9g']] },
+    { id:'family', label:"I'm family or a friend", items:[['book'],['short','PTUwq1ccVtg'],['short','B-j5cWnZqXk'],['post','what']] }
+  ];
+  const PAL_NAMES = { site:'Site now', sage:'Cover sage', plum:'Cover plum', navy:'Navy & pink' };
+  const money = n => '$' + (Number.isInteger(n) ? n : n.toFixed(2));
+  const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
+
+  /* ---------- toast ---------- */
+  const toastEl = $('#toast'); let tt;
+  const toast = m => { toastEl.textContent = m; toastEl.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove('show'), 2600); };
+
+  /* ---------- palette + tags ---------- */
+  function setPal(p){
+    if (p === 'site') document.documentElement.removeAttribute('data-palette'); else document.documentElement.setAttribute('data-palette', p);
+    $$('.pal').forEach(b => b.setAttribute('aria-pressed', b.dataset.pal === p));
+    $('#palName').textContent = PAL_NAMES[p];
+    store.set('oc-pal', p);
+  }
+  $$('.pal').forEach(b => b.addEventListener('click', () => { setPal(b.dataset.pal); toast('Colors: ' + PAL_NAMES[b.dataset.pal]); }));
+  const notesSw = $('#notesSw');
+  const setNotes = on => { document.body.classList.toggle('notes', on); notesSw.checked = on; store.set('oc-notes', on ? '1' : '0'); };
+  notesSw.addEventListener('change', () => setNotes(notesSw.checked));
+
+  /* ---------- sticky header offsets ---------- */
+  const setStick = () => {
+    const tool = $('.tool'), th = tool ? tool.offsetHeight : 0;   // .tool is the demo-only top bar
+    document.documentElement.style.setProperty('--tool-h', th + 'px');
+    document.documentElement.style.setProperty('--stick', (th + $('.site-head').offsetHeight) + 'px');
+  };
+  setStick(); addEventListener('resize', setStick);
+  if ('ResizeObserver' in window){ const ro = new ResizeObserver(setStick); ro.observe($('.site-head')); if ($('.tool')) ro.observe($('.tool')); }
+
+  /* ---------- router ---------- */
+  let homeY = 0, fromPop = false, curView = 'home', bookFrom = null, booted = false;
+  addEventListener('popstate', () => { fromPop = true; });
+  const VIEWS = ['home', 'book', 'shop'];
+  function route(){
+    let v = (location.hash || '#home').slice(1), target = null;
+    if (!VIEWS.includes(v)){ const el = document.getElementById(v); if (el && $('#v-home').contains(el)) target = el; v = 'home'; }
+    const prev = curView;
+    if (prev === 'home' && v !== 'home') homeY = scrollY;   // remember the homepage position before hiding it
+    $$('[data-view]').forEach(m => m.hidden = m.dataset.view !== v);
+    $$('[data-nav]').forEach(a => { const on = a.dataset.nav === v; a.classList.toggle('cur', on); if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    closeAll();
+    if (v === 'home' && prev !== 'home' && fromPop) scrollTo({ top:homeY, behavior:'instant' });   // Back keeps your place
+    else if (target) requestAnimationFrame(() => target.scrollIntoView({ behavior:'instant', block:'start' }));
+    else scrollTo({ top:0, behavior:'instant' });
+    if (v === 'book' && prev !== 'book'){
+      bookFrom = booted ? prev : null;
+      $('#ppBack').textContent = bookFrom === 'shop' ? '← Back to the shop' : bookFrom ? '← Back' : '← Home';
+    }
+    curView = v; fromPop = false; booted = true;
+    checkBar(); updateTL();
+  }
+  addEventListener('hashchange', route);
+  $('#ppBack').addEventListener('click', e => { if (bookFrom){ e.preventDefault(); history.back(); } });
+
+  /* ---------- drawers ---------- */
+  const scrim = $('#scrim');
+  let lastFocus = null;
+  function openDrawer(el){
+    lastFocus = document.activeElement;
+    closeAll(true);
+    el.inert = false; el.classList.add('show'); el.setAttribute('aria-hidden', 'false'); scrim.classList.add('show');
+    setTimeout(() => { const f = $('button, a', el); if (f) f.focus(); }, 50);
+  }
+  function closeAll(silent){
+    $$('.drawer').forEach(d => { d.classList.remove('show'); d.setAttribute('aria-hidden', 'true'); d.inert = true; });
+    scrim.classList.remove('show'); $('#menuBtn').setAttribute('aria-expanded', 'false');
+    if (!silent && lastFocus && document.contains(lastFocus)) { try { lastFocus.focus({ preventScroll:true }); } catch(_) {} lastFocus = null; }
+  }
+  scrim.addEventListener('click', () => closeAll());
+  $$('[data-close]').forEach(b => b.addEventListener('click', () => closeAll()));
+  $('#menuBtn').addEventListener('click', () => { openDrawer($('#menu')); $('#menuBtn').setAttribute('aria-expanded', 'true'); });
+  $$('#menu a').forEach(a => a.addEventListener('click', () => closeAll(true)));
+  $('#cartBtn').addEventListener('click', () => { renderCart(); openDrawer($('#cart')); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape'){ if (!$('#viewer').hidden) closeViewer(); else closeAll(); } });
+
+  /* ---------- cart ---------- */
+  let cart = [];
+  try { cart = JSON.parse(store.get('oc-cart') || '[]'); if (!Array.isArray(cart)) cart = []; } catch(_) { cart = []; }
+  cart = cart.filter(i => P[i.id] && !P[i.id].guide);   // guides download directly; never in the cart
+  const save = () => store.set('oc-cart', JSON.stringify(cart));
+  const countItems = () => cart.reduce((s, i) => s + i.qty, 0);
+  function updateCount(bump){
+    const n = countItems(), c = $('#cartCount');
+    c.textContent = n; c.hidden = n === 0;
+    $('#cartBtn').setAttribute('aria-label', 'Cart, ' + n + (n === 1 ? ' item' : ' items'));
+    if (bump && !reduce){ c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump'); }
+  }
+  function addItem(id, opt){
+    const key = id + (opt ? ':' + opt : '');
+    const ex = cart.find(i => i.key === key);
+    if (ex){
+      if (P[id].digital) return 'already';
+      ex.qty++;
+    } else cart.push({ key, id, opt: opt || '', qty:1 });
+    save(); return 'added';
+  }
+  function fieldErr(input, msg){
+    const id = input.id + 'Err'; let el = document.getElementById(id);
+    const anchor = input.closest('.g-row') || input.closest('.nl') || input;
+    if (!el){ el = document.createElement('p'); el.className = 'f-err'; el.id = id; el.setAttribute('role', 'alert'); anchor.after(el); }
+    el.textContent = msg; input.setAttribute('aria-invalid', 'true'); input.setAttribute('aria-describedby', id);
+    const clear = () => { el.remove(); input.removeAttribute('aria-invalid'); input.removeAttribute('aria-describedby'); input.removeEventListener('input', clear); };
+    input.addEventListener('input', clear);
+  }
+  const badEmail = em => !em.value.trim() || !em.checkValidity();
+  const CK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  const LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+  const setCartTitle = t => { $('#h-cart').textContent = t; };
+  const RELEASE = 'June 2027';
+  const has = id => cart.some(i => i.id === id);
+  const hasDl = () => has('intro') || has('bundle');
+  function deliveryLines(){
+    const out = [];
+    if (hasDl()) out.push('The introduction arrives by email right after payment.');
+    if (has('ebook')) out.push('The ebook arrives by email in ' + RELEASE + '.');
+    if (has('hard') || has('bundle')) out.push('The hardcover ships in ' + RELEASE + ', with free delivery.');
+    return out;
+  }
+  const totals = () => ({ total: Math.round(cart.reduce((s, i) => s + P[i.id].price * i.qty, 0) * 100) / 100, phys: cart.some(i => !P[i.id].digital) });
+  const ttl = p => p.guide ? '<bdi lang="ar">' + p.title + '</bdi>' : p.title;
+  const dsc = p => p.guide ? '<bdi lang="ar" dir="rtl">' + p.desc + '</bdi>' : p.desc;
+  function guidesBlock(){
+    const left = ['g_blood', 'g_aftertx'];
+    return '<div class="cart-free"><p class="cf-h">Free guides · download</p>' + left.map(g =>
+      '<div class="cf"><img src="' + P[g].img + '" alt=""><div><p class="cf-t" dir="auto">' + ttl(P[g]) + '</p><p class="s">' + dsc(P[g]) + '</p></div>' +
+      '<button type="button" class="btn ghost cf-add" data-free="' + g + '">Download</button></div>').join('') + '</div>';
+  }
+  function wireFree(root){
+    $$('[data-free]', root).forEach(b => b.addEventListener('click', () => {
+      toast('Demo: on the live site, the PDF downloads now.');
+    }));
+  }
+  function renderCart(){
+    setCartTitle('Your cart');
+    const body = $('#cartBody'), foot = $('#cartFoot');
+    if (!cart.length){
+      body.innerHTML = '<div class="empty"><p>Your cart is empty.</p><a class="btn gold" href="#book">Get your copy — $9.99</a></div>' + guidesBlock();
+      foot.innerHTML = ''; wireFree(body); return;
+    }
+    body.innerHTML = cart.map(i => {
+      const p = P[i.id];
+      const qty = '<p class="s">' + p.ship + '</p>' + (p.digital ? '' :
+        '<div class="qty"><button type="button" data-q="-1" data-k="' + i.key + '" aria-label="Fewer">−</button><span>' + i.qty + '</span><button type="button" data-q="1" data-k="' + i.key + '" aria-label="More">+</button></div>');
+      return '<div class="ci"><img src="' + p.img + '" alt=""><div><h3 dir="auto">' + ttl(p) + '</h3>' + (i.opt ? '<p class="s">' + i.opt + '</p>' : '') + qty +
+        '<button type="button" class="rm" data-rm="' + i.key + '">Remove</button></div><p class="p">' + price(p.price * i.qty) + '</p></div>';
+    }).join('') + guidesBlock();
+    wireFree(body);
+    const t = totals();
+    foot.innerHTML = '<div class="sub"><span>Subtotal</span><span>' + price(t.total) + '</span></div>' +
+      '<p>' + deliveryLines().join(' ') + '</p>' +
+      '<button type="button" class="btn gold" id="checkout">Checkout</button>';
+    $('#checkout').addEventListener('click', renderCheckout);
+    $$('[data-q]', body).forEach(b => b.addEventListener('click', () => {
+      const it = cart.find(i => i.key === b.dataset.k); it.qty += +b.dataset.q;
+      if (it.qty < 1) cart = cart.filter(i => i !== it);
+      save(); updateCount(); renderCart();
+    }));
+    $$('[data-rm]', body).forEach(b => b.addEventListener('click', () => { cart = cart.filter(i => i.key !== b.dataset.rm); save(); updateCount(); renderCart(); }));
+  }
+  const ADDR = [['coName', 'Full name', 'name', 'text', 'Add the name for the delivery'], ['coPhone', 'Phone', 'tel', 'tel', 'Add a phone number for the delivery'],
+    ['coCity', 'City or area', 'address-level2', 'text', 'Add your city or area'], ['coStreet', 'Street, building, floor', 'street-address', 'text', 'Add your street and building']];
+  function renderCheckout(prefill){
+    setCartTitle('Checkout');
+    const body = $('#cartBody'), foot = $('#cartFoot'), t = totals(), st = (prefill && typeof prefill === 'object') ? prefill : {};
+    body.innerHTML = '<button type="button" class="co-back" id="coBack">← Back to cart</button>' +
+      '<ol class="co-steps" aria-label="Checkout steps"><li class="done">Cart</li><li class="cur" aria-current="step">Details</li><li>Payment</li></ol>' +
+      '<div class="co-sum">' + cart.map(i => '<p><span>' + ttl(P[i.id]) + (i.opt ? ' · ' + i.opt : '') + (i.qty > 1 ? ' × ' + i.qty : '') + '</span><b>' + price(P[i.id].price * i.qty) + '</b></p>').join('') +
+      '<p class="tot"><span>Total</span><b>' + price(t.total) + '</b></p></div>' +
+      '<form id="coForm" class="co-form" novalidate><label for="coEmail">' + (hasDl() ? 'Email for your receipt and download link' : 'Email for your receipt') + '</label>' +
+      '<input id="coEmail" type="email" placeholder="your@email.com" autocomplete="email" required>' +
+      (t.phys ? '<fieldset class="co-addr"><legend>Delivery address</legend>' + ADDR.map(([id, l, ac, ty]) => '<label for="' + id + '">' + l + '</label><input id="' + id + '" type="' + ty + '" autocomplete="' + ac + '" required>').join('') + '</fieldset>' : '') +
+      '<p class="co-note">' + deliveryLines().join(' ') + ' All sales are final, no refunds.</p>' +
+      '<p class="co-note">' + LOCK + 'You pay on Whish’s secure page. Your Whish details are never typed on this site.</p></form>';
+    foot.innerHTML = '<button type="submit" form="coForm" class="btn gold">' + (t.total > 0 ? 'Continue to payment — ' + money(t.total) : 'Send my free guides') + '</button><p>Prototype: no payment is taken.</p>';
+    if (st.email) $('#coEmail').value = st.email;
+    if (t.phys) ADDR.forEach(([id]) => { if (st[id]) $('#' + id).value = st[id]; });
+    $('#coBack').addEventListener('click', renderCart);
+    $('#coForm').addEventListener('submit', e => {
+      e.preventDefault(); const em = $('#coEmail'); let first = null;
+      if (badEmail(em)){ fieldErr(em, 'Enter an email like name@example.com'); first = em; }
+      const data = { email: em.value.trim() };
+      if (totals().phys) ADDR.forEach(([id, , , , msg]) => { const f = $('#' + id); data[id] = f.value.trim(); if (!data[id]){ fieldErr(f, msg); first = first || f; } });
+      if (first){ first.focus(); return; }
+      if (totals().total > 0) renderPayment(data); else renderDone(data);
+    });
+    $('#cartBody').scrollTop = 0;
+  }
+  function renderPayment(st){
+    setCartTitle('Payment');
+    const body = $('#cartBody'), foot = $('#cartFoot'), t = totals();
+    body.innerHTML = '<button type="button" class="co-back" id="payBack">← Back to details</button>' +
+      '<ol class="co-steps" aria-label="Checkout steps"><li class="done">Cart</li><li class="done">Details</li><li class="cur" aria-current="step">Payment</li></ol>' +
+      '<div class="co-sum"><p class="tot" style="border:0;padding:0"><span>Total</span><b>' + money(t.total) + '</b></p><p class="pay-mail"><span>Receipt to</span><span id="payMail"></span></p>' +
+      (t.phys ? '<p class="pay-mail"><span>Deliver to</span><span id="payTo"></span></p><p class="pay-mail"><span>Delivery</span><span>Free</span></p>' : '') + '</div>' +
+      '<div class="whish"><p class="pay-lbl">Pay with Whish</p><p>You’ll go to Whish to confirm the payment with your Whish account, then come straight back here for your receipt.</p></div>' +
+      '<p class="co-note">' + LOCK + 'Payments are handled by Whish. This demo doesn’t take payments.</p>';
+    $('#payMail').textContent = st.email;
+    if (t.phys) $('#payTo').textContent = st.coCity;
+    foot.innerHTML = '<button type="button" class="btn gold" id="payBtn">Pay ' + money(t.total) + ' with Whish</button><p>Prototype: no payment is taken.</p>';
+    $('#payBack').addEventListener('click', () => renderCheckout(st));
+    $('#payBtn').addEventListener('click', e => {
+      const b = e.currentTarget; if (b.disabled) return;
+      b.disabled = true; b.innerHTML = '<span class="spin" aria-hidden="true"></span>Opening Whish…';
+      setTimeout(() => renderDone(st), reduce ? 0 : 1100);
+    });
+    $('#cartBody').scrollTop = 0;
+  }
+  function renderDone(st){
+    setCartTitle('Order confirmed');
+    const body = $('#cartBody'), foot = $('#cartFoot'), t = totals(), hasIntro = hasDl();
+    body.innerHTML = '<div class="co-done"><span class="co-ok">' + CK + '</span><h3>Thank you!</h3>' +
+      '<p>' + (hasIntro ? 'Your receipt and download link are on their way to <b id="coMail"></b>.' : 'Your receipt is on its way to <b id="coMail"></b>.') + '</p>' +
+      (() => {
+        const dl = [];
+        if (hasIntro) dl.push('<button type="button" class="btn gold" data-dl>Download the PDF</button>');
+        cart.filter(i => P[i.id].guide).forEach(i => dl.push('<button type="button" class="btn ghost" data-dl>Free guide: ' + ttl(P[i.id]) + '</button>'));
+        return dl.length ? '<div class="co-dl">' + dl.join('') + '</div>' : '';
+      })() + (has('ebook') ? '<p>Your ebook arrives by email in ' + RELEASE + '.</p>' : '') +
+      (t.phys ? '<p>Your hardcover ships in ' + RELEASE + ' to <span id="coCity"></span>, with free delivery. I’ll email you when it’s on its way.</p>' : '') +
+      '<p class="co-give">Net profits go to the dialysis unit at AUBMC. <button type="button" class="linkish" id="coDoc">See the signed document</button></p></div>';
+    $('#coMail').textContent = st.email;
+    if (t.phys) $('#coCity').textContent = st.coCity;
+    foot.innerHTML = '<button type="button" class="btn gold" id="coNews">Get my monthly letter</button><button type="button" class="btn ghost" id="coClose">Back to the site</button><p>Prototype: no payment was taken.</p>';
+    $('#coNews').addEventListener('click', () => {
+      closeAll(true);
+      if (location.hash === '#news') route(); else location.hash = '#news';
+      setTimeout(() => { const n = $('#nlEmail'); if (n) n.focus({ preventScroll:true }); }, 400);
+    });
+    $$('[data-dl]', body).forEach(b => b.addEventListener('click', () => toast('On the live site, the file downloads here.')));
+    $('#coDoc').addEventListener('click', () => { closeAll(true); openDoc(); });
+    $('#coClose').addEventListener('click', () => closeAll());
+    cart = []; save(); updateCount();
+  }
+  function fly(fromEl){
+    if (reduce) return Promise.resolve();
+    const a = fromEl.getBoundingClientRect(), b = $('#cartBtn').getBoundingClientRect();
+    const img = document.createElement('img'); img.src = 'img/cover.webp'; img.className = 'fly'; img.alt = '';
+    img.style.left = (a.left + a.width / 2 - 19) + 'px'; img.style.top = (a.top + a.height / 2 - 27) + 'px';
+    document.body.appendChild(img);
+    return new Promise(res => {
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        img.style.transform = 'translate(' + (b.left + b.width / 2 - (a.left + a.width / 2)) + 'px,' + (b.top + b.height / 2 - (a.top + a.height / 2)) + 'px) scale(.35) rotate(-12deg)';
+        img.style.opacity = '.4';
+      }));
+      setTimeout(() => { img.remove(); res(); }, 720);
+    });
+  }
+  function addToCart(id, opt, btn){
+    const r = addItem(id, opt);
+    if (r === 'already'){ toast('Already in your cart'); return; }
+    fly(btn).then(() => { updateCount(true); toast('Added: ' + P[id].title + (opt ? ' (' + opt + ')' : '')); });
+  }
+  function buyNow(btn){
+    const id = btn.dataset.buy;
+    // already adding, or already in the cart: just open the cart
+    if (btn.classList.contains('go') || cart.some(i => i.id === id && P[id].digital)){ renderCart(); openDrawer($('#cart')); return; }
+    const lbl = $('[data-lbl]', btn), orig = lbl.textContent, wrap = btn.closest('[data-wrap]');
+    btn.classList.add('go'); if (wrap) wrap.classList.add('stop'); lbl.textContent = 'Adding…';
+    setTimeout(() => {
+      addItem(id); updateCount(true); renderCart(); openDrawer($('#cart'));
+      lbl.textContent = 'In your cart ✓';
+      setTimeout(() => { btn.classList.remove('go'); if (wrap) wrap.classList.remove('stop'); lbl.textContent = orig; }, 1200);
+    }, reduce ? 0 : 850);
+  }
+  $$('[data-buy]').forEach(b => b.addEventListener('click', () => buyNow(b)));
+  $$('[data-buy-proxy]').forEach(b => b.addEventListener('click', () => buyNow($('#' + b.dataset.buyProxy))));
+  $$('[data-add]').forEach(b => b.addEventListener('click', () => addToCart(b.dataset.add, '', b)));
+  $('#barBuy').addEventListener('click', () => { const v = $('#v-book').hidden ? $('#homeBuy') : $('#ppBuy'); buyNow(v); });
+
+  /* ---------- product cards ---------- */
+  function card(id){
+    const p = P[id];
+    const opts = p.opts ? '<div class="opts" role="group" aria-label="Version">' + p.opts.map((o, i) => '<button type="button" class="opt" data-opt="' + o + '" aria-pressed="' + (i === 0) + '">' + o + '</button>').join('') + '</div>' : '';
+    const href = id === 'intro' ? '#book' : null;
+    const title = href ? '<a class="title" href="' + href + '"><h3>' + p.title + '</h3></a>' : '<h3>' + p.title + '</h3>';
+    return '<article class="pc" data-id="' + id + '" data-kind="' + p.kind + '"><div class="img">' + (p.stock ? '<span class="stock">' + p.stock + '</span>' : '') + '<img src="' + p.img + '" alt="' + p.title + '"></div>' +
+      '<div class="b"><p class="k">' + p.kind + '</p>' + title + '<p class="d">' + p.desc + '</p>' + opts +
+      '<p class="pr">' + money(p.price) + (p.was ? ' <s>' + money(p.was) + '</s>' : '') + '</p>' +
+      '<button type="button" class="btn ghost add">' + (p.pre ? 'Pre-order' : 'Add to cart') + '</button></div></article>';
+  }
+  function wireCards(root){
+    $$('.pc', root).forEach(c => {
+      $$('.opt', c).forEach(o => o.addEventListener('click', () => $$('.opt', c).forEach(x => x.setAttribute('aria-pressed', x === o))));
+      $('.add', c).addEventListener('click', e => { const sel = $('.opt[aria-pressed="true"]', c); addToCart(c.dataset.id, sel ? sel.dataset.opt : '', e.currentTarget); });
+    });
+  }
+  $('#related').innerHTML = ['ebook', 'hard', 'bundle'].map(card).join(''); wireCards($('#related'));
+  $('#shopGrid').innerHTML = ['intro', 'ebook', 'hard', 'bundle'].map(card).join(''); wireCards($('#shopGrid'));
+  $$('#shopChips .chip').forEach(c => c.addEventListener('click', () => {
+    $$('#shopChips .chip').forEach(x => x.setAttribute('aria-pressed', x === c));
+    $$('#shopGrid .pc').forEach(card => card.classList.toggle('out', c.dataset.fmt !== 'all' && card.dataset.kind !== c.dataset.fmt));
+  }));
+
+  /* ---------- first page ---------- */
+  $$('[data-sample]').forEach(b => b.addEventListener('click', () => {
+    const pg = $('#' + b.dataset.sample), open = pg.hidden; pg.hidden = !open; b.setAttribute('aria-expanded', open);
+  }));
+
+  /* ---------- hero numbers ---------- */
+  if (!reduce){
+    const els = $$('#stats b'), t0 = performance.now();
+    const step = now => {
+      const k = Math.min(1, (now - t0) / 1300), e = 1 - Math.pow(1 - k, 3);
+      els.forEach(el => el.textContent = Math.round(+el.dataset.to * e) + (k === 1 ? (el.dataset.suf || '') : ''));
+      if (k < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  /* ---------- before/after pairs ---------- */
+  function initBA(ba){
+    const knob = $('.knob', ba), tl = $('.t.l', ba), tr = $('.t.r', ba); let pos = 50, drag = false, sx = 0, moved = false, sweepId = 0;
+    const set = p => { pos = Math.max(0, Math.min(100, p)); ba.style.setProperty('--pos', pos + '%'); knob.setAttribute('aria-valuenow', Math.round(pos)); tl.style.opacity = pos < 22 ? 0 : 1; tr.style.opacity = pos > 78 ? 0 : 1; };
+    const fromE = e => { const r = ba.getBoundingClientRect(); set((e.clientX - r.left) / r.width * 100); };
+    ba.addEventListener('pointerdown', e => { drag = true; moved = false; sx = e.clientX; cancelAnimationFrame(sweepId); if (e.pointerType === 'mouse'){ fromE(e); moved = true; } try { ba.setPointerCapture(e.pointerId); } catch(_) {} });
+    ba.addEventListener('pointermove', e => { if (!drag) return; if (!moved && Math.abs(e.clientX - sx) < 4) return; moved = true; fromE(e); });
+    ba.addEventListener('pointerup', e => { if (drag && !moved) fromE(e); drag = false; });
+    ba.addEventListener('pointercancel', () => drag = false);
+    knob.addEventListener('keydown', e => {
+      const s = e.shiftKey ? 20 : 5;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') set(pos - s); else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') set(pos + s);
+      else if (e.key === 'Home') set(0); else if (e.key === 'End') set(100); else return;
+      e.preventDefault(); cancelAnimationFrame(sweepId);
+    });
+    ba._sweep = () => {
+      const keys = [50, 25, 75, 50], dur = 1700, t0 = performance.now(), ease = x => x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+      const st = now => { const k = Math.min(1, (now - t0) / dur), sg = Math.min(2, Math.floor(k * 3)), l = k * 3 - sg; set(keys[sg] + (keys[sg + 1] - keys[sg]) * ease(Math.min(1, l))); if (k < 1) sweepId = requestAnimationFrame(st); };
+      sweepId = requestAnimationFrame(st);
+    };
+    set(50);
+  }
+  $$('[data-ba]').forEach(initBA);
+
+  /* ---------- start here ---------- */
+  const shortById = id => SH.find(s => s.id === id);
+  function renderPath(pid, animate){
+    const p = PATHS.find(x => x.id === pid);
+    $$('#paths .path').forEach(b => b.setAttribute('aria-pressed', b.dataset.id === pid));
+    $('#results').innerHTML = p.items.map(([t, id], i) => {
+      const d = animate ? ' style="animation-delay:' + (i * .05) + 's"' : ' style="animation:none"';
+      if (t === 'post'){ const x = POSTS[id]; return '<a class="res" href="https://stg.omarchebbo.com' + x.url + '" target="_blank" rel="noopener"' + d + '><img src="' + x.img + '" alt=""><span><span class="k">Post · ' + x.k + '</span><span class="h" style="display:block">' + x.t + '</span><span class="s">' + x.d + '</span></span>' + arrow + '</a>'; }
+      if (t === 'short'){ const x = shortById(id); return '<button type="button" class="res" data-short="' + id + '"' + d + '><img src="' + x.img + '" alt=""><span><span class="k">Short · 1 min · Arabic</span><span class="h" style="display:block;direction:rtl;text-align:right">' + x.ar + '</span><span class="s">' + x.en + '</span></span>' + arrow + '</button>'; }
+      return '<a class="res" href="#book"' + d + '><img src="img/cover.webp" alt="" style="object-fit:cover;object-position:50% 30%"><span><span class="k">Book · $9.99</span><span class="h" style="display:block">The Introduction</span><span class="s">The opening pages of my memoir.</span></span>' + arrow + '</a>';
+    }).join('');
+    $$('#results [data-short]').forEach(b => b.addEventListener('click', () => openViewer(SH.findIndex(s => s.id === b.dataset.short))));
+  }
+  $('#paths').innerHTML = PATHS.map(p => '<button type="button" class="path" data-id="' + p.id + '" aria-pressed="false">' + p.label + '</button>').join('');
+  $$('#paths .path').forEach(b => b.addEventListener('click', () => renderPath(b.dataset.id, !reduce)));
+  renderPath('dialysis', false);
+
+  /* ---------- body map ---------- */
+  const GUIDES = {
+    blood:{ t:'تحاليلك مشروحة', pages:11, img:'img/g_blood.webp' },
+    aftertx:{ t:'تحاليلك بعد الزراعة… بلا هلع', pages:22, img:'img/g_aftertx.webp' }
+  };
+  // order = priority: the first item is Omar's pick ("Start with this"), then newest
+  const ORG = [
+    { id:'heart', img:'img/c_heart.webp', x:182, y:158, name:'Heart', line:'When the kidneys fail, blood pressure climbs and the heart works harder.', items:[['short','B-j5cWnZqXk']] },
+    { id:'liver', img:'img/c_liver.webp', x:122, y:196, name:'Liver', line:'Part of my dad lives here.', items:[['jump','journey','My dad’s liver, 2006','On the story timeline','img/c_liver.webp'],['book']] },
+    { id:'blood', img:'img/c_blood.webp', x:248, y:236, name:'Blood', line:'Kidney failure can cause anaemia: tired all the time. The blood tests show it.', items:[['guide','blood'],['short','5RakZHTbcyQ'],['short','zb6Vq_n_C5Y']] },
+    { id:'old', img:'img/c_aunties.webp', x:192, y:250, name:'The old kidneys', line:'They stopped working, but they usually stay inside.', items:[['short','PTUwq1ccVtg'],['short','BNJ9uaHtDHc'],['short','W5ovK3p3h3k'],['guide','blood']] },
+    { id:'new', img:'img/c_newkidney.webp', x:122, y:290, name:'The new kidney', line:'With me since June 2024. It sits low in the belly, at the front.', items:[['guide','aftertx'],['post','flu'],['short','v2h9cYjvZ0o'],['short','va0NczrZHpM'],['short','d6wlG8gAL9g']] },
+    { id:'bladder', img:'img/c_bladder.webp', x:168, y:332, name:'Bladder', line:'Empty for years on dialysis. After the transplant, back to work.', items:[['short','91pSb0SKX84'],['short','v2h9cYjvZ0o']] },
+    { id:'machine', img:'img/c_machine.webp', x:34, y:430, name:'Dialysis and the fistula', line:'Outside the body, connected through the fistula in my right arm. Three sessions a week, four hours each.', items:[['post','what'],['short','khkno5zf6rg'],['short','sUrhS0oa5J0'],['post','rm'],['guide','blood']] }
+  ];
+  const fig = $('#figure'), opanel = $('#organPanel');
+  let curOrg = 'new';
+  function resHTML(t, id, i, animate, extra){
+    const d = animate ? ' style="animation-delay:' + (i * .05) + 's"' : ' style="animation:none"';
+    if (t === 'post'){ const x = POSTS[id]; return '<a class="res" href="https://stg.omarchebbo.com' + x.url + '" target="_blank" rel="noopener"' + d + '><img src="' + x.img + '" alt=""><span><span class="k">Post · ' + x.k + '</span><span class="h" style="display:block">' + x.t + '</span><span class="s">' + x.d + '</span></span>' + arrow + '</a>'; }
+    if (t === 'short'){ const x = shortById(id); return '<button type="button" class="res" data-short="' + id + '"' + d + '><img src="' + x.img + '" alt=""><span><span class="k">Short · 1 min · Arabic</span><span class="h" style="display:block;direction:rtl;text-align:right">' + x.ar + '</span><span class="s">' + x.en + '</span></span>' + arrow + '</button>'; }
+    if (t === 'guide'){ const g = GUIDES[id]; return '<a class="res" href="#guides" data-guide-jump="' + id + '"' + d + '><img src="' + g.img + '" alt="" style="object-position:50% 0"><span><span class="k">Free guide · PDF</span><span class="h" style="display:block" lang="ar" dir="rtl">' + g.t + '</span><span class="s" lang="ar" dir="rtl">' + g.pages + ' صفحة</span></span>' + arrow + '</a>'; }
+    if (t === 'jump') return '<a class="res" href="#' + id + '"' + d + '><img src="' + extra[2] + '" alt=""><span><span class="k">' + extra[1] + '</span><span class="h" style="display:block">' + extra[0] + '</span></span>' + arrow + '</a>';
+    return '<a class="res" href="#book"' + d + '><img src="img/cover.webp" alt="" style="object-position:50% 30%"><span><span class="k">Book · $9.99</span><span class="h" style="display:block">The Introduction</span><span class="s">The opening pages of my memoir.</span></span>' + arrow + '</a>';
+  }
+  ORG.forEach((o, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'spot'; b.style.left = (o.x / 320 * 100) + '%'; b.style.top = (o.y / 520 * 100) + '%';
+    b.style.setProperty('--i', i); b.setAttribute('aria-label', o.name + ', ' + o.items.length + (o.items.length === 1 ? ' item' : ' items'));
+    b.innerHTML = '<img src="' + o.img + '" alt=""><span class="cnt" aria-hidden="true">' + o.items.length + '</span>';
+    b.addEventListener('click', () => pickOrgan(o.id, true));
+    fig.appendChild(b); o.btn = b;
+  });
+  function pickOrgan(id, user){
+    curOrg = id; const o = ORG.find(x => x.id === id), anim = user && !reduce;
+    if (user) fig.classList.add('touched');
+    ORG.forEach(x => { x.btn.classList.toggle('on', x.id === id); x.btn.setAttribute('aria-pressed', x.id === id); });
+    const TOP = 3, rows = o.items.map((it, i) => {
+      let h = resHTML(it[0], it[1], i % TOP, anim || i >= TOP, it.slice(2));
+      if (i === 0 && o.items.length > 1) h = h.replace('<span class="k">', '<span class="pin">Start with this</span><span class="k">');
+      return h;
+    });
+    const chev = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+    opanel.innerHTML = '<div class="op-head"><img src="' + o.img + '" alt=""><h3>' + o.name + '</h3></div><p class="op-line">' + o.line + '</p><p class="op-lbl">Read and watch · ' + o.items.length + '</p>' +
+      '<div class="results">' + rows.slice(0, TOP).join('') + '</div>' +
+      (rows.length > TOP ? '<div class="results more" id="orgMore" hidden>' + rows.slice(TOP).join('') + '</div><button type="button" class="see-all" aria-expanded="false" aria-controls="orgMore">See all ' + rows.length + chev + '</button>' : '');
+    const sa = $('.see-all', opanel);
+    if (sa) sa.addEventListener('click', () => {
+      const more = $('#orgMore'), open = more.hidden; more.hidden = !open; sa.setAttribute('aria-expanded', open);
+      sa.firstChild.textContent = open ? 'Show fewer' : 'See all ' + rows.length;
+    });
+    $$('[data-short]', opanel).forEach(b => b.addEventListener('click', () => openViewer(SH.findIndex(s => s.id === b.dataset.short))));
+    if (anim){ opanel.classList.remove('swap'); void opanel.offsetWidth; opanel.classList.add('swap'); }
+    if (user){ const r = opanel.getBoundingClientRect(); if (r.top > innerHeight - 140) opanel.scrollIntoView({ behavior:'smooth', block:'nearest' }); }
+  }
+  pickOrgan('new', false);
+  const tabs = [$('#tab-body'), $('#tab-sit')];
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => { const on = x === t; x.setAttribute('aria-selected', on); $('#' + x.getAttribute('aria-controls')).hidden = !on; });
+  }));
+
+  /* ---------- shorts row + viewer ---------- */
+  const play = '<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span>';
+  $('#shortRow').innerHTML = SH.map((s, i) => '<button type="button" class="short" data-i="' + i + '" aria-label="Play: ' + s.en + '"><span class="th"><img src="' + s.img + '" alt="" loading="lazy">' + play + '</span><span class="ar">' + s.ar + '</span><span class="en">' + s.en + '</span></button>').join('');
+  $$('#shortRow .short').forEach(b => b.addEventListener('click', () => openViewer(+b.dataset.i)));
+  const viewer = $('#viewer'); let vi = 0, vLast = null;
+  function showShort(i){
+    vi = (i + SH.length) % SH.length; const s = SH[vi];
+    const img = $('#vImg'); img.src = s.img; img.alt = s.en; img.style.animation = 'none'; void img.offsetWidth; img.style.animation = '';
+    $('#vAr').textContent = s.ar; $('#vEn').textContent = s.en; $('#vCount').textContent = (vi + 1) + ' of ' + SH.length;
+    $('#vYt').href = 'https://www.youtube.com/shorts/' + s.id;
+  }
+  let vSingle = false;
+  const vNote = $('.v-frame .note');
+  function openViewer(i){
+    vSingle = false; viewer.classList.remove('single'); viewer.setAttribute('aria-label', 'Short video');
+    vNote.textContent = 'On the live site the video plays here. Swipe for the next one.';
+    vLast = document.activeElement; showShort(i); viewer.hidden = false; document.body.style.overflow = 'hidden'; $('#vClose').focus();
+  }
+  /* "Who I am" video. Live site: a YouTube embed (youtube-nocookie.com) that loads only when this is tapped,
+     so the page stays light. PLACEHOLDER until Omar's 1-minute video is ready: his short "One year since my kidney transplant". */
+  const WHO = { id:'d6wlG8gAL9g', ar:'سنة على زراعة الكلى', en:'Stand-in: your 1-minute “who I am” video goes here', img:'img/short_d6wlG8gAL9g.webp' };
+  function openWho(){
+    vSingle = true; viewer.classList.add('single'); viewer.setAttribute('aria-label', 'Who I am');
+    const img = $('#vImg'); img.src = WHO.img; img.alt = 'Who I am'; img.style.animation = 'none'; void img.offsetWidth; img.style.animation = '';
+    $('#vAr').textContent = WHO.ar; $('#vEn').textContent = WHO.en; $('#vCount').textContent = '';
+    $('#vYt').href = 'https://youtu.be/' + WHO.id;
+    vNote.textContent = 'On the live site your video plays here, with sound, from YouTube.';
+    vLast = document.activeElement; viewer.hidden = false; document.body.style.overflow = 'hidden'; $('#vClose').focus();
+  }
+  $$('[data-who]').forEach(b => b.addEventListener('click', openWho));
+  function closeViewer(){ viewer.hidden = true; document.body.style.overflow = ''; if (vLast) try { vLast.focus({ preventScroll:true }); } catch(_) {} }
+  $('#vClose').addEventListener('click', closeViewer);
+  $('#vPrev').addEventListener('click', () => showShort(vi - 1));
+  $('#vNext').addEventListener('click', () => showShort(vi + 1));
+  viewer.addEventListener('click', e => { if (e.target === viewer) closeViewer(); });
+  document.addEventListener('keydown', e => { if (viewer.hidden || vSingle) return; if (e.key === 'ArrowRight' || e.key === 'ArrowDown') showShort(vi + 1); if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') showShort(vi - 1); });
+  let vs = null;
+  viewer.addEventListener('pointerdown', e => { vs = { x:e.clientX, y:e.clientY }; });
+  viewer.addEventListener('pointerup', e => {
+    if (!vs || vSingle) { vs = null; return; } const dx = e.clientX - vs.x, dy = e.clientY - vs.y; vs = null;
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < 40) return;
+    if (Math.abs(dy) > Math.abs(dx)) showShort(vi + (dy < 0 ? 1 : -1)); else showShort(vi + (dx < 0 ? 1 : -1));
+  });
+
+  /* ---------- blog ---------- */
+  $('#posts').innerHTML = Object.values(POSTS).map(x => '<a class="post" data-k="' + x.k + '" href="https://stg.omarchebbo.com' + x.url + '" target="_blank" rel="noopener"><img src="' + x.img + '" alt=""><div><p class="k">' + x.k + '</p><h3>' + x.t + '</h3><p class="m">' + x.d + '</p></div></a>').join('');
+  $$('#chips .chip').forEach(c => c.addEventListener('click', () => {
+    $$('#chips .chip').forEach(x => x.setAttribute('aria-pressed', x === c));
+    $$('#posts .post').forEach(p => {
+      const show = c.dataset.topic === 'all' || p.dataset.k === c.dataset.topic;
+      if (show){ p.classList.remove('out'); if (!reduce) p.animate([{ opacity:0, transform:'translateY(6px)' }, { opacity:1, transform:'none' }], { duration:300, easing:'ease-out' }); }
+      else p.classList.add('out');
+    });
+  }));
+
+  /* ---------- timeline ---------- */
+  const tlWrap = $('#tlWrap'), tlItems = $$('#tl > li'); let tlq = false;
+  function updateTL(){
+    tlq = false; if ($('#v-home').hidden) return;
+    const r = tlWrap.getBoundingClientRect(), mark = innerHeight * .62;
+    const p = Math.max(0, Math.min(1, (mark - r.top) / r.height));
+    tlWrap.style.setProperty('--p', (p * 100).toFixed(2) + '%');
+    tlItems.forEach(li => li.classList.toggle('lit', li.offsetTop + 26 <= p * r.height));
+  }
+
+  /* ---------- sticky buy bar ---------- */
+  const bar = $('#barbuy');
+  function checkBar(){
+    const onBook = !$('#v-book').hidden, onHome = !$('#v-home').hidden;
+    const btn = onBook ? $('#ppBuy') : onHome ? $('#homeBuy') : null;
+    bar.classList.toggle('show', !!btn && btn.getBoundingClientRect().bottom < 0);
+  }
+  addEventListener('scroll', () => { requestAnimationFrame(checkBar); if (!tlq){ tlq = true; requestAnimationFrame(updateTL); } }, { passive:true });
+  addEventListener('resize', () => { checkBar(); updateTL(); });
+
+  /* body map characters bob a few times when the map comes into view, then rest */
+  if ('IntersectionObserver' in window){
+    const fio = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting){ en.target.classList.add('live'); fio.disconnect(); } }), { threshold:.4 });
+    fio.observe($('#figure'));
+  }
+
+  /* ---------- reveal-once things ---------- */
+  if ('IntersectionObserver' in window && !reduce){
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      if (!en.isIntersecting) return;
+      const t = en.target; io.unobserve(t);
+      if (t.matches('[data-ba]')) t._sweep();
+      if (t.matches('[data-money]')){ const i = $('.bar i', t); i.style.setProperty('--w', '0%'); requestAnimationFrame(() => requestAnimationFrame(() => i.style.setProperty('--w', '35%'))); }
+    }), { threshold:.55 });
+    const first = $('[data-ba]'); if (first.getBoundingClientRect().top > innerHeight) io.observe(first);
+    $$('[data-money]').forEach(m => { if (m.getBoundingClientRect().top > innerHeight) io.observe(m); });
+  }
+
+  /* ---------- free guides ---------- */
+  const OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  /* kidney: outline, ureter, liquid clipped to the kidney, and a drop */
+  const KID = 'M20.5 4.5C14.5 2.6 6 6 5.5 14C5 21.5 9.8 28 16.6 27.4C21.2 27 23.2 23.4 21.5 20.3C20.3 18.2 18.1 17.7 18.1 16C18.1 14.3 20.3 13.8 21.5 11.7C23.1 8.8 23.4 5.5 20.5 4.5Z';
+  const WAVE = 'M-32 0Q-30 -2.2 -28 0' + Array.from({ length:23 }, (_, i) => 'T' + (-24 + i * 4) + ' 0').join('') + 'V40H-32Z';   // wide enough to cover the kidney while it slides
+  let kidN = 0;
+  const kidSVG = () => { const id = 'kc' + (++kidN); return '<svg class="kid" viewBox="0 0 32 32" aria-hidden="true"><defs><clipPath id="' + id + '"><path d="' + KID + '"/></clipPath></defs>' +
+    '<g clip-path="url(#' + id + ')"><path class="kid-liq" d="' + WAVE + '"/></g>' +
+    '<path class="kid-o" d="' + KID + '"/><path class="kid-u" d="M18.7 16.8C22.2 17.8 25 20.6 26.2 28"/><circle class="kid-drop" r="1.7"/></svg>'; };
+  const KID_OK = '<svg class="kid-ok" viewBox="0 0 32 32" aria-hidden="true"><path class="ko-k" d="' + KID + '"/><path class="ko-c" d="M8.2 15.6l3.2 3.4 5.6-6.6"/></svg>';
+  $$('.guide:not(.soon) .g-get').forEach(b => b.insertAdjacentHTML('afterbegin', kidSVG()));
+  const nextStep = text => { const a = document.createElement('a'); a.className = 'g-next'; a.href = '#book-sec'; a.setAttribute('data-first-page', ''); a.textContent = text; return a; };
+  $$('.g-get').forEach(b => b.addEventListener('click', () => {
+    const card = b.closest('.guide'), soon = card.classList.contains('soon');
+    if (b.classList.contains('kfill')) return;
+    const next = () => {
+      b.classList.remove('kfill');
+      if (soon) { const f = $('.g-form', card); f.hidden = false; b.hidden = true; $('input', f).focus(); return; }
+      toast('Demo: on the live site, the PDF downloads now.');   // live site: <a href="guide.pdf" download>
+      if (!$('.g-ok', card)) {
+        const ok = document.createElement('p'); ok.className = 'g-ok'; ok.innerHTML = KID_OK; ok.append('Your PDF is downloading.');
+        b.after(ok, nextStep('Next: read the first page of my memoir →'));
+      }
+    };
+    if (soon || reduce) { next(); return; }
+    b.classList.add('kfill');            // kidney fills, beats, lets a drop out
+    setTimeout(next, 1050);
+  }));
+  $$('.g-form').forEach(f => f.addEventListener('submit', e => {
+    e.preventDefault(); const em = $('input', f);
+    if (badEmail(em)) { fieldErr(em, 'Enter an email like name@example.com'); em.focus(); return; }
+    const ok = document.createElement('p'); ok.className = 'g-ok'; ok.innerHTML = OK;
+    ok.append('Done. I’ll email you when it’s out.');
+    f.replaceWith(ok, nextStep('Meanwhile: read the first page of my memoir →'));
+  }));
+  opanel.addEventListener('click', e => {
+    const a = e.target.closest('[data-guide-jump]'); if (!a) return;
+    e.preventDefault();
+    const card = document.getElementById('guide-' + a.dataset.guideJump);
+    $('#guides').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block:'start' });
+    setTimeout(() => { card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block:'nearest', inline:'center' }); card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash'); }, reduce ? 0 : 450);
+  });
+
+  /* ---------- signed donation document ---------- */
+  const DOC_READY = false;   // set to true once the signed AUBMC document is added
+  /* The hospital's signed confirmation: a one-page document on Omar's Google Drive.
+     Paste the share link here (Drive: Share > General access > Anyone with the link > Viewer). */
+  const DONATION_DOC_URL = '';
+  $$('[data-donation-doc]').forEach(a => {
+    if (DONATION_DOC_URL) a.href = DONATION_DOC_URL;
+    else a.addEventListener('click', e => { e.preventDefault(); toast('Demo: your Google Drive document opens here, in a new tab.'); });
+  });
+  const DONATION = null;     // e.g. { raised:350, goal:1000 } once Omar sends real numbers; until then the bar is hidden
+  document.body.classList.toggle('money-pending', !DONATION);
+  document.body.classList.toggle('doc-pending', !DOC_READY);
+  const docDlg = $('#docDlg');
+  const openDoc = () => { if (docDlg.showModal) docDlg.showModal(); else docDlg.setAttribute('open', ''); };
+  const closeDoc = () => { if (docDlg.close) docDlg.close(); else docDlg.removeAttribute('open'); };
+  $$('[data-doc]').forEach(b => b.addEventListener('click', openDoc));
+  $$('[data-doc-close]').forEach(b => b.addEventListener('click', closeDoc));
+  docDlg.addEventListener('click', e => { if (e.target === docDlg) closeDoc(); });
+
+  /* ---------- original screenshots ---------- */
+  /* ---------- timeline photos: open larger on tap ---------- */
+  const tlDlg = $('#tlDlg');
+  const ZOOM = '<span class="tl-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span>';
+  $$('.tl-card.has-img > img').forEach(img => {
+    const card = img.closest('.tl-card'), title = $('h3', card).textContent;
+    const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'tl-img'; btn.setAttribute('aria-label', 'Open photo: ' + title);
+    img.replaceWith(btn); btn.append(img); btn.insertAdjacentHTML('beforeend', ZOOM);
+    btn.addEventListener('click', () => {
+      const ps = $$('p', card);
+      $('#tlImg').src = img.src; $('#tlImg').alt = title;
+      $('#tlW').textContent = $('.w', card).textContent; $('#tlT').textContent = title; $('#tlP').textContent = ps[ps.length - 1].textContent;
+      if (tlDlg.showModal) tlDlg.showModal(); else tlDlg.setAttribute('open', '');
+      $('#tlX').focus();
+    });
+  });
+  const closeTl = () => { if (tlDlg.close) tlDlg.close(); else tlDlg.removeAttribute('open'); };
+  $('#tlX').addEventListener('click', closeTl);
+  tlDlg.addEventListener('click', e => { if (e.target === tlDlg) closeTl(); });
+
+  const origDlg = $('#origDlg');
+  $$('[data-orig]').forEach(b => b.addEventListener('click', () => {
+    $('#origImg').src = b.dataset.orig; $('#origImg').alt = b.getAttribute('aria-label').replace('See the ', '');
+    if (origDlg.showModal) origDlg.showModal(); else origDlg.setAttribute('open', '');
+    $('.ob', origDlg).scrollTop = 0;
+  }));
+  const closeOrig = () => { if (origDlg.close) origDlg.close(); else origDlg.removeAttribute('open'); };
+  $('#origX').addEventListener('click', closeOrig);
+  origDlg.addEventListener('click', e => { if (e.target === origDlg) closeOrig(); });
+
+  /* ---------- news strip ---------- */
+  if (store.get('oc-news') === '0') $('#announce').hidden = true;
+  $('#anX').addEventListener('click', () => { $('#announce').hidden = true; store.set('oc-news', '0'); });
+
+  /* ---------- misc ---------- */
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-first-page]'); if (!a) return;
+    e.preventDefault();
+    if ($('#v-home').hidden) { history.pushState(null, '', '#home'); route(); }
+    const btn = $('[data-sample="fp1"]'), pg = $('#fp1');
+    if (pg.hidden) btn.click();
+    pg.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block:'start' });
+  });
+  $$('[data-news-short]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openViewer(SH.findIndex(s => s.id === a.dataset.newsShort)); }));
+  $$('[data-scroll]').forEach(b => b.addEventListener('click', () => document.getElementById(b.dataset.scroll).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' })));
+  $('#nlForm').addEventListener('submit', e => {
+    e.preventDefault(); const em = $('#nlEmail');
+    if (badEmail(em)){ fieldErr(em, 'Enter an email like name@example.com'); em.focus(); return; }
+    const f = e.currentTarget, ok = document.createElement('p'); ok.className = 'nl-ok';
+    ok.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+    ok.append('Thanks. The next letter goes to ' + em.value + '.'); f.replaceWith(ok);
+  });
+
+  /* ---------- start ---------- */
+  setPal(['site', 'sage', 'plum', 'navy'].includes(store.get('oc-pal')) ? store.get('oc-pal') : 'site');
+  setNotes(store.get('oc-notes') !== '0');
+  updateCount(false);
+  route();
+})();
+</script>
+
+</body>
+</html>
