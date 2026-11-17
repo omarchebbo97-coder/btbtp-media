@@ -17,6 +17,7 @@ Every image, what it shows, and when to use it. Check this before choosing an im
 | bone_master.jpg | Cracked bone | bones, calcium, phosphorus, parathyroid |
 | machine_master.png | Dialysis machine with tubes for arms | dialysis, fistula, the chair |
 | banana_master.png | Sad banana with a suitcase | potassium, banned dialysis foods |
+| sushi_master.jpg | Sad salmon nigiri with a suitcase (made by Omar in Nano Banana, 17 Nov) | raw food / sushi off the plate after transplant, banned foods after transplant |
 | bladder_style.jpg | The bladder in a hammock, water splashing, alarm clock | bladder, water, peeing again after transplant |
 | intestines_master.jpg | Intestines with the surgical team | day two after surgery, waiting to pass gas, gut |
 | testosterone_master.png | Tired testosterone at the gym, aunties watching, low battery | testosterone, men's health |
