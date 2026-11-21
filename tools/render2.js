@@ -8,6 +8,7 @@ const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});
 for(const [tag,w,h] of [['ig',1080,1350],['tiktok',1080,1920]]){const p=await b.newPage({viewport:{width:w,height:h}});
  for(let i=0;i<spec.slides.length;i++){const s={...spec.slides[i],w,h};
   if(tag==='tiktok'&&s.photo_tt) s.photo=s.photo_tt;
+  if(tag==='ig'&&s.pos_ig) s.pos=s.pos_ig; // IG frame is shorter: pos_ig moves the subject below the panel (21 Nov)
   if(s.photo) s.photo='file://'+path.resolve(path.dirname(process.argv[2]),s.photo);
   const tpl=s.photo?'card.html':'template.html';
   await p.goto('file://'+path.resolve(__dirname,tpl)+'?i='+i+'&t='+tag+'#'+encodeURIComponent(JSON.stringify(s)));
