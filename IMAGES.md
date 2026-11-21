@@ -39,6 +39,7 @@ Every image, what it shows, and when to use it. Check this before choosing an im
 | e5_signal.png | Aunties sending a sparkly signal |
 | e6_chair.png | Dialysis machine next to the chair and a stack of blankets |
 | e6_sulk.png | Machine sulking under a rain cloud, new kidney beside it |
+| wadad_chair.jpg | Wadad (curlers) slumped tired in the dialysis chair under a blanket, machine connected to her arm (Omar, Nano Banana, 21 Nov) |
 | e7_heart.png | Banana and heart arguing |
 | e7_hug.png | New kidney hugging the banana |
 | e7_shock.png | Banana shocked under a spotlight |
