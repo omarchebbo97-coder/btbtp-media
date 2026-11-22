@@ -17,6 +17,9 @@
 - Keyboard use: the closed cart and menu are skipped by the Tab key, the focus outline is dark with a gold halo, and Escape closes every pop-up.
 - Arabic text uses Noto Sans Arabic (Google Fonts).
 - Colors: keep the current palette (slate, gold, cream, ink). The demo's top bar (color dots and "Review") is only for the demo.
+- Colors follow 60 / 30 / 10: cream about 60% (main background), slate about 30% (secondary), gold for the rest (the accent: buttons, highlights, a few bands). Measured on the homepage: 61 / 32 / 7 on a phone, 57 / 36 / 7 on a computer. Book page and shop: about 64 / 33 / 3.
+  - Slate: the news strip, book section, story timeline (new), the first quote band (new), newsletter and footer, plus a slate panel behind the book cover and the shop product pictures (new).
+  - Gold: every main button (the shop's "Add to cart" and "Pre-order" are now gold too), the "always choose the sky" quote band (new), the "Become a donor" section (new), the timeline line and dates, and a gold underline on key heading words ("It pays for dialysis.", "the same life", "I wish I'd had", "in a few moments", "Introduction", "shop").
 
 ## Homepage, top to bottom
 - Removed: "2 introductions sold", the test reader reviews, two of the four quote bands, "The journey, in pictures" and the second newsletter form.

@@ -199,6 +199,29 @@ main section[id]{scroll-margin-top:calc(var(--stick,0px) + 10px)}
 /* book band */
 .band{background:var(--band);color:var(--on-band);transition:background-color .4s,color .4s}
 .band .eyebrow{color:var(--on-band-muted)}
+/* 60 / 30 / 10: cream 60, slate 30, gold 10 */
+.hl{background:linear-gradient(transparent 64%, var(--accent) 64%, var(--accent) 90%, transparent 90%);padding:0 .06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.on-band .hl{background:linear-gradient(transparent 66%, rgba(232,194,105,.55) 66%, rgba(232,194,105,.55) 92%, transparent 92%)}
+.qband.slate{background:var(--band);color:var(--on-band)}
+.qband.slate hr{background:var(--accent)}
+.qband.gold{background:var(--accent);color:#2b2622}
+.qband.gold hr{background:#2b2622}
+.donor.gold{background:var(--accent);color:#2b2622}
+.donor.gold p,.donor.gold .eyebrow{color:#2b2622}
+.donor.gold .btn.ghost{border-color:#2b2622;color:#2b2622;background:transparent}
+.donor.gold .btn.ghost:hover{background:#2b2622;color:var(--accent)}
+.donor.gold :focus-visible{outline-color:#2b2622;box-shadow:0 0 0 6px #fff7e0}
+.pp .cover-col{background:var(--band);border-radius:18px;padding:22px 16px;display:grid;place-items:center}
+.pp .cover-col .cover{margin:0 auto}
+#journey .eyebrow{color:var(--accent)}
+#journey .tl-track{background:rgba(255,255,255,.18)}
+#journey .tl-fill{background:var(--accent)}
+#journey .tl-fill::after{background:var(--accent)}
+#journey .tl li::before{background:var(--band);border-color:rgba(255,255,255,.4)}
+#journey .tl li.lit::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 6px rgba(232,194,105,.25)}
+#journey .tl-card{background:var(--band-mid);border-color:rgba(255,255,255,.12);color:var(--on-band)}
+#journey .tl-card .w{color:var(--accent)}
+#journey .tl-card p{color:var(--on-band-muted)}
 .book .in{display:grid;gap:22px;padding-block:40px 64px}
 .book .in{max-width:680px}
 .book-head{display:grid;gap:14px;min-width:0}
@@ -698,7 +721,7 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
 .grid-p.three{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (min-width:860px){.grid-p.three{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .pc{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
-.pc .img{position:relative;background:var(--sand);padding:12px}
+.pc .img{position:relative;background:var(--band);padding:12px}
 .pc .img img{width:100%;aspect-ratio:4/5;object-fit:contain}
 .stock{position:absolute;top:10px;left:10px;font:600 .64rem var(--f-sans);letter-spacing:.1em;text-transform:uppercase;background:var(--paper);border-radius:999px;padding:3px 8px}
 .pc .b{padding:12px;display:grid;gap:6px;align-content:start}
@@ -925,7 +948,7 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
       <div class="book-head">
         <aside class="rv" aria-label="Review note: Book"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Book</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_book.webp" aria-label="See the original Book section"><img src="img/orig_book.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the buy button sits at the bottom of a 1,430px section, the pills look like buttons, “2 introductions sold” sits underneath, and reader reviews show test text.</p><p><b>Now:</b> title first, then the cover, then the text. Heartbeat “Get your copy — $9.99” button after the first paragraph, “Preview the first page”, plain labels, donation tracker with the “Verified by AUBMC” badge (opens the previous donation’s signed document), and a slot for real reader quotes with a “Leave a note” button (idea from hadichebbo.com). A buy bar slides up once you scroll past.</p></div></div></aside>
         <p class="eyebrow">Phase one of the memoir</p>
-        <h2 id="h-book">Start with the introduction. It pays for dialysis.</h2>
+        <h2 id="h-book">Start with the introduction. <span class="hl">It pays for dialysis.</span></h2>
       </div>
       <div class="cover-col">
         <div class="cover">
@@ -960,7 +983,7 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
     </div>
   </section>
 
-  <section class="qband gut" aria-label="Quote">
+  <section class="qband slate gut" aria-label="Quote">
     <div class="in"><hr><blockquote>“Dialysis doesn’t restore life. It postpones death — and in that borrowed time, I learned to live.”</blockquote></div>
   </section>
 
@@ -970,7 +993,7 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
       <div class="sec-head">
         <aside class="rv" aria-label="Review note: Both are true"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Both are true</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_both.webp" aria-label="See the original Both are true section"><img src="img/orig_both.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> six photos stacked in one 2,200px column, so nobody sees the hospital and the adventure together.</p><p><b>Now:</b> three pairs with the before/after slider from the demo. Drag from the hospital to the sky.</p></div></div></aside>
         <p class="eyebrow">Both are true</p>
-        <h2 id="h-both">The same body, the same life</h2>
+        <h2 id="h-both">The same body, <span class="hl">the same life</span></h2>
         <p>Illness and living never took turns. All of this happened to me, sometimes in the same year. Drag each photo.</p>
       </div>
       <div class="pairs">
@@ -1055,7 +1078,7 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
       <div class="sec-head">
         <aside class="rv" aria-label="Review note: Free guides"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Free guides</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> your two PDFs, free and downloaded directly, no email needed. The two guides your blood-test PDF promises as coming next have “Tell me when it’s out” cards. The body map links each organ to its guide. Idea from James Clear’s free bonuses. The guide cards are in Arabic only (title and description), like the PDFs. Tapping “Get it free” fills a small kidney in the button, it beats once and lets a drop out, then the email form opens; once sent, a kidney with a check confirms it, with one next step: “read the first page of my memoir”.</p></div></div></aside>
         <p class="eyebrow">Free guides</p>
-        <h2 id="h-guides">Guides I wish I'd had</h2>
+        <h2 id="h-guides">Guides <span class="hl">I wish I'd had</span></h2>
         <p>Plain PDFs in Arabic about the lab sheet, written from the patient's chair. Free.</p>
       </div>
       
@@ -1102,12 +1125,12 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
   </section>
 
   <!-- timeline -->
-  <section id="journey" class="sec gut" aria-labelledby="h-tl">
+  <section id="journey" class="sec band on-band gut" aria-labelledby="h-tl">
     <div class="in">
       <div class="sec-head">
         <aside class="rv" aria-label="Review note: Story timeline"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Story timeline</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_photos.webp" aria-label="See the original Story timeline section"><img src="img/orig_photos.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> “The journey, in pictures” shows two photos with no captions and competes with “Both are true”.</p><p><b>Now:</b> the story timeline from the demo: a line fills like an IV drip as you scroll. Kidney failure and dialysis at fifteen (March 2013) are confirmed. Characters from the shorts stand in where there is no real photo yet.</p></div></div></aside>
         <p class="eyebrow">The journey</p>
-        <h2 id="h-tl">26 years, in a few moments</h2>
+        <h2 id="h-tl">26 years, <span class="hl">in a few moments</span></h2>
       </div>
       <div class="tl-wrap" id="tlWrap">
         <div class="tl-track" aria-hidden="true"><div class="tl-fill"></div></div>
@@ -1124,7 +1147,7 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
     </div>
   </section>
 
-  <section class="qband gut" aria-label="Quote">
+  <section class="qband gold gut" aria-label="Quote">
     <div class="in"><hr><blockquote>“When you feel limited or stuck, always choose the sky.”</blockquote></div>
   </section>
 
@@ -1166,7 +1189,7 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
   </section>
 
   <!-- donor -->
-  <section id="donor" class="sec donor gut" aria-labelledby="h-donor">
+  <section id="donor" class="sec donor gold gut" aria-labelledby="h-donor">
     <div class="in">
       <aside class="rv" aria-label="Review note: Become a donor"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Become a donor</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> ties your story to something every visitor can do today. The button opens nodlb.org, Lebanon’s national organ donation organization, in a new tab.</p></div></div></aside>
       <p class="eyebrow">Become a donor</p>
@@ -1203,7 +1226,7 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
         <div class="pp-txt">
           <aside class="rv" aria-label="Review note: Book page"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Book page</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_product.webp" aria-label="See the original Book page section"><img src="img/orig_product.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> a quantity picker for a download, only “Add to cart”, no preview, and no proof of the donation.</p><p><b>Now:</b> “Buy now” and “Add to cart”, no quantity picker, a numbered “What’s inside” list drawn from the introduction (idea from James Clear’s book page), the first page, the donation box and the “Verified by AUBMC” button.</p></div></div></aside>
           <p class="kind">Digital · PDF · Read in one sitting</p>
-          <h1 id="h-pp">The Introduction</h1>
+          <h1 id="h-pp">The <span class="hl">Introduction</span></h1>
           <p class="price">$9.99</p>
           <p class="desc">The pages where the story starts.</p>
           <div class="btns">
@@ -1243,7 +1266,7 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
     <div class="in">
       <div class="sec-head" style="margin:0">
         <aside class="rv" aria-label="Review note: Shop"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · Shop</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Original site:</b> products open a separate page before they can be added, and long titles are cut off (“Beyond The Pai…”).</p><p><b>Now:</b> add to cart from each card, signed or unsigned on the hardcover card, titles that wrap, Digital and Physical buttons instead of search, categories and a price slider, a picture per product, and delivery, refunds and the AUBMC badge under the cards (from pricingpages.design).</p></div></div></aside>
-        <h1 id="h-shop" style="font-size:clamp(2rem,6vw,2.7rem)">The shop</h1>
+        <h1 id="h-shop" style="font-size:clamp(2rem,6vw,2.7rem)">The <span class="hl">shop</span></h1>
         <p>The introduction, the memoir, and a few ways to hold it.</p>
       </div>
       <div class="chips shop-chips" role="group" aria-label="Format" id="shopChips">
@@ -1684,7 +1707,7 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
     return '<article class="pc" data-id="' + id + '" data-kind="' + p.kind + '"><div class="img">' + (p.stock ? '<span class="stock">' + p.stock + '</span>' : '') + '<img src="' + p.img + '" alt="' + p.title + '"></div>' +
       '<div class="b"><p class="k">' + p.kind + '</p>' + title + '<p class="d">' + p.desc + '</p>' + opts +
       '<p class="pr">' + money(p.price) + (p.was ? ' <s>' + money(p.was) + '</s>' : '') + '</p>' +
-      '<button type="button" class="btn ghost add">' + (p.pre ? 'Pre-order' : 'Add to cart') + '</button></div></article>';
+      '<button type="button" class="btn gold add">' + (p.pre ? 'Pre-order' : 'Add to cart') + '</button></div></article>';
   }
   function wireCards(root){
     $$('.pc', root).forEach(c => {
