@@ -9,23 +9,39 @@
 - All motion is gentle and stops when the phone has Reduce Motion turned on.
 - The header stays at the top while scrolling (sticky), and links to sections leave room for it.
 - New news strip above the header: one line, for example "Short: Why are bananas banned on dialysis? · Watch →", which opens the video. It has a close button, and closing is remembered. Later it can announce the AUBMC donation.
-- Header: Home · Free guides · Blog · Shop · Gallery · Contact, a "Get your copy" button, and a cart icon with a number badge that bumps when something is added.
-- New full-screen phone menu: big links, the current page marked, ↗ on links that open another site, then "Get your copy", "Get the monthly letter →" and the Instagram, TikTok and YouTube icons. The links slide in one after another.
+- Header: logo (home) · The book · Start here · Free guides · Videos · My story · Shop, an outlined "Get your copy" button (the gold one in the hero leads), and a cart icon with a number badge that bumps when something is added. Between 900px and 1150px wide, the links move into the menu.
+- New full-screen phone menu: Home, The book, Start here, Free guides, Videos, My story, Shop, then Blog, Gallery and Contact (smaller, with ↗). The current page is marked. At the bottom: "Get your copy", "Get the monthly letter →" and the Instagram, TikTok and YouTube icons. The links slide in one after another.
 - One buy label everywhere: "Get your copy". The book page keeps "Buy now — $9.99".
 - Form errors show as a red message under the field, not as a pop-up.
 - The browser Back button returns visitors to the same spot on the homepage.
 - Keyboard use: the closed cart and menu are skipped by the Tab key, the focus outline is dark with a gold halo, and Escape closes every pop-up.
 - Arabic text uses Noto Sans Arabic (Google Fonts).
 - Colors: keep the current palette (slate, gold, cream, ink). The demo's top bar (color dots and "Review") is only for the demo.
-- Colors follow 60 / 30 / 10: cream about 60% (main background), slate about 30% (secondary), gold for the rest (the accent: buttons, highlights, a few bands). Measured on the homepage: 61 / 32 / 7 on a phone, 57 / 36 / 7 on a computer. Book page and shop: about 64 / 33 / 3.
-  - Slate: the news strip, book section, story timeline (new), the first quote band (new), newsletter and footer, plus a slate panel behind the book cover and the shop product pictures (new).
-  - Gold: every main button (the shop's "Add to cart" and "Pre-order" are now gold too), the "always choose the sky" quote band (new), the "Become a donor" section (new), the timeline line and dates, and a gold underline on key heading words ("It pays for dialysis.", "the same life", "I wish I'd had", "in a few moments", "Introduction", "shop").
+- Colors follow 60 / 30 / 10: cream about 60% (main background), slate about 30% (secondary), gold as the accent (buttons, highlights, a few bands). Measured: homepage 56 / 34 / 10 (phone and computer); book page and shop about 61 / 35 / 3.
+  - Slate: the news strip, the book section, the story timeline, the first quote band and the footer, plus a panel behind the book cover and behind each shop product picture.
+  - Gold: every main button (including the shop's "Add to cart" and "Pre-order"), the "always choose the sky" quote band, the "Become a donor" section, the timeline line and dates, and a gold underline on key heading words.
+
+## Site structure (new)
+- The homepage is now a home page, not a long scroll of everything. In its first look it tells a visitor three things: who Omar is, what's here for them (his book, and free help for patients and families), and why it matters (net profits go to dialysis care at AUBMC).
+- Anything that was repeated got its own page, reached by a button:
+  - Start here (#start): the body map, the situation buttons and the blog posts.
+  - Free guides (#guides): the guides, plus "Not sure which guide? Start here".
+  - Videos (#videos): all 12 shorts in a grid, plus "All videos on YouTube ↗".
+  - My story (#story): About, the timeline, both quote bands, the before/after photos, and "It's all in the book" with "Read the first page".
+  - Privacy & terms (#privacy): a draft for Omar to approve, linked in the footer.
+- Each new page starts with "← Home" and ends with buttons to the other free resources, so there's no dead end.
+- The homepage went from about 12,500px to 5,500px tall on a phone.
+- Visitor paths:
+  - Supporter: hero → "Read the first page" → preview → "Keep reading — $9.99" → cart → Whish.
+  - Patient or family: hero → "Free help" → Start here, Free guides, Videos or Posts.
+  - Curious about Omar: "The short version" → "Read my story" → "Read the first page".
+  - Organizer: My story → "Invite me to speak ↗".
 
 ## Homepage, top to bottom
-- Removed: "2 introductions sold", the test reader reviews, two of the four quote bands, "The journey, in pictures" and the second newsletter form.
+- Removed: "2 introductions sold", the test reader reviews, "The journey, in pictures" and the second newsletter form. Moved to their own pages: Start here, the free guides, the shorts, the blog, the timeline, the before/after photos, About and the two quote bands.
 1. Hero
    - Small line "Author of *Beyond the Body, Beyond the Pain*", then the heading "I'm Omar Chebbo." and one sentence.
-   - Buttons: "Read the first page" (opens the free preview of the introduction) and "Free guides".
+   - Buttons: "Read the first page" (opens the free preview of the introduction) and "Free help" (goes to the Free help section).
    - New line: "Net profits from the introduction go to dialysis care at AUBMC."
    - Numbers that count up: 3 organ transplants, 11 years on dialysis, 26+ years of the journey.
    - "Now" line with a pulsing dot: "The full memoir comes out in June 2027."
@@ -39,45 +55,56 @@
    - New "Where the money goes" box: the net-profits sentence, then "I've already made a first donation. See the hospital's signed confirmation ↗". That link opens a one-page Google Drive document in a new tab.
    - The donation progress bar and numbers stay hidden until there are real numbers. The "Verified by AUBMC" badge stays hidden until the document is ready.
    - "Read it? Email me what you thought →" opens an email. Reader quotes stay hidden until there are 3 real ones.
-   - A sticky "Get your copy" bar slides up at the bottom once the buy button has scrolled out of view.
+   - A sticky "Get your copy" bar slides up at the bottom once the buy button has scrolled out of view. It only shows on the homepage and the book page, never on the free-help pages.
    - The IV-bag drip on the cover was removed.
-3. Quote band: "Dialysis doesn't restore life. It postpones death — and in that borrowed time, I learned to live."
-4. New section, "The same body, the same life": three before/after drag sliders (dialysis and paragliding, fistula and diving, catheter X-ray and shooting range).
-5. New section, "Start here"
-   - "Tap the body": a body map with 7 characters from the shorts, each with a count of its items. Tapping one shows the top 3 items, the first marked "Start with this", plus "See all". The characters bob three times, then rest.
-   - "Your situation": four buttons (on dialysis, waiting for a transplant, just had a transplant, family or friend), each showing matching posts and videos.
-6. New section, "Free guides"
-   - Two PDFs that download directly, with no email needed.
-   - The cards are in Arabic only: Arabic title, description and page count.
-   - New kidney animation on "Get it free": the kidney fills, beats once and lets a drop out. Then a kidney with a check shows "Your PDF is downloading." and one next step: "Next: read the first page of my memoir →".
-   - Two "Coming soon" cards with "Tell me when it's out" (email box).
-   - The cards swipe sideways on phones and sit 4 across on a computer.
-7. Shorts
-   - One swipe row of all 12 shorts, replacing the grid with pages.
-   - Each shows its Arabic title with an English line under it.
-   - Tapping opens a full-screen vertical viewer with swipe or arrows, "Watch on YouTube" and the count "1 of 12". "All shorts →" sits at the end of the row.
-8. Blog: topic buttons with counts, compact rows (photo, title, date, read time) and "All posts →". Empty topics are hidden.
-9. New section, story timeline (replaces "The journey, in pictures")
-   - 7 moments, each with a photo or a character. A line fills as you scroll.
-   - Facts: kidney failure at fifteen, dialysis from March 2013 to 2024, and a new kidney from his brother Amine on 13 June 2024.
-   - Tapping a photo opens it larger in a pop-up.
-10. Quote band: "When you feel limited or stuck, always choose the sky."
-11. About
-   - Text that no longer repeats the hero.
-   - New "▶ Watch my story · 1 min" link.
-   - Buttons "Get your copy" and "Invite me to speak".
-12. FAQ: 7 questions. New ones:
-    - "How do I get the book after paying?"
-    - "How do I pay?" (with Whish)
-    - "How do I know the money reaches AUBMC?" (with the document link)
-    - The answer about inviting Omar to speak now links hello@omarchebbo.com and the Contact page.
-13. New section, "Become a donor": "My dad gave part of his liver. My brother gave a kidney.", with "How to register in Lebanon ↗" opening https://www.nodlb.org/.
-14. Newsletter: one sign-up form only. After signing up, the form turns into a thank-you line.
-15. Footer
-    - All links on one row, plus the social icons.
-    - New: hello@omarchebbo.com as a tappable email link.
-    - The medical notice and copyright.
-    - About a third of its old height on a phone.
+3. New section, "Free help: For patients and families"
+   - Four buttons, each with a picture and one line: Start here, Free guides, Videos, Posts. Each opens its own page.
+4. New section, "My story: The short version"
+   - Three moments with pictures: 2006 My dad's liver · 2013 Dialysis at fifteen · 2024 A kidney from my brother.
+   - "Read my story" (opens My story) and "▶ Watch my story · 1 min".
+5. FAQ: 7 questions. New ones:
+   - "How do I get the book after paying?"
+   - "How do I pay?" (with Whish)
+   - "How do I know the money reaches AUBMC?" (with the document link)
+   - The answer about inviting Omar to speak now links hello@omarchebbo.com and the Contact page.
+6. New section, "Become a donor" (gold): "My dad gave part of his liver. My brother gave a kidney.", with "How to register in Lebanon ↗" opening https://www.nodlb.org/.
+7. Newsletter: one sign-up form only. After signing up, the form turns into a thank-you line.
+8. Footer
+   - Links: The book, Start here, Free guides, Videos, My story, Shop, Blog ↗, Gallery ↗, Contact ↗, Privacy & terms. Plus the social icons.
+   - New: hello@omarchebbo.com as a tappable email link.
+   - The medical notice and copyright.
+
+## Start here page (#start)
+- "Tap the body": a body map with 7 characters from the shorts, each with a count of its items. Tapping one shows the top 3 items, the first marked "Start with this", plus "See all". The characters bob three times, then rest.
+- A guide item opens the Free guides page and highlights that guide. A story item opens My story at the timeline.
+- "Your situation": four buttons (on dialysis, waiting for a transplant, just had a transplant, family or friend), each showing matching posts and videos.
+- Blog: topic buttons with counts, compact rows (photo, title, date, read time) and "All posts →". Empty topics are hidden.
+- At the end: buttons to Free guides and Videos.
+
+## Free guides page (#guides)
+- Two PDFs that download directly, with no email needed.
+- The cards are in Arabic only: Arabic title, description and page count.
+- New kidney animation on "Get it free": the kidney fills, beats once and lets a drop out. Then a kidney with a check shows "Your PDF is downloading." and one next step: "Next: read the first page of my memoir →".
+- Two "Coming soon" cards with "Tell me when it's out" (email box).
+- The cards sit in a grid (one column on phones).
+- At the end: "Not sure which guide? Start here" and Videos.
+
+## Videos page (#videos)
+- All 12 shorts in a grid: 2 across on phones, 4 on tablets, 6 on a computer.
+- Each shows its Arabic title with an English line under it.
+- Tapping opens a full-screen vertical viewer with swipe or arrows, "Watch on YouTube" and the count "1 of 12".
+- "All videos on YouTube ↗", then buttons to Start here and Free guides.
+
+## My story page (#story)
+- About first: "Hi, I'm Omar." and the text, then the "Who I am · 1 min" video picture (it replaces the hospital-bed photo, which repeated the timeline).
+- Story timeline: 7 moments, each with a photo or a character, and a line that fills as you scroll. Facts: kidney failure at fifteen, dialysis from March 2013 to 2024, and a new kidney from his brother Amine on 13 June 2024. Tapping a photo opens it larger in a pop-up.
+- Quote band (slate): "Dialysis doesn't restore life. It postpones death — and in that borrowed time, I learned to live."
+- "The same body, the same life": three before/after drag sliders (dialysis and paragliding, fistula and diving, catheter X-ray and shooting range).
+- Quote band (gold): "When you feel limited or stuck, always choose the sky."
+- End: "It's all in the book." with "Read the first page" and "Invite me to speak ↗".
+
+## Privacy & terms page (#privacy)
+- A draft in plain language for Omar to approve: what is collected and why, payments with Whish, emails and unsubscribing, free guides, all sales final, what the site remembers, not medical advice, and contact.
 
 ## Book page (#book)
 - "← Back" returns to where the visitor came from ("← Back to the shop" from the shop, "← Home" if they landed there directly).
@@ -137,7 +164,7 @@
   - Products: pre-order and delivery text.
   - Site settings: news strip, donation goal and the "Now" line.
 - Images: WebP, sized to how they display, and lazy-loaded below the first screen.
-- Still to build: a privacy policy and terms page, share previews (Open Graph) and a 404 page.
+- Still to build: share previews (Open Graph) and a 404 page. The privacy and terms page is drafted in the demo; Omar approves the final text.
 - Demo-only, don't copy: the top bar (colors, Review), "Prototype: no payment is taken" and the "Demo: …" messages.
 
 ## Waiting on Omar

@@ -207,6 +207,44 @@ main section[id]{scroll-margin-top:calc(var(--stick,0px) + 10px)}
 .qband.gold{background:var(--accent);color:#2b2622}
 .qband.gold hr{background:#2b2622}
 .donor.gold{background:var(--accent);color:#2b2622}
+/* pages */
+.page-back .in{padding-top:14px}
+.page-back + .sec{padding-top:18px}
+@media (max-width:859px){#v-story .about-vid{order:2;max-width:280px}}
+.sec-head h1{font-size:clamp(1.8rem,5.2vw,2.5rem)}
+.about h1{font-size:clamp(1.9rem,5.4vw,2.6rem)}
+#v-guides .guides{grid-auto-flow:row;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));overflow:visible}
+#v-videos .row{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-columns:auto;overflow:visible}
+@media (min-width:760px){#v-videos .row{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:1100px){#v-videos .row{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.about-vid{position:relative;display:block;width:100%;max-width:380px;margin:0 auto;padding:0;border:0;background:none;cursor:pointer;border-radius:20px}
+.about-vid img{display:block}
+.story-end .in{display:grid;gap:12px;justify-items:center;text-align:center;max-width:620px}
+.more-help .in{padding-top:0}
+.legal .in{max-width:680px;display:grid;gap:10px}
+.legal h2{font-size:1.2rem;margin-top:10px}
+.legal a{padding-block:10px}
+.legal .draft{background:var(--tint);border-radius:12px;padding:10px 14px;font-size:.92rem;font-weight:600;color:var(--accent-ink)}
+/* Free help doors */
+.doors{display:grid;gap:10px}
+@media (min-width:760px){.doors{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1100px){.doors:not(.two){grid-template-columns:repeat(4,minmax(0,1fr))}}
+.door{display:grid;grid-template-columns:64px minmax(0,1fr) 20px;gap:14px;align-items:center;padding:12px;background:var(--paper);border:1px solid var(--line);border-radius:16px;text-decoration:none;color:var(--ink);transition:border-color .2s,translate .2s}
+.door:hover{border-color:var(--accent);translate:0 -2px}
+.door img{width:64px;height:64px;border-radius:12px;object-fit:cover;background:var(--sand)}
+.door b{display:block;font:600 1.08rem var(--f-serif)}
+.door span span{display:block;font-size:.92rem;color:var(--muted);line-height:1.4}
+.door svg{width:20px;height:20px;color:var(--accent-ink)}
+/* My story, short */
+.moments{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:620px}
+.moments li{display:grid;gap:4px;align-content:start}
+.moments img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;margin-bottom:4px}
+.moments .w{font:600 .78rem var(--f-sans);letter-spacing:.12em;color:var(--accent-ink)}
+.moments b{font:600 .98rem/1.3 var(--f-serif);color:var(--ink)}
+#story-short .ctas{margin-top:18px;align-items:center}
+
+#menu .menu-list a.ext{font-size:1.15rem;padding-block:10px}
+@media (min-width:900px) and (max-width:1149px){.nav{display:none}.menu-btn{display:grid!important}}
 .donor.gold p,.donor.gold .eyebrow{color:#2b2622}
 .donor.gold .btn.ghost{border-color:#2b2622;color:#2b2622;background:transparent}
 .donor.gold .btn.ghost:hover{background:#2b2622;color:var(--accent)}
@@ -682,6 +720,13 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
 .nl input::placeholder{color:var(--on-band-muted)}
 .nl-ok{display:flex;gap:10px;align-items:center;font-weight:600;animation:rise .4s both}
 .nl-ok svg{width:22px;height:22px;color:var(--accent)}
+.news.light{background:var(--sand);color:var(--ink)}
+.news.light p{color:var(--muted)}
+.news.light .nl input{background:var(--paper);border-color:var(--line);color:var(--ink)}
+.news.light .nl input::placeholder{color:var(--muted)}
+.news.light .f-err{color:#a1271c}
+.news.light input[aria-invalid="true"]{border-color:#a1271c!important}
+.news.light .nl-ok svg{color:var(--ok, #2f7d4f)}
 .foot{background:var(--band-deep);color:var(--on-band);transition:background-color .4s}
 .foot .in{padding-block:28px 34px;display:grid;gap:16px}
 .foot .r1{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;justify-content:space-between}
@@ -869,15 +914,15 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
       Omar Chebbo
     </a>
     <nav class="nav" aria-label="Main">
-      <a href="#home" data-nav="home">Home</a>
-      <a href="#guides">Free guides</a>
-      <a href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">Blog <small aria-hidden="true">↗</small></a>
+      <a href="#book" data-nav="book">The book</a>
+      <a href="#start" data-nav="start">Start here</a>
+      <a href="#guides" data-nav="guides">Free guides</a>
+      <a href="#videos" data-nav="videos">Videos</a>
+      <a href="#story" data-nav="story">My story</a>
       <a href="#shop" data-nav="shop">Shop</a>
-      <a href="https://stg.omarchebbo.com/gallery" target="_blank" rel="noopener">Gallery <small aria-hidden="true">↗</small></a>
-      <a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Contact <small aria-hidden="true">↗</small></a>
     </nav>
     <div class="head-r">
-      <a class="btn gold head-cta" href="#book">Get your copy</a>
+      <a class="btn ghost head-cta" href="#book">Get your copy</a>
       <button type="button" class="icon-btn" id="cartBtn" aria-label="Cart, 0 items">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
         <span class="count" id="cartCount" hidden>0</span>
@@ -907,8 +952,8 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
         </ol>
         <p><b style="color:var(--ink)">Ideas from other sites:</b> from James Clear, free bonuses became the <a href="#guides">Free guides</a> section, and the book page got a numbered “What’s inside”. From hadichebbo.com: the “Now” line with a pulsing dot, counts on the blog tabs, a “Leave a note” button for reader quotes, and gentle fade-ups as sections appear. tim.blog blocks automated visits, so it wasn’t checked.</p>
         <p><b style="color:var(--ink)">From the design galleries:</b> a news strip above the header, a full-screen phone menu with the current page marked, free guides you can add in the cart, and the shop changes.</p>
-        <p><b style="color:var(--ink)">Wording:</b> each idea is said once. The buy button says “Get your copy — $9.99” (not “Donate”: people are buying a book, and only net profits go to AUBMC). Other buttons use different verbs: Read the first page, Free guides, Preview the first page, Keep reading.</p>
-        <p><b style="color:var(--ink)">Colors:</b> try the four dots at the top. “Site now” keeps the green book cover standing out best; “Cover sage” makes it blend in.</p>
+        <p><b style="color:var(--ink)">Wording:</b> each idea is said once. The buy button says “Get your copy — $9.99” (not “Donate”: people are buying a book, and only net profits go to AUBMC). Other buttons use different verbs: Read the first page, Free help, Preview the first page, Keep reading.</p>
+        <p><b style="color:var(--ink)">Colors:</b> try the four dots at the top. “Site now” keeps the green book cover standing out best; “Cover sage” makes it blend in. The colors follow 60 / 30 / 10: cream, slate, then gold for what to click.</p><p><b style="color:var(--ink)">New structure:</b> the homepage is now a home page. It says who Omar is, offers the book, opens the door to free help, tells the short version of his story, and answers questions. Anything that was repeated got its own page: <a href="#start">Start here</a> (body map, situations, posts), <a href="#guides">Free guides</a>, <a href="#videos">Videos</a> and <a href="#story">My story</a> (about, timeline, before/after, quotes). There is also a draft <a href="#privacy">Privacy &amp; terms</a> page.</p>
       </div>
     </details>
   </div></div>
@@ -917,13 +962,13 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
   <section id="hero" class="hero gut" aria-labelledby="h-hero">
     <div class="in">
       <div class="txt">
-        <aside class="rv" aria-label="Review note: Hero"><div class="rv-h"><span class="chip fix">Fix first</span><span class="rv-t">Review · Hero</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_hero.webp" aria-label="See the original Hero section"><img src="img/orig_hero.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the photo box shows only the logo, 450px of empty space on a phone. “1 life, rebuilt” says less than it could.</p><p><b>Now:</b> your photo, a label naming the book instead of your name twice, “11 years on dialysis”, numbers that count up, and a “Now” line with a pulsing dot (idea from hadichebbo.com).</p><p><b>Video:</b> a play button on your photo, “Who I am · 1 min”, also linked from About. The photo stays; the YouTube video loads only when tapped, so the page stays light. For now it opens your short “One year since my kidney transplant” as a stand-in.</p><p><b>Buttons:</b> “Read the first page” opens the free preview of the introduction (it ends in “Keep reading — $9.99”), and “Free guides” is for patients and families. They replace “Read my story”, which led to a price, and “Watch the videos”, which sent people back to YouTube. The pre-order link left the Now line; it stays in the shop.</p></div></div></aside>
+        <aside class="rv" aria-label="Review note: Hero"><div class="rv-h"><span class="chip fix">Fix first</span><span class="rv-t">Review · Hero</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_hero.webp" aria-label="See the original Hero section"><img src="img/orig_hero.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> the photo box shows only the logo, 450px of empty space on a phone. “1 life, rebuilt” says less than it could.</p><p><b>Now:</b> your photo, a label naming the book instead of your name twice, “11 years on dialysis”, numbers that count up, and a “Now” line with a pulsing dot (idea from hadichebbo.com).</p><p><b>Video:</b> a play button on your photo, “Who I am · 1 min”, also linked from About. The photo stays; the YouTube video loads only when tapped, so the page stays light. For now it opens your short “One year since my kidney transplant” as a stand-in.</p><p><b>Buttons:</b> “Read the first page” opens the free preview of the introduction (it ends in “Keep reading — $9.99”), and “Free help” jumps to the section with a door to each free resource (Start here, guides, videos, posts). They replace “Read my story”, which led to a price, and “Watch the videos”, which sent people back to YouTube. The pre-order link left the Now line; it stays in the shop.</p></div></div></aside>
         <p class="eyebrow line"><span>Author of <i>Beyond the Body, Beyond the Pain</i></span></p>
         <h1 id="h-hero">I'm Omar Chebbo.</h1>
         <p>I'm a transplant survivor, and I write about what all of it taught me.</p>
         <div class="ctas">
           <button type="button" class="btn gold" data-first-page>Read the first page</button>
-          <button type="button" class="btn ghost" data-scroll="guides">Free guides</button>
+          <a class="btn ghost" href="#help">Free help</a>
         </div>
         <p class="hero-give"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.4-7.5-10.1A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.8c0 5.7-7.5 10.1-7.5 10.1z"/></svg>Net profits from the introduction go to dialysis care at AUBMC.</p>
         <div class="stats" id="stats">
@@ -983,10 +1028,278 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
     </div>
   </section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- free help -->
+  <section id="help" class="sec gut" aria-labelledby="h-help">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: Free help"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Free help</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> one section with a door to each free resource. The body map, the guides, the videos and the posts each got their own page, so the homepage no longer shows the same things three times.</p></div></div></aside>
+        <p class="eyebrow">Free help</p>
+        <h2 id="h-help">For patients and families</h2>
+        <p>Everything here is free. Pick where to start.</p>
+      </div>
+      <div class="doors">
+        <a class="door" href="#start"><img src="img/c_newkidney.webp" alt=""><span><b>Start here</b><span>Tap a part of the body, or pick your situation.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+        <a class="door" href="#guides"><img src="img/g_blood.webp" alt=""><span><b>Free guides</b><span>2 PDFs in Arabic, free to download.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+        <a class="door" href="#videos"><img src="img/short_sUrhS0oa5J0.webp" alt=""><span><b>Videos</b><span>12 one-minute answers, in Arabic.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+        <a class="door" href="#blog"><img src="img/flu.webp" alt=""><span><b>Posts</b><span>Stories by topic, from the patient’s chair.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- my story, short -->
+  <section id="story-short" class="sec sand gut" aria-labelledby="h-ss">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: My story, short"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · My story, short</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> three moments and two ways in. The full timeline, the before/after photos, About and the quotes moved to their own “My story” page.</p></div></div></aside>
+        <p class="eyebrow">My story</p>
+        <h2 id="h-ss">The short version</h2>
+      </div>
+      <ol class="moments">
+        <li><img src="img/t_dadliver.webp" alt=""><span class="w">2006</span><b>My dad’s liver</b></li>
+        <li><img src="img/dialysis.webp" alt=""><span class="w">2013</span><b>Dialysis at fifteen</b></li>
+        <li><img src="img/aftertx.webp" alt=""><span class="w">2024</span><b>A kidney from my brother</b></li>
+      </ol>
+      <div class="ctas"><a class="btn gold" href="#story">Read my story</a><button type="button" class="who-link" data-who><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Watch my story · 1 min</button></div>
+    </div>
+  </section>
+
+  <!-- faq -->
+  <section id="faq" class="sec gut" aria-labelledby="h-faq">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: FAQ"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · FAQ</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_faq.webp" aria-label="See the original FAQ section"><img src="img/orig_faq.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> four questions, none about buying.</p><p><b>Now:</b> buyer questions added: getting the file, paying with Whish, and proof the money reaches AUBMC.</p></div></div></aside>
+        <p class="eyebrow">Questions</p>
+        <h2 id="h-faq">Before you ask</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Is this book medical advice?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">No. I'm not a doctor or therapist. The book shares my lived experience and practical field notes. Always talk to your own care team before acting on anything you read here.</p></details>
+        <details><summary>Who is this book for?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Patients on dialysis or awaiting transplant, recipients rebuilding their lives, the caregivers beside them, and anyone who loves an honest memoir about survival and identity.</p></details>
+        <details><summary>Do I need medical knowledge to follow it?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Not at all. The story carries you; medical moments are explained in plain words, as I understood them from the patient's chair.</p></details>
+        <details><summary><span>How do I get the book after paying?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">The introduction comes by email right after payment, as a PDF. The full memoir comes out in June 2027: the ebook by email, the hardcover delivered free. All sales are final.</p></details>
+        <details><summary><span>How do I pay?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">With Whish. At checkout you go to Whish to confirm the payment with your Whish account, then you come straight back here for your receipt.</p></details>
+        <details><summary><span>How do I know the money reaches AUBMC?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">I've already made the first donation to the AUBMC dialysis unit. <a href="#" data-donation-doc target="_blank" rel="noopener">See the hospital's signed confirmation <span aria-hidden="true">↗</span><span class="sr-only"> (opens Google Drive in a new tab)</span></a>. Each new donation will be added the same way.</p></details>
+        <details><summary>Can I invite Omar to speak or interview?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Sure! Write to me at <a href="mailto:hello@omarchebbo.com">hello@omarchebbo.com</a> or use the <a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">contact page ↗</a>, and tell me about your event, podcast or publication. I read everything personally.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- donor -->
+  <section id="donor" class="sec donor gold gut" aria-labelledby="h-donor">
+    <div class="in">
+      <aside class="rv" aria-label="Review note: Become a donor"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Become a donor</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> ties your story to something every visitor can do today. The button opens nodlb.org, Lebanon’s national organ donation organization, in a new tab.</p></div></div></aside>
+      <p class="eyebrow">Become a donor</p>
+      <h2 id="h-donor">My dad gave part of his liver. My brother gave a kidney.</h2>
+      <p>Not everyone has a donor in the family. Registering takes a few minutes, and telling your family that you did matters just as much.</p>
+      <div class="ctas"><a class="btn ghost" id="donorBtn" href="https://www.nodlb.org/" target="_blank" rel="noopener">How to register in Lebanon <small aria-hidden="true">↗</small><span class="sr-only"> (opens nodlb.org in a new tab)</span></a></div>
+    </div>
+  </section>
+
+  <!-- newsletter -->
+  <section id="news" class="news light sand gut" aria-labelledby="h-news">
+    <div class="in">
+      <aside class="rv" aria-label="Review note: Newsletter and footer"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · Newsletter and footer</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_news.webp" aria-label="See the original Newsletter and footer section"><img src="img/orig_news.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> two email sign-ups in a row, and an 870px footer with one link under each heading.</p><p><b>Now:</b> one sign-up form, and the footer on a single row.</p></div></div></aside>
+      <p class="eyebrow">The newsletter</p>
+      <h2 id="h-news">One honest letter, once a month.</h2>
+      <p>New chapters, new videos, and what I'm learning about living in a rebuilt body.</p>
+      <form class="nl" id="nlForm" novalidate>
+        <label for="nlEmail" class="sr" style="position:absolute;left:-9999px">Email</label>
+        <input id="nlEmail" type="email" placeholder="your@email.com" required autocomplete="email">
+        <button class="btn gold" type="submit">Subscribe</button>
+      </form>
+      <p style="font-size:.85rem">No spam. Unsubscribe any time.</p>
+    </div>
+  </section>
+</main>
+
+
+<!-- ============ START HERE ============ -->
+<main data-view="start" id="v-start" hidden>
+  <div class="gut page-back"><div class="in"><a class="back" href="#home">← Home</a></div></div>
+  <!-- start here -->
+  <section id="start" class="sec sand gut" aria-labelledby="h-start">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: Start here"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Start here</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> the body map from the demo, linked to your real posts and shorts, plus a “Your situation” tab. Each character shows how many items it has. The panel shows the top 3 (your pick first, marked “Start with this”), and “See all” opens the rest. On the live site, tag each video, post and guide with an organ in Sanity so the map fills itself.</p></div></div></aside>
+        <p class="eyebrow">Start here</p>
+        <h1 id="h-start">Find what you need</h1>
+        <p>Tap a part of the body, or tell me where you are right now. You'll get the posts and one-minute shorts that help most.</p>
+      </div>
+      <div class="find-tabs" role="tablist" aria-label="How to browse">
+        <button type="button" role="tab" id="tab-body" aria-selected="true" aria-controls="pane-body">Tap the body</button>
+        <button type="button" role="tab" id="tab-sit" aria-selected="false" aria-controls="pane-sit">Your situation</button>
+      </div>
+      <div id="pane-body" role="tabpanel" aria-labelledby="tab-body">
+        <div class="bmap">
+          <div class="figure" id="figure" dir="ltr">
+            <svg viewBox="0 0 320 520" aria-hidden="true">
+              <g class="fig">
+                <path class="limb" stroke-width="26" d="M100 130Q78 190 72 240Q66 290 62 330"/>
+                <path class="limb" stroke-width="26" d="M220 130Q242 190 248 240Q254 290 258 330"/>
+                <path class="limb" stroke-width="40" d="M134 340L128 498"/>
+                <path class="limb" stroke-width="40" d="M186 340L192 498"/>
+                <circle class="body" cx="160" cy="58" r="34"/>
+                <rect class="body" x="146" y="84" width="28" height="32" rx="8"/>
+                <path class="body" d="M104 116Q160 98 216 116Q232 122 230 150L226 250Q228 300 214 350Q160 366 106 350Q92 300 94 250L90 150Q88 122 104 116Z"/>
+              </g>
+              <path class="spine" d="M160 124V340"/>
+              <path class="tube" d="M66 300C22 318 16 372 32 404"/>
+            </svg>
+            <span class="hint">Tap a character</span>
+          </div>
+          <div class="organ-panel" id="organPanel" aria-live="polite"></div>
+        </div>
+      </div>
+      <div id="pane-sit" role="tabpanel" aria-labelledby="tab-sit" hidden>
+        <div class="paths" role="group" aria-label="Your situation" id="paths"></div>
+        <div class="results" id="results" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+  <!-- blog -->
+  <section id="blog" class="sec sand gut" aria-labelledby="h-blog">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: Blog"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · Blog</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_blog.webp" aria-label="See the original Blog section"><img src="img/orig_blog.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> two posts share the same arm photo, “Mental health” has no posts, there is no “All posts” link, and each card is 420px tall.</p><p><b>Now:</b> compact rows, a photo per post, the empty topic hidden, counts on the topic tabs, and “All posts →”.</p></div></div></aside>
+        <p class="eyebrow">The blog</p>
+        <h2 id="h-blog">Stories by topic</h2>
+      </div>
+      <div class="chips" role="group" aria-label="Topics" id="chips">
+        <button type="button" class="chip" data-topic="all" aria-pressed="true">All topics<span class="n">3</span></button>
+        <button type="button" class="chip" data-topic="Dialysis" aria-pressed="false">Dialysis<span class="n">1</span></button>
+        <button type="button" class="chip" data-topic="Kidney transplant" aria-pressed="false">Kidney transplant<span class="n">2</span></button>
+      </div>
+      <div class="posts" id="posts"></div>
+      <div class="row-foot"><span></span><a class="link" href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">All posts →</a></div>
+    </div>
+  </section>
+  <section class="sec gut more-help" aria-label="More free help">
+    <div class="in">
+      <div class="doors two">
+        <a class="door" href="#guides"><img src="img/g_blood.webp" alt=""><span><b>Free guides</b><span>2 PDFs in Arabic, free to download.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+        <a class="door" href="#videos"><img src="img/short_sUrhS0oa5J0.webp" alt=""><span><b>Videos</b><span>12 one-minute answers, in Arabic.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FREE GUIDES ============ -->
+<main data-view="guides" id="v-guides" hidden>
+  <div class="gut page-back"><div class="in"><a class="back" href="#home">← Home</a></div></div>
+  <!-- free guides -->
+  <section id="guides" class="sec gut" aria-labelledby="h-guides">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: Free guides"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Free guides</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> your two PDFs, free and downloaded directly, no email needed. The two guides your blood-test PDF promises as coming next have “Tell me when it’s out” cards. The body map links each organ to its guide. Idea from James Clear’s free bonuses. The guide cards are in Arabic only (title and description), like the PDFs. Tapping “Get it free” fills a small kidney in the button, it beats once and lets a drop out, then the email form opens; once sent, a kidney with a check confirms it, with one next step: “read the first page of my memoir”.</p></div></div></aside>
+        <p class="eyebrow">Free guides</p>
+        <h1 id="h-guides">Guides <span class="hl">I wish I'd had</span></h1>
+        <p>Plain PDFs in Arabic about the lab sheet, written from the patient's chair. Free.</p>
+      </div>
+      
+      <div class="guides" id="guideRow">
+        <article class="guide" id="guide-blood"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_blood.webp" alt="Cover of the blood tests guide" loading="lazy"></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">11 صفحة · PDF</p><h3 lang="ar" dir="rtl">تحاليلك مشروحة</h3><p class="g-d" lang="ar" dir="rtl">دليل مبسّط لمرضى الكلى، ولمن هم على غسيل الكلى، وللحياة بعد الزراعة.</p><button type="button" class="btn gold g-get"><span class="g-lbl">Get it free</span></button></div></article>
+        <article class="guide" id="guide-aftertx"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_aftertx.webp" alt="Cover of the after-transplant tests guide" loading="lazy"></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">22 صفحة · PDF</p><h3 lang="ar" dir="rtl">تحاليلك بعد الزراعة… بلا هلع</h3><p class="g-d" lang="ar" dir="rtl">ماذا يقيس كل سطر في ورقة التحاليل، ولماذا يطلبه فريقك الطبي، ومتى عليك الاتصال بهم في اليوم نفسه.</p><button type="button" class="btn gold g-get"><span class="g-lbl">Get it free</span></button></div></article>
+        <article class="guide soon" id="guide-pre"><div class="g-cover"><div class="soon-doc">Coming soon</div></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">قريباً · PDF</p><h3 lang="ar" dir="rtl">دليل تحاليل ما قبل الزراعة</h3><button type="button" class="btn ghost g-get"><span class="g-lbl">Tell me when it’s out</span></button><form class="g-form" hidden novalidate><label for="ge-pre">Your email</label><div class="g-row"><input id="ge-pre" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Notify me</button></div></form></div></article>
+        <article class="guide soon" id="guide-dial"><div class="g-cover"><div class="soon-doc">Coming soon</div></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">قريباً · PDF</p><h3 lang="ar" dir="rtl">دليل تحاليل الغسيل والفشل الكلوي</h3><button type="button" class="btn ghost g-get"><span class="g-lbl">Tell me when it’s out</span></button><form class="g-form" hidden novalidate><label for="ge-dial">Your email</label><div class="g-row"><input id="ge-dial" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Notify me</button></div></form></div></article>
+      </div>
+    </div>
+  </section>
+  <section class="sec gut more-help" aria-label="Not sure which guide">
+    <div class="in">
+      <div class="doors two">
+        <a class="door" href="#start"><img src="img/c_newkidney.webp" alt=""><span><b>Not sure which guide?</b><span>Start here: tap a part of the body.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+        <a class="door" href="#videos"><img src="img/short_sUrhS0oa5J0.webp" alt=""><span><b>Videos</b><span>12 one-minute answers, in Arabic.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ VIDEOS ============ -->
+<main data-view="videos" id="v-videos" hidden>
+  <div class="gut page-back"><div class="in"><a class="back" href="#home">← Home</a></div></div>
+  <!-- shorts -->
+  <section class="sec gut" aria-labelledby="h-shorts" id="shorts">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: Shorts"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Shorts</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_shorts.webp" aria-label="See the original Shorts section"><img src="img/orig_shorts.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> Arabic titles with no label on an English page, in a 1,900px grid with page numbers.</p><p><b>Now:</b> one swipe row, “Arabic · English subtitles”, an English line under each title, and a full-screen player.</p></div></div></aside>
+        <p class="eyebrow">Videos</p>
+        <h1 id="h-shorts">A minute at a time.</h1>
+        <p>One-minute answers to the questions I get asked most, short enough to send to someone mid-diagnosis.</p>
+        <span class="ar-pill">Arabic · English subtitles</span>
+      </div>
+      <div class="row" id="shortRow"></div>
+      <div class="row-foot"><span></span><a class="link" href="https://youtube.com/@omar_organtransplants" target="_blank" rel="noopener">All videos on YouTube ↗</a></div>
+    </div>
+  </section>
+  <section class="sec gut more-help" aria-label="More free help">
+    <div class="in">
+      <div class="doors two">
+        <a class="door" href="#start"><img src="img/c_newkidney.webp" alt=""><span><b>Start here</b><span>Tap a part of the body, or pick your situation.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+        <a class="door" href="#guides"><img src="img/g_blood.webp" alt=""><span><b>Free guides</b><span>2 PDFs in Arabic, free to download.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ MY STORY ============ -->
+<main data-view="story" id="v-story" hidden>
+  <div class="gut page-back"><div class="in"><a class="back" href="#home">← Home</a></div></div>
+  <!-- about -->
+  <section id="about" class="sec about gut" aria-labelledby="h-about">
+    <div class="in">
+      <button type="button" class="about-vid" data-who aria-label="Play: who I am, a 1-minute video"><img src="img/short_d6wlG8gAL9g.webp" alt=""><span class="who-play" aria-hidden="true"><span class="pb"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><span class="pl">Who I am · 1 min</span></span></button>
+      <div class="txt">
+        <aside class="rv" aria-label="Review note: About"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · About</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_about.webp" aria-label="See the original About section"><img src="img/orig_about.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> no photo, and the first lines repeat the hero.</p><p><b>Now:</b> a photo, no repeat, and an “Invite me to speak” button.</p></div></div></aside>
+        <p class="eyebrow">My story</p>
+        <h1 id="h-about">Hi, I'm Omar.</h1>
+        <p>I'm someone who sat in the chair, made the bargains, took the calls at 3 a.m., and came out the other side wanting to write down what nobody had told me.</p>
+        <p>Beyond The Body, Beyond The Pain is that book.</p>
+        <p>When I'm not writing, I'm usually annoying my cardiologist by paragliding. Thank you for being here.</p>
+      </div>
+    </div>
+  </section>
+  <!-- timeline -->
+  <section id="journey" class="sec band on-band gut" aria-labelledby="h-tl">
+    <div class="in">
+      <div class="sec-head">
+        <aside class="rv" aria-label="Review note: Story timeline"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Story timeline</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_photos.webp" aria-label="See the original Story timeline section"><img src="img/orig_photos.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> “The journey, in pictures” shows two photos with no captions and competes with “Both are true”.</p><p><b>Now:</b> the story timeline from the demo: a line fills like an IV drip as you scroll. Kidney failure and dialysis at fifteen (March 2013) are confirmed. Characters from the shorts stand in where there is no real photo yet.</p></div></div></aside>
+        <p class="eyebrow">The journey</p>
+        <h2 id="h-tl">26 years, <span class="hl">in a few moments</span></h2>
+      </div>
+      <div class="tl-wrap" id="tlWrap">
+        <div class="tl-track" aria-hidden="true"><div class="tl-fill"></div></div>
+        <ol class="tl" id="tl">
+          <li><div class="tl-card has-img"><img src="img/t_cast.webp" alt=""><div><p class="w">The beginning</p><h3>The diagnosis</h3><p>Where the introduction starts.</p></div></div></li>
+          <li><div class="tl-card has-img"><img src="img/t_dadliver.webp" alt=""><div><p class="w">2006</p><h3>My dad's liver</h3><p>He gives me part of his.</p></div></div></li>
+          <li><div class="tl-card has-img"><img src="img/t_kidneyfail.webp" alt=""><div><p class="w">Age fifteen</p><h3>Kidney failure</h3><p>End-stage kidney disease.</p></div></div></li>
+          <li><div class="tl-card has-img"><img src="img/dialysis.webp" alt=""><div><p class="w">2013 to 2024</p><h3>Dialysis</h3><p>From age fifteen. Needles every other day.</p></div></div></li>
+          <li><div class="tl-card has-img"><img src="img/aftertx.webp" alt=""><div><p class="w">13 June 2024</p><h3>A new kidney</h3><p>From my brother, Amine.</p></div></div></li>
+          <li><div class="tl-card has-img"><img src="img/grad.webp" alt=""><div><p class="w">Along the way</p><h3>The degree</h3><p>Cap, gown and a degree finished alongside everything else.</p></div></div></li>
+          <li><div class="tl-card has-img"><img src="img/sky.webp" alt=""><div><p class="w">Now</p><h3>Writing it all down</h3><p>The memoir, the videos, and this site.</p></div></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
   <section class="qband slate gut" aria-label="Quote">
     <div class="in"><hr><blockquote>“Dialysis doesn’t restore life. It postpones death — and in that borrowed time, I learned to live.”</blockquote></div>
   </section>
-
   <!-- both are true -->
   <section id="both" class="sec gut" aria-labelledby="h-both">
     <div class="in">
@@ -1030,188 +1343,45 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
       </div>
     </div>
   </section>
-
-  <!-- start here -->
-  <section id="start" class="sec sand gut" aria-labelledby="h-start">
-    <div class="in">
-      <div class="sec-head">
-        <aside class="rv" aria-label="Review note: Start here"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Start here</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> the body map from the demo, linked to your real posts and shorts, plus a “Your situation” tab. Each character shows how many items it has. The panel shows the top 3 (your pick first, marked “Start with this”), and “See all” opens the rest. On the live site, tag each video, post and guide with an organ in Sanity so the map fills itself.</p></div></div></aside>
-        <p class="eyebrow">Start here</p>
-        <h2 id="h-start">Find what you need</h2>
-        <p>Tap a part of the body, or tell me where you are right now. You'll get the posts and one-minute shorts that help most.</p>
-      </div>
-      <div class="find-tabs" role="tablist" aria-label="How to browse">
-        <button type="button" role="tab" id="tab-body" aria-selected="true" aria-controls="pane-body">Tap the body</button>
-        <button type="button" role="tab" id="tab-sit" aria-selected="false" aria-controls="pane-sit">Your situation</button>
-      </div>
-      <div id="pane-body" role="tabpanel" aria-labelledby="tab-body">
-        <div class="bmap">
-          <div class="figure" id="figure" dir="ltr">
-            <svg viewBox="0 0 320 520" aria-hidden="true">
-              <g class="fig">
-                <path class="limb" stroke-width="26" d="M100 130Q78 190 72 240Q66 290 62 330"/>
-                <path class="limb" stroke-width="26" d="M220 130Q242 190 248 240Q254 290 258 330"/>
-                <path class="limb" stroke-width="40" d="M134 340L128 498"/>
-                <path class="limb" stroke-width="40" d="M186 340L192 498"/>
-                <circle class="body" cx="160" cy="58" r="34"/>
-                <rect class="body" x="146" y="84" width="28" height="32" rx="8"/>
-                <path class="body" d="M104 116Q160 98 216 116Q232 122 230 150L226 250Q228 300 214 350Q160 366 106 350Q92 300 94 250L90 150Q88 122 104 116Z"/>
-              </g>
-              <path class="spine" d="M160 124V340"/>
-              <path class="tube" d="M66 300C22 318 16 372 32 404"/>
-            </svg>
-            <span class="hint">Tap a character</span>
-          </div>
-          <div class="organ-panel" id="organPanel" aria-live="polite"></div>
-        </div>
-      </div>
-      <div id="pane-sit" role="tabpanel" aria-labelledby="tab-sit" hidden>
-        <div class="paths" role="group" aria-label="Your situation" id="paths"></div>
-        <div class="results" id="results" aria-live="polite"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- free guides -->
-  <section id="guides" class="sec gut" aria-labelledby="h-guides">
-    <div class="in">
-      <div class="sec-head">
-        <aside class="rv" aria-label="Review note: Free guides"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Free guides</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> your two PDFs, free and downloaded directly, no email needed. The two guides your blood-test PDF promises as coming next have “Tell me when it’s out” cards. The body map links each organ to its guide. Idea from James Clear’s free bonuses. The guide cards are in Arabic only (title and description), like the PDFs. Tapping “Get it free” fills a small kidney in the button, it beats once and lets a drop out, then the email form opens; once sent, a kidney with a check confirms it, with one next step: “read the first page of my memoir”.</p></div></div></aside>
-        <p class="eyebrow">Free guides</p>
-        <h2 id="h-guides">Guides <span class="hl">I wish I'd had</span></h2>
-        <p>Plain PDFs in Arabic about the lab sheet, written from the patient's chair. Free.</p>
-      </div>
-      
-      <div class="guides" id="guideRow">
-        <article class="guide" id="guide-blood"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_blood.webp" alt="Cover of the blood tests guide" loading="lazy"></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">11 صفحة · PDF</p><h3 lang="ar" dir="rtl">تحاليلك مشروحة</h3><p class="g-d" lang="ar" dir="rtl">دليل مبسّط لمرضى الكلى، ولمن هم على غسيل الكلى، وللحياة بعد الزراعة.</p><button type="button" class="btn gold g-get"><span class="g-lbl">Get it free</span></button></div></article>
-        <article class="guide" id="guide-aftertx"><div class="g-cover"><span class="g-free">Free</span><img src="img/g_aftertx.webp" alt="Cover of the after-transplant tests guide" loading="lazy"></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">22 صفحة · PDF</p><h3 lang="ar" dir="rtl">تحاليلك بعد الزراعة… بلا هلع</h3><p class="g-d" lang="ar" dir="rtl">ماذا يقيس كل سطر في ورقة التحاليل، ولماذا يطلبه فريقك الطبي، ومتى عليك الاتصال بهم في اليوم نفسه.</p><button type="button" class="btn gold g-get"><span class="g-lbl">Get it free</span></button></div></article>
-        <article class="guide soon" id="guide-pre"><div class="g-cover"><div class="soon-doc">Coming soon</div></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">قريباً · PDF</p><h3 lang="ar" dir="rtl">دليل تحاليل ما قبل الزراعة</h3><button type="button" class="btn ghost g-get"><span class="g-lbl">Tell me when it’s out</span></button><form class="g-form" hidden novalidate><label for="ge-pre">Your email</label><div class="g-row"><input id="ge-pre" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Notify me</button></div></form></div></article>
-        <article class="guide soon" id="guide-dial"><div class="g-cover"><div class="soon-doc">Coming soon</div></div><div class="g-b"><p class="g-meta" lang="ar" dir="rtl">قريباً · PDF</p><h3 lang="ar" dir="rtl">دليل تحاليل الغسيل والفشل الكلوي</h3><button type="button" class="btn ghost g-get"><span class="g-lbl">Tell me when it’s out</span></button><form class="g-form" hidden novalidate><label for="ge-dial">Your email</label><div class="g-row"><input id="ge-dial" type="email" placeholder="your@email.com" required autocomplete="email"><button class="btn gold" type="submit">Notify me</button></div></form></div></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- shorts -->
-  <section class="sec gut" aria-labelledby="h-shorts" id="shorts">
-    <div class="in">
-      <div class="sec-head">
-        <aside class="rv" aria-label="Review note: Shorts"><div class="rv-h"><span class="chip win">Big win</span><span class="rv-t">Review · Shorts</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_shorts.webp" aria-label="See the original Shorts section"><img src="img/orig_shorts.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> Arabic titles with no label on an English page, in a 1,900px grid with page numbers.</p><p><b>Now:</b> one swipe row, “Arabic · English subtitles”, an English line under each title, and a full-screen player.</p></div></div></aside>
-        <p class="eyebrow">Shorts</p>
-        <h2 id="h-shorts">A minute at a time.</h2>
-        <p>One-minute answers to the questions I get asked most, short enough to send to someone mid-diagnosis.</p>
-        <span class="ar-pill">Arabic · English subtitles</span>
-      </div>
-      <div class="row" id="shortRow"></div>
-      <div class="row-foot"><span class="s" style="font-size:.88rem;color:var(--muted)">Swipe for more</span><a class="link" href="https://stg.omarchebbo.com/gallery?kind=short" target="_blank" rel="noopener">All shorts →</a></div>
-    </div>
-  </section>
-
-  <!-- blog -->
-  <section id="blog" class="sec sand gut" aria-labelledby="h-blog">
-    <div class="in">
-      <div class="sec-head">
-        <aside class="rv" aria-label="Review note: Blog"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · Blog</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_blog.webp" aria-label="See the original Blog section"><img src="img/orig_blog.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> two posts share the same arm photo, “Mental health” has no posts, there is no “All posts” link, and each card is 420px tall.</p><p><b>Now:</b> compact rows, a photo per post, the empty topic hidden, counts on the topic tabs, and “All posts →”.</p></div></div></aside>
-        <p class="eyebrow">The blog</p>
-        <h2 id="h-blog">Stories by topic</h2>
-      </div>
-      <div class="chips" role="group" aria-label="Topics" id="chips">
-        <button type="button" class="chip" data-topic="all" aria-pressed="true">All topics<span class="n">3</span></button>
-        <button type="button" class="chip" data-topic="Dialysis" aria-pressed="false">Dialysis<span class="n">1</span></button>
-        <button type="button" class="chip" data-topic="Kidney transplant" aria-pressed="false">Kidney transplant<span class="n">2</span></button>
-      </div>
-      <div class="posts" id="posts"></div>
-      <div class="row-foot"><span></span><a class="link" href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">All posts →</a></div>
-    </div>
-  </section>
-
-  <!-- timeline -->
-  <section id="journey" class="sec band on-band gut" aria-labelledby="h-tl">
-    <div class="in">
-      <div class="sec-head">
-        <aside class="rv" aria-label="Review note: Story timeline"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Story timeline</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_photos.webp" aria-label="See the original Story timeline section"><img src="img/orig_photos.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> “The journey, in pictures” shows two photos with no captions and competes with “Both are true”.</p><p><b>Now:</b> the story timeline from the demo: a line fills like an IV drip as you scroll. Kidney failure and dialysis at fifteen (March 2013) are confirmed. Characters from the shorts stand in where there is no real photo yet.</p></div></div></aside>
-        <p class="eyebrow">The journey</p>
-        <h2 id="h-tl">26 years, <span class="hl">in a few moments</span></h2>
-      </div>
-      <div class="tl-wrap" id="tlWrap">
-        <div class="tl-track" aria-hidden="true"><div class="tl-fill"></div></div>
-        <ol class="tl" id="tl">
-          <li><div class="tl-card has-img"><img src="img/t_cast.webp" alt=""><div><p class="w">The beginning</p><h3>The diagnosis</h3><p>Where the introduction starts.</p></div></div></li>
-          <li><div class="tl-card has-img"><img src="img/t_dadliver.webp" alt=""><div><p class="w">2006</p><h3>My dad's liver</h3><p>He gives me part of his.</p></div></div></li>
-          <li><div class="tl-card has-img"><img src="img/t_kidneyfail.webp" alt=""><div><p class="w">Age fifteen</p><h3>Kidney failure</h3><p>End-stage kidney disease.</p></div></div></li>
-          <li><div class="tl-card has-img"><img src="img/dialysis.webp" alt=""><div><p class="w">2013 to 2024</p><h3>Dialysis</h3><p>From age fifteen. Needles every other day.</p></div></div></li>
-          <li><div class="tl-card has-img"><img src="img/aftertx.webp" alt=""><div><p class="w">13 June 2024</p><h3>A new kidney</h3><p>From my brother, Amine.</p></div></div></li>
-          <li><div class="tl-card has-img"><img src="img/grad.webp" alt=""><div><p class="w">Along the way</p><h3>The degree</h3><p>Cap, gown and a degree finished alongside everything else.</p></div></div></li>
-          <li><div class="tl-card has-img"><img src="img/sky.webp" alt=""><div><p class="w">Now</p><h3>Writing it all down</h3><p>The memoir, the videos, and this site.</p></div></div></li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
   <section class="qband gold gut" aria-label="Quote">
     <div class="in"><hr><blockquote>“When you feel limited or stuck, always choose the sky.”</blockquote></div>
   </section>
-
-  <!-- about -->
-  <section id="about" class="sec about gut" aria-labelledby="h-about">
+  <section class="sec gut story-end" aria-labelledby="h-se">
     <div class="in">
-      <img src="img/aftertx.webp" alt="Omar giving a thumbs up in a hospital bed after the kidney transplant">
-      <div class="txt">
-        <aside class="rv" aria-label="Review note: About"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · About</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_about.webp" aria-label="See the original About section"><img src="img/orig_about.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> no photo, and the first lines repeat the hero.</p><p><b>Now:</b> a photo, no repeat, and an “Invite me to speak” button.</p></div></div></aside>
-        <p class="eyebrow">About the author</p>
-        <h2 id="h-about">Hi, I'm Omar.</h2>
-        <p>I'm someone who sat in the chair, made the bargains, took the calls at 3 a.m., and came out the other side wanting to write down what nobody had told me.</p>
-        <p>Beyond The Body, Beyond The Pain is that book.</p>
-        <p>When I'm not writing, I'm usually annoying my cardiologist by paragliding. Thank you for being here.</p>
-        <button type="button" class="who-link" data-who><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Watch my story · 1 min</button>
-        <div class="ctas"><a class="btn gold" href="#book">Get your copy</a><a class="btn ghost" href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Invite me to speak</a></div>
-      </div>
+      <p class="eyebrow">The full story</p>
+      <h2 id="h-se">It’s all in the book.</h2>
+      <p>Start with the introduction: the pages where the story starts.</p>
+      <div class="ctas"><button type="button" class="btn gold" data-first-page>Read the first page</button><a class="btn ghost" href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Invite me to speak ↗</a></div>
     </div>
   </section>
+</main>
 
-  <!-- faq -->
-  <section id="faq" class="sec sand gut" aria-labelledby="h-faq">
+<!-- ============ PRIVACY ============ -->
+<main data-view="privacy" id="v-privacy" hidden>
+  <div class="gut page-back"><div class="in"><a class="back" href="#home">← Home</a></div></div>
+  <section class="sec gut legal" aria-labelledby="h-privacy">
     <div class="in">
-      <div class="sec-head">
-        <aside class="rv" aria-label="Review note: FAQ"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · FAQ</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_faq.webp" aria-label="See the original FAQ section"><img src="img/orig_faq.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> four questions, none about buying.</p><p><b>Now:</b> buyer questions added: getting the file, paying with Whish, and proof the money reaches AUBMC.</p></div></div></aside>
-        <p class="eyebrow">Questions</p>
-        <h2 id="h-faq">Before you ask</h2>
-      </div>
-      <div class="faq">
-        <details><summary>Is this book medical advice?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">No. I'm not a doctor or therapist. The book shares my lived experience and practical field notes. Always talk to your own care team before acting on anything you read here.</p></details>
-        <details><summary>Who is this book for?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Patients on dialysis or awaiting transplant, recipients rebuilding their lives, the caregivers beside them, and anyone who loves an honest memoir about survival and identity.</p></details>
-        <details><summary>Do I need medical knowledge to follow it?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Not at all. The story carries you; medical moments are explained in plain words, as I understood them from the patient's chair.</p></details>
-        <details><summary><span>How do I get the book after paying?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">The introduction comes by email right after payment, as a PDF. The full memoir comes out in June 2027: the ebook by email, the hardcover delivered free. All sales are final.</p></details>
-        <details><summary><span>How do I pay?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">With Whish. At checkout you go to Whish to confirm the payment with your Whish account, then you come straight back here for your receipt.</p></details>
-        <details><summary><span>How do I know the money reaches AUBMC?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">I've already made the first donation to the AUBMC dialysis unit. <a href="#" data-donation-doc target="_blank" rel="noopener">See the hospital's signed confirmation <span aria-hidden="true">↗</span><span class="sr-only"> (opens Google Drive in a new tab)</span></a>. Each new donation will be added the same way.</p></details>
-        <details><summary>Can I invite Omar to speak or interview?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p class="a">Sure! Write to me at <a href="mailto:hello@omarchebbo.com">hello@omarchebbo.com</a> or use the <a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">contact page ↗</a>, and tell me about your event, podcast or publication. I read everything personally.</p></details>
-      </div>
-    </div>
-  </section>
-
-  <!-- donor -->
-  <section id="donor" class="sec donor gold gut" aria-labelledby="h-donor">
-    <div class="in">
-      <aside class="rv" aria-label="Review note: Become a donor"><div class="rv-h"><span class="chip new">New section</span><span class="rv-t">Review · Become a donor</span></div><div class="rv-b"><span class="rv-orig none">New</span><div class="rv-l"><p><b>Now:</b> ties your story to something every visitor can do today. The button opens nodlb.org, Lebanon’s national organ donation organization, in a new tab.</p></div></div></aside>
-      <p class="eyebrow">Become a donor</p>
-      <h2 id="h-donor">My dad gave part of his liver. My brother gave a kidney.</h2>
-      <p>Not everyone has a donor in the family. Registering takes a few minutes, and telling your family that you did matters just as much.</p>
-      <div class="ctas"><a class="btn ghost" id="donorBtn" href="https://www.nodlb.org/" target="_blank" rel="noopener">How to register in Lebanon <small aria-hidden="true">↗</small><span class="sr-only"> (opens nodlb.org in a new tab)</span></a></div>
-    </div>
-  </section>
-
-  <!-- newsletter -->
-  <section id="news" class="band news on-band gut" aria-labelledby="h-news">
-    <div class="in">
-      <aside class="rv" aria-label="Review note: Newsletter and footer"><div class="rv-h"><span class="chip pol">Polish</span><span class="rv-t">Review · Newsletter and footer</span></div><div class="rv-b"><button type="button" class="rv-orig" data-orig="img/orig_news.webp" aria-label="See the original Newsletter and footer section"><img src="img/orig_news.webp" alt="" loading="lazy"><span>Original</span></button><div class="rv-l"><p><b>Original site:</b> two email sign-ups in a row, and an 870px footer with one link under each heading.</p><p><b>Now:</b> one sign-up form, and the footer on a single row.</p></div></div></aside>
-      <p class="eyebrow">The newsletter</p>
-      <h2 id="h-news">One honest letter, once a month.</h2>
-      <p>New chapters, new videos, and what I'm learning about living in a rebuilt body.</p>
-      <form class="nl" id="nlForm" novalidate>
-        <label for="nlEmail" class="sr" style="position:absolute;left:-9999px">Email</label>
-        <input id="nlEmail" type="email" placeholder="your@email.com" required autocomplete="email">
-        <button class="btn gold" type="submit">Subscribe</button>
-      </form>
-      <p style="font-size:.85rem">No spam. Unsubscribe any time.</p>
+      <p class="eyebrow">Privacy &amp; terms</p>
+      <h1 id="h-privacy">Privacy &amp; terms</h1>
+      <p class="draft">Draft for Omar to approve before launch. Plain-language outline, not legal advice.</p>
+      <h2>What I collect</h2>
+      <p>Your email address when you buy, sign up for the monthly letter, or ask to hear when a guide is out. For a hardcover order, also your name, phone number and delivery address.</p>
+      <h2>Why</h2>
+      <p>To send your receipt and your book, deliver your hardcover, and send the monthly letter if you asked for it. Nothing is sold or shared for advertising.</p>
+      <h2>Payments</h2>
+      <p>Payments are handled by Whish. Your Whish details are never typed on this site.</p>
+      <h2>Emails</h2>
+      <p>Every email has an unsubscribe link, and you can unsubscribe any time.</p>
+      <h2>Free guides</h2>
+      <p>The guides download directly. No email is needed.</p>
+      <h2>Sales</h2>
+      <p>All sales are final. Digital books can’t be refunded once they’re sent.</p>
+      <h2>This site remembers</h2>
+      <p>Your cart and a few display choices, stored in your own browser.</p>
+      <h2>Not medical advice</h2>
+      <p>Everything here is lived experience. Always talk to your own care team.</p>
+      <h2>Contact</h2>
+      <p><a href="mailto:hello@omarchebbo.com">hello@omarchebbo.com</a></p>
     </div>
   </section>
 </main>
@@ -1288,7 +1458,7 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
   <div class="in">
     <div class="r1">
       <a class="logo" href="#home" style="color:var(--on-band)"><svg class="mark" viewBox="0 4 64 40" aria-hidden="true"><path d="M18 38 A14 14 0 0 1 46 38" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/><line x1="6" y1="38" x2="58" y2="38" stroke="var(--on-band)" stroke-width="5" stroke-linecap="round"/></svg>Omar Chebbo</a>
-      <nav aria-label="Footer"><a href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">Blog <small aria-hidden="true">↗</small></a><a href="#shop">Shop</a><a href="https://stg.omarchebbo.com/gallery" target="_blank" rel="noopener">Gallery <small aria-hidden="true">↗</small></a><a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Contact <small aria-hidden="true">↗</small></a></nav>
+      <nav aria-label="Footer"><a href="#book">The book</a><a href="#start">Start here</a><a href="#guides">Free guides</a><a href="#videos">Videos</a><a href="#story">My story</a><a href="#shop">Shop</a><a href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">Blog <small aria-hidden="true">↗</small></a><a href="https://stg.omarchebbo.com/gallery" target="_blank" rel="noopener">Gallery <small aria-hidden="true">↗</small></a><a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Contact <small aria-hidden="true">↗</small></a><a href="#privacy">Privacy &amp; terms</a></nav>
       <div class="soc">
         <a href="https://instagram.com/omar_organtransplants" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
         <a href="https://tiktok.com/@omar_organtransplants" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.8 2.3 4.6 5 4.8"/></svg></a>
@@ -1321,11 +1491,15 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
   <div class="dr-b">
     <nav class="menu-list" aria-label="Mobile">
       <a href="#home" data-nav="home">Home</a>
+      <a href="#book" data-nav="book">The book</a>
+      <a href="#start" data-nav="start">Start here</a>
+      <a href="#guides" data-nav="guides">Free guides</a>
+      <a href="#videos" data-nav="videos">Videos</a>
+      <a href="#story" data-nav="story">My story</a>
       <a href="#shop" data-nav="shop">Shop</a>
-      <a href="#guides">Free guides</a>
-      <a href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">Blog <small>↗</small></a>
-      <a href="https://stg.omarchebbo.com/gallery" target="_blank" rel="noopener">Gallery <small>↗</small></a>
-      <a href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Contact <small>↗</small></a>
+      <a class="ext" href="https://stg.omarchebbo.com/blog" target="_blank" rel="noopener">Blog <small>↗</small></a>
+      <a class="ext" href="https://stg.omarchebbo.com/gallery" target="_blank" rel="noopener">Gallery <small>↗</small></a>
+      <a class="ext" href="https://stg.omarchebbo.com/contact" target="_blank" rel="noopener">Contact <small>↗</small></a>
     </nav>
   </div>
   <div class="dr-f">
@@ -1461,10 +1635,10 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
   /* ---------- router ---------- */
   let homeY = 0, fromPop = false, curView = 'home', bookFrom = null, booted = false;
   addEventListener('popstate', () => { fromPop = true; });
-  const VIEWS = ['home', 'book', 'shop'];
+  const VIEWS = ['home', 'book', 'shop', 'start', 'guides', 'videos', 'story', 'privacy'];
   function route(){
     let v = (location.hash || '#home').slice(1), target = null;
-    if (!VIEWS.includes(v)){ const el = document.getElementById(v); if (el && $('#v-home').contains(el)) target = el; v = 'home'; }
+    if (!VIEWS.includes(v)){ const el = document.getElementById(v), m = el && el.closest('[data-view]'); if (m){ target = el; v = m.dataset.view; } else v = 'home'; }
     const prev = curView;
     if (prev === 'home' && v !== 'home') homeY = scrollY;   // remember the homepage position before hiding it
     $$('[data-view]').forEach(m => m.hidden = m.dataset.view !== v);
@@ -1972,8 +2146,8 @@ input[aria-invalid="true"]{border-color:#a1271c!important}
     const a = e.target.closest('[data-guide-jump]'); if (!a) return;
     e.preventDefault();
     const card = document.getElementById('guide-' + a.dataset.guideJump);
-    $('#guides').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block:'start' });
-    setTimeout(() => { card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block:'nearest', inline:'center' }); card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash'); }, reduce ? 0 : 450);
+    if (location.hash !== '#guides') location.hash = '#guides';
+    setTimeout(() => { card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block:'center', inline:'center' }); card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash'); }, reduce ? 0 : 450);
   });
 
   /* ---------- signed donation document ---------- */
