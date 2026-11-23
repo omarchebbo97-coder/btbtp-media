@@ -1,0 +1,127 @@
+{
+ "out": "S1_AI34_meet_the_kidneys",
+ "end": "اعملوا فولو لتسمعوا أكتر من كلاوي عمر",
+ "endsub": "Follow for more from Omar's kidneys",
+ "tempo": 1.08,
+ "gap": 0.2,
+ "tail": 2.2,
+ "lines": [
+  {
+   "who": "Wadad",
+   "ar": "مرحبا! نحنا كلاوي عمر القدام… اللي فشلو.",
+   "en": "Hi! We're Omar's old kidneys… the ones that failed.",
+   "img": "refs/aunties_master.png",
+   "z": [
+    1.0,
+    1.12,
+    0.5,
+    0.55
+   ],
+   "audio": "work/audio/ai34_l01_t.wav"
+  },
+  {
+   "who": "Souad",
+   "ar": "أنا سعاد، وهيدي وداد. هلق ما منعمل شي… بس منحب نمقلج!",
+   "en": "I'm Souad, this is Wadad. We do nothing now… but we love to gossip!",
+   "img": "scenes/e12_retire.png",
+   "z": [
+    1.05,
+    1.2,
+    0.5,
+    0.58
+   ],
+   "audio": "work/audio/ai34_l02_t.wav"
+  },
+  {
+   "who": "Wadad",
+   "ar": "رح نخبركن كيف كان عمر عالغسيل…",
+   "en": "We'll tell you how Omar was on dialysis…",
+   "img": "scenes/wadad_chair.jpg",
+   "z": [
+    1.0,
+    1.12,
+    0.5,
+    0.55
+   ],
+   "audio": "work/audio/ai34_l03_t.wav"
+  },
+  {
+   "who": "Souad",
+   "ar": "وشو بيصير للقلب والعضم والدم لما نحنا نوقف…",
+   "en": "…what happens to the heart, bones and blood when we stop…",
+   "img": "scenes/e4_uphill.png",
+   "z": [
+    1.0,
+    1.12,
+    0.5,
+    0.55
+   ],
+   "audio": "work/audio/ai34_l04_t.wav"
+  },
+  {
+   "who": "Wadad",
+   "ar": "وحتى البيضات!",
+   "en": "Even the baydat!",
+   "img": "refs/baydat_xray_tall.jpg",
+   "z": [
+    1.0,
+    1.1,
+    0.5,
+    0.6
+   ],
+   "audio": "work/audio/ai34_l05_t.wav"
+  },
+  {
+   "who": "Souad",
+   "ar": "اعملوا فولو لتعرفوا أكتر عن فشل الكلى.",
+   "en": "Follow to learn more about kidney failure.",
+   "img": "refs/aunties_master.png",
+   "z": [
+    1.55,
+    1.7,
+    0.66,
+    0.5
+   ],
+   "audio": "work/audio/ai34_l06_t.wav"
+  },
+  {
+   "who": "New kidney",
+   "ar": "وأنا كلية عمر الجديدة: الزراعة، الأدوية، وكل شي بعدها.",
+   "en": "And I'm Omar's new kidney: the transplant, the medicines, everything after.",
+   "img": "scenes/e12_arrive.png",
+   "z": [
+    1.05,
+    1.2,
+    0.55,
+    0.58
+   ],
+   "audio": "work/audio/ai34_l07_t.wav"
+  },
+  {
+   "who": "Wadad",
+   "ar": "شوفوه… مفكر حالو أحسن منا.",
+   "en": "Look at him… thinks he's better than us.",
+   "img": "scenes/e12_retire.png",
+   "z": [
+    1.0,
+    1.12,
+    0.5,
+    0.55
+   ],
+   "audio": "work/audio/ai34_l08_t.wav"
+  },
+  {
+   "who": "New kidney",
+   "ar": "مش مفكر. أنا شغال.",
+   "en": "I don't think. I work.",
+   "img": "refs/newkidney_master.png",
+   "z": [
+    1.0,
+    1.1,
+    0.5,
+    0.55
+   ],
+   "audio": "work/audio/ai34_l09_t.wav"
+  }
+ ]
+}
