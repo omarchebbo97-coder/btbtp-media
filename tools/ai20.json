@@ -1,0 +1,111 @@
+{
+ "out": "S1E1_freedom",
+ "end": "شو أوّل شي عملتو بعد الزراعة؟ خبّرونا",
+ "endsub": "What was the first thing you did after your transplant? Tell us",
+ "lines": [
+  {
+   "who": "New kidney",
+   "ar": "زراعة الكلوة يعني شغلة وحدة: حرّية.",
+   "en": "A kidney transplant means one thing: freedom.",
+   "img": "scenes/ai20_bed.jpg",
+   "z": [
+    1.0,
+    1.12,
+    0.5,
+    0.55
+   ],
+   "audio": "work/audio/ai20_l01_PH.wav"
+  },
+  {
+   "who": "New kidney",
+   "ar": "ما في ماكينة. ما في كرسي كم مرّة بالجمعة. بتشرب مي، بتاكل موز، بتسافر.",
+   "en": "No machine. No chair a few times a week. You drink water, eat bananas, travel.",
+   "img": "scenes/ai20_bed.jpg",
+   "z": [
+    1.15,
+    1.3,
+    0.5,
+    0.55
+   ],
+   "audio": "work/audio/ai20_l02_PH.wav"
+  },
+  {
+   "who": "Wadad",
+   "ar": "إيه، بس بالأوّل؟ أسبوعين بالمستشفى، بهيدا الروب.",
+   "en": "Sure, but first? Two weeks in hospital, in that gown.",
+   "img": "scenes/e12_retire.png",
+   "z": [
+    1.05,
+    1.2,
+    0.5,
+    0.58
+   ],
+   "audio": "work/audio/ai20_l03_t.wav"
+  },
+  {
+   "who": "Souad",
+   "ar": "الروب المفتوح من ورا… كل ما يوقف، إمّو تشوف كل شي.",
+   "en": "The gown that's open at the back… every time he stood up, his mom saw everything.",
+   "img": "scenes/ai20_gown.jpg",
+   "z": [
+    1.0,
+    1.12,
+    0.5,
+    0.55
+   ],
+   "audio": "work/audio/ai20_l04_t.wav"
+  },
+  {
+   "who": "New kidney",
+   "ar": "وإمّو سألتو: «بدّك بوكسر؟»",
+   "en": "And his mom asked him: \"Do you want boxers?\"",
+   "img": "scenes/ai20_gown.jpg",
+   "z": [
+    1.15,
+    1.3,
+    0.5,
+    0.6
+   ],
+   "audio": "work/audio/ai20_l05_PH.wav"
+  },
+  {
+   "who": "Wadad",
+   "ar": "بوكسر؟ والقسطرة متدلّاية من هون؟",
+   "en": "Boxers? With the catheter hanging from here?",
+   "img": "refs/aunties_master.png",
+   "z": [
+    1.55,
+    1.7,
+    0.33,
+    0.5
+   ],
+   "audio": "work/audio/ai20_l06_t.wav"
+  },
+  {
+   "who": "Souad",
+   "ar": "لأ حبيبتي… الحمامة بدّا حرّية.",
+   "en": "No, darling… the pigeon wants freedom.",
+   "img": "scenes/ai20_pigeon.png",
+   "z": [
+    1.0,
+    1.15,
+    0.5,
+    0.6
+   ],
+   "audio": "work/audio/ai20_l07_t.wav"
+  },
+  {
+   "who": "New kidney",
+   "ar": "قلتلكن. حرّية.",
+   "en": "Told you. Freedom.",
+   "img": "refs/newkidney_master.png",
+   "z": [
+    1.0,
+    1.1,
+    0.5,
+    0.55
+   ],
+   "audio": "work/audio/ai20_l08_PH.wav"
+  }
+ ]
+}

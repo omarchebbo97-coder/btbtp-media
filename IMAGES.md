@@ -62,3 +62,5 @@ Every image, what it shows, and when to use it. Check this before choosing an im
 | st02_sugar.jpg | Aunties surrounded by sugar cubes (diabetes) |
 | st05_machine_low.jpg | Machine master shifted down (headroom for story text) |
 | e3_tube_low.jpg | e3_tube shifted down (headroom for story text): aunties with blood tube and rising chart (silent kidney damage, tests) |
+| ai20_pigeon.png | Clay pigeon on an open hospital windowsill, Beirut rooftops behind, wings spread (AI20 'the pigeon wants freedom', 23 Nov) |
+| ai16_pigkidney.png | Pink clay kidney with pig ears and a curly tail on a steel hospital tray, operating lamp above (AI16 pig kidneys, 23 Nov) |

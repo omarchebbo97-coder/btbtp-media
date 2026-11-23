@@ -1,0 +1,98 @@
+{
+ "out": "S1_AI16_pig_kidneys",
+ "end": "بتقبلوا كلوة خنزير؟ خبّرونا بالتعليقات",
+ "endsub": "Would you take a pig kidney? Tell us in the comments",
+ "lines": [
+  {
+   "who": "Wadad",
+   "ar": "سعاد! عم يزرعوا كلاوي خنزير بالناس!",
+   "en": "Souad! They're putting pig kidneys in people!",
+   "img": "scenes/ai09_paper.jpg",
+   "z": [
+    1.0,
+    1.12,
+    0.5,
+    0.55
+   ],
+   "audio": "work/audio/ai16_l01_t.wav"
+  },
+  {
+   "who": "Souad",
+   "ar": "خنزير؟ يعني عم يبدّلونا بخنزير؟",
+   "en": "A pig? So they're replacing us with a pig?",
+   "img": "refs/aunties_master.png",
+   "z": [
+    1.55,
+    1.7,
+    0.66,
+    0.5
+   ],
+   "audio": "work/audio/ai16_l02_t.wav"
+  },
+  {
+   "who": "Wadad",
+   "ar": "خنزير معدّل. غيّروا جيناتو، لحتى الجسم ما يرفضو بسرعة.",
+   "en": "A modified pig. They changed its genes so the body doesn't reject it so fast.",
+   "img": "scenes/ai16_pigkidney.png",
+   "z": [
+    1.0,
+    1.15,
+    0.5,
+    0.55
+   ],
+   "audio": "work/audio/ai16_l03_t.wav"
+  },
+  {
+   "who": "Souad",
+   "ar": "وزبطت؟",
+   "en": "And did it work?",
+   "img": "refs/aunties_master.png",
+   "z": [
+    1.55,
+    1.7,
+    0.66,
+    0.5
+   ],
+   "audio": "work/audio/ai16_l04_t.wav"
+  },
+  {
+   "who": "Wadad",
+   "ar": "في رجّال عاش فيها شهور بلا غسيل… وبعدين أخد كلوة من إنسان.",
+   "en": "One man lived on it for months without dialysis… then got a kidney from a person.",
+   "img": "scenes/ai09_hourglass.jpg",
+   "z": [
+    1.0,
+    1.12,
+    0.5,
+    0.55
+   ],
+   "audio": "work/audio/ai16_l05_t.wav"
+  },
+  {
+   "who": "New kidney",
+   "ar": "هيدي لسّا تجارب. ولهلّق، الكلوة بتجي من إنسان… متل ما أنا إجيت من أمين.",
+   "en": "These are still trials. For now, a kidney comes from a person… like I came from Amine.",
+   "img": "scenes/e12_arrive.png",
+   "z": [
+    1.05,
+    1.2,
+    0.55,
+    0.58
+   ],
+   "audio": "work/audio/ai16_l06_PH.wav"
+  },
+  {
+   "who": "Souad",
+   "ar": "نحنا كنّا كلاوي أصليّة… مش من مزرعة.",
+   "en": "We were original kidneys… not from a farm.",
+   "img": "refs/aunties_master.png",
+   "z": [
+    1.75,
+    1.9,
+    0.66,
+    0.48
+   ],
+   "audio": "work/audio/ai16_l07_t.wav"
+  }
+ ]
+}
