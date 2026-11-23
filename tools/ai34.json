@@ -17,7 +17,7 @@
     0.5,
     0.55
    ],
-   "audio": "work/audio/ai34_l01_v2_t.wav"
+   "audio": "work/audio/ai34_l01_v3_t.wav"
   },
   {
    "who": "Souad",
@@ -43,7 +43,7 @@
     0.5,
     0.55
    ],
-   "audio": "work/audio/ai34_l03_t.wav"
+   "audio": "work/audio/ai34_l03_v3_t.wav"
   },
   {
    "who": "Souad",
@@ -117,7 +117,7 @@
     0.55,
     0.58
    ],
-   "audio": "work/audio/ai34_l07_v2_t.wav"
+   "audio": "work/audio/ai34_l07_v3_t.wav"
   },
   {
    "who": "Wadad",
