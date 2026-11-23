@@ -32,6 +32,10 @@ def build(cfg_path):
         a=l['audio'];sd=dur(a)/T;dd=sd+g;n=int(round(dd*30))
         img=l['img'];z0,z1,cx,cy=l['z']
         names=plan[i-1];ins=['-loop','1','-i',img];ov='[v]';k=1;tot=sum(x[1] for x in names);t0=0;chain=''
+        # optional picture switches inside one line (23 Nov): "imgs":[{"img":..,"z":[z0,z1,cx,cy],"at":seconds into the trimmed audio}]
+        for e in l.get('imgs',[]):
+            ez0,ez1,ecx,ecy=e['z'];ins+=['-loop','1','-i',e['img']];ta=e['at']/T
+            chain+=f"[{k}]scale=2160:3840:force_original_aspect_ratio=increase,crop=2160:3840,zoompan=z='{ez0}+({ez1}-{ez0})*on/{n}':x='iw*{ecx}-iw/zoom/2':y='ih*{ecy}-ih/zoom/2':d={n}:s=1080x1920:fps=30[x{k}];{ov}[x{k}]overlay=0:0:enable='gte(t,{ta:.2f})'[o{k}];";ov=f'[o{k}]';k+=1
         for j,(nm,ln) in enumerate(names):
             ins+=['-i',nm+'.png'];t1=sd if j==len(names)-1 else sd*ln/tot+t0
             end=dd if (j==len(names)-1 and not last) else t1+ (0.25 if last else 0)

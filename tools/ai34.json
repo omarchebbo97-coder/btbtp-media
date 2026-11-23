@@ -8,7 +8,7 @@
  "lines": [
   {
    "who": "Wadad",
-   "ar": "مرحبا! نحنا كلاوي عمر القدام… اللي فشلو.",
+   "ar": "مرحبا! نحنا كلاوي عمر القديمة… اللي فشلو.",
    "en": "Hi! We're Omar's old kidneys… the ones that failed.",
    "img": "refs/aunties_master.png",
    "z": [
@@ -17,11 +17,11 @@
     0.5,
     0.55
    ],
-   "audio": "work/audio/ai34_l01_t.wav"
+   "audio": "work/audio/ai34_l01_v2_t.wav"
   },
   {
    "who": "Souad",
-   "ar": "أنا سعاد، وهيدي وداد. هلق ما منعمل شي… بس منحب نمقلج!",
+   "ar": "أنا سعاد، وهيدي وداد. هلق ما منعمل شي… بس منحب نمألج!",
    "en": "I'm Souad, this is Wadad. We do nothing now… but we love to gossip!",
    "img": "scenes/e12_retire.png",
    "z": [
@@ -30,7 +30,7 @@
     0.5,
     0.58
    ],
-   "audio": "work/audio/ai34_l02_t.wav"
+   "audio": "work/audio/ai34_l02_v2_t.wav"
   },
   {
    "who": "Wadad",
@@ -56,7 +56,29 @@
     0.5,
     0.55
    ],
-   "audio": "work/audio/ai34_l04_t.wav"
+   "audio": "work/audio/ai34_l04_t.wav",
+   "imgs": [
+    {
+     "img": "refs/bone_master.jpg",
+     "z": [
+      1.0,
+      1.08,
+      0.5,
+      0.55
+     ],
+     "at": 1.45
+    },
+    {
+     "img": "refs/bloodcell_master.jpg",
+     "z": [
+      1.0,
+      1.08,
+      0.5,
+      0.55
+     ],
+     "at": 2.3
+    }
+   ]
   },
   {
    "who": "Wadad",
@@ -86,7 +108,7 @@
   },
   {
    "who": "New kidney",
-   "ar": "وأنا كلية عمر الجديدة: الزراعة، الأدوية، وكل شي بعدها.",
+   "ar": "وأنا كلوة عمر الجديدة: الزراعة، الأدوية، وكل شي بعدها.",
    "en": "And I'm Omar's new kidney: the transplant, the medicines, everything after.",
    "img": "scenes/e12_arrive.png",
    "z": [
@@ -95,7 +117,7 @@
     0.55,
     0.58
    ],
-   "audio": "work/audio/ai34_l07_t.wav"
+   "audio": "work/audio/ai34_l07_v2_t.wav"
   },
   {
    "who": "Wadad",
