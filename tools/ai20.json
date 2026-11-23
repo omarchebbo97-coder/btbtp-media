@@ -14,7 +14,7 @@
     0.5,
     0.55
    ],
-   "audio": "work/audio/ai20_l01_PH.wav"
+   "audio": "work/audio/ai20_l01_t.wav"
   },
   {
    "who": "New kidney",
@@ -27,7 +27,7 @@
     0.5,
     0.55
    ],
-   "audio": "work/audio/ai20_l02_PH.wav"
+   "audio": "work/audio/ai20_l02_t.wav"
   },
   {
    "who": "Wadad",
@@ -44,8 +44,8 @@
   },
   {
    "who": "Souad",
-   "ar": "الروب المفتوح من ورا… كل ما يوقف، إمّو تشوف كل شي.",
-   "en": "The gown that's open at the back… every time he stood up, his mom saw everything.",
+   "ar": "الروب المفتوح من قدام… كل ما يوقف، إمّو تشوف كل شي.",
+   "en": "The gown that's open at the front… every time he stood up, his mom saw everything.",
    "img": "scenes/ai20_gown.jpg",
    "z": [
     1.0,
@@ -53,10 +53,10 @@
     0.5,
     0.55
    ],
-   "audio": "work/audio/ai20_l04_t.wav"
+   "audio": "work/audio/ai20_l04_v2_t.wav"
   },
   {
-   "who": "New kidney",
+   "who": "Souad",
    "ar": "وإمّو سألتو: «بدّك بوكسر؟»",
    "en": "And his mom asked him: \"Do you want boxers?\"",
    "img": "scenes/ai20_gown.jpg",
@@ -66,12 +66,12 @@
     0.5,
     0.6
    ],
-   "audio": "work/audio/ai20_l05_PH.wav"
+   "audio": "work/audio/ai20_l05_t.wav"
   },
   {
    "who": "Wadad",
-   "ar": "بوكسر؟ والقسطرة متدلّاية من هون؟",
-   "en": "Boxers? With the catheter hanging from here?",
+   "ar": "بوكسر؟ والقسطرة مدندلة من هون؟",
+   "en": "Boxers? With the catheter dangling from here?",
    "img": "refs/aunties_master.png",
    "z": [
     1.55,
@@ -79,7 +79,7 @@
     0.33,
     0.5
    ],
-   "audio": "work/audio/ai20_l06_t.wav"
+   "audio": "work/audio/ai20_l06_v2_t.wav"
   },
   {
    "who": "Souad",
@@ -105,7 +105,9 @@
     0.5,
     0.55
    ],
-   "audio": "work/audio/ai20_l08_PH.wav"
+   "audio": "work/audio/ai20_l08_t.wav"
   }
- ]
+ ],
+ "gap": 0.25,
+ "tail": 2.4
 }

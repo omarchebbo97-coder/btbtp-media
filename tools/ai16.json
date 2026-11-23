@@ -53,7 +53,7 @@
     0.66,
     0.5
    ],
-   "audio": "work/audio/ai16_l04_t.wav"
+   "audio": "work/audio/ai16_l04_v2_t.wav"
   },
   {
    "who": "Wadad",
@@ -79,7 +79,7 @@
     0.55,
     0.58
    ],
-   "audio": "work/audio/ai16_l06_PH.wav"
+   "audio": "work/audio/ai16_l06_t.wav"
   },
   {
    "who": "Souad",
@@ -94,5 +94,7 @@
    ],
    "audio": "work/audio/ai16_l07_t.wav"
   }
- ]
+ ],
+ "gap": 0.25,
+ "tail": 2.4
 }

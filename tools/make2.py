@@ -26,9 +26,9 @@ def build(cfg_path):
     caps.append(['endcard',{'ar':cfg['end'],'en':cfg['endsub'],'col':COL['end'],'end':1}])
     js="const {chromium}=require('%s/tpl/node_modules/playwright');const path=require('path');const C=%s;(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage({viewport:{width:1080,height:1920}});for(const [n,o] of C){await p.goto('file://'+path.resolve('%s/v2/cap2.html')+'?n='+n+'#'+encodeURIComponent(JSON.stringify(o)));await p.evaluate(()=>document.fonts.ready);await p.waitForTimeout(150);await p.screenshot({path:n+'.png',omitBackground:true});}await b.close();})();"%(SP,json.dumps(caps,ensure_ascii=False),SP)
     open('cap.js','w').write(js);subprocess.run(['node','cap.js'],check=True)
-    T=1.06;N=len(cfg['lines']);lst=open('list.txt','w');al=[]
+    T=cfg.get('tempo',1.06);N=len(cfg['lines']);lst=open('list.txt','w');al=[]
     for i,l in enumerate(cfg['lines'],1):
-        last=i==N;g=2.8 if last else 0.3
+        last=i==N;g=cfg.get('tail',2.8) if last else cfg.get('gap',0.3)
         a=l['audio'];sd=dur(a)/T;dd=sd+g;n=int(round(dd*30))
         img=l['img'];z0,z1,cx,cy=l['z']
         names=plan[i-1];ins=['-loop','1','-i',img];ov='[v]';k=1;tot=sum(x[1] for x in names);t0=0;chain=''
